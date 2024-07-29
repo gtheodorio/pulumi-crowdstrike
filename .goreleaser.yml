@@ -1,30 +1,25 @@
 version: 2
 archives:
-  - id: archive
-    name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+- id: archive
+  name_template: "{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}"
 before:
   hooks:
-    - make tfgen
+  - make tfgen
 builds:
-  - binary: pulumi-resource-crowdstrike
-    dir: provider
-    env:
-      - CGO_ENABLED=0
-    goarch:
-      - amd64
-      - arm64
-    goos:
-      - darwin
-      - windows
-      - linux
-    ldflags:
-      # The line below MUST align with the module in current provider/go.mod
-      - -X github.com/crowdstrike/pulumi-crowdstrike/provider/pkg/version.Version={{.Tag }}
-    main: ./cmd/pulumi-resource-crowdstrike/
-changelog:
-  skip: true
+- binary: pulumi-resource-crowdstrike
+  dir: provider
+  goarch:
+  - amd64
+  - arm64
+  goos:
+  - darwin
+  - windows
+  - linux
+  ignore: []
+  ldflags:
+  - -X github.com/crowdstrike/pulumi-crowdstrike/provider/pkg/version.Version={{.Tag}}
+  main: ./cmd/pulumi-resource-crowdstrike/
 release:
   disable: false
-  prerelease: auto
 snapshot:
-  name_template: '{{ .Tag }}-SNAPSHOT'
+  name_template: "{{ .Tag }}-SNAPSHOT" 
