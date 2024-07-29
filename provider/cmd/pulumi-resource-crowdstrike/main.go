@@ -20,8 +20,8 @@ import (
 	"context"
 	_ "embed"
 
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	crowdstrike "github.com/crowdstrike/pulumi-crowdstrike/provider"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 )
 
 //go:embed schema-embed.json

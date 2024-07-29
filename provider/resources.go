@@ -21,15 +21,15 @@ import (
 	"strings"
 	"unicode"
 
+	"github.com/crowdstrike/pulumi-crowdstrike/provider/pkg/version"
+	shimprovider "github.com/crowdstrike/terraform-provider-crowdstrike/shim"
 	"github.com/ettle/strcase"
+	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shimprovider "github.com/crowdstrike/terraform-provider-crowdstrike/shim"
-	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
-	"github.com/crowdstrike/pulumi-crowdstrike/provider/pkg/version"
 )
 
 //go:embed cmd/pulumi-resource-crowdstrike/bridge-metadata.json
@@ -123,7 +123,7 @@ func Provider() tfbridge.ProviderInfo {
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{
+		Keywords: []string{
 			"pulumi",
 			"crowdstrike",
 			"category/infrastructure",
@@ -133,11 +133,11 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/crowdstrike/pulumi-crowdstrike",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		Version:   version.Version,
-		GitHubOrg: "crowdstrike",
-		MetadataInfo: tfbridge.NewProviderMetadata(bridgeMetadata),
+		Version:           version.Version,
+		GitHubOrg:         "crowdstrike",
+		MetadataInfo:      tfbridge.NewProviderMetadata(bridgeMetadata),
 		TFProviderVersion: "0.0.4",
-		Config:    map[string]*tfbridge.SchemaInfo{
+		Config:            map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -153,7 +153,7 @@ func Provider() tfbridge.ProviderInfo {
 			//
 			// "aws_iam_role": {
 			//   Tok: makeResource(mainMod, "aws_iam_role"),
-		  // },
+			// },
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each data source in the Terraform provider to a Pulumi function.
