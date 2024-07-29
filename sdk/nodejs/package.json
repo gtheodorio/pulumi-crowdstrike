@@ -1,0 +1,29 @@
+{
+    "name": "@crowdstrike/pulumi",
+    "version": "${VERSION}",
+    "description": "A Pulumi package for creating and managing Crowdstrike resources. Based on terraform-provider-crowdstrike: version v0.0.4",
+    "keywords": [
+        "pulumi",
+        "crowdstrike",
+        "category/infrastructure"
+    ],
+    "homepage": "https://crowdstrike.com",
+    "repository": "https://github.com/crowdstrike/pulumi-crowdstrike",
+    "license": "Apache-2.0",
+    "scripts": {
+        "build": "tsc"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.0.0"
+    },
+    "devDependencies": {
+        "@types/mime": "^2.0.0",
+        "@types/node": "^10.0.0",
+        "typescript": "^4.3.5"
+    },
+    "pulumi": {
+        "resource": true,
+        "name": "crowdstrike",
+        "server": "github://api.github.com/crowdstrike/pulumi-crowdstrike"
+    }
+}
