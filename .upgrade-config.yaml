@@ -1,0 +1,3 @@
+upstream-provider-name: terraform-provider-crowdstrike
+upstream-provider-org: crowdstrike
+allow-missing-docs: true
