@@ -8,7 +8,7 @@ jobs:
     - name: Call upgrade provider action
       uses: pulumi/pulumi-upgrade-provider-action@f399a75a5350242c291cc720eece1c72cb6ea712 # v0.0.12
       with:
-        kind: all
+        kind: code
         email: gax.theodorio@crowdstrike.com
         username: gtheodorio
 name: Upgrade provider
