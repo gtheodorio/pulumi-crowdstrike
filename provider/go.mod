@@ -1,6 +1,6 @@
 module github.com/crowdstrike/pulumi-crowdstrike/provider
 
-go 1.22
+go 1.21
 
 replace github.com/crowdstrike/terraform-provider-crowdstrike/shim => ./shim
 
