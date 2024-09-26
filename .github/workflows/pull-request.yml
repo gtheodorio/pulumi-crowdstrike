@@ -7,6 +7,8 @@ on:
       - docs
       - .devcontainer
       - examples
+      - .github
+  workflow_dispatch: {}
 
 jobs:
   build_sdk:
@@ -18,7 +20,7 @@ jobs:
         dotnetversion:
           - 6.0.x
         goversion:
-          - '1.21'
+          - '1.22.x'
         nodeversion:
           - 18.x
         pythonversion:
