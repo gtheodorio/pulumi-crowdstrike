@@ -1,6 +1,6 @@
 module github.com/crowdstrike/terraform-provider-crowdstrike/shim
 
-go 1.21
+go 1.22
 
 require (
 	github.com/crowdstrike/terraform-provider-crowdstrike v0.0.4
