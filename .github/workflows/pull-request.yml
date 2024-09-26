@@ -7,6 +7,7 @@ on:
       - docs
       - .devcontainer
       - examples
+  workflow_dispatch: {}
 
 jobs:
   build_sdk:
