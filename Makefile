@@ -105,6 +105,9 @@ fmt::
 	@echo "Fixing source code with gofmt..."
 	find . -name '*.go' | grep -v vendor | xargs gofmt -s -w
 
+install_plugins:: validate_go_version
+	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
+	pulumi plugin install resource random 4.3.1
 
 install_dotnet_sdk::
 	mkdir -p $(WORKING_DIR)/nuget
