@@ -71,13 +71,19 @@ type GetSensorUpdatePolicyBuildsResult struct {
 }
 
 func GetSensorUpdatePolicyBuildsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetSensorUpdatePolicyBuildsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetSensorUpdatePolicyBuildsResult, error) {
-		r, err := GetSensorUpdatePolicyBuilds(ctx, opts...)
-		var s GetSensorUpdatePolicyBuildsResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetSensorUpdatePolicyBuildsResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetSensorUpdatePolicyBuildsResult
+		secret, err := ctx.InvokePackageRaw("crowdstrike:index/getSensorUpdatePolicyBuilds:getSensorUpdatePolicyBuilds", nil, &rv, "", opts...)
+		if err != nil {
+			return GetSensorUpdatePolicyBuildsResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetSensorUpdatePolicyBuildsResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetSensorUpdatePolicyBuildsResultOutput), nil
+		}
+		return output, nil
 	}).(GetSensorUpdatePolicyBuildsResultOutput)
 }
 

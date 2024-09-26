@@ -2032,14 +2032,14 @@ class PreventionPolicyWindows(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_user_mode_data: Optional[pulumi.Input[bool]] = None,
                  advanced_remediation: Optional[pulumi.Input[bool]] = None,
-                 adware_and_pup: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsAdwareAndPupArgs']]] = None,
+                 adware_and_pup: Optional[pulumi.Input[Union['PreventionPolicyWindowsAdwareAndPupArgs', 'PreventionPolicyWindowsAdwareAndPupArgsDict']]] = None,
                  application_exploitation_activity: Optional[pulumi.Input[bool]] = None,
                  backup_deletion: Optional[pulumi.Input[bool]] = None,
                  bios_deep_visibility: Optional[pulumi.Input[bool]] = None,
                  chopper_webshell: Optional[pulumi.Input[bool]] = None,
-                 cloud_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareArgs']]] = None,
-                 cloud_anti_malware_microsoft_office_files: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs']]] = None,
-                 cloud_anti_malware_user_initiated: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs']]] = None,
+                 cloud_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareArgs', 'PreventionPolicyWindowsCloudAntiMalwareArgsDict']]] = None,
+                 cloud_anti_malware_microsoft_office_files: Optional[pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs', 'PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgsDict']]] = None,
+                 cloud_anti_malware_user_initiated: Optional[pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs', 'PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgsDict']]] = None,
                  code_injection: Optional[pulumi.Input[bool]] = None,
                  credential_dumping: Optional[pulumi.Input[bool]] = None,
                  cryptowall: Optional[pulumi.Input[bool]] = None,
@@ -2052,7 +2052,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
                  engine_full_visibility: Optional[pulumi.Input[bool]] = None,
                  enhanced_exploitation_visibility: Optional[pulumi.Input[bool]] = None,
                  enhanced_ml_for_larger_files: Optional[pulumi.Input[bool]] = None,
-                 extended_user_mode_data: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsExtendedUserModeDataArgs']]] = None,
+                 extended_user_mode_data: Optional[pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']]] = None,
                  file_encryption: Optional[pulumi.Input[bool]] = None,
                  file_system_access: Optional[pulumi.Input[bool]] = None,
                  force_aslr: Optional[pulumi.Input[bool]] = None,
@@ -2080,8 +2080,8 @@ class PreventionPolicyWindows(pulumi.CustomResource):
                  redact_http_detection_details: Optional[pulumi.Input[bool]] = None,
                  script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
                  seh_overwrite_protection: Optional[pulumi.Input[bool]] = None,
-                 sensor_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsSensorAntiMalwareArgs']]] = None,
-                 sensor_anti_malware_user_initiated: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs']]] = None,
+                 sensor_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyWindowsSensorAntiMalwareArgs', 'PreventionPolicyWindowsSensorAntiMalwareArgsDict']]] = None,
+                 sensor_anti_malware_user_initiated: Optional[pulumi.Input[Union['PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs', 'PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgsDict']]] = None,
                  sensor_tampering_protection: Optional[pulumi.Input[bool]] = None,
                  suspicious_registry_operations: Optional[pulumi.Input[bool]] = None,
                  suspicious_scripts_and_commands: Optional[pulumi.Input[bool]] = None,
@@ -2113,33 +2113,33 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             description="Made with Pulumi",
             host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
             ioa_rule_groups=["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
-            adware_and_pup=crowdstrike.PreventionPolicyWindowsAdwareAndPupArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            cloud_anti_malware_microsoft_office_files=crowdstrike.PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs(
-                detection="MODERATE",
-                prevention="DISABLED",
-            ),
-            cloud_anti_malware=crowdstrike.PreventionPolicyWindowsCloudAntiMalwareArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            cloud_anti_malware_user_initiated=crowdstrike.PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            sensor_anti_malware=crowdstrike.PreventionPolicyWindowsSensorAntiMalwareArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            sensor_anti_malware_user_initiated=crowdstrike.PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            extended_user_mode_data=crowdstrike.PreventionPolicyWindowsExtendedUserModeDataArgs(
-                detection="MODERATE",
-            ),
+            adware_and_pup={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            cloud_anti_malware_microsoft_office_files={
+                "detection": "MODERATE",
+                "prevention": "DISABLED",
+            },
+            cloud_anti_malware={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            cloud_anti_malware_user_initiated={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            sensor_anti_malware={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            sensor_anti_malware_user_initiated={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            extended_user_mode_data={
+                "detection": "MODERATE",
+            },
             usb_insertion_triggered_scan=False,
             application_exploitation_activity=False,
             additional_user_mode_data=False,
@@ -2205,14 +2205,14 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] additional_user_mode_data: Whether to enable the setting. Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
         :param pulumi.Input[bool] advanced_remediation: Whether to enable the setting. Perform advanced remediation for IOA detections to kill processes, quarantine files, remove scheduled tasks, and clear and delete ASEP registry values.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsAdwareAndPupArgs']] adware_and_pup: Use cloud-based machine learning informed by global analysis of executables to detect and prevent adware and potentially unwanted programs (PUP) for your online hosts.
+        :param pulumi.Input[Union['PreventionPolicyWindowsAdwareAndPupArgs', 'PreventionPolicyWindowsAdwareAndPupArgsDict']] adware_and_pup: Use cloud-based machine learning informed by global analysis of executables to detect and prevent adware and potentially unwanted programs (PUP) for your online hosts.
         :param pulumi.Input[bool] application_exploitation_activity: Whether to enable the setting. Creation of a process, such as a command prompt, from an exploited browser or browser flash plugin was blocked.
         :param pulumi.Input[bool] backup_deletion: Whether to enable the setting. Deletion of backups often indicative of ransomware activity.
         :param pulumi.Input[bool] bios_deep_visibility: Whether to enable the setting. Provides visibility into BIOS. Detects suspicious and unexpected images. Recommend testing to monitor system startup performance before full deployment.
         :param pulumi.Input[bool] chopper_webshell: Whether to enable the setting. Execution of a command shell was blocked and is indicative of the system hosting a Chopper web page.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareArgs']] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs']] cloud_anti_malware_microsoft_office_files: Identifies potentially malicious macros in Microsoft Office files and, if prevention is enabled, either quarantines the file or removes the malicious macros before releasing the file back to the host
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs']] cloud_anti_malware_user_initiated: For online hosts running on-demand scans initiated by end users, use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware.
+        :param pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareArgs', 'PreventionPolicyWindowsCloudAntiMalwareArgsDict']] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
+        :param pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs', 'PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgsDict']] cloud_anti_malware_microsoft_office_files: Identifies potentially malicious macros in Microsoft Office files and, if prevention is enabled, either quarantines the file or removes the malicious macros before releasing the file back to the host
+        :param pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs', 'PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgsDict']] cloud_anti_malware_user_initiated: For online hosts running on-demand scans initiated by end users, use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware.
         :param pulumi.Input[bool] code_injection: Whether to enable the setting. Kill processes that unexpectedly injected code into another process. Requires additional*user*mode_data to be enabled.
         :param pulumi.Input[bool] credential_dumping: Whether to enable the setting. Kill suspicious processes determined to be stealing logins and passwords. Requires additional*user*mode_data to be enabled.
         :param pulumi.Input[bool] cryptowall: Whether to enable the setting. A process associated with Cryptowall was blocked.
@@ -2225,7 +2225,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         :param pulumi.Input[bool] engine_full_visibility: Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreter_only to be enabled.
         :param pulumi.Input[bool] enhanced_exploitation_visibility: Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
         :param pulumi.Input[bool] enhanced_ml_for_larger_files: Whether to enable the setting. Expand ML file size coverage. Existing ML level settings apply.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsExtendedUserModeDataArgs']] extended_user_mode_data: Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
+        :param pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']] extended_user_mode_data: Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
         :param pulumi.Input[bool] file_encryption: Whether to enable the setting. A process that created a file with a known ransomware extension was terminated.
         :param pulumi.Input[bool] file_system_access: Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
         :param pulumi.Input[bool] force_aslr: Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
@@ -2253,8 +2253,8 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         :param pulumi.Input[bool] redact_http_detection_details: Whether to enable the setting. Remove certain information from HTTP Detection events, including URL, raw HTTP header and POST bodies if they were present. This does not affect the generation of HTTP Detections, only additional details that would be included and may include personal information (depending on the malware in question). When disabled, the information is used to improve the response to detection events. Has no effect unless HTTP Detections is also enabled.
         :param pulumi.Input[bool] script_based_execution_monitoring: Whether to enable the setting. For hosts running Windows 10 and Servers 2016 and later, provides visibility into suspicious scripts and VBA macros in Office documents. Requires Quarantine & Security Center Registration toggle to be enabled.
         :param pulumi.Input[bool] seh_overwrite_protection: Whether to enable the setting. Overwriting a Structured Exception Handler (SEH) was detected and may have been blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsSensorAntiMalwareArgs']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs']] sensor_anti_malware_user_initiated: For offline and online hosts running on-demand scans initiated by end users, use sensor-based machine learning to identify and analyze unknown executables to detect and prevent malware.
+        :param pulumi.Input[Union['PreventionPolicyWindowsSensorAntiMalwareArgs', 'PreventionPolicyWindowsSensorAntiMalwareArgsDict']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
+        :param pulumi.Input[Union['PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs', 'PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgsDict']] sensor_anti_malware_user_initiated: For offline and online hosts running on-demand scans initiated by end users, use sensor-based machine learning to identify and analyze unknown executables to detect and prevent malware.
         :param pulumi.Input[bool] sensor_tampering_protection: Whether to enable the setting. Blocks attempts to tamper with the sensor. If disabled, the sensor still creates detections for tampering attempts but doesn’t block them. Disabling not recommended.
         :param pulumi.Input[bool] suspicious_registry_operations: Whether to enable the setting. Block registry operations that CrowdStrike analysts classify as suspicious. Focuses on dynamic IOAs, such as ASEPs and security config changes. The associated process may be killed.
         :param pulumi.Input[bool] suspicious_scripts_and_commands: Whether to enable the setting. Block execution of scripts and commands that CrowdStrike analysts classify as suspicious. Requires Interpreter-Only and/or Script-Based Execution Monitoring.
@@ -2292,33 +2292,33 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             description="Made with Pulumi",
             host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
             ioa_rule_groups=["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
-            adware_and_pup=crowdstrike.PreventionPolicyWindowsAdwareAndPupArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            cloud_anti_malware_microsoft_office_files=crowdstrike.PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs(
-                detection="MODERATE",
-                prevention="DISABLED",
-            ),
-            cloud_anti_malware=crowdstrike.PreventionPolicyWindowsCloudAntiMalwareArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            cloud_anti_malware_user_initiated=crowdstrike.PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            sensor_anti_malware=crowdstrike.PreventionPolicyWindowsSensorAntiMalwareArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            sensor_anti_malware_user_initiated=crowdstrike.PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            extended_user_mode_data=crowdstrike.PreventionPolicyWindowsExtendedUserModeDataArgs(
-                detection="MODERATE",
-            ),
+            adware_and_pup={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            cloud_anti_malware_microsoft_office_files={
+                "detection": "MODERATE",
+                "prevention": "DISABLED",
+            },
+            cloud_anti_malware={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            cloud_anti_malware_user_initiated={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            sensor_anti_malware={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            sensor_anti_malware_user_initiated={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            extended_user_mode_data={
+                "detection": "MODERATE",
+            },
             usb_insertion_triggered_scan=False,
             application_exploitation_activity=False,
             additional_user_mode_data=False,
@@ -2397,14 +2397,14 @@ class PreventionPolicyWindows(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_user_mode_data: Optional[pulumi.Input[bool]] = None,
                  advanced_remediation: Optional[pulumi.Input[bool]] = None,
-                 adware_and_pup: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsAdwareAndPupArgs']]] = None,
+                 adware_and_pup: Optional[pulumi.Input[Union['PreventionPolicyWindowsAdwareAndPupArgs', 'PreventionPolicyWindowsAdwareAndPupArgsDict']]] = None,
                  application_exploitation_activity: Optional[pulumi.Input[bool]] = None,
                  backup_deletion: Optional[pulumi.Input[bool]] = None,
                  bios_deep_visibility: Optional[pulumi.Input[bool]] = None,
                  chopper_webshell: Optional[pulumi.Input[bool]] = None,
-                 cloud_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareArgs']]] = None,
-                 cloud_anti_malware_microsoft_office_files: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs']]] = None,
-                 cloud_anti_malware_user_initiated: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs']]] = None,
+                 cloud_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareArgs', 'PreventionPolicyWindowsCloudAntiMalwareArgsDict']]] = None,
+                 cloud_anti_malware_microsoft_office_files: Optional[pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs', 'PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgsDict']]] = None,
+                 cloud_anti_malware_user_initiated: Optional[pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs', 'PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgsDict']]] = None,
                  code_injection: Optional[pulumi.Input[bool]] = None,
                  credential_dumping: Optional[pulumi.Input[bool]] = None,
                  cryptowall: Optional[pulumi.Input[bool]] = None,
@@ -2417,7 +2417,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
                  engine_full_visibility: Optional[pulumi.Input[bool]] = None,
                  enhanced_exploitation_visibility: Optional[pulumi.Input[bool]] = None,
                  enhanced_ml_for_larger_files: Optional[pulumi.Input[bool]] = None,
-                 extended_user_mode_data: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsExtendedUserModeDataArgs']]] = None,
+                 extended_user_mode_data: Optional[pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']]] = None,
                  file_encryption: Optional[pulumi.Input[bool]] = None,
                  file_system_access: Optional[pulumi.Input[bool]] = None,
                  force_aslr: Optional[pulumi.Input[bool]] = None,
@@ -2445,8 +2445,8 @@ class PreventionPolicyWindows(pulumi.CustomResource):
                  redact_http_detection_details: Optional[pulumi.Input[bool]] = None,
                  script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
                  seh_overwrite_protection: Optional[pulumi.Input[bool]] = None,
-                 sensor_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsSensorAntiMalwareArgs']]] = None,
-                 sensor_anti_malware_user_initiated: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs']]] = None,
+                 sensor_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyWindowsSensorAntiMalwareArgs', 'PreventionPolicyWindowsSensorAntiMalwareArgsDict']]] = None,
+                 sensor_anti_malware_user_initiated: Optional[pulumi.Input[Union['PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs', 'PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgsDict']]] = None,
                  sensor_tampering_protection: Optional[pulumi.Input[bool]] = None,
                  suspicious_registry_operations: Optional[pulumi.Input[bool]] = None,
                  suspicious_scripts_and_commands: Optional[pulumi.Input[bool]] = None,
@@ -2541,14 +2541,14 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_user_mode_data: Optional[pulumi.Input[bool]] = None,
             advanced_remediation: Optional[pulumi.Input[bool]] = None,
-            adware_and_pup: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsAdwareAndPupArgs']]] = None,
+            adware_and_pup: Optional[pulumi.Input[Union['PreventionPolicyWindowsAdwareAndPupArgs', 'PreventionPolicyWindowsAdwareAndPupArgsDict']]] = None,
             application_exploitation_activity: Optional[pulumi.Input[bool]] = None,
             backup_deletion: Optional[pulumi.Input[bool]] = None,
             bios_deep_visibility: Optional[pulumi.Input[bool]] = None,
             chopper_webshell: Optional[pulumi.Input[bool]] = None,
-            cloud_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareArgs']]] = None,
-            cloud_anti_malware_microsoft_office_files: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs']]] = None,
-            cloud_anti_malware_user_initiated: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs']]] = None,
+            cloud_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareArgs', 'PreventionPolicyWindowsCloudAntiMalwareArgsDict']]] = None,
+            cloud_anti_malware_microsoft_office_files: Optional[pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs', 'PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgsDict']]] = None,
+            cloud_anti_malware_user_initiated: Optional[pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs', 'PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgsDict']]] = None,
             code_injection: Optional[pulumi.Input[bool]] = None,
             credential_dumping: Optional[pulumi.Input[bool]] = None,
             cryptowall: Optional[pulumi.Input[bool]] = None,
@@ -2561,7 +2561,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             engine_full_visibility: Optional[pulumi.Input[bool]] = None,
             enhanced_exploitation_visibility: Optional[pulumi.Input[bool]] = None,
             enhanced_ml_for_larger_files: Optional[pulumi.Input[bool]] = None,
-            extended_user_mode_data: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsExtendedUserModeDataArgs']]] = None,
+            extended_user_mode_data: Optional[pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']]] = None,
             file_encryption: Optional[pulumi.Input[bool]] = None,
             file_system_access: Optional[pulumi.Input[bool]] = None,
             force_aslr: Optional[pulumi.Input[bool]] = None,
@@ -2590,8 +2590,8 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             redact_http_detection_details: Optional[pulumi.Input[bool]] = None,
             script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
             seh_overwrite_protection: Optional[pulumi.Input[bool]] = None,
-            sensor_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsSensorAntiMalwareArgs']]] = None,
-            sensor_anti_malware_user_initiated: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs']]] = None,
+            sensor_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyWindowsSensorAntiMalwareArgs', 'PreventionPolicyWindowsSensorAntiMalwareArgsDict']]] = None,
+            sensor_anti_malware_user_initiated: Optional[pulumi.Input[Union['PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs', 'PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgsDict']]] = None,
             sensor_tampering_protection: Optional[pulumi.Input[bool]] = None,
             suspicious_registry_operations: Optional[pulumi.Input[bool]] = None,
             suspicious_scripts_and_commands: Optional[pulumi.Input[bool]] = None,
@@ -2611,14 +2611,14 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] additional_user_mode_data: Whether to enable the setting. Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
         :param pulumi.Input[bool] advanced_remediation: Whether to enable the setting. Perform advanced remediation for IOA detections to kill processes, quarantine files, remove scheduled tasks, and clear and delete ASEP registry values.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsAdwareAndPupArgs']] adware_and_pup: Use cloud-based machine learning informed by global analysis of executables to detect and prevent adware and potentially unwanted programs (PUP) for your online hosts.
+        :param pulumi.Input[Union['PreventionPolicyWindowsAdwareAndPupArgs', 'PreventionPolicyWindowsAdwareAndPupArgsDict']] adware_and_pup: Use cloud-based machine learning informed by global analysis of executables to detect and prevent adware and potentially unwanted programs (PUP) for your online hosts.
         :param pulumi.Input[bool] application_exploitation_activity: Whether to enable the setting. Creation of a process, such as a command prompt, from an exploited browser or browser flash plugin was blocked.
         :param pulumi.Input[bool] backup_deletion: Whether to enable the setting. Deletion of backups often indicative of ransomware activity.
         :param pulumi.Input[bool] bios_deep_visibility: Whether to enable the setting. Provides visibility into BIOS. Detects suspicious and unexpected images. Recommend testing to monitor system startup performance before full deployment.
         :param pulumi.Input[bool] chopper_webshell: Whether to enable the setting. Execution of a command shell was blocked and is indicative of the system hosting a Chopper web page.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareArgs']] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs']] cloud_anti_malware_microsoft_office_files: Identifies potentially malicious macros in Microsoft Office files and, if prevention is enabled, either quarantines the file or removes the malicious macros before releasing the file back to the host
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs']] cloud_anti_malware_user_initiated: For online hosts running on-demand scans initiated by end users, use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware.
+        :param pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareArgs', 'PreventionPolicyWindowsCloudAntiMalwareArgsDict']] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
+        :param pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs', 'PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgsDict']] cloud_anti_malware_microsoft_office_files: Identifies potentially malicious macros in Microsoft Office files and, if prevention is enabled, either quarantines the file or removes the malicious macros before releasing the file back to the host
+        :param pulumi.Input[Union['PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs', 'PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgsDict']] cloud_anti_malware_user_initiated: For online hosts running on-demand scans initiated by end users, use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware.
         :param pulumi.Input[bool] code_injection: Whether to enable the setting. Kill processes that unexpectedly injected code into another process. Requires additional*user*mode_data to be enabled.
         :param pulumi.Input[bool] credential_dumping: Whether to enable the setting. Kill suspicious processes determined to be stealing logins and passwords. Requires additional*user*mode_data to be enabled.
         :param pulumi.Input[bool] cryptowall: Whether to enable the setting. A process associated with Cryptowall was blocked.
@@ -2631,7 +2631,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         :param pulumi.Input[bool] engine_full_visibility: Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreter_only to be enabled.
         :param pulumi.Input[bool] enhanced_exploitation_visibility: Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
         :param pulumi.Input[bool] enhanced_ml_for_larger_files: Whether to enable the setting. Expand ML file size coverage. Existing ML level settings apply.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsExtendedUserModeDataArgs']] extended_user_mode_data: Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
+        :param pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']] extended_user_mode_data: Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
         :param pulumi.Input[bool] file_encryption: Whether to enable the setting. A process that created a file with a known ransomware extension was terminated.
         :param pulumi.Input[bool] file_system_access: Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
         :param pulumi.Input[bool] force_aslr: Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
@@ -2659,8 +2659,8 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         :param pulumi.Input[bool] redact_http_detection_details: Whether to enable the setting. Remove certain information from HTTP Detection events, including URL, raw HTTP header and POST bodies if they were present. This does not affect the generation of HTTP Detections, only additional details that would be included and may include personal information (depending on the malware in question). When disabled, the information is used to improve the response to detection events. Has no effect unless HTTP Detections is also enabled.
         :param pulumi.Input[bool] script_based_execution_monitoring: Whether to enable the setting. For hosts running Windows 10 and Servers 2016 and later, provides visibility into suspicious scripts and VBA macros in Office documents. Requires Quarantine & Security Center Registration toggle to be enabled.
         :param pulumi.Input[bool] seh_overwrite_protection: Whether to enable the setting. Overwriting a Structured Exception Handler (SEH) was detected and may have been blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsSensorAntiMalwareArgs']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs']] sensor_anti_malware_user_initiated: For offline and online hosts running on-demand scans initiated by end users, use sensor-based machine learning to identify and analyze unknown executables to detect and prevent malware.
+        :param pulumi.Input[Union['PreventionPolicyWindowsSensorAntiMalwareArgs', 'PreventionPolicyWindowsSensorAntiMalwareArgsDict']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
+        :param pulumi.Input[Union['PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs', 'PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgsDict']] sensor_anti_malware_user_initiated: For offline and online hosts running on-demand scans initiated by end users, use sensor-based machine learning to identify and analyze unknown executables to detect and prevent malware.
         :param pulumi.Input[bool] sensor_tampering_protection: Whether to enable the setting. Blocks attempts to tamper with the sensor. If disabled, the sensor still creates detections for tampering attempts but doesn’t block them. Disabling not recommended.
         :param pulumi.Input[bool] suspicious_registry_operations: Whether to enable the setting. Block registry operations that CrowdStrike analysts classify as suspicious. Focuses on dynamic IOAs, such as ASEPs and security config changes. The associated process may be killed.
         :param pulumi.Input[bool] suspicious_scripts_and_commands: Whether to enable the setting. Block execution of scripts and commands that CrowdStrike analysts classify as suspicious. Requires Interpreter-Only and/or Script-Based Execution Monitoring.

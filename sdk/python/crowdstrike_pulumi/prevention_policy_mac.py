@@ -847,8 +847,8 @@ class PreventionPolicyMac(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  chopper_webshell: Optional[pulumi.Input[bool]] = None,
-                 cloud_adware_and_pup: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyMacCloudAdwareAndPupArgs']]] = None,
-                 cloud_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyMacCloudAntiMalwareArgs']]] = None,
+                 cloud_adware_and_pup: Optional[pulumi.Input[Union['PreventionPolicyMacCloudAdwareAndPupArgs', 'PreventionPolicyMacCloudAdwareAndPupArgsDict']]] = None,
+                 cloud_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyMacCloudAntiMalwareArgs', 'PreventionPolicyMacCloudAntiMalwareArgsDict']]] = None,
                  custom_blocking: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detect_on_write: Optional[pulumi.Input[bool]] = None,
@@ -865,8 +865,8 @@ class PreventionPolicyMac(pulumi.CustomResource):
                  quarantine: Optional[pulumi.Input[bool]] = None,
                  quarantine_on_write: Optional[pulumi.Input[bool]] = None,
                  script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
-                 sensor_adware_and_pup: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyMacSensorAdwareAndPupArgs']]] = None,
-                 sensor_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyMacSensorAntiMalwareArgs']]] = None,
+                 sensor_adware_and_pup: Optional[pulumi.Input[Union['PreventionPolicyMacSensorAdwareAndPupArgs', 'PreventionPolicyMacSensorAdwareAndPupArgsDict']]] = None,
+                 sensor_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyMacSensorAntiMalwareArgs', 'PreventionPolicyMacSensorAntiMalwareArgsDict']]] = None,
                  sensor_tampering_protection: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_detection_related_executables: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_executables: Optional[pulumi.Input[bool]] = None,
@@ -892,22 +892,22 @@ class PreventionPolicyMac(pulumi.CustomResource):
             description="Made with Pulumi",
             host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
             ioa_rule_groups=["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
-            cloud_adware_and_pup=crowdstrike.PreventionPolicyMacCloudAdwareAndPupArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            cloud_anti_malware=crowdstrike.PreventionPolicyMacCloudAntiMalwareArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            sensor_anti_malware=crowdstrike.PreventionPolicyMacSensorAntiMalwareArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            sensor_adware_and_pup=crowdstrike.PreventionPolicyMacSensorAdwareAndPupArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
+            cloud_adware_and_pup={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            cloud_anti_malware={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            sensor_anti_malware={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            sensor_adware_and_pup={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
             notify_end_users=True,
             custom_blocking=True,
             detect_on_write=True,
@@ -938,8 +938,8 @@ class PreventionPolicyMac(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] chopper_webshell: Whether to enable the setting. Execution of a command shell was blocked and is indicative of the system hosting a Chopper web page.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyMacCloudAdwareAndPupArgs']] cloud_adware_and_pup: Use cloud-based machine learning informed by global analysis of executables to detect and prevent adware and potentially unwanted programs (PUP) for your online hosts.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyMacCloudAntiMalwareArgs']] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
+        :param pulumi.Input[Union['PreventionPolicyMacCloudAdwareAndPupArgs', 'PreventionPolicyMacCloudAdwareAndPupArgsDict']] cloud_adware_and_pup: Use cloud-based machine learning informed by global analysis of executables to detect and prevent adware and potentially unwanted programs (PUP) for your online hosts.
+        :param pulumi.Input[Union['PreventionPolicyMacCloudAntiMalwareArgs', 'PreventionPolicyMacCloudAntiMalwareArgsDict']] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
         :param pulumi.Input[bool] custom_blocking: Whether to enable the setting. Block processes matching hashes that you add to IOC Management with the action set to "Block" or "Block, hide detection".
         :param pulumi.Input[str] description: Description of the prevention policy.
         :param pulumi.Input[bool] detect_on_write: Whether to enable the setting. Use machine learning to analyze suspicious files when they're written to disk. To adjust detection sensitivity, change Anti-malware Detection levels in Sensor Machine Learning and Cloud Machine Learning.
@@ -956,8 +956,8 @@ class PreventionPolicyMac(pulumi.CustomResource):
         :param pulumi.Input[bool] quarantine: Whether to enable the setting. Quarantine executable files after they’re prevented by NGAV. When this is enabled, we recommend setting anti-malware prevention levels to Moderate or higher and not using other antivirus solutions.
         :param pulumi.Input[bool] quarantine_on_write: Whether to enable the setting. Use machine learning to quarantine suspicious files when they're written to disk. To adjust quarantine sensitivity, change Anti-malware Prevention levels in Sensor Machine Learning and Cloud Machine Learning.
         :param pulumi.Input[bool] script_based_execution_monitoring: Whether to enable the setting. Provides visibility into suspicious scripts, including shell and other scripting languages.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyMacSensorAdwareAndPupArgs']] sensor_adware_and_pup: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent adware and potentially unwanted programs (PUP).
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyMacSensorAntiMalwareArgs']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
+        :param pulumi.Input[Union['PreventionPolicyMacSensorAdwareAndPupArgs', 'PreventionPolicyMacSensorAdwareAndPupArgsDict']] sensor_adware_and_pup: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent adware and potentially unwanted programs (PUP).
+        :param pulumi.Input[Union['PreventionPolicyMacSensorAntiMalwareArgs', 'PreventionPolicyMacSensorAntiMalwareArgsDict']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
         :param pulumi.Input[bool] sensor_tampering_protection: Whether to enable the setting. Blocks attempts to tamper with the sensor. If disabled, the sensor still creates detections for tampering attempts but doesn’t block them. Disabling not recommended.
         :param pulumi.Input[bool] upload_unknown_detection_related_executables: Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
         :param pulumi.Input[bool] upload_unknown_executables: Whether to enable the setting. Upload all unknown executables for advanced analysis in the cloud.
@@ -989,22 +989,22 @@ class PreventionPolicyMac(pulumi.CustomResource):
             description="Made with Pulumi",
             host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
             ioa_rule_groups=["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
-            cloud_adware_and_pup=crowdstrike.PreventionPolicyMacCloudAdwareAndPupArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            cloud_anti_malware=crowdstrike.PreventionPolicyMacCloudAntiMalwareArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            sensor_anti_malware=crowdstrike.PreventionPolicyMacSensorAntiMalwareArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            sensor_adware_and_pup=crowdstrike.PreventionPolicyMacSensorAdwareAndPupArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
+            cloud_adware_and_pup={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            cloud_anti_malware={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            sensor_anti_malware={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            sensor_adware_and_pup={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
             notify_end_users=True,
             custom_blocking=True,
             detect_on_write=True,
@@ -1048,8 +1048,8 @@ class PreventionPolicyMac(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  chopper_webshell: Optional[pulumi.Input[bool]] = None,
-                 cloud_adware_and_pup: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyMacCloudAdwareAndPupArgs']]] = None,
-                 cloud_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyMacCloudAntiMalwareArgs']]] = None,
+                 cloud_adware_and_pup: Optional[pulumi.Input[Union['PreventionPolicyMacCloudAdwareAndPupArgs', 'PreventionPolicyMacCloudAdwareAndPupArgsDict']]] = None,
+                 cloud_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyMacCloudAntiMalwareArgs', 'PreventionPolicyMacCloudAntiMalwareArgsDict']]] = None,
                  custom_blocking: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detect_on_write: Optional[pulumi.Input[bool]] = None,
@@ -1066,8 +1066,8 @@ class PreventionPolicyMac(pulumi.CustomResource):
                  quarantine: Optional[pulumi.Input[bool]] = None,
                  quarantine_on_write: Optional[pulumi.Input[bool]] = None,
                  script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
-                 sensor_adware_and_pup: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyMacSensorAdwareAndPupArgs']]] = None,
-                 sensor_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyMacSensorAntiMalwareArgs']]] = None,
+                 sensor_adware_and_pup: Optional[pulumi.Input[Union['PreventionPolicyMacSensorAdwareAndPupArgs', 'PreventionPolicyMacSensorAdwareAndPupArgsDict']]] = None,
+                 sensor_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyMacSensorAntiMalwareArgs', 'PreventionPolicyMacSensorAntiMalwareArgsDict']]] = None,
                  sensor_tampering_protection: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_detection_related_executables: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_executables: Optional[pulumi.Input[bool]] = None,
@@ -1118,8 +1118,8 @@ class PreventionPolicyMac(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             chopper_webshell: Optional[pulumi.Input[bool]] = None,
-            cloud_adware_and_pup: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyMacCloudAdwareAndPupArgs']]] = None,
-            cloud_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyMacCloudAntiMalwareArgs']]] = None,
+            cloud_adware_and_pup: Optional[pulumi.Input[Union['PreventionPolicyMacCloudAdwareAndPupArgs', 'PreventionPolicyMacCloudAdwareAndPupArgsDict']]] = None,
+            cloud_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyMacCloudAntiMalwareArgs', 'PreventionPolicyMacCloudAntiMalwareArgsDict']]] = None,
             custom_blocking: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             detect_on_write: Optional[pulumi.Input[bool]] = None,
@@ -1137,8 +1137,8 @@ class PreventionPolicyMac(pulumi.CustomResource):
             quarantine: Optional[pulumi.Input[bool]] = None,
             quarantine_on_write: Optional[pulumi.Input[bool]] = None,
             script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
-            sensor_adware_and_pup: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyMacSensorAdwareAndPupArgs']]] = None,
-            sensor_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyMacSensorAntiMalwareArgs']]] = None,
+            sensor_adware_and_pup: Optional[pulumi.Input[Union['PreventionPolicyMacSensorAdwareAndPupArgs', 'PreventionPolicyMacSensorAdwareAndPupArgsDict']]] = None,
+            sensor_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyMacSensorAntiMalwareArgs', 'PreventionPolicyMacSensorAntiMalwareArgsDict']]] = None,
             sensor_tampering_protection: Optional[pulumi.Input[bool]] = None,
             upload_unknown_detection_related_executables: Optional[pulumi.Input[bool]] = None,
             upload_unknown_executables: Optional[pulumi.Input[bool]] = None,
@@ -1151,8 +1151,8 @@ class PreventionPolicyMac(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] chopper_webshell: Whether to enable the setting. Execution of a command shell was blocked and is indicative of the system hosting a Chopper web page.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyMacCloudAdwareAndPupArgs']] cloud_adware_and_pup: Use cloud-based machine learning informed by global analysis of executables to detect and prevent adware and potentially unwanted programs (PUP) for your online hosts.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyMacCloudAntiMalwareArgs']] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
+        :param pulumi.Input[Union['PreventionPolicyMacCloudAdwareAndPupArgs', 'PreventionPolicyMacCloudAdwareAndPupArgsDict']] cloud_adware_and_pup: Use cloud-based machine learning informed by global analysis of executables to detect and prevent adware and potentially unwanted programs (PUP) for your online hosts.
+        :param pulumi.Input[Union['PreventionPolicyMacCloudAntiMalwareArgs', 'PreventionPolicyMacCloudAntiMalwareArgsDict']] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
         :param pulumi.Input[bool] custom_blocking: Whether to enable the setting. Block processes matching hashes that you add to IOC Management with the action set to "Block" or "Block, hide detection".
         :param pulumi.Input[str] description: Description of the prevention policy.
         :param pulumi.Input[bool] detect_on_write: Whether to enable the setting. Use machine learning to analyze suspicious files when they're written to disk. To adjust detection sensitivity, change Anti-malware Detection levels in Sensor Machine Learning and Cloud Machine Learning.
@@ -1169,8 +1169,8 @@ class PreventionPolicyMac(pulumi.CustomResource):
         :param pulumi.Input[bool] quarantine: Whether to enable the setting. Quarantine executable files after they’re prevented by NGAV. When this is enabled, we recommend setting anti-malware prevention levels to Moderate or higher and not using other antivirus solutions.
         :param pulumi.Input[bool] quarantine_on_write: Whether to enable the setting. Use machine learning to quarantine suspicious files when they're written to disk. To adjust quarantine sensitivity, change Anti-malware Prevention levels in Sensor Machine Learning and Cloud Machine Learning.
         :param pulumi.Input[bool] script_based_execution_monitoring: Whether to enable the setting. Provides visibility into suspicious scripts, including shell and other scripting languages.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyMacSensorAdwareAndPupArgs']] sensor_adware_and_pup: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent adware and potentially unwanted programs (PUP).
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyMacSensorAntiMalwareArgs']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
+        :param pulumi.Input[Union['PreventionPolicyMacSensorAdwareAndPupArgs', 'PreventionPolicyMacSensorAdwareAndPupArgsDict']] sensor_adware_and_pup: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent adware and potentially unwanted programs (PUP).
+        :param pulumi.Input[Union['PreventionPolicyMacSensorAntiMalwareArgs', 'PreventionPolicyMacSensorAntiMalwareArgsDict']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
         :param pulumi.Input[bool] sensor_tampering_protection: Whether to enable the setting. Blocks attempts to tamper with the sensor. If disabled, the sensor still creates detections for tampering attempts but doesn’t block them. Disabling not recommended.
         :param pulumi.Input[bool] upload_unknown_detection_related_executables: Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
         :param pulumi.Input[bool] upload_unknown_executables: Whether to enable the setting. Upload all unknown executables for advanced analysis in the cloud.

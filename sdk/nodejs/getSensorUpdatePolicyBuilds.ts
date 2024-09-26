@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getSensorUpdatePolicyBuilds(opts?: pulumi.InvokeOptions): Promise<GetSensorUpdatePolicyBuildsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("crowdstrike:index/getSensorUpdatePolicyBuilds:getSensorUpdatePolicyBuilds", {
     }, opts);
@@ -83,5 +82,7 @@ export interface GetSensorUpdatePolicyBuildsResult {
  * ```
  */
 export function getSensorUpdatePolicyBuildsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetSensorUpdatePolicyBuildsResult> {
-    return pulumi.output(getSensorUpdatePolicyBuilds(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("crowdstrike:index/getSensorUpdatePolicyBuilds:getSensorUpdatePolicyBuilds", {
+    }, opts);
 }

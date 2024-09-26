@@ -338,7 +338,7 @@ class SensorUpdatePolicy(pulumi.CustomResource):
                  host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  platform_name: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['SensorUpdatePolicyScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['SensorUpdatePolicyScheduleArgs', 'SensorUpdatePolicyScheduleArgsDict']]] = None,
                  uninstall_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -367,7 +367,7 @@ class SensorUpdatePolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the sensor update policy.
         :param pulumi.Input[str] name: Name of the sensor update policy.
         :param pulumi.Input[str] platform_name: Platform for the sensor update policy to manage. (Windows, Mac, Linux)
-        :param pulumi.Input[pulumi.InputType['SensorUpdatePolicyScheduleArgs']] schedule: Prohibit sensor updates during a set of time blocks.
+        :param pulumi.Input[Union['SensorUpdatePolicyScheduleArgs', 'SensorUpdatePolicyScheduleArgsDict']] schedule: Prohibit sensor updates during a set of time blocks.
         :param pulumi.Input[bool] uninstall_protection: Enable uninstall protection. Windows and Mac only.
         """
         ...
@@ -415,7 +415,7 @@ class SensorUpdatePolicy(pulumi.CustomResource):
                  host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  platform_name: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['SensorUpdatePolicyScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['SensorUpdatePolicyScheduleArgs', 'SensorUpdatePolicyScheduleArgsDict']]] = None,
                  uninstall_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -460,7 +460,7 @@ class SensorUpdatePolicy(pulumi.CustomResource):
             last_updated: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             platform_name: Optional[pulumi.Input[str]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['SensorUpdatePolicyScheduleArgs']]] = None,
+            schedule: Optional[pulumi.Input[Union['SensorUpdatePolicyScheduleArgs', 'SensorUpdatePolicyScheduleArgsDict']]] = None,
             uninstall_protection: Optional[pulumi.Input[bool]] = None) -> 'SensorUpdatePolicy':
         """
         Get an existing SensorUpdatePolicy resource's state with the given name, id, and optional extra
@@ -476,7 +476,7 @@ class SensorUpdatePolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the sensor update policy.
         :param pulumi.Input[str] name: Name of the sensor update policy.
         :param pulumi.Input[str] platform_name: Platform for the sensor update policy to manage. (Windows, Mac, Linux)
-        :param pulumi.Input[pulumi.InputType['SensorUpdatePolicyScheduleArgs']] schedule: Prohibit sensor updates during a set of time blocks.
+        :param pulumi.Input[Union['SensorUpdatePolicyScheduleArgs', 'SensorUpdatePolicyScheduleArgsDict']] schedule: Prohibit sensor updates during a set of time blocks.
         :param pulumi.Input[bool] uninstall_protection: Enable uninstall protection. Windows and Mac only.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

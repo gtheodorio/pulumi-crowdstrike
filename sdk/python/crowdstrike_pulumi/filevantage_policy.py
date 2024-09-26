@@ -275,7 +275,7 @@ class FilevantagePolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  platform_name: Optional[pulumi.Input[str]] = None,
                  rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 scheduled_exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FilevantagePolicyScheduledExclusionArgs']]]]] = None,
+                 scheduled_exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FilevantagePolicyScheduledExclusionArgs', 'FilevantagePolicyScheduledExclusionArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows management of a FileVantage policy. A FileVantage policy is a collection of file integrity rules and rule groups that you can apply to host groups.
@@ -302,7 +302,7 @@ class FilevantagePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the filevantage policy.
         :param pulumi.Input[str] platform_name: Platform for the filevantage policy to manage. (Windows, Mac, Linux)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_groups: Rule Group ids to attach to the filevantage policy. Precedence is based on the order of the list. Rule groups must be the same type as the policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FilevantagePolicyScheduledExclusionArgs']]]] scheduled_exclusions: Scheduled exclusions for the filevantage policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FilevantagePolicyScheduledExclusionArgs', 'FilevantagePolicyScheduledExclusionArgsDict']]]] scheduled_exclusions: Scheduled exclusions for the filevantage policy.
         """
         ...
     @overload
@@ -348,7 +348,7 @@ class FilevantagePolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  platform_name: Optional[pulumi.Input[str]] = None,
                  rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 scheduled_exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FilevantagePolicyScheduledExclusionArgs']]]]] = None,
+                 scheduled_exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FilevantagePolicyScheduledExclusionArgs', 'FilevantagePolicyScheduledExclusionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -385,7 +385,7 @@ class FilevantagePolicy(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             platform_name: Optional[pulumi.Input[str]] = None,
             rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            scheduled_exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FilevantagePolicyScheduledExclusionArgs']]]]] = None) -> 'FilevantagePolicy':
+            scheduled_exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FilevantagePolicyScheduledExclusionArgs', 'FilevantagePolicyScheduledExclusionArgsDict']]]]] = None) -> 'FilevantagePolicy':
         """
         Get an existing FilevantagePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -399,7 +399,7 @@ class FilevantagePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the filevantage policy.
         :param pulumi.Input[str] platform_name: Platform for the filevantage policy to manage. (Windows, Mac, Linux)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_groups: Rule Group ids to attach to the filevantage policy. Precedence is based on the order of the list. Rule groups must be the same type as the policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FilevantagePolicyScheduledExclusionArgs']]]] scheduled_exclusions: Scheduled exclusions for the filevantage policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FilevantagePolicyScheduledExclusionArgs', 'FilevantagePolicyScheduledExclusionArgsDict']]]] scheduled_exclusions: Scheduled exclusions for the filevantage policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
