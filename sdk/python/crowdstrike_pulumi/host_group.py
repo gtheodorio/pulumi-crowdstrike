@@ -17,18 +17,26 @@ class HostGroupArgs:
                  description: pulumi.Input[str],
                  type: pulumi.Input[str],
                  assignment_rule: Optional[pulumi.Input[str]] = None,
+                 host_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HostGroup resource.
         :param pulumi.Input[str] description: Description of the host group.
         :param pulumi.Input[str] type: The host group type, case sensitive. (dynamic, static, staticByID)
         :param pulumi.Input[str] assignment_rule: The assignment rule for dynamic host groups.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_ids: List of host ids to add to a staticByID host group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: List of hostnames to add to a static host group.
         :param pulumi.Input[str] name: Name of the host group.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "type", type)
         if assignment_rule is not None:
             pulumi.set(__self__, "assignment_rule", assignment_rule)
+        if host_ids is not None:
+            pulumi.set(__self__, "host_ids", host_ids)
+        if hostnames is not None:
+            pulumi.set(__self__, "hostnames", hostnames)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -69,6 +77,30 @@ class HostGroupArgs:
         pulumi.set(self, "assignment_rule", value)
 
     @property
+    @pulumi.getter(name="hostIds")
+    def host_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of host ids to add to a staticByID host group.
+        """
+        return pulumi.get(self, "host_ids")
+
+    @host_ids.setter
+    def host_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "host_ids", value)
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of hostnames to add to a static host group.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "hostnames", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -86,6 +118,8 @@ class _HostGroupState:
     def __init__(__self__, *,
                  assignment_rule: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 host_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -93,6 +127,8 @@ class _HostGroupState:
         Input properties used for looking up and filtering HostGroup resources.
         :param pulumi.Input[str] assignment_rule: The assignment rule for dynamic host groups.
         :param pulumi.Input[str] description: Description of the host group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_ids: List of host ids to add to a staticByID host group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: List of hostnames to add to a static host group.
         :param pulumi.Input[str] name: Name of the host group.
         :param pulumi.Input[str] type: The host group type, case sensitive. (dynamic, static, staticByID)
         """
@@ -100,6 +136,10 @@ class _HostGroupState:
             pulumi.set(__self__, "assignment_rule", assignment_rule)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if host_ids is not None:
+            pulumi.set(__self__, "host_ids", host_ids)
+        if hostnames is not None:
+            pulumi.set(__self__, "hostnames", hostnames)
         if last_updated is not None:
             pulumi.set(__self__, "last_updated", last_updated)
         if name is not None:
@@ -130,6 +170,30 @@ class _HostGroupState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="hostIds")
+    def host_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of host ids to add to a staticByID host group.
+        """
+        return pulumi.get(self, "host_ids")
+
+    @host_ids.setter
+    def host_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "host_ids", value)
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of hostnames to add to a static host group.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "hostnames", value)
 
     @property
     @pulumi.getter(name="lastUpdated")
@@ -172,6 +236,8 @@ class HostGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignment_rule: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 host_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -194,11 +260,25 @@ class HostGroup(pulumi.CustomResource):
         import pulumi
         import crowdstrike_pulumi as crowdstrike
 
-        example = crowdstrike.HostGroup("example",
+        dynamic = crowdstrike.HostGroup("dynamic",
+            assignment_rule="tags:'SensorGroupingTags/molecule'+os_version:'Debian GNU 11'",
             description="Made with Pulumi",
-            type="dynamic",
-            assignment_rule="tags:'SensorGroupingTags/cloud-lab'+os_version:'Amazon Linux 2'")
-        pulumi.export("hostGroup", example)
+            type="dynamic")
+        static = crowdstrike.HostGroup("static",
+            description="Made with Pulumi",
+            type="static",
+            hostnames=[
+                "host1",
+                "host2",
+            ])
+        static_by_id = crowdstrike.HostGroup("staticByID",
+            description="Made with Pulumi",
+            type="staticByID",
+            host_ids=[
+                "123123",
+                "124124",
+            ])
+        pulumi.export("hostGroup", dynamic)
         ```
 
         ## Import
@@ -213,6 +293,8 @@ class HostGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] assignment_rule: The assignment rule for dynamic host groups.
         :param pulumi.Input[str] description: Description of the host group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_ids: List of host ids to add to a staticByID host group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: List of hostnames to add to a static host group.
         :param pulumi.Input[str] name: Name of the host group.
         :param pulumi.Input[str] type: The host group type, case sensitive. (dynamic, static, staticByID)
         """
@@ -241,11 +323,25 @@ class HostGroup(pulumi.CustomResource):
         import pulumi
         import crowdstrike_pulumi as crowdstrike
 
-        example = crowdstrike.HostGroup("example",
+        dynamic = crowdstrike.HostGroup("dynamic",
+            assignment_rule="tags:'SensorGroupingTags/molecule'+os_version:'Debian GNU 11'",
             description="Made with Pulumi",
-            type="dynamic",
-            assignment_rule="tags:'SensorGroupingTags/cloud-lab'+os_version:'Amazon Linux 2'")
-        pulumi.export("hostGroup", example)
+            type="dynamic")
+        static = crowdstrike.HostGroup("static",
+            description="Made with Pulumi",
+            type="static",
+            hostnames=[
+                "host1",
+                "host2",
+            ])
+        static_by_id = crowdstrike.HostGroup("staticByID",
+            description="Made with Pulumi",
+            type="staticByID",
+            host_ids=[
+                "123123",
+                "124124",
+            ])
+        pulumi.export("hostGroup", dynamic)
         ```
 
         ## Import
@@ -273,6 +369,8 @@ class HostGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignment_rule: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 host_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -288,6 +386,8 @@ class HostGroup(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            __props__.__dict__["host_ids"] = host_ids
+            __props__.__dict__["hostnames"] = hostnames
             __props__.__dict__["name"] = name
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
@@ -305,6 +405,8 @@ class HostGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             assignment_rule: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            host_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             last_updated: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'HostGroup':
@@ -317,6 +419,8 @@ class HostGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] assignment_rule: The assignment rule for dynamic host groups.
         :param pulumi.Input[str] description: Description of the host group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_ids: List of host ids to add to a staticByID host group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: List of hostnames to add to a static host group.
         :param pulumi.Input[str] name: Name of the host group.
         :param pulumi.Input[str] type: The host group type, case sensitive. (dynamic, static, staticByID)
         """
@@ -326,6 +430,8 @@ class HostGroup(pulumi.CustomResource):
 
         __props__.__dict__["assignment_rule"] = assignment_rule
         __props__.__dict__["description"] = description
+        __props__.__dict__["host_ids"] = host_ids
+        __props__.__dict__["hostnames"] = hostnames
         __props__.__dict__["last_updated"] = last_updated
         __props__.__dict__["name"] = name
         __props__.__dict__["type"] = type
@@ -333,7 +439,7 @@ class HostGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="assignmentRule")
-    def assignment_rule(self) -> pulumi.Output[str]:
+    def assignment_rule(self) -> pulumi.Output[Optional[str]]:
         """
         The assignment rule for dynamic host groups.
         """
@@ -346,6 +452,22 @@ class HostGroup(pulumi.CustomResource):
         Description of the host group.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="hostIds")
+    def host_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of host ids to add to a staticByID host group.
+        """
+        return pulumi.get(self, "host_ids")
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of hostnames to add to a static host group.
+        """
+        return pulumi.get(self, "hostnames")
 
     @property
     @pulumi.getter(name="lastUpdated")

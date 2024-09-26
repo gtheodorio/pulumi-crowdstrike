@@ -38,15 +38,37 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := crowdstrike.NewHostGroup(ctx, "example", &crowdstrike.HostGroupArgs{
+//			dynamic, err := crowdstrike.NewHostGroup(ctx, "dynamic", &crowdstrike.HostGroupArgs{
+//				AssignmentRule: pulumi.String("tags:'SensorGroupingTags/molecule'+os_version:'Debian GNU 11'"),
 //				Description:    pulumi.String("Made with Pulumi"),
 //				Type:           pulumi.String("dynamic"),
-//				AssignmentRule: pulumi.String("tags:'SensorGroupingTags/cloud-lab'+os_version:'Amazon Linux 2'"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("hostGroup", example)
+//			_, err = crowdstrike.NewHostGroup(ctx, "static", &crowdstrike.HostGroupArgs{
+//				Description: pulumi.String("Made with Pulumi"),
+//				Type:        pulumi.String("static"),
+//				Hostnames: pulumi.StringArray{
+//					pulumi.String("host1"),
+//					pulumi.String("host2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = crowdstrike.NewHostGroup(ctx, "staticByID", &crowdstrike.HostGroupArgs{
+//				Description: pulumi.String("Made with Pulumi"),
+//				Type:        pulumi.String("staticByID"),
+//				HostIds: pulumi.StringArray{
+//					pulumi.String("123123"),
+//					pulumi.String("124124"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("hostGroup", dynamic)
 //			return nil
 //		})
 //	}
@@ -64,10 +86,14 @@ type HostGroup struct {
 	pulumi.CustomResourceState
 
 	// The assignment rule for dynamic host groups.
-	AssignmentRule pulumi.StringOutput `pulumi:"assignmentRule"`
+	AssignmentRule pulumi.StringPtrOutput `pulumi:"assignmentRule"`
 	// Description of the host group.
 	Description pulumi.StringOutput `pulumi:"description"`
-	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
+	// List of host ids to add to a staticByID host group.
+	HostIds pulumi.StringArrayOutput `pulumi:"hostIds"`
+	// List of hostnames to add to a static host group.
+	Hostnames   pulumi.StringArrayOutput `pulumi:"hostnames"`
+	LastUpdated pulumi.StringOutput      `pulumi:"lastUpdated"`
 	// Name of the host group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The host group type, case sensitive. (dynamic, static, staticByID)
@@ -114,7 +140,11 @@ type hostGroupState struct {
 	AssignmentRule *string `pulumi:"assignmentRule"`
 	// Description of the host group.
 	Description *string `pulumi:"description"`
-	LastUpdated *string `pulumi:"lastUpdated"`
+	// List of host ids to add to a staticByID host group.
+	HostIds []string `pulumi:"hostIds"`
+	// List of hostnames to add to a static host group.
+	Hostnames   []string `pulumi:"hostnames"`
+	LastUpdated *string  `pulumi:"lastUpdated"`
 	// Name of the host group.
 	Name *string `pulumi:"name"`
 	// The host group type, case sensitive. (dynamic, static, staticByID)
@@ -126,6 +156,10 @@ type HostGroupState struct {
 	AssignmentRule pulumi.StringPtrInput
 	// Description of the host group.
 	Description pulumi.StringPtrInput
+	// List of host ids to add to a staticByID host group.
+	HostIds pulumi.StringArrayInput
+	// List of hostnames to add to a static host group.
+	Hostnames   pulumi.StringArrayInput
 	LastUpdated pulumi.StringPtrInput
 	// Name of the host group.
 	Name pulumi.StringPtrInput
@@ -142,6 +176,10 @@ type hostGroupArgs struct {
 	AssignmentRule *string `pulumi:"assignmentRule"`
 	// Description of the host group.
 	Description string `pulumi:"description"`
+	// List of host ids to add to a staticByID host group.
+	HostIds []string `pulumi:"hostIds"`
+	// List of hostnames to add to a static host group.
+	Hostnames []string `pulumi:"hostnames"`
 	// Name of the host group.
 	Name *string `pulumi:"name"`
 	// The host group type, case sensitive. (dynamic, static, staticByID)
@@ -154,6 +192,10 @@ type HostGroupArgs struct {
 	AssignmentRule pulumi.StringPtrInput
 	// Description of the host group.
 	Description pulumi.StringInput
+	// List of host ids to add to a staticByID host group.
+	HostIds pulumi.StringArrayInput
+	// List of hostnames to add to a static host group.
+	Hostnames pulumi.StringArrayInput
 	// Name of the host group.
 	Name pulumi.StringPtrInput
 	// The host group type, case sensitive. (dynamic, static, staticByID)
@@ -248,13 +290,23 @@ func (o HostGroupOutput) ToHostGroupOutputWithContext(ctx context.Context) HostG
 }
 
 // The assignment rule for dynamic host groups.
-func (o HostGroupOutput) AssignmentRule() pulumi.StringOutput {
-	return o.ApplyT(func(v *HostGroup) pulumi.StringOutput { return v.AssignmentRule }).(pulumi.StringOutput)
+func (o HostGroupOutput) AssignmentRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostGroup) pulumi.StringPtrOutput { return v.AssignmentRule }).(pulumi.StringPtrOutput)
 }
 
 // Description of the host group.
 func (o HostGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostGroup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// List of host ids to add to a staticByID host group.
+func (o HostGroupOutput) HostIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HostGroup) pulumi.StringArrayOutput { return v.HostIds }).(pulumi.StringArrayOutput)
+}
+
+// List of hostnames to add to a static host group.
+func (o HostGroupOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HostGroup) pulumi.StringArrayOutput { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
 func (o HostGroupOutput) LastUpdated() pulumi.StringOutput {

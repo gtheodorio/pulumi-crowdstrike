@@ -176,7 +176,7 @@ class FilevantageRuleGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FilevantageRuleGroupRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FilevantageRuleGroupRuleArgs', 'FilevantageRuleGroupRuleArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -200,7 +200,7 @@ class FilevantageRuleGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the filevantage rule group.
         :param pulumi.Input[str] name: Name of the filevantage rule group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FilevantageRuleGroupRuleArgs']]]] rules: Rules to be associated with the rule group. Precedence is determined by the order of the rules in the list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FilevantageRuleGroupRuleArgs', 'FilevantageRuleGroupRuleArgsDict']]]] rules: Rules to be associated with the rule group. Precedence is determined by the order of the rules in the list.
         :param pulumi.Input[str] type: The type of filevantage rule group.
         """
         ...
@@ -243,7 +243,7 @@ class FilevantageRuleGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FilevantageRuleGroupRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FilevantageRuleGroupRuleArgs', 'FilevantageRuleGroupRuleArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -272,7 +272,7 @@ class FilevantageRuleGroup(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             last_updated: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FilevantageRuleGroupRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FilevantageRuleGroupRuleArgs', 'FilevantageRuleGroupRuleArgsDict']]]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'FilevantageRuleGroup':
         """
         Get an existing FilevantageRuleGroup resource's state with the given name, id, and optional extra
@@ -283,7 +283,7 @@ class FilevantageRuleGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the filevantage rule group.
         :param pulumi.Input[str] name: Name of the filevantage rule group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FilevantageRuleGroupRuleArgs']]]] rules: Rules to be associated with the rule group. Precedence is determined by the order of the rules in the list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FilevantageRuleGroupRuleArgs', 'FilevantageRuleGroupRuleArgsDict']]]] rules: Rules to be associated with the rule group. Precedence is determined by the order of the rules in the list.
         :param pulumi.Input[str] type: The type of filevantage rule group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

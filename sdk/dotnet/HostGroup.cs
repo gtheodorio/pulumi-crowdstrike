@@ -33,16 +33,38 @@ namespace CrowdStrike.Crowdstrike
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Crowdstrike.HostGroup("example", new()
+    ///     var @dynamic = new Crowdstrike.HostGroup("dynamic", new()
     ///     {
+    ///         AssignmentRule = "tags:'SensorGroupingTags/molecule'+os_version:'Debian GNU 11'",
     ///         Description = "Made with Pulumi",
     ///         Type = "dynamic",
-    ///         AssignmentRule = "tags:'SensorGroupingTags/cloud-lab'+os_version:'Amazon Linux 2'",
+    ///     });
+    /// 
+    ///     var @static = new Crowdstrike.HostGroup("static", new()
+    ///     {
+    ///         Description = "Made with Pulumi",
+    ///         Type = "static",
+    ///         Hostnames = new[]
+    ///         {
+    ///             "host1",
+    ///             "host2",
+    ///         },
+    ///     });
+    /// 
+    ///     var staticByID = new Crowdstrike.HostGroup("staticByID", new()
+    ///     {
+    ///         Description = "Made with Pulumi",
+    ///         Type = "staticByID",
+    ///         HostIds = new[]
+    ///         {
+    ///             "123123",
+    ///             "124124",
+    ///         },
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ["hostGroup"] = example,
+    ///         ["hostGroup"] = @dynamic,
     ///     };
     /// });
     /// ```
@@ -62,13 +84,25 @@ namespace CrowdStrike.Crowdstrike
         /// The assignment rule for dynamic host groups.
         /// </summary>
         [Output("assignmentRule")]
-        public Output<string> AssignmentRule { get; private set; } = null!;
+        public Output<string?> AssignmentRule { get; private set; } = null!;
 
         /// <summary>
         /// Description of the host group.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// List of host ids to add to a staticByID host group.
+        /// </summary>
+        [Output("hostIds")]
+        public Output<ImmutableArray<string>> HostIds { get; private set; } = null!;
+
+        /// <summary>
+        /// List of hostnames to add to a static host group.
+        /// </summary>
+        [Output("hostnames")]
+        public Output<ImmutableArray<string>> Hostnames { get; private set; } = null!;
 
         [Output("lastUpdated")]
         public Output<string> LastUpdated { get; private set; } = null!;
@@ -144,6 +178,30 @@ namespace CrowdStrike.Crowdstrike
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        [Input("hostIds")]
+        private InputList<string>? _hostIds;
+
+        /// <summary>
+        /// List of host ids to add to a staticByID host group.
+        /// </summary>
+        public InputList<string> HostIds
+        {
+            get => _hostIds ?? (_hostIds = new InputList<string>());
+            set => _hostIds = value;
+        }
+
+        [Input("hostnames")]
+        private InputList<string>? _hostnames;
+
+        /// <summary>
+        /// List of hostnames to add to a static host group.
+        /// </summary>
+        public InputList<string> Hostnames
+        {
+            get => _hostnames ?? (_hostnames = new InputList<string>());
+            set => _hostnames = value;
+        }
+
         /// <summary>
         /// Name of the host group.
         /// </summary>
@@ -175,6 +233,30 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("hostIds")]
+        private InputList<string>? _hostIds;
+
+        /// <summary>
+        /// List of host ids to add to a staticByID host group.
+        /// </summary>
+        public InputList<string> HostIds
+        {
+            get => _hostIds ?? (_hostIds = new InputList<string>());
+            set => _hostIds = value;
+        }
+
+        [Input("hostnames")]
+        private InputList<string>? _hostnames;
+
+        /// <summary>
+        /// List of hostnames to add to a static host group.
+        /// </summary>
+        public InputList<string> Hostnames
+        {
+            get => _hostnames ?? (_hostnames = new InputList<string>());
+            set => _hostnames = value;
+        }
 
         [Input("lastUpdated")]
         public Input<string>? LastUpdated { get; set; }

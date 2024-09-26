@@ -23,12 +23,28 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as crowdstrike from "@crowdstrike/pulumi";
  *
- * const example = new crowdstrike.HostGroup("example", {
+ * const dynamic = new crowdstrike.HostGroup("dynamic", {
+ *     assignmentRule: "tags:'SensorGroupingTags/molecule'+os_version:'Debian GNU 11'",
  *     description: "Made with Pulumi",
  *     type: "dynamic",
- *     assignmentRule: "tags:'SensorGroupingTags/cloud-lab'+os_version:'Amazon Linux 2'",
  * });
- * export const hostGroup = example;
+ * const static = new crowdstrike.HostGroup("static", {
+ *     description: "Made with Pulumi",
+ *     type: "static",
+ *     hostnames: [
+ *         "host1",
+ *         "host2",
+ *     ],
+ * });
+ * const staticByID = new crowdstrike.HostGroup("staticByID", {
+ *     description: "Made with Pulumi",
+ *     type: "staticByID",
+ *     hostIds: [
+ *         "123123",
+ *         "124124",
+ *     ],
+ * });
+ * export const hostGroup = dynamic;
  * ```
  *
  * ## Import
@@ -70,11 +86,19 @@ export class HostGroup extends pulumi.CustomResource {
     /**
      * The assignment rule for dynamic host groups.
      */
-    public readonly assignmentRule!: pulumi.Output<string>;
+    public readonly assignmentRule!: pulumi.Output<string | undefined>;
     /**
      * Description of the host group.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * List of host ids to add to a staticByID host group.
+     */
+    public readonly hostIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of hostnames to add to a static host group.
+     */
+    public readonly hostnames!: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     /**
      * Name of the host group.
@@ -100,6 +124,8 @@ export class HostGroup extends pulumi.CustomResource {
             const state = argsOrState as HostGroupState | undefined;
             resourceInputs["assignmentRule"] = state ? state.assignmentRule : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["hostIds"] = state ? state.hostIds : undefined;
+            resourceInputs["hostnames"] = state ? state.hostnames : undefined;
             resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -113,6 +139,8 @@ export class HostGroup extends pulumi.CustomResource {
             }
             resourceInputs["assignmentRule"] = args ? args.assignmentRule : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["hostIds"] = args ? args.hostIds : undefined;
+            resourceInputs["hostnames"] = args ? args.hostnames : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["lastUpdated"] = undefined /*out*/;
@@ -134,6 +162,14 @@ export interface HostGroupState {
      * Description of the host group.
      */
     description?: pulumi.Input<string>;
+    /**
+     * List of host ids to add to a staticByID host group.
+     */
+    hostIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of hostnames to add to a static host group.
+     */
+    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     lastUpdated?: pulumi.Input<string>;
     /**
      * Name of the host group.
@@ -157,6 +193,14 @@ export interface HostGroupArgs {
      * Description of the host group.
      */
     description: pulumi.Input<string>;
+    /**
+     * List of host ids to add to a staticByID host group.
+     */
+    hostIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of hostnames to add to a static host group.
+     */
+    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the host group.
      */

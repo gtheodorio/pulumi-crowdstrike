@@ -686,7 +686,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyLinuxCloudAntiMalwareArgs']]] = None,
+                 cloud_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyLinuxCloudAntiMalwareArgs', 'PreventionPolicyLinuxCloudAntiMalwareArgsDict']]] = None,
                  custom_blocking: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  drift_prevention: Optional[pulumi.Input[bool]] = None,
@@ -702,7 +702,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
                  prevent_suspicious_processes: Optional[pulumi.Input[bool]] = None,
                  quarantine: Optional[pulumi.Input[bool]] = None,
                  script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
-                 sensor_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyLinuxSensorAntiMalwareArgs']]] = None,
+                 sensor_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyLinuxSensorAntiMalwareArgs', 'PreventionPolicyLinuxSensorAntiMalwareArgsDict']]] = None,
                  tls_visibility: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_detection_related_executables: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_executables: Optional[pulumi.Input[bool]] = None,
@@ -727,14 +727,14 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             description="Made with Pulumi",
             host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
             ioa_rule_groups=["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
-            cloud_anti_malware=crowdstrike.PreventionPolicyLinuxCloudAntiMalwareArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            sensor_anti_malware=crowdstrike.PreventionPolicyLinuxSensorAntiMalwareArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
+            cloud_anti_malware={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            sensor_anti_malware={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
             quarantine=True,
             custom_blocking=True,
             prevent_suspicious_processes=True,
@@ -761,7 +761,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyLinuxCloudAntiMalwareArgs']] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
+        :param pulumi.Input[Union['PreventionPolicyLinuxCloudAntiMalwareArgs', 'PreventionPolicyLinuxCloudAntiMalwareArgsDict']] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
         :param pulumi.Input[bool] custom_blocking: Whether to enable the setting. Block processes matching hashes that you add to IOC Management with the action set to "Block" or "Block, hide detection".
         :param pulumi.Input[str] description: Description of the prevention policy.
         :param pulumi.Input[bool] drift_prevention: Whether to enable the setting. Block new processes originating from files written in a container. This prevents a container from drifting from its immutable runtime state.
@@ -777,7 +777,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         :param pulumi.Input[bool] prevent_suspicious_processes: Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
         :param pulumi.Input[bool] quarantine: Whether to enable the setting. Quarantine executable files after they’re prevented by NGAV. When this is enabled, we recommend setting anti-malware prevention levels to Moderate or higher and not using other antivirus solutions.
         :param pulumi.Input[bool] script_based_execution_monitoring: Whether to enable the setting. Provides visibility into suspicious scripts, including shell and other scripting languages.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyLinuxSensorAntiMalwareArgs']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
+        :param pulumi.Input[Union['PreventionPolicyLinuxSensorAntiMalwareArgs', 'PreventionPolicyLinuxSensorAntiMalwareArgsDict']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
         :param pulumi.Input[bool] tls_visibility: Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
         :param pulumi.Input[bool] upload_unknown_detection_related_executables: Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
         :param pulumi.Input[bool] upload_unknown_executables: Whether to enable the setting. Upload all unknown executables for advanced analysis in the cloud.
@@ -808,14 +808,14 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             description="Made with Pulumi",
             host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
             ioa_rule_groups=["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
-            cloud_anti_malware=crowdstrike.PreventionPolicyLinuxCloudAntiMalwareArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
-            sensor_anti_malware=crowdstrike.PreventionPolicyLinuxSensorAntiMalwareArgs(
-                detection="MODERATE",
-                prevention="CAUTIOUS",
-            ),
+            cloud_anti_malware={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
+            sensor_anti_malware={
+                "detection": "MODERATE",
+                "prevention": "CAUTIOUS",
+            },
             quarantine=True,
             custom_blocking=True,
             prevent_suspicious_processes=True,
@@ -855,7 +855,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyLinuxCloudAntiMalwareArgs']]] = None,
+                 cloud_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyLinuxCloudAntiMalwareArgs', 'PreventionPolicyLinuxCloudAntiMalwareArgsDict']]] = None,
                  custom_blocking: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  drift_prevention: Optional[pulumi.Input[bool]] = None,
@@ -871,7 +871,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
                  prevent_suspicious_processes: Optional[pulumi.Input[bool]] = None,
                  quarantine: Optional[pulumi.Input[bool]] = None,
                  script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
-                 sensor_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyLinuxSensorAntiMalwareArgs']]] = None,
+                 sensor_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyLinuxSensorAntiMalwareArgs', 'PreventionPolicyLinuxSensorAntiMalwareArgsDict']]] = None,
                  tls_visibility: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_detection_related_executables: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_executables: Optional[pulumi.Input[bool]] = None,
@@ -915,7 +915,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyLinuxCloudAntiMalwareArgs']]] = None,
+            cloud_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyLinuxCloudAntiMalwareArgs', 'PreventionPolicyLinuxCloudAntiMalwareArgsDict']]] = None,
             custom_blocking: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             drift_prevention: Optional[pulumi.Input[bool]] = None,
@@ -932,7 +932,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             prevent_suspicious_processes: Optional[pulumi.Input[bool]] = None,
             quarantine: Optional[pulumi.Input[bool]] = None,
             script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
-            sensor_anti_malware: Optional[pulumi.Input[pulumi.InputType['PreventionPolicyLinuxSensorAntiMalwareArgs']]] = None,
+            sensor_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyLinuxSensorAntiMalwareArgs', 'PreventionPolicyLinuxSensorAntiMalwareArgsDict']]] = None,
             tls_visibility: Optional[pulumi.Input[bool]] = None,
             upload_unknown_detection_related_executables: Optional[pulumi.Input[bool]] = None,
             upload_unknown_executables: Optional[pulumi.Input[bool]] = None) -> 'PreventionPolicyLinux':
@@ -943,7 +943,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyLinuxCloudAntiMalwareArgs']] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
+        :param pulumi.Input[Union['PreventionPolicyLinuxCloudAntiMalwareArgs', 'PreventionPolicyLinuxCloudAntiMalwareArgsDict']] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
         :param pulumi.Input[bool] custom_blocking: Whether to enable the setting. Block processes matching hashes that you add to IOC Management with the action set to "Block" or "Block, hide detection".
         :param pulumi.Input[str] description: Description of the prevention policy.
         :param pulumi.Input[bool] drift_prevention: Whether to enable the setting. Block new processes originating from files written in a container. This prevents a container from drifting from its immutable runtime state.
@@ -959,7 +959,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         :param pulumi.Input[bool] prevent_suspicious_processes: Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
         :param pulumi.Input[bool] quarantine: Whether to enable the setting. Quarantine executable files after they’re prevented by NGAV. When this is enabled, we recommend setting anti-malware prevention levels to Moderate or higher and not using other antivirus solutions.
         :param pulumi.Input[bool] script_based_execution_monitoring: Whether to enable the setting. Provides visibility into suspicious scripts, including shell and other scripting languages.
-        :param pulumi.Input[pulumi.InputType['PreventionPolicyLinuxSensorAntiMalwareArgs']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
+        :param pulumi.Input[Union['PreventionPolicyLinuxSensorAntiMalwareArgs', 'PreventionPolicyLinuxSensorAntiMalwareArgsDict']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
         :param pulumi.Input[bool] tls_visibility: Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
         :param pulumi.Input[bool] upload_unknown_detection_related_executables: Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
         :param pulumi.Input[bool] upload_unknown_executables: Whether to enable the setting. Upload all unknown executables for advanced analysis in the cloud.
