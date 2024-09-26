@@ -27,17 +27,7 @@ REQUIRED_GO_MAJOR_VERSION := 1
 REQUIRED_GO_MINOR_VERSION := 21
 GO_VERSION_VALIDATION_ERR_MSG := Golang version $(REQUIRED_GO_MAJOR_VERSION).$(REQUIRED_GO_MINOR_VERSION) is required
 
-.PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python cleanup validate_go_version
-
-validate_go_version: ## Validates the installed version of go
-	@if [ $(GO_MAJOR_VERSION) -ne $(REQUIRED_GO_MAJOR_VERSION) ]; then \
-		echo '$(GO_VERSION_VALIDATION_ERR_MSG)';\
-		exit 1 ;\
-	fi
-	@if [ $(GO_MINOR_VERSION) -ne $(REQUIRED_GO_MINOR_VERSION) ]; then \
-		echo '$(GO_VERSION_VALIDATION_ERR_MSG)';\
-		exit 1 ;\
-	fi
+.PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python cleanup
 
 development:: install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
 
@@ -98,7 +88,6 @@ $(WORKING_DIR)/bin/$(JAVA_GEN)::
 lint_provider:: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
-
 cleanup:: # cleans up the temporary directory
 	rm -r $(WORKING_DIR)/bin
 	rm -f provider/cmd/${PROVIDER}/schema.go
@@ -116,7 +105,7 @@ fmt::
 	@echo "Fixing source code with gofmt..."
 	find . -name '*.go' | grep -v vendor | xargs gofmt -s -w
 
-install_plugins:: validate_go_version
+install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
 	pulumi plugin install resource random 4.3.1
 
