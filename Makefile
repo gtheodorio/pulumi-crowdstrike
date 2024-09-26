@@ -84,8 +84,6 @@ build_dotnet:: install_plugins tfgen # build the dotnet sdk
 
 build_go:: install_plugins tfgen # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
-	cd sdk/go/ && \
-		go mod tidy
 
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
 build_java:: $(WORKING_DIR)/bin/$(JAVA_GEN)
@@ -100,8 +98,6 @@ $(WORKING_DIR)/bin/$(JAVA_GEN)::
 lint_provider:: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
-tidy:: # call go mod tidy in relevant directories
-	find ./provider -name go.mod -execdir go mod tidy \;
 
 cleanup:: # cleans up the temporary directory
 	rm -r $(WORKING_DIR)/bin
