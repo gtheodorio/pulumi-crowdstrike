@@ -18,3 +18,5 @@ permissions:
 
 on:
   workflow_dispatch: {}
+  repository_dispatch: 
+      types: [build-pulumi-provider]
