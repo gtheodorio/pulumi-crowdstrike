@@ -11,19 +11,13 @@ The Pulumi Crowdstrike provider is available as a package in all Pulumi language
 * JavaScript/TypeScript: [`@crowdstrike/pulumi`](https://www.npmjs.com/package/@crowdstrike/pulumi)
 * Python: [`crowdstrike_pulumi`](https://pypi.org/project/crowdstrike_pulumi/)
 * Go: [`github.com/crowdstrike/pulumi-crowdstrike/sdk/go/crowdstrike`](https://pkg.go.dev/github.com/crowdstrike/pulumi-crowdstrike/sdk/go/crowdstrike)
-* .NET: [`CrowdStrike.Crowdstrike`](https://www.nuget.org/packages/CrowdStrike.Crowdstrike)
 
+## Environment Variables
 
-## Configuration
+The following configuration environment variables are required for the `CrowdStrike` provider:
 
-> Note:  
-> Replace the following **sample content**, with the configuration options
-> of the wrapped Terraform provider and remove this note.
-
-The following configuration points are available for the `crowdstrike` provider:
-
-- `crowdstrike:apiKey` (environment: `crowdstrike_API_KEY`) - the API key for `crowdstrike`
-- `crowdstrike:region` (environment: `crowdstrike_REGION`) - the region in which to deploy resources
+* CROWDSTRIKE_FALCON_CLIENT_ID - the user generated client id for the `CrowdStrike` provider
+* CROWDSTRIKE_FALCON_CLIENT_SECRET - the user generated client secret for the `CrowdStrike` provider
 
 ### Provider Binary
 
