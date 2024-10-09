@@ -4,7 +4,7 @@ meta_desc: Provides an overview of the CrowdStrike Provider for Pulumi.
 layout: overview
 ---
 
-The CrowdStrike provider for Pulumi can be used to provision any of the [supported cloud resources] (#supported_resources) available in CrowdStrike.
+The CrowdStrike provider for Pulumi can be used to provision any of the [supported cloud resources](#supported_resources) available in CrowdStrike.
 
 The CrowdStrike provider must be configured with credentials to deploy and update resources in CrowdStrike.
 
