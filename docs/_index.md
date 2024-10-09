@@ -37,6 +37,7 @@ const hostGroup = new crowdstrike.HostGroup("hostgroup_2", {
     "type": "dynamic",
     "assignmentRule": "tags:'SensorGroupingTags/production'+os_version:'Amazon Linux 2'"
 }
+)
 
 ```
 
