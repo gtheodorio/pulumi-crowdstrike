@@ -48,8 +48,8 @@ import (
 //			}
 //			_, err = crowdstrike.NewHostGroup(ctx, "static", &crowdstrike.HostGroupArgs{
 //				Description: pulumi.String("Made with Pulumi"),
-//				Type:        pulumi.String("static"),
-//				Hostnames: pulumi.StringArray{
+//				Type:        pulumi.String("staticByID"),
+//				HostIds: pulumi.StringArray{
 //					pulumi.String("host1"),
 //					pulumi.String("host2"),
 //				},
