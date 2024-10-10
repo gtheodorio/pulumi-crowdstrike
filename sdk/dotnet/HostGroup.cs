@@ -43,8 +43,8 @@ namespace CrowdStrike.Crowdstrike
     ///     var @static = new Crowdstrike.HostGroup("static", new()
     ///     {
     ///         Description = "Made with Pulumi",
-    ///         Type = "static",
-    ///         Hostnames = new[]
+    ///         Type = "staticByID",
+    ///         HostIds = new[]
     ///         {
     ///             "host1",
     ///             "host2",

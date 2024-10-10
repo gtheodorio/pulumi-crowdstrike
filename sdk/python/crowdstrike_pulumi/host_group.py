@@ -266,8 +266,8 @@ class HostGroup(pulumi.CustomResource):
             type="dynamic")
         static = crowdstrike.HostGroup("static",
             description="Made with Pulumi",
-            type="static",
-            hostnames=[
+            type="staticByID",
+            host_ids=[
                 "host1",
                 "host2",
             ])
@@ -329,8 +329,8 @@ class HostGroup(pulumi.CustomResource):
             type="dynamic")
         static = crowdstrike.HostGroup("static",
             description="Made with Pulumi",
-            type="static",
-            hostnames=[
+            type="staticByID",
+            host_ids=[
                 "host1",
                 "host2",
             ])

@@ -745,7 +745,7 @@ export interface SensorUpdatePolicySchedule {
     /**
      * The time zones that will be used for the time blocks. Only set when enabled is true.
      */
-    timezone: string;
+    timezone?: string;
 }
 
 export interface SensorUpdatePolicyScheduleTimeBlock {

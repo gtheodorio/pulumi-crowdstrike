@@ -30,8 +30,8 @@ import * as utilities from "./utilities";
  * });
  * const static = new crowdstrike.HostGroup("static", {
  *     description: "Made with Pulumi",
- *     type: "static",
- *     hostnames: [
+ *     type: "staticByID",
+ *     hostIds: [
  *         "host1",
  *         "host2",
  *     ],
