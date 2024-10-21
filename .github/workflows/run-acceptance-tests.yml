@@ -116,8 +116,8 @@ jobs:
 #         token: ${{ secrets.PULUMI_BOT_TOKEN }}
 #     strategy: {}
   prerequisites:
-    if: github.event_name == 'repository_dispatch' || github.event.pull_request.head.repo.full_name
-      == github.repository
+    # if: github.event_name == 'repository_dispatch' || github.event.pull_request.head.repo.full_name
+    #   == github.repository
     name: prerequisites
     runs-on: ubuntu-latest
     steps:
