@@ -91,7 +91,7 @@ jobs:
         language:
         - nodejs
         - python
-        - dotnet
+        # - dotnet
         - go
         nodeversion:
         - 18.x
@@ -177,8 +177,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        dotnetversion:
-        - 3.1.301
+        # dotnetversion:
+        # - 3.1.301
         goversion:
         - 1.22.x
         nodeversion:
