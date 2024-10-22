@@ -10,7 +10,7 @@ import (
 )
 
 func getClientId(t *testing.T) string {
-	client_id := os.Getenv("CROWDSTRIKE_FALCON_CLIENT_ID")
+	client_id := os.Getenv("FALCON_CLIENT_ID")
 	if client_id == "" {
 		t.Skipf("Skipping test due to missing CROWDSTRIKE_FALCON_CLIENT_ID environment variable")
 	}
@@ -19,14 +19,13 @@ func getClientId(t *testing.T) string {
 }
 
 func getClientSecret(t *testing.T) string {
-	client_secret := os.Getenv("CROWDSTRIKE_FALCON_CLIENT_SECRET")
+	client_secret := os.Getenv("FALCON_CLIENT_SECRET")
 	if client_secret == "" {
 		t.Skipf("Skipping test due to missing CROWDSTRIKE_FALCON_CLIENT_SECRET environment variable")
 	}
 
 	return client_secret
 }
-
 
 func getCwd(t *testing.T) string {
 	cwd, err := os.Getwd()
