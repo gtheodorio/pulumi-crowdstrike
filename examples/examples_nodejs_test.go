@@ -12,7 +12,7 @@ import (
 )
 
 func TestAccServiceAccount(t *testing.T) {
-	test := getPythonBaseOptions(t).
+	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "crowdstrike-ts"),
 		})
