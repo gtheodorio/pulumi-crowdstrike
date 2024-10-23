@@ -1,18 +1,9 @@
 env:
-#   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-#   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   PROVIDER: crowdstrike
-#   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-#   PULUMI_API: https://api.pulumi.com
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
-#   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
   PULUMI_TEST_OWNER: "crowdstrike"
-#   PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-#   PYPI_USERNAME: "__token__"
   FALCON_CLIENT_ID: ${{ secrets.CROWDSTRIKE_FALCON_CLIENT_ID }}
   FALCON_CLIENT_SECRET: ${{ secrets.CROWDSTRIKE_FALCON_CLIENT_SECRET }}
-#   TRAVIS_OS_NAME: linux
 jobs:
   build_sdk:
     # if: github.event_name == 'repository_dispatch' || github.event.pull_request.head.repo.full_name
@@ -97,24 +88,24 @@ jobs:
         - 18.x
         pythonversion:
         - "3.9"
-#   comment-notification:
-#     if: github.event_name == 'repository_dispatch'
-#     name: comment-notification
-#     runs-on: ubuntu-latest
-#     steps:
-#     - id: var
-#       name: Create URL to the run output
-#       run: echo ::set-output name=run-url::https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
-#     - name: Update with Result
-#       uses: peter-evans/create-or-update-comment@v4
-#       with:
-#         body: Please view the PR build - ${{ steps.vars.outputs.run-url }}
-#         issue-number: ${{ github.event.client_payload.github.payload.issue.number
-#           }}
-#         repository: ${{ github.event.client_payload.github.payload.repository.full_name
-#           }}
-#         token: ${{ secrets.PULUMI_BOT_TOKEN }}
-#     strategy: {}
+  # comment-notification:
+  #   if: github.event_name == 'repository_dispatch'
+  #   name: comment-notification
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - id: var
+  #     name: Create URL to the run output
+  #     run: echo ::set-output name=run-url::https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+  #   - name: Update with Result
+  #     uses: peter-evans/create-or-update-comment@v4
+  #     with:
+  #       body: Please view the PR build - ${{ steps.vars.outputs.run-url }}
+  #       issue-number: ${{ github.event.client_payload.github.payload.issue.number
+  #         }}
+  #       repository: ${{ github.event.client_payload.github.payload.repository.full_name
+  #         }}
+  #       token: ${{ secrets.PULUMI_BOT_TOKEN }}
+    strategy: {}
   prerequisites:
     # if: github.event_name == 'repository_dispatch' || github.event.pull_request.head.repo.full_name
     #   == github.repository
@@ -277,15 +268,12 @@ jobs:
 name: run-acceptance-tests
 "on":
     workflow_dispatch: {}
-    push:
-        branches:
-            - 'feature/*'
-#   pull_request:
-#     branches:
-#     - master
-#     - main
-#     paths-ignore:
-#     - CHANGELOG.md
-#   repository_dispatch:
-#     types:
-#     - run-acceptance-tests-command
+    pull_request:
+      branches:
+      - master
+      - main
+      paths-ignore:
+      - CHANGELOG.md
+    repository_dispatch:
+      types:
+      - run-acceptance-tests-command
