@@ -266,7 +266,7 @@ jobs:
         # - nodejs
         - python
         # - dotnet
-        # - go
+        - go
         nodeversion:
         - 18.x
         pythonversion:
