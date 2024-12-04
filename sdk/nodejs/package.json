@@ -1,7 +1,7 @@
 {
     "name": "@crowdstrike/pulumi",
     "version": "${VERSION}",
-    "description": "A Pulumi package for creating and managing Crowdstrike resources. Based on terraform-provider-crowdstrike: version v0.0.4",
+    "description": "A Pulumi package for creating and managing CrowdStrike resources. Based on terraform-provider-crowdstrike: version v0.0.4",
     "keywords": [
         "pulumi",
         "crowdstrike",

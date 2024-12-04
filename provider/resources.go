@@ -119,7 +119,7 @@ func Provider() tfbridge.ProviderInfo {
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
 		PluginDownloadURL: "github://api.github.com/crowdstrike/pulumi-crowdstrike",
-		Description:       "A Pulumi package for creating and managing Crowdstrike resources",
+		Description:       "A Pulumi package for creating and managing CrowdStrike resources",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.

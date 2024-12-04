@@ -4,7 +4,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>CrowdStrike</Authors>
     <Company>CrowdStrike</Company>
-    <Description>A Pulumi package for creating and managing Crowdstrike resources</Description>
+    <Description>A Pulumi package for creating and managing CrowdStrike resources</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://crowdstrike.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/crowdstrike/pulumi-crowdstrike</RepositoryUrl>
