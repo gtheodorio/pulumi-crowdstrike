@@ -1,12 +1,12 @@
 ---
-title: Crowdstrike Installation & Configuration
-meta_desc: Information on how to install the Crowdstrike provider.
+title: CrowdStrike Installation & Configuration
+meta_desc: Information on how to install the CrowdStrike provider.
 layout: installation
 ---
 
 ## Installation
 
-The Pulumi Crowdstrike provider is available as a package in all Pulumi languages:
+The Pulumi CrowdStrike provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@crowdstrike/pulumi`](https://www.npmjs.com/package/@crowdstrike/pulumi)
 * Python: [`crowdstrike_pulumi`](https://pypi.org/project/crowdstrike_pulumi/)
@@ -21,7 +21,7 @@ The following configuration environment variables are required for the `CrowdStr
 
 ### Provider Binary
 
-The Crowdstrike provider binary is a third party binary. It can be installed using the `pulumi plugin` command.
+The CrowdStrike provider binary is a third party binary. It can be installed using the `pulumi plugin` command.
 
 ```bash
 pulumi plugin install resource crowdstrike <version>

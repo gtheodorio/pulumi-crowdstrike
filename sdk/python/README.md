@@ -1,6 +1,6 @@
-# Crowdstrike Resource Provider
+# CrowdStrike Resource Provider
 
-The Crowdstrike Resource Provider lets you manage [crowdstrike](https://www.pulumi.com/registry/packages/crowdstrike/) resources.
+The CrowdStrike Resource Provider lets you manage [crowdstrike](https://www.pulumi.com/registry/packages/crowdstrike/) resources.
 
 ## Installing
 
@@ -35,7 +35,6 @@ To use from Go, use `go get` to grab the latest version of the library:
 ```bash
 go get github.com/crowdstrike/pulumi-crowdstrike/sdk/go/...
 ```
-
 
 ## Reference
 

@@ -20,7 +20,7 @@ def readme():
 setup(name='crowdstrike_pulumi',
       python_requires='>=3.8',
       version=VERSION,
-      description="A Pulumi package for creating and managing Crowdstrike resources",
+      description="A Pulumi package for creating and managing CrowdStrike resources",
       long_description=readme(),
       long_description_content_type='text/markdown',
       keywords='pulumi crowdstrike category/infrastructure',
