@@ -82,7 +82,7 @@ jobs:
         language:
         - nodejs
         - python
-        # - dotnet
+        - dotnet
         - go
         nodeversion:
         - 18.x
@@ -210,10 +210,10 @@ jobs:
       with:
         node-version: ${{matrix.nodeversion}}
         registry-url: https://registry.npmjs.org
-    # - name: Setup DotNet
-    #   uses: actions/setup-dotnet@v4
-    #   with:
-    #     dotnet-version: ${{matrix.dotnetversion}}
+    - name: Setup DotNet
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{matrix.dotnetversion}}
     - name: Setup Python
       uses: actions/setup-python@v5
       with:
@@ -249,14 +249,14 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        # dotnetversion:
-        # - 3.1.301
+        dotnetversion:
+        - 3.1.301
         goversion:
         - 1.22.x
         language:
         - nodejs
         - python
-        # - dotnet
+        - dotnet
         # - go
         nodeversion:
         - 18.x
