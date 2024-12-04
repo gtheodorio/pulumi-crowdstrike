@@ -1,1 +1,1 @@
-A Pulumi package for creating and managing Crowdstrike resources
+A Pulumi package for creating and managing CrowdStrike resources
