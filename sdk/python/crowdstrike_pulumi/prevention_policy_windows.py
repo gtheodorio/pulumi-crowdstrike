@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -16,6 +21,8 @@ __all__ = ['PreventionPolicyWindowsArgs', 'PreventionPolicyWindows']
 @pulumi.input_type
 class PreventionPolicyWindowsArgs:
     def __init__(__self__, *,
+                 host_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 ioa_rule_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
                  additional_user_mode_data: Optional[pulumi.Input[bool]] = None,
                  advanced_remediation: Optional[pulumi.Input[bool]] = None,
                  adware_and_pup: Optional[pulumi.Input['PreventionPolicyWindowsAdwareAndPupArgs']] = None,
@@ -45,11 +52,9 @@ class PreventionPolicyWindowsArgs:
                  force_dep: Optional[pulumi.Input[bool]] = None,
                  hardware_enhanced_exploit_detection: Optional[pulumi.Input[bool]] = None,
                  heap_spray_preallocation: Optional[pulumi.Input[bool]] = None,
-                 host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  http_detections: Optional[pulumi.Input[bool]] = None,
                  intelligence_sourced_threats: Optional[pulumi.Input[bool]] = None,
                  interpreter_only: Optional[pulumi.Input[bool]] = None,
-                 ioa_rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  javascript_via_rundll32: Optional[pulumi.Input[bool]] = None,
                  locky: Optional[pulumi.Input[bool]] = None,
                  memory_scanning: Optional[pulumi.Input[bool]] = None,
@@ -80,6 +85,8 @@ class PreventionPolicyWindowsArgs:
                  windows_logon_bypass_sticky_keys: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a PreventionPolicyWindows resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the prevention policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ioa_rule_groups: IOA Rule Group to attach to the prevention policy.
         :param pulumi.Input[bool] additional_user_mode_data: Whether to enable the setting. Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
         :param pulumi.Input[bool] advanced_remediation: Whether to enable the setting. Perform advanced remediation for IOA detections to kill processes, quarantine files, remove scheduled tasks, and clear and delete ASEP registry values.
         :param pulumi.Input['PreventionPolicyWindowsAdwareAndPupArgs'] adware_and_pup: Use cloud-based machine learning informed by global analysis of executables to detect and prevent adware and potentially unwanted programs (PUP) for your online hosts.
@@ -109,11 +116,9 @@ class PreventionPolicyWindowsArgs:
         :param pulumi.Input[bool] force_dep: Whether to enable the setting. A process that had Force Data Execution Prevention (Force DEP) applied tried to execute non-executable memory and was blocked. Requires additional*user*mode_data to be enabled.
         :param pulumi.Input[bool] hardware_enhanced_exploit_detection: Whether to enable the setting. Provides additional visibility into application exploits by using CPU hardware features that detect suspicious control flows. Available only for hosts running Windows 10 (RS4) or Windows Server 2016 Version 1803 or later and Skylake or later CPU.
         :param pulumi.Input[bool] heap_spray_preallocation: Whether to enable the setting. A heap spray attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the prevention policy.
         :param pulumi.Input[bool] http_detections: Whether to enable the setting. Allows the sensor to monitor unencrypted HTTP traffic and certain encrypted HTTPS traffic on the sensor for malicious patterns and generate detection events on non-Server systems.
         :param pulumi.Input[bool] intelligence_sourced_threats: Whether to enable the setting. Block processes that CrowdStrike Intelligence analysts classify as malicious. These are focused on static hash-based IOCs.
         :param pulumi.Input[bool] interpreter_only: Whether to enable the setting. Provides visibility into malicious PowerShell interpreter usage. For hosts running Windows 10, Script-Based Execution Monitoring may be used instead.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ioa_rule_groups: IOA Rule Group to attach to the prevention policy.
         :param pulumi.Input[bool] javascript_via_rundll32: Whether to enable the setting. JavaScript executing from a command line via rundll32.exe was prevented.
         :param pulumi.Input[bool] locky: Whether to enable the setting. A process determined to be associated with Locky was blocked.
         :param pulumi.Input[bool] memory_scanning: Whether to enable the setting. Provides visibility into in-memory attacks by scanning for suspicious artifacts on hosts with the following: an integrated GPU and supporting OS libraries, Windows 10 v1607 (RS1) or later, and a Skylake or newer Intel CPU.
@@ -143,6 +148,8 @@ class PreventionPolicyWindowsArgs:
         :param pulumi.Input[bool] vulnerable_driver_protection: Whether to enable the setting. Quarantine and block the loading of newly written kernel drivers that CrowdStrike analysts have identified as vulnerable. Available on Windows 10 and Windows 2016 and later. Requires driver*load*prevention.
         :param pulumi.Input[bool] windows_logon_bypass_sticky_keys: Whether to enable the setting. A command line process associated with Windows logon bypass was prevented from executing.
         """
+        pulumi.set(__self__, "host_groups", host_groups)
+        pulumi.set(__self__, "ioa_rule_groups", ioa_rule_groups)
         if additional_user_mode_data is not None:
             pulumi.set(__self__, "additional_user_mode_data", additional_user_mode_data)
         if advanced_remediation is not None:
@@ -201,16 +208,12 @@ class PreventionPolicyWindowsArgs:
             pulumi.set(__self__, "hardware_enhanced_exploit_detection", hardware_enhanced_exploit_detection)
         if heap_spray_preallocation is not None:
             pulumi.set(__self__, "heap_spray_preallocation", heap_spray_preallocation)
-        if host_groups is not None:
-            pulumi.set(__self__, "host_groups", host_groups)
         if http_detections is not None:
             pulumi.set(__self__, "http_detections", http_detections)
         if intelligence_sourced_threats is not None:
             pulumi.set(__self__, "intelligence_sourced_threats", intelligence_sourced_threats)
         if interpreter_only is not None:
             pulumi.set(__self__, "interpreter_only", interpreter_only)
-        if ioa_rule_groups is not None:
-            pulumi.set(__self__, "ioa_rule_groups", ioa_rule_groups)
         if javascript_via_rundll32 is not None:
             pulumi.set(__self__, "javascript_via_rundll32", javascript_via_rundll32)
         if locky is not None:
@@ -267,6 +270,30 @@ class PreventionPolicyWindowsArgs:
             pulumi.set(__self__, "vulnerable_driver_protection", vulnerable_driver_protection)
         if windows_logon_bypass_sticky_keys is not None:
             pulumi.set(__self__, "windows_logon_bypass_sticky_keys", windows_logon_bypass_sticky_keys)
+
+    @property
+    @pulumi.getter(name="hostGroups")
+    def host_groups(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Host Group ids to attach to the prevention policy.
+        """
+        return pulumi.get(self, "host_groups")
+
+    @host_groups.setter
+    def host_groups(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "host_groups", value)
+
+    @property
+    @pulumi.getter(name="ioaRuleGroups")
+    def ioa_rule_groups(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        IOA Rule Group to attach to the prevention policy.
+        """
+        return pulumi.get(self, "ioa_rule_groups")
+
+    @ioa_rule_groups.setter
+    def ioa_rule_groups(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "ioa_rule_groups", value)
 
     @property
     @pulumi.getter(name="additionalUserModeData")
@@ -617,18 +644,6 @@ class PreventionPolicyWindowsArgs:
         pulumi.set(self, "heap_spray_preallocation", value)
 
     @property
-    @pulumi.getter(name="hostGroups")
-    def host_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Host Group ids to attach to the prevention policy.
-        """
-        return pulumi.get(self, "host_groups")
-
-    @host_groups.setter
-    def host_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "host_groups", value)
-
-    @property
     @pulumi.getter(name="httpDetections")
     def http_detections(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -663,18 +678,6 @@ class PreventionPolicyWindowsArgs:
     @interpreter_only.setter
     def interpreter_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "interpreter_only", value)
-
-    @property
-    @pulumi.getter(name="ioaRuleGroups")
-    def ioa_rule_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        IOA Rule Group to attach to the prevention policy.
-        """
-        return pulumi.get(self, "ioa_rule_groups")
-
-    @ioa_rule_groups.setter
-    def ioa_rule_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "ioa_rule_groups", value)
 
     @property
     @pulumi.getter(name="javascriptViaRundll32")
@@ -2112,7 +2115,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             enabled=False,
             description="Made with Pulumi",
             host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
-            ioa_rule_groups=["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
+            ioa_rule_groups=[],
             adware_and_pup={
                 "detection": "MODERATE",
                 "prevention": "CAUTIOUS",
@@ -2270,7 +2273,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[PreventionPolicyWindowsArgs] = None,
+                 args: PreventionPolicyWindowsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to manage CrowdStrike Falcon prevention policies for Windows hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
@@ -2291,7 +2294,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             enabled=False,
             description="Made with Pulumi",
             host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
-            ioa_rule_groups=["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
+            ioa_rule_groups=[],
             adware_and_pup={
                 "detection": "MODERATE",
                 "prevention": "CAUTIOUS",
@@ -2495,10 +2498,14 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             __props__.__dict__["force_dep"] = force_dep
             __props__.__dict__["hardware_enhanced_exploit_detection"] = hardware_enhanced_exploit_detection
             __props__.__dict__["heap_spray_preallocation"] = heap_spray_preallocation
+            if host_groups is None and not opts.urn:
+                raise TypeError("Missing required property 'host_groups'")
             __props__.__dict__["host_groups"] = host_groups
             __props__.__dict__["http_detections"] = http_detections
             __props__.__dict__["intelligence_sourced_threats"] = intelligence_sourced_threats
             __props__.__dict__["interpreter_only"] = interpreter_only
+            if ioa_rule_groups is None and not opts.urn:
+                raise TypeError("Missing required property 'ioa_rule_groups'")
             __props__.__dict__["ioa_rule_groups"] = ioa_rule_groups
             __props__.__dict__["javascript_via_rundll32"] = javascript_via_rundll32
             __props__.__dict__["locky"] = locky
@@ -2975,7 +2982,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostGroups")
-    def host_groups(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def host_groups(self) -> pulumi.Output[Sequence[str]]:
         """
         Host Group ids to attach to the prevention policy.
         """
@@ -3007,7 +3014,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ioaRuleGroups")
-    def ioa_rule_groups(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def ioa_rule_groups(self) -> pulumi.Output[Sequence[str]]:
         """
         IOA Rule Group to attach to the prevention policy.
         """

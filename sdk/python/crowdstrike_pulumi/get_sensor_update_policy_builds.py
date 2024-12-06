@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -126,9 +131,6 @@ def get_sensor_update_policy_builds(opts: Optional[pulumi.InvokeOptions] = None)
         linux_arm64=pulumi.get(__ret__, 'linux_arm64'),
         mac=pulumi.get(__ret__, 'mac'),
         windows=pulumi.get(__ret__, 'windows'))
-
-
-@_utilities.lift_output_func(get_sensor_update_policy_builds)
 def get_sensor_update_policy_builds_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSensorUpdatePolicyBuildsResult]:
     """
     This data source provides information about the latest sensor builds for each platform.
@@ -152,4 +154,12 @@ def get_sensor_update_policy_builds_output(opts: Optional[pulumi.InvokeOptions] 
     pulumi.export("latestLinuxArm64Build", builds.linux_arm64.latest)
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('crowdstrike:index/getSensorUpdatePolicyBuilds:getSensorUpdatePolicyBuilds', __args__, opts=opts, typ=GetSensorUpdatePolicyBuildsResult)
+    return __ret__.apply(lambda __response__: GetSensorUpdatePolicyBuildsResult(
+        id=pulumi.get(__response__, 'id'),
+        linux=pulumi.get(__response__, 'linux'),
+        linux_arm64=pulumi.get(__response__, 'linux_arm64'),
+        mac=pulumi.get(__response__, 'mac'),
+        windows=pulumi.get(__response__, 'windows')))

@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *     enabled: false,
  *     description: "Made with Pulumi",
  *     hostGroups: ["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
- *     ioaRuleGroups: ["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
+ *     ioaRuleGroups: [],
  *     adwareAndPup: {
  *         detection: "MODERATE",
  *         prevention: "CAUTIOUS",
@@ -262,7 +262,7 @@ export class PreventionPolicyWindows extends pulumi.CustomResource {
     /**
      * Host Group ids to attach to the prevention policy.
      */
-    public readonly hostGroups!: pulumi.Output<string[] | undefined>;
+    public readonly hostGroups!: pulumi.Output<string[]>;
     /**
      * Whether to enable the setting. Allows the sensor to monitor unencrypted HTTP traffic and certain encrypted HTTPS traffic on the sensor for malicious patterns and generate detection events on non-Server systems.
      */
@@ -278,7 +278,7 @@ export class PreventionPolicyWindows extends pulumi.CustomResource {
     /**
      * IOA Rule Group to attach to the prevention policy.
      */
-    public readonly ioaRuleGroups!: pulumi.Output<string[] | undefined>;
+    public readonly ioaRuleGroups!: pulumi.Output<string[]>;
     /**
      * Whether to enable the setting. JavaScript executing from a command line via rundll32.exe was prevented.
      */
@@ -400,7 +400,7 @@ export class PreventionPolicyWindows extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: PreventionPolicyWindowsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: PreventionPolicyWindowsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PreventionPolicyWindowsArgs | PreventionPolicyWindowsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -471,6 +471,12 @@ export class PreventionPolicyWindows extends pulumi.CustomResource {
             resourceInputs["windowsLogonBypassStickyKeys"] = state ? state.windowsLogonBypassStickyKeys : undefined;
         } else {
             const args = argsOrState as PreventionPolicyWindowsArgs | undefined;
+            if ((!args || args.hostGroups === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'hostGroups'");
+            }
+            if ((!args || args.ioaRuleGroups === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'ioaRuleGroups'");
+            }
             resourceInputs["additionalUserModeData"] = args ? args.additionalUserModeData : undefined;
             resourceInputs["advancedRemediation"] = args ? args.advancedRemediation : undefined;
             resourceInputs["adwareAndPup"] = args ? args.adwareAndPup : undefined;
@@ -918,7 +924,7 @@ export interface PreventionPolicyWindowsArgs {
     /**
      * Host Group ids to attach to the prevention policy.
      */
-    hostGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    hostGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to enable the setting. Allows the sensor to monitor unencrypted HTTP traffic and certain encrypted HTTPS traffic on the sensor for malicious patterns and generate detection events on non-Server systems.
      */
@@ -934,7 +940,7 @@ export interface PreventionPolicyWindowsArgs {
     /**
      * IOA Rule Group to attach to the prevention policy.
      */
-    ioaRuleGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    ioaRuleGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to enable the setting. JavaScript executing from a command line via rundll32.exe was prevented.
      */
