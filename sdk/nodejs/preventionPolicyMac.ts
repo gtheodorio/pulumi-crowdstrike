@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *     enabled: false,
  *     description: "Made with Pulumi",
  *     hostGroups: ["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
- *     ioaRuleGroups: ["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
+ *     ioaRuleGroups: [],
  *     cloudAdwareAndPup: {
  *         detection: "MODERATE",
  *         prevention: "CAUTIOUS",
@@ -137,7 +137,7 @@ export class PreventionPolicyMac extends pulumi.CustomResource {
     /**
      * Host Group ids to attach to the prevention policy.
      */
-    public readonly hostGroups!: pulumi.Output<string[] | undefined>;
+    public readonly hostGroups!: pulumi.Output<string[]>;
     /**
      * Whether to enable the setting. Block processes that CrowdStrike Intelligence analysts classify as malicious. These are focused on static hash-based IOCs.
      */
@@ -145,7 +145,7 @@ export class PreventionPolicyMac extends pulumi.CustomResource {
     /**
      * IOA Rule Group to attach to the prevention policy.
      */
-    public readonly ioaRuleGroups!: pulumi.Output<string[] | undefined>;
+    public readonly ioaRuleGroups!: pulumi.Output<string[]>;
     /**
      * Whether to enable the setting. An attempt to recover a plaintext password via the kcpassword file was blocked.
      */
@@ -207,7 +207,7 @@ export class PreventionPolicyMac extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: PreventionPolicyMacArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: PreventionPolicyMacArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PreventionPolicyMacArgs | PreventionPolicyMacState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -241,6 +241,12 @@ export class PreventionPolicyMac extends pulumi.CustomResource {
             resourceInputs["xpcomShell"] = state ? state.xpcomShell : undefined;
         } else {
             const args = argsOrState as PreventionPolicyMacArgs | undefined;
+            if ((!args || args.hostGroups === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'hostGroups'");
+            }
+            if ((!args || args.ioaRuleGroups === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'ioaRuleGroups'");
+            }
             resourceInputs["chopperWebshell"] = args ? args.chopperWebshell : undefined;
             resourceInputs["cloudAdwareAndPup"] = args ? args.cloudAdwareAndPup : undefined;
             resourceInputs["cloudAntiMalware"] = args ? args.cloudAntiMalware : undefined;
@@ -423,7 +429,7 @@ export interface PreventionPolicyMacArgs {
     /**
      * Host Group ids to attach to the prevention policy.
      */
-    hostGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    hostGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to enable the setting. Block processes that CrowdStrike Intelligence analysts classify as malicious. These are focused on static hash-based IOCs.
      */
@@ -431,7 +437,7 @@ export interface PreventionPolicyMacArgs {
     /**
      * IOA Rule Group to attach to the prevention policy.
      */
-    ioaRuleGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    ioaRuleGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to enable the setting. An attempt to recover a plaintext password via the kcpassword file was blocked.
      */

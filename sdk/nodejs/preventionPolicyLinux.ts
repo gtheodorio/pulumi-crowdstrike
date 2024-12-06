@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *     enabled: true,
  *     description: "Made with Pulumi",
  *     hostGroups: ["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
- *     ioaRuleGroups: ["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
+ *     ioaRuleGroups: [],
  *     cloudAntiMalware: {
  *         detection: "MODERATE",
  *         prevention: "CAUTIOUS",
@@ -122,7 +122,7 @@ export class PreventionPolicyLinux extends pulumi.CustomResource {
     /**
      * Host Group ids to attach to the prevention policy.
      */
-    public readonly hostGroups!: pulumi.Output<string[] | undefined>;
+    public readonly hostGroups!: pulumi.Output<string[]>;
     /**
      * Whether to enable the setting. Allows the sensor to monitor unencrypted HTTP traffic for malicious patterns and improved detections.
      */
@@ -130,7 +130,7 @@ export class PreventionPolicyLinux extends pulumi.CustomResource {
     /**
      * IOA Rule Group to attach to the prevention policy.
      */
-    public readonly ioaRuleGroups!: pulumi.Output<string[] | undefined>;
+    public readonly ioaRuleGroups!: pulumi.Output<string[]>;
     public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     /**
      * Name of the prevention policy.
@@ -176,7 +176,7 @@ export class PreventionPolicyLinux extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: PreventionPolicyLinuxArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: PreventionPolicyLinuxArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PreventionPolicyLinuxArgs | PreventionPolicyLinuxState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -205,6 +205,12 @@ export class PreventionPolicyLinux extends pulumi.CustomResource {
             resourceInputs["uploadUnknownExecutables"] = state ? state.uploadUnknownExecutables : undefined;
         } else {
             const args = argsOrState as PreventionPolicyLinuxArgs | undefined;
+            if ((!args || args.hostGroups === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'hostGroups'");
+            }
+            if ((!args || args.ioaRuleGroups === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'ioaRuleGroups'");
+            }
             resourceInputs["cloudAntiMalware"] = args ? args.cloudAntiMalware : undefined;
             resourceInputs["customBlocking"] = args ? args.customBlocking : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -358,7 +364,7 @@ export interface PreventionPolicyLinuxArgs {
     /**
      * Host Group ids to attach to the prevention policy.
      */
-    hostGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    hostGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to enable the setting. Allows the sensor to monitor unencrypted HTTP traffic for malicious patterns and improved detections.
      */
@@ -366,7 +372,7 @@ export interface PreventionPolicyLinuxArgs {
     /**
      * IOA Rule Group to attach to the prevention policy.
      */
-    ioaRuleGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    ioaRuleGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the prevention policy.
      */

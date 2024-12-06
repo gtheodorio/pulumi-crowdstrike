@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -16,6 +21,8 @@ __all__ = ['PreventionPolicyMacArgs', 'PreventionPolicyMac']
 @pulumi.input_type
 class PreventionPolicyMacArgs:
     def __init__(__self__, *,
+                 host_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 ioa_rule_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
                  chopper_webshell: Optional[pulumi.Input[bool]] = None,
                  cloud_adware_and_pup: Optional[pulumi.Input['PreventionPolicyMacCloudAdwareAndPupArgs']] = None,
                  cloud_anti_malware: Optional[pulumi.Input['PreventionPolicyMacCloudAntiMalwareArgs']] = None,
@@ -25,9 +32,7 @@ class PreventionPolicyMacArgs:
                  empyre_backdoor: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  hash_collector: Optional[pulumi.Input[bool]] = None,
-                 host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  intelligence_sourced_threats: Optional[pulumi.Input[bool]] = None,
-                 ioa_rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kc_password_decoded: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notify_end_users: Optional[pulumi.Input[bool]] = None,
@@ -43,6 +48,8 @@ class PreventionPolicyMacArgs:
                  xpcom_shell: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a PreventionPolicyMac resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the prevention policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ioa_rule_groups: IOA Rule Group to attach to the prevention policy.
         :param pulumi.Input[bool] chopper_webshell: Whether to enable the setting. Execution of a command shell was blocked and is indicative of the system hosting a Chopper web page.
         :param pulumi.Input['PreventionPolicyMacCloudAdwareAndPupArgs'] cloud_adware_and_pup: Use cloud-based machine learning informed by global analysis of executables to detect and prevent adware and potentially unwanted programs (PUP) for your online hosts.
         :param pulumi.Input['PreventionPolicyMacCloudAntiMalwareArgs'] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
@@ -52,9 +59,7 @@ class PreventionPolicyMacArgs:
         :param pulumi.Input[bool] empyre_backdoor: Whether to enable the setting. A process with behaviors indicative of the Empyre Backdoor was terminated.
         :param pulumi.Input[bool] enabled: Enable the prevention policy.
         :param pulumi.Input[bool] hash_collector: Whether to enable the setting. An attempt to dump a user’s hashed password was blocked.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the prevention policy.
         :param pulumi.Input[bool] intelligence_sourced_threats: Whether to enable the setting. Block processes that CrowdStrike Intelligence analysts classify as malicious. These are focused on static hash-based IOCs.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ioa_rule_groups: IOA Rule Group to attach to the prevention policy.
         :param pulumi.Input[bool] kc_password_decoded: Whether to enable the setting. An attempt to recover a plaintext password via the kcpassword file was blocked.
         :param pulumi.Input[str] name: Name of the prevention policy.
         :param pulumi.Input[bool] notify_end_users: Whether to enable the setting. Show a pop-up notification to the end user when the Falcon sensor blocks, kills, or quarantines. See these messages in Console.app by searching for Process: Falcon Notifications.
@@ -69,6 +74,8 @@ class PreventionPolicyMacArgs:
         :param pulumi.Input[bool] upload_unknown_executables: Whether to enable the setting. Upload all unknown executables for advanced analysis in the cloud.
         :param pulumi.Input[bool] xpcom_shell: Whether to enable the setting. The execution of an XPCOM shell was blocked.
         """
+        pulumi.set(__self__, "host_groups", host_groups)
+        pulumi.set(__self__, "ioa_rule_groups", ioa_rule_groups)
         if chopper_webshell is not None:
             pulumi.set(__self__, "chopper_webshell", chopper_webshell)
         if cloud_adware_and_pup is not None:
@@ -87,12 +94,8 @@ class PreventionPolicyMacArgs:
             pulumi.set(__self__, "enabled", enabled)
         if hash_collector is not None:
             pulumi.set(__self__, "hash_collector", hash_collector)
-        if host_groups is not None:
-            pulumi.set(__self__, "host_groups", host_groups)
         if intelligence_sourced_threats is not None:
             pulumi.set(__self__, "intelligence_sourced_threats", intelligence_sourced_threats)
-        if ioa_rule_groups is not None:
-            pulumi.set(__self__, "ioa_rule_groups", ioa_rule_groups)
         if kc_password_decoded is not None:
             pulumi.set(__self__, "kc_password_decoded", kc_password_decoded)
         if name is not None:
@@ -119,6 +122,30 @@ class PreventionPolicyMacArgs:
             pulumi.set(__self__, "upload_unknown_executables", upload_unknown_executables)
         if xpcom_shell is not None:
             pulumi.set(__self__, "xpcom_shell", xpcom_shell)
+
+    @property
+    @pulumi.getter(name="hostGroups")
+    def host_groups(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Host Group ids to attach to the prevention policy.
+        """
+        return pulumi.get(self, "host_groups")
+
+    @host_groups.setter
+    def host_groups(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "host_groups", value)
+
+    @property
+    @pulumi.getter(name="ioaRuleGroups")
+    def ioa_rule_groups(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        IOA Rule Group to attach to the prevention policy.
+        """
+        return pulumi.get(self, "ioa_rule_groups")
+
+    @ioa_rule_groups.setter
+    def ioa_rule_groups(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "ioa_rule_groups", value)
 
     @property
     @pulumi.getter(name="chopperWebshell")
@@ -229,18 +256,6 @@ class PreventionPolicyMacArgs:
         pulumi.set(self, "hash_collector", value)
 
     @property
-    @pulumi.getter(name="hostGroups")
-    def host_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Host Group ids to attach to the prevention policy.
-        """
-        return pulumi.get(self, "host_groups")
-
-    @host_groups.setter
-    def host_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "host_groups", value)
-
-    @property
     @pulumi.getter(name="intelligenceSourcedThreats")
     def intelligence_sourced_threats(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -251,18 +266,6 @@ class PreventionPolicyMacArgs:
     @intelligence_sourced_threats.setter
     def intelligence_sourced_threats(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "intelligence_sourced_threats", value)
-
-    @property
-    @pulumi.getter(name="ioaRuleGroups")
-    def ioa_rule_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        IOA Rule Group to attach to the prevention policy.
-        """
-        return pulumi.get(self, "ioa_rule_groups")
-
-    @ioa_rule_groups.setter
-    def ioa_rule_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "ioa_rule_groups", value)
 
     @property
     @pulumi.getter(name="kcPasswordDecoded")
@@ -891,7 +894,7 @@ class PreventionPolicyMac(pulumi.CustomResource):
             enabled=False,
             description="Made with Pulumi",
             host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
-            ioa_rule_groups=["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
+            ioa_rule_groups=[],
             cloud_adware_and_pup={
                 "detection": "MODERATE",
                 "prevention": "CAUTIOUS",
@@ -967,7 +970,7 @@ class PreventionPolicyMac(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[PreventionPolicyMacArgs] = None,
+                 args: PreventionPolicyMacArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to manage CrowdStrike Falcon prevention policies for Mac hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
@@ -988,7 +991,7 @@ class PreventionPolicyMac(pulumi.CustomResource):
             enabled=False,
             description="Made with Pulumi",
             host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
-            ioa_rule_groups=["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
+            ioa_rule_groups=[],
             cloud_adware_and_pup={
                 "detection": "MODERATE",
                 "prevention": "CAUTIOUS",
@@ -1090,8 +1093,12 @@ class PreventionPolicyMac(pulumi.CustomResource):
             __props__.__dict__["empyre_backdoor"] = empyre_backdoor
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["hash_collector"] = hash_collector
+            if host_groups is None and not opts.urn:
+                raise TypeError("Missing required property 'host_groups'")
             __props__.__dict__["host_groups"] = host_groups
             __props__.__dict__["intelligence_sourced_threats"] = intelligence_sourced_threats
+            if ioa_rule_groups is None and not opts.urn:
+                raise TypeError("Missing required property 'ioa_rule_groups'")
             __props__.__dict__["ioa_rule_groups"] = ioa_rule_groups
             __props__.__dict__["kc_password_decoded"] = kc_password_decoded
             __props__.__dict__["name"] = name
@@ -1282,7 +1289,7 @@ class PreventionPolicyMac(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostGroups")
-    def host_groups(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def host_groups(self) -> pulumi.Output[Sequence[str]]:
         """
         Host Group ids to attach to the prevention policy.
         """
@@ -1298,7 +1305,7 @@ class PreventionPolicyMac(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ioaRuleGroups")
-    def ioa_rule_groups(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def ioa_rule_groups(self) -> pulumi.Output[Sequence[str]]:
         """
         IOA Rule Group to attach to the prevention policy.
         """

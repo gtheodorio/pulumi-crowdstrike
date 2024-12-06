@@ -37,10 +37,7 @@ namespace CrowdStrike.Crowdstrike
     ///         {
     ///             "d6e3c1e1b3d0467da0fowc96a5e6ecb5",
     ///         },
-    ///         IoaRuleGroups = new[]
-    ///         {
-    ///             "ed334b3243bc4b6bb8e7d40a2ecd86fa",
-    ///         },
+    ///         IoaRuleGroups = new[] {},
     ///         CloudAdwareAndPup = new Crowdstrike.Inputs.PreventionPolicyMacCloudAdwareAndPupArgs
     ///         {
     ///             Detection = "MODERATE",
@@ -258,7 +255,7 @@ namespace CrowdStrike.Crowdstrike
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public PreventionPolicyMac(string name, PreventionPolicyMacArgs? args = null, CustomResourceOptions? options = null)
+        public PreventionPolicyMac(string name, PreventionPolicyMacArgs args, CustomResourceOptions? options = null)
             : base("crowdstrike:index/preventionPolicyMac:PreventionPolicyMac", name, args ?? new PreventionPolicyMacArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -351,7 +348,7 @@ namespace CrowdStrike.Crowdstrike
         [Input("hashCollector")]
         public Input<bool>? HashCollector { get; set; }
 
-        [Input("hostGroups")]
+        [Input("hostGroups", required: true)]
         private InputList<string>? _hostGroups;
 
         /// <summary>
@@ -369,7 +366,7 @@ namespace CrowdStrike.Crowdstrike
         [Input("intelligenceSourcedThreats")]
         public Input<bool>? IntelligenceSourcedThreats { get; set; }
 
-        [Input("ioaRuleGroups")]
+        [Input("ioaRuleGroups", required: true)]
         private InputList<string>? _ioaRuleGroups;
 
         /// <summary>

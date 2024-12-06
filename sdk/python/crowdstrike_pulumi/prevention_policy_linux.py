@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -16,6 +21,8 @@ __all__ = ['PreventionPolicyLinuxArgs', 'PreventionPolicyLinux']
 @pulumi.input_type
 class PreventionPolicyLinuxArgs:
     def __init__(__self__, *,
+                 host_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 ioa_rule_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
                  cloud_anti_malware: Optional[pulumi.Input['PreventionPolicyLinuxCloudAntiMalwareArgs']] = None,
                  custom_blocking: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -24,9 +31,7 @@ class PreventionPolicyLinuxArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  filesystem_visibility: Optional[pulumi.Input[bool]] = None,
                  ftp_visibility: Optional[pulumi.Input[bool]] = None,
-                 host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  http_visibility: Optional[pulumi.Input[bool]] = None,
-                 ioa_rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_visibility: Optional[pulumi.Input[bool]] = None,
                  prevent_suspicious_processes: Optional[pulumi.Input[bool]] = None,
@@ -38,6 +43,8 @@ class PreventionPolicyLinuxArgs:
                  upload_unknown_executables: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a PreventionPolicyLinux resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the prevention policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ioa_rule_groups: IOA Rule Group to attach to the prevention policy.
         :param pulumi.Input['PreventionPolicyLinuxCloudAntiMalwareArgs'] cloud_anti_malware: Use cloud-based machine learning informed by global analysis of executables to detect and prevent known malware for your online hosts.
         :param pulumi.Input[bool] custom_blocking: Whether to enable the setting. Block processes matching hashes that you add to IOC Management with the action set to "Block" or "Block, hide detection".
         :param pulumi.Input[str] description: Description of the prevention policy.
@@ -46,9 +53,7 @@ class PreventionPolicyLinuxArgs:
         :param pulumi.Input[bool] enabled: Enable the prevention policy.
         :param pulumi.Input[bool] filesystem_visibility: Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
         :param pulumi.Input[bool] ftp_visibility: Whether to enable the setting. Allows the sensor to monitor unencrypted FTP traffic for malicious patterns and improved detections.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the prevention policy.
         :param pulumi.Input[bool] http_visibility: Whether to enable the setting. Allows the sensor to monitor unencrypted HTTP traffic for malicious patterns and improved detections.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ioa_rule_groups: IOA Rule Group to attach to the prevention policy.
         :param pulumi.Input[str] name: Name of the prevention policy.
         :param pulumi.Input[bool] network_visibility: Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
         :param pulumi.Input[bool] prevent_suspicious_processes: Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
@@ -59,6 +64,8 @@ class PreventionPolicyLinuxArgs:
         :param pulumi.Input[bool] upload_unknown_detection_related_executables: Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
         :param pulumi.Input[bool] upload_unknown_executables: Whether to enable the setting. Upload all unknown executables for advanced analysis in the cloud.
         """
+        pulumi.set(__self__, "host_groups", host_groups)
+        pulumi.set(__self__, "ioa_rule_groups", ioa_rule_groups)
         if cloud_anti_malware is not None:
             pulumi.set(__self__, "cloud_anti_malware", cloud_anti_malware)
         if custom_blocking is not None:
@@ -75,12 +82,8 @@ class PreventionPolicyLinuxArgs:
             pulumi.set(__self__, "filesystem_visibility", filesystem_visibility)
         if ftp_visibility is not None:
             pulumi.set(__self__, "ftp_visibility", ftp_visibility)
-        if host_groups is not None:
-            pulumi.set(__self__, "host_groups", host_groups)
         if http_visibility is not None:
             pulumi.set(__self__, "http_visibility", http_visibility)
-        if ioa_rule_groups is not None:
-            pulumi.set(__self__, "ioa_rule_groups", ioa_rule_groups)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_visibility is not None:
@@ -99,6 +102,30 @@ class PreventionPolicyLinuxArgs:
             pulumi.set(__self__, "upload_unknown_detection_related_executables", upload_unknown_detection_related_executables)
         if upload_unknown_executables is not None:
             pulumi.set(__self__, "upload_unknown_executables", upload_unknown_executables)
+
+    @property
+    @pulumi.getter(name="hostGroups")
+    def host_groups(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Host Group ids to attach to the prevention policy.
+        """
+        return pulumi.get(self, "host_groups")
+
+    @host_groups.setter
+    def host_groups(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "host_groups", value)
+
+    @property
+    @pulumi.getter(name="ioaRuleGroups")
+    def ioa_rule_groups(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        IOA Rule Group to attach to the prevention policy.
+        """
+        return pulumi.get(self, "ioa_rule_groups")
+
+    @ioa_rule_groups.setter
+    def ioa_rule_groups(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "ioa_rule_groups", value)
 
     @property
     @pulumi.getter(name="cloudAntiMalware")
@@ -197,18 +224,6 @@ class PreventionPolicyLinuxArgs:
         pulumi.set(self, "ftp_visibility", value)
 
     @property
-    @pulumi.getter(name="hostGroups")
-    def host_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Host Group ids to attach to the prevention policy.
-        """
-        return pulumi.get(self, "host_groups")
-
-    @host_groups.setter
-    def host_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "host_groups", value)
-
-    @property
     @pulumi.getter(name="httpVisibility")
     def http_visibility(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -219,18 +234,6 @@ class PreventionPolicyLinuxArgs:
     @http_visibility.setter
     def http_visibility(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "http_visibility", value)
-
-    @property
-    @pulumi.getter(name="ioaRuleGroups")
-    def ioa_rule_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        IOA Rule Group to attach to the prevention policy.
-        """
-        return pulumi.get(self, "ioa_rule_groups")
-
-    @ioa_rule_groups.setter
-    def ioa_rule_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "ioa_rule_groups", value)
 
     @property
     @pulumi.getter
@@ -726,7 +729,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             enabled=True,
             description="Made with Pulumi",
             host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
-            ioa_rule_groups=["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
+            ioa_rule_groups=[],
             cloud_anti_malware={
                 "detection": "MODERATE",
                 "prevention": "CAUTIOUS",
@@ -786,7 +789,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[PreventionPolicyLinuxArgs] = None,
+                 args: PreventionPolicyLinuxArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to manage CrowdStrike Falcon prevention policies for Linux hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
@@ -807,7 +810,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             enabled=True,
             description="Made with Pulumi",
             host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
-            ioa_rule_groups=["ed334b3243bc4b6bb8e7d40a2ecd86fa"],
+            ioa_rule_groups=[],
             cloud_anti_malware={
                 "detection": "MODERATE",
                 "prevention": "CAUTIOUS",
@@ -892,8 +895,12 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["filesystem_visibility"] = filesystem_visibility
             __props__.__dict__["ftp_visibility"] = ftp_visibility
+            if host_groups is None and not opts.urn:
+                raise TypeError("Missing required property 'host_groups'")
             __props__.__dict__["host_groups"] = host_groups
             __props__.__dict__["http_visibility"] = http_visibility
+            if ioa_rule_groups is None and not opts.urn:
+                raise TypeError("Missing required property 'ioa_rule_groups'")
             __props__.__dict__["ioa_rule_groups"] = ioa_rule_groups
             __props__.__dict__["name"] = name
             __props__.__dict__["network_visibility"] = network_visibility
@@ -1057,7 +1064,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostGroups")
-    def host_groups(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def host_groups(self) -> pulumi.Output[Sequence[str]]:
         """
         Host Group ids to attach to the prevention policy.
         """
@@ -1073,7 +1080,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ioaRuleGroups")
-    def ioa_rule_groups(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def ioa_rule_groups(self) -> pulumi.Output[Sequence[str]]:
         """
         IOA Rule Group to attach to the prevention policy.
         """

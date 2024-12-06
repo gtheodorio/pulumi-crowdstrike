@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/crowdstrike/pulumi-crowdstrike/sdk/go/crowdstrike/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -39,9 +40,7 @@ import (
 //				HostGroups: pulumi.StringArray{
 //					pulumi.String("d6e3c1e1b3d0467da0fowc96a5e6ecb5"),
 //				},
-//				IoaRuleGroups: pulumi.StringArray{
-//					pulumi.String("ed334b3243bc4b6bb8e7d40a2ecd86fa"),
-//				},
+//				IoaRuleGroups: pulumi.StringArray{},
 //				CloudAdwareAndPup: &crowdstrike.PreventionPolicyMacCloudAdwareAndPupArgs{
 //					Detection:  pulumi.String("MODERATE"),
 //					Prevention: pulumi.String("CAUTIOUS"),
@@ -152,9 +151,15 @@ type PreventionPolicyMac struct {
 func NewPreventionPolicyMac(ctx *pulumi.Context,
 	name string, args *PreventionPolicyMacArgs, opts ...pulumi.ResourceOption) (*PreventionPolicyMac, error) {
 	if args == nil {
-		args = &PreventionPolicyMacArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.HostGroups == nil {
+		return nil, errors.New("invalid value for required argument 'HostGroups'")
+	}
+	if args.IoaRuleGroups == nil {
+		return nil, errors.New("invalid value for required argument 'IoaRuleGroups'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PreventionPolicyMac
 	err := ctx.RegisterResource("crowdstrike:index/preventionPolicyMac:PreventionPolicyMac", name, args, &resource, opts...)

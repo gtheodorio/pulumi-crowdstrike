@@ -4,31 +4,105 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'FilevantagePolicyScheduledExclusionArgs',
+    'FilevantagePolicyScheduledExclusionArgsDict',
     'FilevantagePolicyScheduledExclusionRepeatedArgs',
+    'FilevantagePolicyScheduledExclusionRepeatedArgsDict',
     'FilevantageRuleGroupRuleArgs',
+    'FilevantageRuleGroupRuleArgsDict',
     'PreventionPolicyLinuxCloudAntiMalwareArgs',
+    'PreventionPolicyLinuxCloudAntiMalwareArgsDict',
     'PreventionPolicyLinuxSensorAntiMalwareArgs',
+    'PreventionPolicyLinuxSensorAntiMalwareArgsDict',
     'PreventionPolicyMacCloudAdwareAndPupArgs',
+    'PreventionPolicyMacCloudAdwareAndPupArgsDict',
     'PreventionPolicyMacCloudAntiMalwareArgs',
+    'PreventionPolicyMacCloudAntiMalwareArgsDict',
     'PreventionPolicyMacSensorAdwareAndPupArgs',
+    'PreventionPolicyMacSensorAdwareAndPupArgsDict',
     'PreventionPolicyMacSensorAntiMalwareArgs',
+    'PreventionPolicyMacSensorAntiMalwareArgsDict',
     'PreventionPolicyWindowsAdwareAndPupArgs',
+    'PreventionPolicyWindowsAdwareAndPupArgsDict',
     'PreventionPolicyWindowsCloudAntiMalwareArgs',
+    'PreventionPolicyWindowsCloudAntiMalwareArgsDict',
     'PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs',
+    'PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgsDict',
     'PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs',
+    'PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgsDict',
     'PreventionPolicyWindowsExtendedUserModeDataArgs',
+    'PreventionPolicyWindowsExtendedUserModeDataArgsDict',
     'PreventionPolicyWindowsSensorAntiMalwareArgs',
+    'PreventionPolicyWindowsSensorAntiMalwareArgsDict',
     'PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs',
+    'PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgsDict',
     'SensorUpdatePolicyScheduleArgs',
+    'SensorUpdatePolicyScheduleArgsDict',
     'SensorUpdatePolicyScheduleTimeBlockArgs',
+    'SensorUpdatePolicyScheduleTimeBlockArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class FilevantagePolicyScheduledExclusionArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the scheduled exclusion.
+        """
+        start_date: pulumi.Input[str]
+        """
+        The start date of the scheduled exclusion. Format: YYYY-MM-DD
+        """
+        start_time: pulumi.Input[str]
+        """
+        The start time of the scheduled exclusion in 24 hour format. Format: HH:MM
+        """
+        timezone: pulumi.Input[str]
+        """
+        The timezone to use for the time fields. See https://en.wikipedia.org/wiki/List*of*tz*database*time_zones.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the scheduled exclusion.
+        """
+        end_date: NotRequired[pulumi.Input[str]]
+        """
+        The end date of the scheduled exclusion. Format: YYYY-MM-DD
+        """
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        The end time of the scheduled exclusion in 24 hour format. Format: HH:MM
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier for the scheduled exclusion.
+        """
+        processes: NotRequired[pulumi.Input[str]]
+        """
+        A comma separated list of processes to exclude changes from. Example: **/run*me.sh excludes changes made by run*me.sh in any location
+        """
+        repeated: NotRequired[pulumi.Input['FilevantagePolicyScheduledExclusionRepeatedArgsDict']]
+        """
+        Repeated scheduled exclusion
+        """
+        users: NotRequired[pulumi.Input[str]]
+        """
+        A comma separated list of users to exclude changes from. Example: user1,user2,admin* excludes changes made by user1, user2, and any user starting with admin
+        """
+elif False:
+    FilevantagePolicyScheduledExclusionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FilevantagePolicyScheduledExclusionArgs:
@@ -209,6 +283,39 @@ class FilevantagePolicyScheduledExclusionArgs:
         pulumi.set(self, "users", value)
 
 
+if not MYPY:
+    class FilevantagePolicyScheduledExclusionRepeatedArgsDict(TypedDict):
+        all_day: pulumi.Input[bool]
+        """
+        If the exclusion is all day.
+        """
+        frequency: pulumi.Input[str]
+        """
+        The frequency of the exclusion. Options: daily, weekly, monthly
+        """
+        days_of_months: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        The days of the month to allow the exclusion. Required if frequency is set to monthly and monthly_occurrence is set to days. Options: 1-31
+        """
+        days_of_weeks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The days of the week to allow the exclusion. Required if frequency is set to weekly or set to monthly and monthly_occurrence is set to a week. Options: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+        """
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        The end time to end the scheduled exclusion in 24 hour format. Format: HH:MM required if all_day is false
+        """
+        monthly_occurrence: NotRequired[pulumi.Input[str]]
+        """
+        The monthly occurrence of the exclusion. Either specify a week (first, second, third, fourth) or set to days to specify days of the month. Options: first, second, third, fourth, days. Required if frequency is set to monthly
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        The start time to allow the scheduled exclusion in 24 hour format. Format: HH:MM required if all_day is false
+        """
+elif False:
+    FilevantagePolicyScheduledExclusionRepeatedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FilevantagePolicyScheduledExclusionRepeatedArgs:
     def __init__(__self__, *,
@@ -325,6 +432,139 @@ class FilevantagePolicyScheduledExclusionRepeatedArgs:
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
 
+
+if not MYPY:
+    class FilevantageRuleGroupRuleArgsDict(TypedDict):
+        description: pulumi.Input[str]
+        """
+        Description of the filevantage rule.
+        """
+        path: pulumi.Input[str]
+        """
+        Representing the file system or registry path to monitor. All paths must end with the path separator, e.g. c:\\windows\\ for windows and /usr/bin/ for linux/mac.
+        """
+        severity: pulumi.Input[str]
+        """
+        Severity to categorize change events produced by this rule.
+        """
+        depth: NotRequired[pulumi.Input[str]]
+        """
+        Depth below the base path to monitor.
+        """
+        enable_content_capture: NotRequired[pulumi.Input[bool]]
+        """
+        Enable content capture for the rule. Requires watch*file*write*changes or watch*key*value*set_changes to be enabled.
+        """
+        exclude: NotRequired[pulumi.Input[str]]
+        """
+        Represents the files, directories, registry keys, or registry values that will be excluded from monitoring.
+        """
+        exclude_processes: NotRequired[pulumi.Input[str]]
+        """
+        Represents the changes performed by specific processes that will be excluded from monitoring.
+        """
+        exclude_users: NotRequired[pulumi.Input[str]]
+        """
+        Represents the changes performed by specific users that will be excluded from monitoring.
+        """
+        file_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of file names whose content will be monitored. Listed files must match the file include pattern and not match the file exclude pattern.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Identifier for the filevantage rule.
+        """
+        include: NotRequired[pulumi.Input[str]]
+        """
+        Represents the files, directories, registry keys, or registry values that will be monitored. Defaults to all (*)
+        """
+        include_processes: NotRequired[pulumi.Input[str]]
+        """
+        Represents the changes performed by specific processes that will be monitored.
+        """
+        include_users: NotRequired[pulumi.Input[str]]
+        """
+        Represents the changes performed by specific users that will be monitored.
+        """
+        precedence: NotRequired[pulumi.Input[int]]
+        """
+        Precedence of the rule in the rule group.
+        """
+        registry_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of registry values whose content will be monitored. Listed registry values must match the registry include pattern and not match the registry exclude pattern.
+        """
+        watch_directory_attribute_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor directory attribute change events.
+        """
+        watch_directory_create_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor directory creation events.
+        """
+        watch_directory_delete_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor directory deletion events.
+        """
+        watch_directory_permission_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor directory permission change events.
+        """
+        watch_directory_rename_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor directory rename events.
+        """
+        watch_file_attribute_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor file attribute change events.
+        """
+        watch_file_create_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor file creation events.
+        """
+        watch_file_delete_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor file deletion events.
+        """
+        watch_file_permission_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor file permission change events.
+        """
+        watch_file_rename_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor file rename events.
+        """
+        watch_file_write_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor file write events.
+        """
+        watch_key_create_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor registry key creation events.
+        """
+        watch_key_delete_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor registry key deletion events.
+        """
+        watch_key_permissions_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor registry key permission change events.
+        """
+        watch_key_rename_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor registry key rename events.
+        """
+        watch_key_value_delete_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor registry value deletion events.
+        """
+        watch_key_value_set_changes: NotRequired[pulumi.Input[bool]]
+        """
+        Monitor registry value set events.
+        """
+elif False:
+    FilevantageRuleGroupRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FilevantageRuleGroupRuleArgs:
@@ -842,6 +1082,19 @@ class FilevantageRuleGroupRuleArgs:
         pulumi.set(self, "watch_key_value_set_changes", value)
 
 
+if not MYPY:
+    class PreventionPolicyLinuxCloudAntiMalwareArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    PreventionPolicyLinuxCloudAntiMalwareArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PreventionPolicyLinuxCloudAntiMalwareArgs:
     def __init__(__self__, *,
@@ -878,6 +1131,19 @@ class PreventionPolicyLinuxCloudAntiMalwareArgs:
     def prevention(self, value: pulumi.Input[str]):
         pulumi.set(self, "prevention", value)
 
+
+if not MYPY:
+    class PreventionPolicyLinuxSensorAntiMalwareArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    PreventionPolicyLinuxSensorAntiMalwareArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PreventionPolicyLinuxSensorAntiMalwareArgs:
@@ -916,6 +1182,19 @@ class PreventionPolicyLinuxSensorAntiMalwareArgs:
         pulumi.set(self, "prevention", value)
 
 
+if not MYPY:
+    class PreventionPolicyMacCloudAdwareAndPupArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    PreventionPolicyMacCloudAdwareAndPupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PreventionPolicyMacCloudAdwareAndPupArgs:
     def __init__(__self__, *,
@@ -952,6 +1231,19 @@ class PreventionPolicyMacCloudAdwareAndPupArgs:
     def prevention(self, value: pulumi.Input[str]):
         pulumi.set(self, "prevention", value)
 
+
+if not MYPY:
+    class PreventionPolicyMacCloudAntiMalwareArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    PreventionPolicyMacCloudAntiMalwareArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PreventionPolicyMacCloudAntiMalwareArgs:
@@ -990,6 +1282,19 @@ class PreventionPolicyMacCloudAntiMalwareArgs:
         pulumi.set(self, "prevention", value)
 
 
+if not MYPY:
+    class PreventionPolicyMacSensorAdwareAndPupArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    PreventionPolicyMacSensorAdwareAndPupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PreventionPolicyMacSensorAdwareAndPupArgs:
     def __init__(__self__, *,
@@ -1026,6 +1331,19 @@ class PreventionPolicyMacSensorAdwareAndPupArgs:
     def prevention(self, value: pulumi.Input[str]):
         pulumi.set(self, "prevention", value)
 
+
+if not MYPY:
+    class PreventionPolicyMacSensorAntiMalwareArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    PreventionPolicyMacSensorAntiMalwareArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PreventionPolicyMacSensorAntiMalwareArgs:
@@ -1064,6 +1382,19 @@ class PreventionPolicyMacSensorAntiMalwareArgs:
         pulumi.set(self, "prevention", value)
 
 
+if not MYPY:
+    class PreventionPolicyWindowsAdwareAndPupArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    PreventionPolicyWindowsAdwareAndPupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PreventionPolicyWindowsAdwareAndPupArgs:
     def __init__(__self__, *,
@@ -1100,6 +1431,19 @@ class PreventionPolicyWindowsAdwareAndPupArgs:
     def prevention(self, value: pulumi.Input[str]):
         pulumi.set(self, "prevention", value)
 
+
+if not MYPY:
+    class PreventionPolicyWindowsCloudAntiMalwareArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    PreventionPolicyWindowsCloudAntiMalwareArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PreventionPolicyWindowsCloudAntiMalwareArgs:
@@ -1138,6 +1482,19 @@ class PreventionPolicyWindowsCloudAntiMalwareArgs:
         pulumi.set(self, "prevention", value)
 
 
+if not MYPY:
+    class PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs:
     def __init__(__self__, *,
@@ -1174,6 +1531,19 @@ class PreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs:
     def prevention(self, value: pulumi.Input[str]):
         pulumi.set(self, "prevention", value)
 
+
+if not MYPY:
+    class PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs:
@@ -1212,6 +1582,15 @@ class PreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs:
         pulumi.set(self, "prevention", value)
 
 
+if not MYPY:
+    class PreventionPolicyWindowsExtendedUserModeDataArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+elif False:
+    PreventionPolicyWindowsExtendedUserModeDataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PreventionPolicyWindowsExtendedUserModeDataArgs:
     def __init__(__self__, *,
@@ -1233,6 +1612,19 @@ class PreventionPolicyWindowsExtendedUserModeDataArgs:
     def detection(self, value: pulumi.Input[str]):
         pulumi.set(self, "detection", value)
 
+
+if not MYPY:
+    class PreventionPolicyWindowsSensorAntiMalwareArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    PreventionPolicyWindowsSensorAntiMalwareArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PreventionPolicyWindowsSensorAntiMalwareArgs:
@@ -1271,6 +1663,19 @@ class PreventionPolicyWindowsSensorAntiMalwareArgs:
         pulumi.set(self, "prevention", value)
 
 
+if not MYPY:
+    class PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs:
     def __init__(__self__, *,
@@ -1307,6 +1712,23 @@ class PreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs:
     def prevention(self, value: pulumi.Input[str]):
         pulumi.set(self, "prevention", value)
 
+
+if not MYPY:
+    class SensorUpdatePolicyScheduleArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable the scheduler for sensor update policy.
+        """
+        time_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['SensorUpdatePolicyScheduleTimeBlockArgsDict']]]]
+        """
+        The time block to prevent sensor updates. Only set when enabled is true.
+        """
+        timezone: NotRequired[pulumi.Input[str]]
+        """
+        The time zones that will be used for the time blocks. Only set when enabled is true.
+        """
+elif False:
+    SensorUpdatePolicyScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SensorUpdatePolicyScheduleArgs:
@@ -1361,6 +1783,23 @@ class SensorUpdatePolicyScheduleArgs:
     def timezone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "timezone", value)
 
+
+if not MYPY:
+    class SensorUpdatePolicyScheduleTimeBlockArgsDict(TypedDict):
+        days: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The days of the week the time block should be active.
+        """
+        end_time: pulumi.Input[str]
+        """
+        The end time for the time block in 24HR format. Must be atleast 1 hour more than start_time.
+        """
+        start_time: pulumi.Input[str]
+        """
+        The start time for the time block in 24HR format. Must be atleast 1 hour before end_time.
+        """
+elif False:
+    SensorUpdatePolicyScheduleTimeBlockArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SensorUpdatePolicyScheduleTimeBlockArgs:

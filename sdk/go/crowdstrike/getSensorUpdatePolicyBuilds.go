@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			builds, err := crowdstrike.GetSensorUpdatePolicyBuilds(ctx, nil, nil)
+//			builds, err := crowdstrike.GetSensorUpdatePolicyBuilds(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
