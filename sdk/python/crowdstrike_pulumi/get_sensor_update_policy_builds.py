@@ -131,7 +131,7 @@ def get_sensor_update_policy_builds(opts: Optional[pulumi.InvokeOptions] = None)
         linux_arm64=pulumi.get(__ret__, 'linux_arm64'),
         mac=pulumi.get(__ret__, 'mac'),
         windows=pulumi.get(__ret__, 'windows'))
-def get_sensor_update_policy_builds_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSensorUpdatePolicyBuildsResult]:
+def get_sensor_update_policy_builds_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSensorUpdatePolicyBuildsResult]:
     """
     This data source provides information about the latest sensor builds for each platform.
 
@@ -155,7 +155,7 @@ def get_sensor_update_policy_builds_output(opts: Optional[pulumi.InvokeOptions] 
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('crowdstrike:index/getSensorUpdatePolicyBuilds:getSensorUpdatePolicyBuilds', __args__, opts=opts, typ=GetSensorUpdatePolicyBuildsResult)
     return __ret__.apply(lambda __response__: GetSensorUpdatePolicyBuildsResult(
         id=pulumi.get(__response__, 'id'),
