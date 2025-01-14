@@ -81,6 +81,41 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         public static Output<GetSensorUpdatePolicyBuildsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSensorUpdatePolicyBuildsResult>("crowdstrike:index/getSensorUpdatePolicyBuilds:getSensorUpdatePolicyBuilds", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides information about the latest sensor builds for each platform.
+        /// 
+        /// ## API Scopes
+        /// 
+        /// The following API scopes are required:
+        /// 
+        /// - Sensor update policies | Write
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Crowdstrike = Pulumi.Crowdstrike;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var builds = Crowdstrike.GetSensorUpdatePolicyBuilds.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["latestWindowsBuild"] = builds.Apply(getSensorUpdatePolicyBuildsResult =&gt; getSensorUpdatePolicyBuildsResult.Windows?.Latest),
+        ///         ["n1LinuxBuild"] = builds.Apply(getSensorUpdatePolicyBuildsResult =&gt; getSensorUpdatePolicyBuildsResult.Linux?.N1),
+        ///         ["n2MacBuild"] = builds.Apply(getSensorUpdatePolicyBuildsResult =&gt; getSensorUpdatePolicyBuildsResult.Mac?.N2),
+        ///         ["latestLinuxArm64Build"] = builds.Apply(getSensorUpdatePolicyBuildsResult =&gt; getSensorUpdatePolicyBuildsResult.LinuxArm64?.Latest),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSensorUpdatePolicyBuildsResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSensorUpdatePolicyBuildsResult>("crowdstrike:index/getSensorUpdatePolicyBuilds:getSensorUpdatePolicyBuilds", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

@@ -81,7 +81,7 @@ export interface GetSensorUpdatePolicyBuildsResult {
  * export const latestLinuxArm64Build = builds.then(builds => builds.linuxArm64?.latest);
  * ```
  */
-export function getSensorUpdatePolicyBuildsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetSensorUpdatePolicyBuildsResult> {
+export function getSensorUpdatePolicyBuildsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSensorUpdatePolicyBuildsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("crowdstrike:index/getSensorUpdatePolicyBuilds:getSensorUpdatePolicyBuilds", {
     }, opts);
