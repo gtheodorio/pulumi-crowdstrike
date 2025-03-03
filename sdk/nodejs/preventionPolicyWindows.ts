@@ -22,9 +22,9 @@ import * as utilities from "./utilities";
  * import * as crowdstrike from "@crowdstrike/pulumi";
  *
  * const example = new crowdstrike.PreventionPolicyWindows("example", {
- *     enabled: false,
+ *     enabled: true,
  *     description: "Made with Pulumi",
- *     hostGroups: ["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
+ *     hostGroups: [],
  *     ioaRuleGroups: [],
  *     adwareAndPup: {
  *         detection: "MODERATE",
@@ -53,56 +53,57 @@ import * as utilities from "./utilities";
  *     extendedUserModeData: {
  *         detection: "MODERATE",
  *     },
- *     usbInsertionTriggeredScan: false,
- *     applicationExploitationActivity: false,
- *     additionalUserModeData: false,
- *     notifyEndUsers: false,
- *     advancedRemediation: false,
- *     backupDeletion: false,
- *     biosDeepVisibility: false,
- *     chopperWebshell: false,
- *     codeInjection: false,
- *     credentialDumping: false,
- *     cryptowall: false,
- *     customBlocking: false,
- *     detectOnWrite: false,
- *     driveByDownload: false,
- *     driverLoadPrevention: false,
- *     interpreterOnly: false,
- *     engineFullVisibility: false,
- *     enhancedExploitationVisibility: false,
- *     enhancedMlForLargerFiles: false,
- *     fileEncryption: false,
- *     fileSystemAccess: false,
- *     forceAslr: false,
- *     forceDep: false,
- *     heapSprayPreallocation: false,
- *     nullPageAllocation: false,
- *     sehOverwriteProtection: false,
- *     hardwareEnhancedExploitDetection: false,
- *     httpDetections: false,
- *     redactHttpDetectionDetails: false,
- *     intelligenceSourcedThreats: false,
- *     javascriptViaRundll32: false,
- *     locky: false,
- *     memoryScanning: false,
- *     memoryScanningScanWithCpu: false,
- *     microsoftOfficeFileSuspiciousMacroRemoval: false,
- *     onWriteScriptFileVisibility: false,
- *     preventSuspiciousProcesses: false,
- *     quarantineAndSecurityCenterRegistration: false,
- *     quarantineOnRemovableMedia: false,
- *     quarantineOnWrite: false,
- *     scriptBasedExecutionMonitoring: false,
- *     sensorTamperingProtection: false,
- *     suspiciousRegistryOperations: false,
- *     suspiciousScriptsAndCommands: false,
- *     uploadUnknownExecutables: false,
- *     uploadUnknownDetectionRelatedExecutables: false,
- *     volumeShadowCopyAudit: false,
- *     volumeShadowCopyProtect: false,
- *     vulnerableDriverProtection: false,
- *     windowsLogonBypassStickyKeys: false,
+ *     usbInsertionTriggeredScan: true,
+ *     applicationExploitationActivity: true,
+ *     additionalUserModeData: true,
+ *     notifyEndUsers: true,
+ *     advancedRemediation: true,
+ *     backupDeletion: true,
+ *     biosDeepVisibility: true,
+ *     chopperWebshell: true,
+ *     codeInjection: true,
+ *     credentialDumping: true,
+ *     cryptowall: true,
+ *     customBlocking: true,
+ *     detectOnWrite: true,
+ *     driveByDownload: true,
+ *     driverLoadPrevention: true,
+ *     interpreterOnly: true,
+ *     engineFullVisibility: true,
+ *     enhancedExploitationVisibility: true,
+ *     enhancedDllLoadVisibility: true,
+ *     enhancedMlForLargerFiles: true,
+ *     fileEncryption: true,
+ *     fileSystemAccess: true,
+ *     forceAslr: true,
+ *     forceDep: true,
+ *     heapSprayPreallocation: true,
+ *     nullPageAllocation: true,
+ *     sehOverwriteProtection: true,
+ *     hardwareEnhancedExploitDetection: true,
+ *     httpDetections: true,
+ *     redactHttpDetectionDetails: true,
+ *     intelligenceSourcedThreats: true,
+ *     javascriptViaRundll32: true,
+ *     locky: true,
+ *     memoryScanning: true,
+ *     memoryScanningScanWithCpu: true,
+ *     microsoftOfficeFileSuspiciousMacroRemoval: true,
+ *     onWriteScriptFileVisibility: true,
+ *     preventSuspiciousProcesses: true,
+ *     quarantineAndSecurityCenterRegistration: true,
+ *     quarantineOnRemovableMedia: true,
+ *     quarantineOnWrite: true,
+ *     scriptBasedExecutionMonitoring: true,
+ *     sensorTamperingProtection: true,
+ *     suspiciousRegistryOperations: true,
+ *     suspiciousScriptsAndCommands: true,
+ *     uploadUnknownExecutables: true,
+ *     uploadUnknownDetectionRelatedExecutables: true,
+ *     volumeShadowCopyAudit: true,
+ *     volumeShadowCopyProtect: true,
+ *     vulnerableDriverProtection: true,
+ *     windowsLogonBypassStickyKeys: true,
  * });
  * export const preventionPolicyWindows = example;
  * ```
@@ -223,6 +224,10 @@ export class PreventionPolicyWindows extends pulumi.CustomResource {
      * Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreterOnly to be enabled.
      */
     public readonly engineFullVisibility!: pulumi.Output<boolean>;
+    /**
+     * Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+     */
+    public readonly enhancedDllLoadVisibility!: pulumi.Output<boolean>;
     /**
      * Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
      */
@@ -426,6 +431,7 @@ export class PreventionPolicyWindows extends pulumi.CustomResource {
             resourceInputs["driverLoadPrevention"] = state ? state.driverLoadPrevention : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["engineFullVisibility"] = state ? state.engineFullVisibility : undefined;
+            resourceInputs["enhancedDllLoadVisibility"] = state ? state.enhancedDllLoadVisibility : undefined;
             resourceInputs["enhancedExploitationVisibility"] = state ? state.enhancedExploitationVisibility : undefined;
             resourceInputs["enhancedMlForLargerFiles"] = state ? state.enhancedMlForLargerFiles : undefined;
             resourceInputs["extendedUserModeData"] = state ? state.extendedUserModeData : undefined;
@@ -497,6 +503,7 @@ export class PreventionPolicyWindows extends pulumi.CustomResource {
             resourceInputs["driverLoadPrevention"] = args ? args.driverLoadPrevention : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["engineFullVisibility"] = args ? args.engineFullVisibility : undefined;
+            resourceInputs["enhancedDllLoadVisibility"] = args ? args.enhancedDllLoadVisibility : undefined;
             resourceInputs["enhancedExploitationVisibility"] = args ? args.enhancedExploitationVisibility : undefined;
             resourceInputs["enhancedMlForLargerFiles"] = args ? args.enhancedMlForLargerFiles : undefined;
             resourceInputs["extendedUserModeData"] = args ? args.extendedUserModeData : undefined;
@@ -630,6 +637,10 @@ export interface PreventionPolicyWindowsState {
      * Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreterOnly to be enabled.
      */
     engineFullVisibility?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+     */
+    enhancedDllLoadVisibility?: pulumi.Input<boolean>;
     /**
      * Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
      */
@@ -885,6 +896,10 @@ export interface PreventionPolicyWindowsArgs {
      * Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreterOnly to be enabled.
      */
     engineFullVisibility?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+     */
+    enhancedDllLoadVisibility?: pulumi.Input<boolean>;
     /**
      * Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
      */

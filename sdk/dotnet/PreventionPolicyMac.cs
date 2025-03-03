@@ -33,10 +33,7 @@ namespace CrowdStrike.Crowdstrike
     ///     {
     ///         Enabled = false,
     ///         Description = "Made with Pulumi",
-    ///         HostGroups = new[]
-    ///         {
-    ///             "d6e3c1e1b3d0467da0fowc96a5e6ecb5",
-    ///         },
+    ///         HostGroups = new[] {},
     ///         IoaRuleGroups = new[] {},
     ///         CloudAdwareAndPup = new Crowdstrike.Inputs.PreventionPolicyMacCloudAdwareAndPupArgs
     ///         {

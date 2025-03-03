@@ -56,12 +56,23 @@ namespace CrowdStrike.Crowdstrike
 
         private static readonly __Value<string?> _cloud = new __Value<string?>(() => __config.Get("cloud"));
         /// <summary>
-        /// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+        /// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+        /// environment variable when left blank.
         /// </summary>
         public static string? Cloud
         {
             get => _cloud.Get();
             set => _cloud.Set(value);
+        }
+
+        private static readonly __Value<string?> _memberCid = new __Value<string?>(() => __config.Get("memberCid"));
+        /// <summary>
+        /// For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+        /// </summary>
+        public static string? MemberCid
+        {
+            get => _memberCid.Get();
+            set => _memberCid.Set(value);
         }
 
     }

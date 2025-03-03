@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { CloudAwsAccountArgs, CloudAwsAccountState } from "./cloudAwsAccount";
+export type CloudAwsAccount = import("./cloudAwsAccount").CloudAwsAccount;
+export const CloudAwsAccount: typeof import("./cloudAwsAccount").CloudAwsAccount = null as any;
+utilities.lazyLoad(exports, ["CloudAwsAccount"], () => require("./cloudAwsAccount"));
+
 export { FilevantagePolicyArgs, FilevantagePolicyState } from "./filevantagePolicy";
 export type FilevantagePolicy = import("./filevantagePolicy").FilevantagePolicy;
 export const FilevantagePolicy: typeof import("./filevantagePolicy").FilevantagePolicy = null as any;
@@ -14,6 +19,11 @@ export { FilevantageRuleGroupArgs, FilevantageRuleGroupState } from "./filevanta
 export type FilevantageRuleGroup = import("./filevantageRuleGroup").FilevantageRuleGroup;
 export const FilevantageRuleGroup: typeof import("./filevantageRuleGroup").FilevantageRuleGroup = null as any;
 utilities.lazyLoad(exports, ["FilevantageRuleGroup"], () => require("./filevantageRuleGroup"));
+
+export { GetCloudAwsAccountArgs, GetCloudAwsAccountResult, GetCloudAwsAccountOutputArgs } from "./getCloudAwsAccount";
+export const getCloudAwsAccount: typeof import("./getCloudAwsAccount").getCloudAwsAccount = null as any;
+export const getCloudAwsAccountOutput: typeof import("./getCloudAwsAccount").getCloudAwsAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudAwsAccount","getCloudAwsAccountOutput"], () => require("./getCloudAwsAccount"));
 
 export { GetSensorUpdatePolicyBuildsResult } from "./getSensorUpdatePolicyBuilds";
 export const getSensorUpdatePolicyBuilds: typeof import("./getSensorUpdatePolicyBuilds").getSensorUpdatePolicyBuilds = null as any;
@@ -64,6 +74,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "crowdstrike:index/cloudAwsAccount:CloudAwsAccount":
+                return new CloudAwsAccount(name, <any>undefined, { urn })
             case "crowdstrike:index/filevantagePolicy:FilevantagePolicy":
                 return new FilevantagePolicy(name, <any>undefined, { urn })
             case "crowdstrike:index/filevantageRuleGroup:FilevantageRuleGroup":
@@ -83,6 +95,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("crowdstrike", "index/cloudAwsAccount", _module)
 pulumi.runtime.registerResourceModule("crowdstrike", "index/filevantagePolicy", _module)
 pulumi.runtime.registerResourceModule("crowdstrike", "index/filevantageRuleGroup", _module)
 pulumi.runtime.registerResourceModule("crowdstrike", "index/hostGroup", _module)

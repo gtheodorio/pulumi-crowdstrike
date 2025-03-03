@@ -32,12 +32,15 @@ class PreventionPolicyLinuxArgs:
                  filesystem_visibility: Optional[pulumi.Input[bool]] = None,
                  ftp_visibility: Optional[pulumi.Input[bool]] = None,
                  http_visibility: Optional[pulumi.Input[bool]] = None,
+                 memory_visibility: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_visibility: Optional[pulumi.Input[bool]] = None,
+                 on_write_script_file_visibility: Optional[pulumi.Input[bool]] = None,
                  prevent_suspicious_processes: Optional[pulumi.Input[bool]] = None,
                  quarantine: Optional[pulumi.Input[bool]] = None,
                  script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
                  sensor_anti_malware: Optional[pulumi.Input['PreventionPolicyLinuxSensorAntiMalwareArgs']] = None,
+                 sensor_tampering_protection: Optional[pulumi.Input[bool]] = None,
                  tls_visibility: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_detection_related_executables: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_executables: Optional[pulumi.Input[bool]] = None):
@@ -54,12 +57,15 @@ class PreventionPolicyLinuxArgs:
         :param pulumi.Input[bool] filesystem_visibility: Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
         :param pulumi.Input[bool] ftp_visibility: Whether to enable the setting. Allows the sensor to monitor unencrypted FTP traffic for malicious patterns and improved detections.
         :param pulumi.Input[bool] http_visibility: Whether to enable the setting. Allows the sensor to monitor unencrypted HTTP traffic for malicious patterns and improved detections.
+        :param pulumi.Input[bool] memory_visibility: Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
         :param pulumi.Input[str] name: Name of the prevention policy.
         :param pulumi.Input[bool] network_visibility: Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
+        :param pulumi.Input[bool] on_write_script_file_visibility: Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
         :param pulumi.Input[bool] prevent_suspicious_processes: Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
         :param pulumi.Input[bool] quarantine: Whether to enable the setting. Quarantine executable files after they’re prevented by NGAV. When this is enabled, we recommend setting anti-malware prevention levels to Moderate or higher and not using other antivirus solutions.
         :param pulumi.Input[bool] script_based_execution_monitoring: Whether to enable the setting. Provides visibility into suspicious scripts, including shell and other scripting languages.
         :param pulumi.Input['PreventionPolicyLinuxSensorAntiMalwareArgs'] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
+        :param pulumi.Input[bool] sensor_tampering_protection: Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
         :param pulumi.Input[bool] tls_visibility: Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
         :param pulumi.Input[bool] upload_unknown_detection_related_executables: Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
         :param pulumi.Input[bool] upload_unknown_executables: Whether to enable the setting. Upload all unknown executables for advanced analysis in the cloud.
@@ -84,10 +90,14 @@ class PreventionPolicyLinuxArgs:
             pulumi.set(__self__, "ftp_visibility", ftp_visibility)
         if http_visibility is not None:
             pulumi.set(__self__, "http_visibility", http_visibility)
+        if memory_visibility is not None:
+            pulumi.set(__self__, "memory_visibility", memory_visibility)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_visibility is not None:
             pulumi.set(__self__, "network_visibility", network_visibility)
+        if on_write_script_file_visibility is not None:
+            pulumi.set(__self__, "on_write_script_file_visibility", on_write_script_file_visibility)
         if prevent_suspicious_processes is not None:
             pulumi.set(__self__, "prevent_suspicious_processes", prevent_suspicious_processes)
         if quarantine is not None:
@@ -96,6 +106,8 @@ class PreventionPolicyLinuxArgs:
             pulumi.set(__self__, "script_based_execution_monitoring", script_based_execution_monitoring)
         if sensor_anti_malware is not None:
             pulumi.set(__self__, "sensor_anti_malware", sensor_anti_malware)
+        if sensor_tampering_protection is not None:
+            pulumi.set(__self__, "sensor_tampering_protection", sensor_tampering_protection)
         if tls_visibility is not None:
             pulumi.set(__self__, "tls_visibility", tls_visibility)
         if upload_unknown_detection_related_executables is not None:
@@ -236,6 +248,18 @@ class PreventionPolicyLinuxArgs:
         pulumi.set(self, "http_visibility", value)
 
     @property
+    @pulumi.getter(name="memoryVisibility")
+    def memory_visibility(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+        """
+        return pulumi.get(self, "memory_visibility")
+
+    @memory_visibility.setter
+    def memory_visibility(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "memory_visibility", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -258,6 +282,18 @@ class PreventionPolicyLinuxArgs:
     @network_visibility.setter
     def network_visibility(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "network_visibility", value)
+
+    @property
+    @pulumi.getter(name="onWriteScriptFileVisibility")
+    def on_write_script_file_visibility(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+        """
+        return pulumi.get(self, "on_write_script_file_visibility")
+
+    @on_write_script_file_visibility.setter
+    def on_write_script_file_visibility(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "on_write_script_file_visibility", value)
 
     @property
     @pulumi.getter(name="preventSuspiciousProcesses")
@@ -306,6 +342,18 @@ class PreventionPolicyLinuxArgs:
     @sensor_anti_malware.setter
     def sensor_anti_malware(self, value: Optional[pulumi.Input['PreventionPolicyLinuxSensorAntiMalwareArgs']]):
         pulumi.set(self, "sensor_anti_malware", value)
+
+    @property
+    @pulumi.getter(name="sensorTamperingProtection")
+    def sensor_tampering_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+        """
+        return pulumi.get(self, "sensor_tampering_protection")
+
+    @sensor_tampering_protection.setter
+    def sensor_tampering_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sensor_tampering_protection", value)
 
     @property
     @pulumi.getter(name="tlsVisibility")
@@ -359,12 +407,15 @@ class _PreventionPolicyLinuxState:
                  http_visibility: Optional[pulumi.Input[bool]] = None,
                  ioa_rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
+                 memory_visibility: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_visibility: Optional[pulumi.Input[bool]] = None,
+                 on_write_script_file_visibility: Optional[pulumi.Input[bool]] = None,
                  prevent_suspicious_processes: Optional[pulumi.Input[bool]] = None,
                  quarantine: Optional[pulumi.Input[bool]] = None,
                  script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
                  sensor_anti_malware: Optional[pulumi.Input['PreventionPolicyLinuxSensorAntiMalwareArgs']] = None,
+                 sensor_tampering_protection: Optional[pulumi.Input[bool]] = None,
                  tls_visibility: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_detection_related_executables: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_executables: Optional[pulumi.Input[bool]] = None):
@@ -381,12 +432,15 @@ class _PreventionPolicyLinuxState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the prevention policy.
         :param pulumi.Input[bool] http_visibility: Whether to enable the setting. Allows the sensor to monitor unencrypted HTTP traffic for malicious patterns and improved detections.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ioa_rule_groups: IOA Rule Group to attach to the prevention policy.
+        :param pulumi.Input[bool] memory_visibility: Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
         :param pulumi.Input[str] name: Name of the prevention policy.
         :param pulumi.Input[bool] network_visibility: Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
+        :param pulumi.Input[bool] on_write_script_file_visibility: Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
         :param pulumi.Input[bool] prevent_suspicious_processes: Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
         :param pulumi.Input[bool] quarantine: Whether to enable the setting. Quarantine executable files after they’re prevented by NGAV. When this is enabled, we recommend setting anti-malware prevention levels to Moderate or higher and not using other antivirus solutions.
         :param pulumi.Input[bool] script_based_execution_monitoring: Whether to enable the setting. Provides visibility into suspicious scripts, including shell and other scripting languages.
         :param pulumi.Input['PreventionPolicyLinuxSensorAntiMalwareArgs'] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
+        :param pulumi.Input[bool] sensor_tampering_protection: Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
         :param pulumi.Input[bool] tls_visibility: Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
         :param pulumi.Input[bool] upload_unknown_detection_related_executables: Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
         :param pulumi.Input[bool] upload_unknown_executables: Whether to enable the setting. Upload all unknown executables for advanced analysis in the cloud.
@@ -415,10 +469,14 @@ class _PreventionPolicyLinuxState:
             pulumi.set(__self__, "ioa_rule_groups", ioa_rule_groups)
         if last_updated is not None:
             pulumi.set(__self__, "last_updated", last_updated)
+        if memory_visibility is not None:
+            pulumi.set(__self__, "memory_visibility", memory_visibility)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_visibility is not None:
             pulumi.set(__self__, "network_visibility", network_visibility)
+        if on_write_script_file_visibility is not None:
+            pulumi.set(__self__, "on_write_script_file_visibility", on_write_script_file_visibility)
         if prevent_suspicious_processes is not None:
             pulumi.set(__self__, "prevent_suspicious_processes", prevent_suspicious_processes)
         if quarantine is not None:
@@ -427,6 +485,8 @@ class _PreventionPolicyLinuxState:
             pulumi.set(__self__, "script_based_execution_monitoring", script_based_execution_monitoring)
         if sensor_anti_malware is not None:
             pulumi.set(__self__, "sensor_anti_malware", sensor_anti_malware)
+        if sensor_tampering_protection is not None:
+            pulumi.set(__self__, "sensor_tampering_protection", sensor_tampering_protection)
         if tls_visibility is not None:
             pulumi.set(__self__, "tls_visibility", tls_visibility)
         if upload_unknown_detection_related_executables is not None:
@@ -576,6 +636,18 @@ class _PreventionPolicyLinuxState:
         pulumi.set(self, "last_updated", value)
 
     @property
+    @pulumi.getter(name="memoryVisibility")
+    def memory_visibility(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+        """
+        return pulumi.get(self, "memory_visibility")
+
+    @memory_visibility.setter
+    def memory_visibility(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "memory_visibility", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -598,6 +670,18 @@ class _PreventionPolicyLinuxState:
     @network_visibility.setter
     def network_visibility(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "network_visibility", value)
+
+    @property
+    @pulumi.getter(name="onWriteScriptFileVisibility")
+    def on_write_script_file_visibility(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+        """
+        return pulumi.get(self, "on_write_script_file_visibility")
+
+    @on_write_script_file_visibility.setter
+    def on_write_script_file_visibility(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "on_write_script_file_visibility", value)
 
     @property
     @pulumi.getter(name="preventSuspiciousProcesses")
@@ -646,6 +730,18 @@ class _PreventionPolicyLinuxState:
     @sensor_anti_malware.setter
     def sensor_anti_malware(self, value: Optional[pulumi.Input['PreventionPolicyLinuxSensorAntiMalwareArgs']]):
         pulumi.set(self, "sensor_anti_malware", value)
+
+    @property
+    @pulumi.getter(name="sensorTamperingProtection")
+    def sensor_tampering_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+        """
+        return pulumi.get(self, "sensor_tampering_protection")
+
+    @sensor_tampering_protection.setter
+    def sensor_tampering_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sensor_tampering_protection", value)
 
     @property
     @pulumi.getter(name="tlsVisibility")
@@ -700,12 +796,15 @@ class PreventionPolicyLinux(pulumi.CustomResource):
                  host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  http_visibility: Optional[pulumi.Input[bool]] = None,
                  ioa_rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 memory_visibility: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_visibility: Optional[pulumi.Input[bool]] = None,
+                 on_write_script_file_visibility: Optional[pulumi.Input[bool]] = None,
                  prevent_suspicious_processes: Optional[pulumi.Input[bool]] = None,
                  quarantine: Optional[pulumi.Input[bool]] = None,
                  script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
                  sensor_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyLinuxSensorAntiMalwareArgs', 'PreventionPolicyLinuxSensorAntiMalwareArgsDict']]] = None,
+                 sensor_tampering_protection: Optional[pulumi.Input[bool]] = None,
                  tls_visibility: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_detection_related_executables: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_executables: Optional[pulumi.Input[bool]] = None,
@@ -728,7 +827,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         example = crowdstrike.PreventionPolicyLinux("example",
             enabled=True,
             description="Made with Pulumi",
-            host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
+            host_groups=[],
             ioa_rule_groups=[],
             cloud_anti_malware={
                 "detection": "MODERATE",
@@ -750,7 +849,10 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             ftp_visibility=True,
             http_visibility=True,
             network_visibility=True,
-            tls_visibility=True)
+            tls_visibility=True,
+            sensor_tampering_protection=True,
+            on_write_script_file_visibility=True,
+            memory_visibility=True)
         pulumi.export("preventionPolicyLinux", example)
         ```
 
@@ -775,12 +877,15 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the prevention policy.
         :param pulumi.Input[bool] http_visibility: Whether to enable the setting. Allows the sensor to monitor unencrypted HTTP traffic for malicious patterns and improved detections.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ioa_rule_groups: IOA Rule Group to attach to the prevention policy.
+        :param pulumi.Input[bool] memory_visibility: Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
         :param pulumi.Input[str] name: Name of the prevention policy.
         :param pulumi.Input[bool] network_visibility: Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
+        :param pulumi.Input[bool] on_write_script_file_visibility: Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
         :param pulumi.Input[bool] prevent_suspicious_processes: Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
         :param pulumi.Input[bool] quarantine: Whether to enable the setting. Quarantine executable files after they’re prevented by NGAV. When this is enabled, we recommend setting anti-malware prevention levels to Moderate or higher and not using other antivirus solutions.
         :param pulumi.Input[bool] script_based_execution_monitoring: Whether to enable the setting. Provides visibility into suspicious scripts, including shell and other scripting languages.
         :param pulumi.Input[Union['PreventionPolicyLinuxSensorAntiMalwareArgs', 'PreventionPolicyLinuxSensorAntiMalwareArgsDict']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
+        :param pulumi.Input[bool] sensor_tampering_protection: Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
         :param pulumi.Input[bool] tls_visibility: Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
         :param pulumi.Input[bool] upload_unknown_detection_related_executables: Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
         :param pulumi.Input[bool] upload_unknown_executables: Whether to enable the setting. Upload all unknown executables for advanced analysis in the cloud.
@@ -809,7 +914,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         example = crowdstrike.PreventionPolicyLinux("example",
             enabled=True,
             description="Made with Pulumi",
-            host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
+            host_groups=[],
             ioa_rule_groups=[],
             cloud_anti_malware={
                 "detection": "MODERATE",
@@ -831,7 +936,10 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             ftp_visibility=True,
             http_visibility=True,
             network_visibility=True,
-            tls_visibility=True)
+            tls_visibility=True,
+            sensor_tampering_protection=True,
+            on_write_script_file_visibility=True,
+            memory_visibility=True)
         pulumi.export("preventionPolicyLinux", example)
         ```
 
@@ -869,12 +977,15 @@ class PreventionPolicyLinux(pulumi.CustomResource):
                  host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  http_visibility: Optional[pulumi.Input[bool]] = None,
                  ioa_rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 memory_visibility: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_visibility: Optional[pulumi.Input[bool]] = None,
+                 on_write_script_file_visibility: Optional[pulumi.Input[bool]] = None,
                  prevent_suspicious_processes: Optional[pulumi.Input[bool]] = None,
                  quarantine: Optional[pulumi.Input[bool]] = None,
                  script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
                  sensor_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyLinuxSensorAntiMalwareArgs', 'PreventionPolicyLinuxSensorAntiMalwareArgsDict']]] = None,
+                 sensor_tampering_protection: Optional[pulumi.Input[bool]] = None,
                  tls_visibility: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_detection_related_executables: Optional[pulumi.Input[bool]] = None,
                  upload_unknown_executables: Optional[pulumi.Input[bool]] = None,
@@ -902,12 +1013,15 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             if ioa_rule_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'ioa_rule_groups'")
             __props__.__dict__["ioa_rule_groups"] = ioa_rule_groups
+            __props__.__dict__["memory_visibility"] = memory_visibility
             __props__.__dict__["name"] = name
             __props__.__dict__["network_visibility"] = network_visibility
+            __props__.__dict__["on_write_script_file_visibility"] = on_write_script_file_visibility
             __props__.__dict__["prevent_suspicious_processes"] = prevent_suspicious_processes
             __props__.__dict__["quarantine"] = quarantine
             __props__.__dict__["script_based_execution_monitoring"] = script_based_execution_monitoring
             __props__.__dict__["sensor_anti_malware"] = sensor_anti_malware
+            __props__.__dict__["sensor_tampering_protection"] = sensor_tampering_protection
             __props__.__dict__["tls_visibility"] = tls_visibility
             __props__.__dict__["upload_unknown_detection_related_executables"] = upload_unknown_detection_related_executables
             __props__.__dict__["upload_unknown_executables"] = upload_unknown_executables
@@ -934,12 +1048,15 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             http_visibility: Optional[pulumi.Input[bool]] = None,
             ioa_rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             last_updated: Optional[pulumi.Input[str]] = None,
+            memory_visibility: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_visibility: Optional[pulumi.Input[bool]] = None,
+            on_write_script_file_visibility: Optional[pulumi.Input[bool]] = None,
             prevent_suspicious_processes: Optional[pulumi.Input[bool]] = None,
             quarantine: Optional[pulumi.Input[bool]] = None,
             script_based_execution_monitoring: Optional[pulumi.Input[bool]] = None,
             sensor_anti_malware: Optional[pulumi.Input[Union['PreventionPolicyLinuxSensorAntiMalwareArgs', 'PreventionPolicyLinuxSensorAntiMalwareArgsDict']]] = None,
+            sensor_tampering_protection: Optional[pulumi.Input[bool]] = None,
             tls_visibility: Optional[pulumi.Input[bool]] = None,
             upload_unknown_detection_related_executables: Optional[pulumi.Input[bool]] = None,
             upload_unknown_executables: Optional[pulumi.Input[bool]] = None) -> 'PreventionPolicyLinux':
@@ -961,12 +1078,15 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the prevention policy.
         :param pulumi.Input[bool] http_visibility: Whether to enable the setting. Allows the sensor to monitor unencrypted HTTP traffic for malicious patterns and improved detections.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ioa_rule_groups: IOA Rule Group to attach to the prevention policy.
+        :param pulumi.Input[bool] memory_visibility: Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
         :param pulumi.Input[str] name: Name of the prevention policy.
         :param pulumi.Input[bool] network_visibility: Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
+        :param pulumi.Input[bool] on_write_script_file_visibility: Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
         :param pulumi.Input[bool] prevent_suspicious_processes: Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
         :param pulumi.Input[bool] quarantine: Whether to enable the setting. Quarantine executable files after they’re prevented by NGAV. When this is enabled, we recommend setting anti-malware prevention levels to Moderate or higher and not using other antivirus solutions.
         :param pulumi.Input[bool] script_based_execution_monitoring: Whether to enable the setting. Provides visibility into suspicious scripts, including shell and other scripting languages.
         :param pulumi.Input[Union['PreventionPolicyLinuxSensorAntiMalwareArgs', 'PreventionPolicyLinuxSensorAntiMalwareArgsDict']] sensor_anti_malware: For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
+        :param pulumi.Input[bool] sensor_tampering_protection: Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
         :param pulumi.Input[bool] tls_visibility: Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
         :param pulumi.Input[bool] upload_unknown_detection_related_executables: Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
         :param pulumi.Input[bool] upload_unknown_executables: Whether to enable the setting. Upload all unknown executables for advanced analysis in the cloud.
@@ -987,12 +1107,15 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         __props__.__dict__["http_visibility"] = http_visibility
         __props__.__dict__["ioa_rule_groups"] = ioa_rule_groups
         __props__.__dict__["last_updated"] = last_updated
+        __props__.__dict__["memory_visibility"] = memory_visibility
         __props__.__dict__["name"] = name
         __props__.__dict__["network_visibility"] = network_visibility
+        __props__.__dict__["on_write_script_file_visibility"] = on_write_script_file_visibility
         __props__.__dict__["prevent_suspicious_processes"] = prevent_suspicious_processes
         __props__.__dict__["quarantine"] = quarantine
         __props__.__dict__["script_based_execution_monitoring"] = script_based_execution_monitoring
         __props__.__dict__["sensor_anti_malware"] = sensor_anti_malware
+        __props__.__dict__["sensor_tampering_protection"] = sensor_tampering_protection
         __props__.__dict__["tls_visibility"] = tls_visibility
         __props__.__dict__["upload_unknown_detection_related_executables"] = upload_unknown_detection_related_executables
         __props__.__dict__["upload_unknown_executables"] = upload_unknown_executables
@@ -1092,6 +1215,14 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         return pulumi.get(self, "last_updated")
 
     @property
+    @pulumi.getter(name="memoryVisibility")
+    def memory_visibility(self) -> pulumi.Output[bool]:
+        """
+        Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+        """
+        return pulumi.get(self, "memory_visibility")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -1106,6 +1237,14 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
         """
         return pulumi.get(self, "network_visibility")
+
+    @property
+    @pulumi.getter(name="onWriteScriptFileVisibility")
+    def on_write_script_file_visibility(self) -> pulumi.Output[bool]:
+        """
+        Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+        """
+        return pulumi.get(self, "on_write_script_file_visibility")
 
     @property
     @pulumi.getter(name="preventSuspiciousProcesses")
@@ -1138,6 +1277,14 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
         """
         return pulumi.get(self, "sensor_anti_malware")
+
+    @property
+    @pulumi.getter(name="sensorTamperingProtection")
+    def sensor_tampering_protection(self) -> pulumi.Output[bool]:
+        """
+        Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+        """
+        return pulumi.get(self, "sensor_tampering_protection")
 
     @property
     @pulumi.getter(name="tlsVisibility")

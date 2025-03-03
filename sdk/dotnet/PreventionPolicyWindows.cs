@@ -31,12 +31,9 @@ namespace CrowdStrike.Crowdstrike
     /// {
     ///     var example = new Crowdstrike.PreventionPolicyWindows("example", new()
     ///     {
-    ///         Enabled = false,
+    ///         Enabled = true,
     ///         Description = "Made with Pulumi",
-    ///         HostGroups = new[]
-    ///         {
-    ///             "d6e3c1e1b3d0467da0fowc96a5e6ecb5",
-    ///         },
+    ///         HostGroups = new[] {},
     ///         IoaRuleGroups = new[] {},
     ///         AdwareAndPup = new Crowdstrike.Inputs.PreventionPolicyWindowsAdwareAndPupArgs
     ///         {
@@ -72,56 +69,57 @@ namespace CrowdStrike.Crowdstrike
     ///         {
     ///             Detection = "MODERATE",
     ///         },
-    ///         UsbInsertionTriggeredScan = false,
-    ///         ApplicationExploitationActivity = false,
-    ///         AdditionalUserModeData = false,
-    ///         NotifyEndUsers = false,
-    ///         AdvancedRemediation = false,
-    ///         BackupDeletion = false,
-    ///         BiosDeepVisibility = false,
-    ///         ChopperWebshell = false,
-    ///         CodeInjection = false,
-    ///         CredentialDumping = false,
-    ///         Cryptowall = false,
-    ///         CustomBlocking = false,
-    ///         DetectOnWrite = false,
-    ///         DriveByDownload = false,
-    ///         DriverLoadPrevention = false,
-    ///         InterpreterOnly = false,
-    ///         EngineFullVisibility = false,
-    ///         EnhancedExploitationVisibility = false,
-    ///         EnhancedMlForLargerFiles = false,
-    ///         FileEncryption = false,
-    ///         FileSystemAccess = false,
-    ///         ForceAslr = false,
-    ///         ForceDep = false,
-    ///         HeapSprayPreallocation = false,
-    ///         NullPageAllocation = false,
-    ///         SehOverwriteProtection = false,
-    ///         HardwareEnhancedExploitDetection = false,
-    ///         HttpDetections = false,
-    ///         RedactHttpDetectionDetails = false,
-    ///         IntelligenceSourcedThreats = false,
-    ///         JavascriptViaRundll32 = false,
-    ///         Locky = false,
-    ///         MemoryScanning = false,
-    ///         MemoryScanningScanWithCpu = false,
-    ///         MicrosoftOfficeFileSuspiciousMacroRemoval = false,
-    ///         OnWriteScriptFileVisibility = false,
-    ///         PreventSuspiciousProcesses = false,
-    ///         QuarantineAndSecurityCenterRegistration = false,
-    ///         QuarantineOnRemovableMedia = false,
-    ///         QuarantineOnWrite = false,
-    ///         ScriptBasedExecutionMonitoring = false,
-    ///         SensorTamperingProtection = false,
-    ///         SuspiciousRegistryOperations = false,
-    ///         SuspiciousScriptsAndCommands = false,
-    ///         UploadUnknownExecutables = false,
-    ///         UploadUnknownDetectionRelatedExecutables = false,
-    ///         VolumeShadowCopyAudit = false,
-    ///         VolumeShadowCopyProtect = false,
-    ///         VulnerableDriverProtection = false,
-    ///         WindowsLogonBypassStickyKeys = false,
+    ///         UsbInsertionTriggeredScan = true,
+    ///         ApplicationExploitationActivity = true,
+    ///         AdditionalUserModeData = true,
+    ///         NotifyEndUsers = true,
+    ///         AdvancedRemediation = true,
+    ///         BackupDeletion = true,
+    ///         BiosDeepVisibility = true,
+    ///         ChopperWebshell = true,
+    ///         CodeInjection = true,
+    ///         CredentialDumping = true,
+    ///         Cryptowall = true,
+    ///         CustomBlocking = true,
+    ///         DetectOnWrite = true,
+    ///         DriveByDownload = true,
+    ///         DriverLoadPrevention = true,
+    ///         InterpreterOnly = true,
+    ///         EngineFullVisibility = true,
+    ///         EnhancedExploitationVisibility = true,
+    ///         EnhancedDllLoadVisibility = true,
+    ///         EnhancedMlForLargerFiles = true,
+    ///         FileEncryption = true,
+    ///         FileSystemAccess = true,
+    ///         ForceAslr = true,
+    ///         ForceDep = true,
+    ///         HeapSprayPreallocation = true,
+    ///         NullPageAllocation = true,
+    ///         SehOverwriteProtection = true,
+    ///         HardwareEnhancedExploitDetection = true,
+    ///         HttpDetections = true,
+    ///         RedactHttpDetectionDetails = true,
+    ///         IntelligenceSourcedThreats = true,
+    ///         JavascriptViaRundll32 = true,
+    ///         Locky = true,
+    ///         MemoryScanning = true,
+    ///         MemoryScanningScanWithCpu = true,
+    ///         MicrosoftOfficeFileSuspiciousMacroRemoval = true,
+    ///         OnWriteScriptFileVisibility = true,
+    ///         PreventSuspiciousProcesses = true,
+    ///         QuarantineAndSecurityCenterRegistration = true,
+    ///         QuarantineOnRemovableMedia = true,
+    ///         QuarantineOnWrite = true,
+    ///         ScriptBasedExecutionMonitoring = true,
+    ///         SensorTamperingProtection = true,
+    ///         SuspiciousRegistryOperations = true,
+    ///         SuspiciousScriptsAndCommands = true,
+    ///         UploadUnknownExecutables = true,
+    ///         UploadUnknownDetectionRelatedExecutables = true,
+    ///         VolumeShadowCopyAudit = true,
+    ///         VolumeShadowCopyProtect = true,
+    ///         VulnerableDriverProtection = true,
+    ///         WindowsLogonBypassStickyKeys = true,
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
@@ -261,6 +259,12 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         [Output("engineFullVisibility")]
         public Output<bool> EngineFullVisibility { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+        /// </summary>
+        [Output("enhancedDllLoadVisibility")]
+        public Output<bool> EnhancedDllLoadVisibility { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
@@ -685,6 +689,12 @@ namespace CrowdStrike.Crowdstrike
         public Input<bool>? EngineFullVisibility { get; set; }
 
         /// <summary>
+        /// Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+        /// </summary>
+        [Input("enhancedDllLoadVisibility")]
+        public Input<bool>? EnhancedDllLoadVisibility { get; set; }
+
+        /// <summary>
         /// Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
         /// </summary>
         [Input("enhancedExploitationVisibility")]
@@ -1075,6 +1085,12 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         [Input("engineFullVisibility")]
         public Input<bool>? EngineFullVisibility { get; set; }
+
+        /// <summary>
+        /// Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+        /// </summary>
+        [Input("enhancedDllLoadVisibility")]
+        public Input<bool>? EnhancedDllLoadVisibility { get; set; }
 
         /// <summary>
         /// Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.

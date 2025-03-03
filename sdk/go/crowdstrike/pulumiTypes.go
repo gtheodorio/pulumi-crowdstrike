@@ -13,6 +13,786 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type CloudAwsAccountAssetInventory struct {
+	// Enable asset inventory
+	Enabled bool `pulumi:"enabled"`
+	// Custom AWS IAM role name
+	RoleName *string `pulumi:"roleName"`
+}
+
+// CloudAwsAccountAssetInventoryInput is an input type that accepts CloudAwsAccountAssetInventoryArgs and CloudAwsAccountAssetInventoryOutput values.
+// You can construct a concrete instance of `CloudAwsAccountAssetInventoryInput` via:
+//
+//	CloudAwsAccountAssetInventoryArgs{...}
+type CloudAwsAccountAssetInventoryInput interface {
+	pulumi.Input
+
+	ToCloudAwsAccountAssetInventoryOutput() CloudAwsAccountAssetInventoryOutput
+	ToCloudAwsAccountAssetInventoryOutputWithContext(context.Context) CloudAwsAccountAssetInventoryOutput
+}
+
+type CloudAwsAccountAssetInventoryArgs struct {
+	// Enable asset inventory
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Custom AWS IAM role name
+	RoleName pulumi.StringPtrInput `pulumi:"roleName"`
+}
+
+func (CloudAwsAccountAssetInventoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAwsAccountAssetInventory)(nil)).Elem()
+}
+
+func (i CloudAwsAccountAssetInventoryArgs) ToCloudAwsAccountAssetInventoryOutput() CloudAwsAccountAssetInventoryOutput {
+	return i.ToCloudAwsAccountAssetInventoryOutputWithContext(context.Background())
+}
+
+func (i CloudAwsAccountAssetInventoryArgs) ToCloudAwsAccountAssetInventoryOutputWithContext(ctx context.Context) CloudAwsAccountAssetInventoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountAssetInventoryOutput)
+}
+
+func (i CloudAwsAccountAssetInventoryArgs) ToCloudAwsAccountAssetInventoryPtrOutput() CloudAwsAccountAssetInventoryPtrOutput {
+	return i.ToCloudAwsAccountAssetInventoryPtrOutputWithContext(context.Background())
+}
+
+func (i CloudAwsAccountAssetInventoryArgs) ToCloudAwsAccountAssetInventoryPtrOutputWithContext(ctx context.Context) CloudAwsAccountAssetInventoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountAssetInventoryOutput).ToCloudAwsAccountAssetInventoryPtrOutputWithContext(ctx)
+}
+
+// CloudAwsAccountAssetInventoryPtrInput is an input type that accepts CloudAwsAccountAssetInventoryArgs, CloudAwsAccountAssetInventoryPtr and CloudAwsAccountAssetInventoryPtrOutput values.
+// You can construct a concrete instance of `CloudAwsAccountAssetInventoryPtrInput` via:
+//
+//	        CloudAwsAccountAssetInventoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudAwsAccountAssetInventoryPtrInput interface {
+	pulumi.Input
+
+	ToCloudAwsAccountAssetInventoryPtrOutput() CloudAwsAccountAssetInventoryPtrOutput
+	ToCloudAwsAccountAssetInventoryPtrOutputWithContext(context.Context) CloudAwsAccountAssetInventoryPtrOutput
+}
+
+type cloudAwsAccountAssetInventoryPtrType CloudAwsAccountAssetInventoryArgs
+
+func CloudAwsAccountAssetInventoryPtr(v *CloudAwsAccountAssetInventoryArgs) CloudAwsAccountAssetInventoryPtrInput {
+	return (*cloudAwsAccountAssetInventoryPtrType)(v)
+}
+
+func (*cloudAwsAccountAssetInventoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudAwsAccountAssetInventory)(nil)).Elem()
+}
+
+func (i *cloudAwsAccountAssetInventoryPtrType) ToCloudAwsAccountAssetInventoryPtrOutput() CloudAwsAccountAssetInventoryPtrOutput {
+	return i.ToCloudAwsAccountAssetInventoryPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudAwsAccountAssetInventoryPtrType) ToCloudAwsAccountAssetInventoryPtrOutputWithContext(ctx context.Context) CloudAwsAccountAssetInventoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountAssetInventoryPtrOutput)
+}
+
+type CloudAwsAccountAssetInventoryOutput struct{ *pulumi.OutputState }
+
+func (CloudAwsAccountAssetInventoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAwsAccountAssetInventory)(nil)).Elem()
+}
+
+func (o CloudAwsAccountAssetInventoryOutput) ToCloudAwsAccountAssetInventoryOutput() CloudAwsAccountAssetInventoryOutput {
+	return o
+}
+
+func (o CloudAwsAccountAssetInventoryOutput) ToCloudAwsAccountAssetInventoryOutputWithContext(ctx context.Context) CloudAwsAccountAssetInventoryOutput {
+	return o
+}
+
+func (o CloudAwsAccountAssetInventoryOutput) ToCloudAwsAccountAssetInventoryPtrOutput() CloudAwsAccountAssetInventoryPtrOutput {
+	return o.ToCloudAwsAccountAssetInventoryPtrOutputWithContext(context.Background())
+}
+
+func (o CloudAwsAccountAssetInventoryOutput) ToCloudAwsAccountAssetInventoryPtrOutputWithContext(ctx context.Context) CloudAwsAccountAssetInventoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudAwsAccountAssetInventory) *CloudAwsAccountAssetInventory {
+		return &v
+	}).(CloudAwsAccountAssetInventoryPtrOutput)
+}
+
+// Enable asset inventory
+func (o CloudAwsAccountAssetInventoryOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v CloudAwsAccountAssetInventory) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Custom AWS IAM role name
+func (o CloudAwsAccountAssetInventoryOutput) RoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudAwsAccountAssetInventory) *string { return v.RoleName }).(pulumi.StringPtrOutput)
+}
+
+type CloudAwsAccountAssetInventoryPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudAwsAccountAssetInventoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudAwsAccountAssetInventory)(nil)).Elem()
+}
+
+func (o CloudAwsAccountAssetInventoryPtrOutput) ToCloudAwsAccountAssetInventoryPtrOutput() CloudAwsAccountAssetInventoryPtrOutput {
+	return o
+}
+
+func (o CloudAwsAccountAssetInventoryPtrOutput) ToCloudAwsAccountAssetInventoryPtrOutputWithContext(ctx context.Context) CloudAwsAccountAssetInventoryPtrOutput {
+	return o
+}
+
+func (o CloudAwsAccountAssetInventoryPtrOutput) Elem() CloudAwsAccountAssetInventoryOutput {
+	return o.ApplyT(func(v *CloudAwsAccountAssetInventory) CloudAwsAccountAssetInventory {
+		if v != nil {
+			return *v
+		}
+		var ret CloudAwsAccountAssetInventory
+		return ret
+	}).(CloudAwsAccountAssetInventoryOutput)
+}
+
+// Enable asset inventory
+func (o CloudAwsAccountAssetInventoryPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudAwsAccountAssetInventory) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Custom AWS IAM role name
+func (o CloudAwsAccountAssetInventoryPtrOutput) RoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudAwsAccountAssetInventory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleName
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudAwsAccountDspm struct {
+	// Enable Data Security Posture Management
+	Enabled bool `pulumi:"enabled"`
+	// Custom AWS IAM role name for Data Security Posture Management
+	RoleName *string `pulumi:"roleName"`
+}
+
+// CloudAwsAccountDspmInput is an input type that accepts CloudAwsAccountDspmArgs and CloudAwsAccountDspmOutput values.
+// You can construct a concrete instance of `CloudAwsAccountDspmInput` via:
+//
+//	CloudAwsAccountDspmArgs{...}
+type CloudAwsAccountDspmInput interface {
+	pulumi.Input
+
+	ToCloudAwsAccountDspmOutput() CloudAwsAccountDspmOutput
+	ToCloudAwsAccountDspmOutputWithContext(context.Context) CloudAwsAccountDspmOutput
+}
+
+type CloudAwsAccountDspmArgs struct {
+	// Enable Data Security Posture Management
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Custom AWS IAM role name for Data Security Posture Management
+	RoleName pulumi.StringPtrInput `pulumi:"roleName"`
+}
+
+func (CloudAwsAccountDspmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAwsAccountDspm)(nil)).Elem()
+}
+
+func (i CloudAwsAccountDspmArgs) ToCloudAwsAccountDspmOutput() CloudAwsAccountDspmOutput {
+	return i.ToCloudAwsAccountDspmOutputWithContext(context.Background())
+}
+
+func (i CloudAwsAccountDspmArgs) ToCloudAwsAccountDspmOutputWithContext(ctx context.Context) CloudAwsAccountDspmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountDspmOutput)
+}
+
+func (i CloudAwsAccountDspmArgs) ToCloudAwsAccountDspmPtrOutput() CloudAwsAccountDspmPtrOutput {
+	return i.ToCloudAwsAccountDspmPtrOutputWithContext(context.Background())
+}
+
+func (i CloudAwsAccountDspmArgs) ToCloudAwsAccountDspmPtrOutputWithContext(ctx context.Context) CloudAwsAccountDspmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountDspmOutput).ToCloudAwsAccountDspmPtrOutputWithContext(ctx)
+}
+
+// CloudAwsAccountDspmPtrInput is an input type that accepts CloudAwsAccountDspmArgs, CloudAwsAccountDspmPtr and CloudAwsAccountDspmPtrOutput values.
+// You can construct a concrete instance of `CloudAwsAccountDspmPtrInput` via:
+//
+//	        CloudAwsAccountDspmArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudAwsAccountDspmPtrInput interface {
+	pulumi.Input
+
+	ToCloudAwsAccountDspmPtrOutput() CloudAwsAccountDspmPtrOutput
+	ToCloudAwsAccountDspmPtrOutputWithContext(context.Context) CloudAwsAccountDspmPtrOutput
+}
+
+type cloudAwsAccountDspmPtrType CloudAwsAccountDspmArgs
+
+func CloudAwsAccountDspmPtr(v *CloudAwsAccountDspmArgs) CloudAwsAccountDspmPtrInput {
+	return (*cloudAwsAccountDspmPtrType)(v)
+}
+
+func (*cloudAwsAccountDspmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudAwsAccountDspm)(nil)).Elem()
+}
+
+func (i *cloudAwsAccountDspmPtrType) ToCloudAwsAccountDspmPtrOutput() CloudAwsAccountDspmPtrOutput {
+	return i.ToCloudAwsAccountDspmPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudAwsAccountDspmPtrType) ToCloudAwsAccountDspmPtrOutputWithContext(ctx context.Context) CloudAwsAccountDspmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountDspmPtrOutput)
+}
+
+type CloudAwsAccountDspmOutput struct{ *pulumi.OutputState }
+
+func (CloudAwsAccountDspmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAwsAccountDspm)(nil)).Elem()
+}
+
+func (o CloudAwsAccountDspmOutput) ToCloudAwsAccountDspmOutput() CloudAwsAccountDspmOutput {
+	return o
+}
+
+func (o CloudAwsAccountDspmOutput) ToCloudAwsAccountDspmOutputWithContext(ctx context.Context) CloudAwsAccountDspmOutput {
+	return o
+}
+
+func (o CloudAwsAccountDspmOutput) ToCloudAwsAccountDspmPtrOutput() CloudAwsAccountDspmPtrOutput {
+	return o.ToCloudAwsAccountDspmPtrOutputWithContext(context.Background())
+}
+
+func (o CloudAwsAccountDspmOutput) ToCloudAwsAccountDspmPtrOutputWithContext(ctx context.Context) CloudAwsAccountDspmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudAwsAccountDspm) *CloudAwsAccountDspm {
+		return &v
+	}).(CloudAwsAccountDspmPtrOutput)
+}
+
+// Enable Data Security Posture Management
+func (o CloudAwsAccountDspmOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v CloudAwsAccountDspm) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Custom AWS IAM role name for Data Security Posture Management
+func (o CloudAwsAccountDspmOutput) RoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudAwsAccountDspm) *string { return v.RoleName }).(pulumi.StringPtrOutput)
+}
+
+type CloudAwsAccountDspmPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudAwsAccountDspmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudAwsAccountDspm)(nil)).Elem()
+}
+
+func (o CloudAwsAccountDspmPtrOutput) ToCloudAwsAccountDspmPtrOutput() CloudAwsAccountDspmPtrOutput {
+	return o
+}
+
+func (o CloudAwsAccountDspmPtrOutput) ToCloudAwsAccountDspmPtrOutputWithContext(ctx context.Context) CloudAwsAccountDspmPtrOutput {
+	return o
+}
+
+func (o CloudAwsAccountDspmPtrOutput) Elem() CloudAwsAccountDspmOutput {
+	return o.ApplyT(func(v *CloudAwsAccountDspm) CloudAwsAccountDspm {
+		if v != nil {
+			return *v
+		}
+		var ret CloudAwsAccountDspm
+		return ret
+	}).(CloudAwsAccountDspmOutput)
+}
+
+// Enable Data Security Posture Management
+func (o CloudAwsAccountDspmPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudAwsAccountDspm) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Custom AWS IAM role name for Data Security Posture Management
+func (o CloudAwsAccountDspmPtrOutput) RoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudAwsAccountDspm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleName
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudAwsAccountIdp struct {
+	// Enable Identity Protection
+	Enabled bool `pulumi:"enabled"`
+	// Current status of the Identity Protection integration
+	Status *string `pulumi:"status"`
+}
+
+// CloudAwsAccountIdpInput is an input type that accepts CloudAwsAccountIdpArgs and CloudAwsAccountIdpOutput values.
+// You can construct a concrete instance of `CloudAwsAccountIdpInput` via:
+//
+//	CloudAwsAccountIdpArgs{...}
+type CloudAwsAccountIdpInput interface {
+	pulumi.Input
+
+	ToCloudAwsAccountIdpOutput() CloudAwsAccountIdpOutput
+	ToCloudAwsAccountIdpOutputWithContext(context.Context) CloudAwsAccountIdpOutput
+}
+
+type CloudAwsAccountIdpArgs struct {
+	// Enable Identity Protection
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Current status of the Identity Protection integration
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (CloudAwsAccountIdpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAwsAccountIdp)(nil)).Elem()
+}
+
+func (i CloudAwsAccountIdpArgs) ToCloudAwsAccountIdpOutput() CloudAwsAccountIdpOutput {
+	return i.ToCloudAwsAccountIdpOutputWithContext(context.Background())
+}
+
+func (i CloudAwsAccountIdpArgs) ToCloudAwsAccountIdpOutputWithContext(ctx context.Context) CloudAwsAccountIdpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountIdpOutput)
+}
+
+func (i CloudAwsAccountIdpArgs) ToCloudAwsAccountIdpPtrOutput() CloudAwsAccountIdpPtrOutput {
+	return i.ToCloudAwsAccountIdpPtrOutputWithContext(context.Background())
+}
+
+func (i CloudAwsAccountIdpArgs) ToCloudAwsAccountIdpPtrOutputWithContext(ctx context.Context) CloudAwsAccountIdpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountIdpOutput).ToCloudAwsAccountIdpPtrOutputWithContext(ctx)
+}
+
+// CloudAwsAccountIdpPtrInput is an input type that accepts CloudAwsAccountIdpArgs, CloudAwsAccountIdpPtr and CloudAwsAccountIdpPtrOutput values.
+// You can construct a concrete instance of `CloudAwsAccountIdpPtrInput` via:
+//
+//	        CloudAwsAccountIdpArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudAwsAccountIdpPtrInput interface {
+	pulumi.Input
+
+	ToCloudAwsAccountIdpPtrOutput() CloudAwsAccountIdpPtrOutput
+	ToCloudAwsAccountIdpPtrOutputWithContext(context.Context) CloudAwsAccountIdpPtrOutput
+}
+
+type cloudAwsAccountIdpPtrType CloudAwsAccountIdpArgs
+
+func CloudAwsAccountIdpPtr(v *CloudAwsAccountIdpArgs) CloudAwsAccountIdpPtrInput {
+	return (*cloudAwsAccountIdpPtrType)(v)
+}
+
+func (*cloudAwsAccountIdpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudAwsAccountIdp)(nil)).Elem()
+}
+
+func (i *cloudAwsAccountIdpPtrType) ToCloudAwsAccountIdpPtrOutput() CloudAwsAccountIdpPtrOutput {
+	return i.ToCloudAwsAccountIdpPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudAwsAccountIdpPtrType) ToCloudAwsAccountIdpPtrOutputWithContext(ctx context.Context) CloudAwsAccountIdpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountIdpPtrOutput)
+}
+
+type CloudAwsAccountIdpOutput struct{ *pulumi.OutputState }
+
+func (CloudAwsAccountIdpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAwsAccountIdp)(nil)).Elem()
+}
+
+func (o CloudAwsAccountIdpOutput) ToCloudAwsAccountIdpOutput() CloudAwsAccountIdpOutput {
+	return o
+}
+
+func (o CloudAwsAccountIdpOutput) ToCloudAwsAccountIdpOutputWithContext(ctx context.Context) CloudAwsAccountIdpOutput {
+	return o
+}
+
+func (o CloudAwsAccountIdpOutput) ToCloudAwsAccountIdpPtrOutput() CloudAwsAccountIdpPtrOutput {
+	return o.ToCloudAwsAccountIdpPtrOutputWithContext(context.Background())
+}
+
+func (o CloudAwsAccountIdpOutput) ToCloudAwsAccountIdpPtrOutputWithContext(ctx context.Context) CloudAwsAccountIdpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudAwsAccountIdp) *CloudAwsAccountIdp {
+		return &v
+	}).(CloudAwsAccountIdpPtrOutput)
+}
+
+// Enable Identity Protection
+func (o CloudAwsAccountIdpOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v CloudAwsAccountIdp) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Current status of the Identity Protection integration
+func (o CloudAwsAccountIdpOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudAwsAccountIdp) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type CloudAwsAccountIdpPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudAwsAccountIdpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudAwsAccountIdp)(nil)).Elem()
+}
+
+func (o CloudAwsAccountIdpPtrOutput) ToCloudAwsAccountIdpPtrOutput() CloudAwsAccountIdpPtrOutput {
+	return o
+}
+
+func (o CloudAwsAccountIdpPtrOutput) ToCloudAwsAccountIdpPtrOutputWithContext(ctx context.Context) CloudAwsAccountIdpPtrOutput {
+	return o
+}
+
+func (o CloudAwsAccountIdpPtrOutput) Elem() CloudAwsAccountIdpOutput {
+	return o.ApplyT(func(v *CloudAwsAccountIdp) CloudAwsAccountIdp {
+		if v != nil {
+			return *v
+		}
+		var ret CloudAwsAccountIdp
+		return ret
+	}).(CloudAwsAccountIdpOutput)
+}
+
+// Enable Identity Protection
+func (o CloudAwsAccountIdpPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudAwsAccountIdp) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Current status of the Identity Protection integration
+func (o CloudAwsAccountIdpPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudAwsAccountIdp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudAwsAccountRealtimeVisibility struct {
+	// The AWS region of the CloudTrail bucket
+	CloudtrailRegion string `pulumi:"cloudtrailRegion"`
+	// Enable real-time visibility and detection
+	Enabled bool `pulumi:"enabled"`
+	// Set to true if a CloudTrail already exists
+	UseExistingCloudtrail *bool `pulumi:"useExistingCloudtrail"`
+}
+
+// CloudAwsAccountRealtimeVisibilityInput is an input type that accepts CloudAwsAccountRealtimeVisibilityArgs and CloudAwsAccountRealtimeVisibilityOutput values.
+// You can construct a concrete instance of `CloudAwsAccountRealtimeVisibilityInput` via:
+//
+//	CloudAwsAccountRealtimeVisibilityArgs{...}
+type CloudAwsAccountRealtimeVisibilityInput interface {
+	pulumi.Input
+
+	ToCloudAwsAccountRealtimeVisibilityOutput() CloudAwsAccountRealtimeVisibilityOutput
+	ToCloudAwsAccountRealtimeVisibilityOutputWithContext(context.Context) CloudAwsAccountRealtimeVisibilityOutput
+}
+
+type CloudAwsAccountRealtimeVisibilityArgs struct {
+	// The AWS region of the CloudTrail bucket
+	CloudtrailRegion pulumi.StringInput `pulumi:"cloudtrailRegion"`
+	// Enable real-time visibility and detection
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Set to true if a CloudTrail already exists
+	UseExistingCloudtrail pulumi.BoolPtrInput `pulumi:"useExistingCloudtrail"`
+}
+
+func (CloudAwsAccountRealtimeVisibilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAwsAccountRealtimeVisibility)(nil)).Elem()
+}
+
+func (i CloudAwsAccountRealtimeVisibilityArgs) ToCloudAwsAccountRealtimeVisibilityOutput() CloudAwsAccountRealtimeVisibilityOutput {
+	return i.ToCloudAwsAccountRealtimeVisibilityOutputWithContext(context.Background())
+}
+
+func (i CloudAwsAccountRealtimeVisibilityArgs) ToCloudAwsAccountRealtimeVisibilityOutputWithContext(ctx context.Context) CloudAwsAccountRealtimeVisibilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountRealtimeVisibilityOutput)
+}
+
+func (i CloudAwsAccountRealtimeVisibilityArgs) ToCloudAwsAccountRealtimeVisibilityPtrOutput() CloudAwsAccountRealtimeVisibilityPtrOutput {
+	return i.ToCloudAwsAccountRealtimeVisibilityPtrOutputWithContext(context.Background())
+}
+
+func (i CloudAwsAccountRealtimeVisibilityArgs) ToCloudAwsAccountRealtimeVisibilityPtrOutputWithContext(ctx context.Context) CloudAwsAccountRealtimeVisibilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountRealtimeVisibilityOutput).ToCloudAwsAccountRealtimeVisibilityPtrOutputWithContext(ctx)
+}
+
+// CloudAwsAccountRealtimeVisibilityPtrInput is an input type that accepts CloudAwsAccountRealtimeVisibilityArgs, CloudAwsAccountRealtimeVisibilityPtr and CloudAwsAccountRealtimeVisibilityPtrOutput values.
+// You can construct a concrete instance of `CloudAwsAccountRealtimeVisibilityPtrInput` via:
+//
+//	        CloudAwsAccountRealtimeVisibilityArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudAwsAccountRealtimeVisibilityPtrInput interface {
+	pulumi.Input
+
+	ToCloudAwsAccountRealtimeVisibilityPtrOutput() CloudAwsAccountRealtimeVisibilityPtrOutput
+	ToCloudAwsAccountRealtimeVisibilityPtrOutputWithContext(context.Context) CloudAwsAccountRealtimeVisibilityPtrOutput
+}
+
+type cloudAwsAccountRealtimeVisibilityPtrType CloudAwsAccountRealtimeVisibilityArgs
+
+func CloudAwsAccountRealtimeVisibilityPtr(v *CloudAwsAccountRealtimeVisibilityArgs) CloudAwsAccountRealtimeVisibilityPtrInput {
+	return (*cloudAwsAccountRealtimeVisibilityPtrType)(v)
+}
+
+func (*cloudAwsAccountRealtimeVisibilityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudAwsAccountRealtimeVisibility)(nil)).Elem()
+}
+
+func (i *cloudAwsAccountRealtimeVisibilityPtrType) ToCloudAwsAccountRealtimeVisibilityPtrOutput() CloudAwsAccountRealtimeVisibilityPtrOutput {
+	return i.ToCloudAwsAccountRealtimeVisibilityPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudAwsAccountRealtimeVisibilityPtrType) ToCloudAwsAccountRealtimeVisibilityPtrOutputWithContext(ctx context.Context) CloudAwsAccountRealtimeVisibilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountRealtimeVisibilityPtrOutput)
+}
+
+type CloudAwsAccountRealtimeVisibilityOutput struct{ *pulumi.OutputState }
+
+func (CloudAwsAccountRealtimeVisibilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAwsAccountRealtimeVisibility)(nil)).Elem()
+}
+
+func (o CloudAwsAccountRealtimeVisibilityOutput) ToCloudAwsAccountRealtimeVisibilityOutput() CloudAwsAccountRealtimeVisibilityOutput {
+	return o
+}
+
+func (o CloudAwsAccountRealtimeVisibilityOutput) ToCloudAwsAccountRealtimeVisibilityOutputWithContext(ctx context.Context) CloudAwsAccountRealtimeVisibilityOutput {
+	return o
+}
+
+func (o CloudAwsAccountRealtimeVisibilityOutput) ToCloudAwsAccountRealtimeVisibilityPtrOutput() CloudAwsAccountRealtimeVisibilityPtrOutput {
+	return o.ToCloudAwsAccountRealtimeVisibilityPtrOutputWithContext(context.Background())
+}
+
+func (o CloudAwsAccountRealtimeVisibilityOutput) ToCloudAwsAccountRealtimeVisibilityPtrOutputWithContext(ctx context.Context) CloudAwsAccountRealtimeVisibilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudAwsAccountRealtimeVisibility) *CloudAwsAccountRealtimeVisibility {
+		return &v
+	}).(CloudAwsAccountRealtimeVisibilityPtrOutput)
+}
+
+// The AWS region of the CloudTrail bucket
+func (o CloudAwsAccountRealtimeVisibilityOutput) CloudtrailRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudAwsAccountRealtimeVisibility) string { return v.CloudtrailRegion }).(pulumi.StringOutput)
+}
+
+// Enable real-time visibility and detection
+func (o CloudAwsAccountRealtimeVisibilityOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v CloudAwsAccountRealtimeVisibility) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Set to true if a CloudTrail already exists
+func (o CloudAwsAccountRealtimeVisibilityOutput) UseExistingCloudtrail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudAwsAccountRealtimeVisibility) *bool { return v.UseExistingCloudtrail }).(pulumi.BoolPtrOutput)
+}
+
+type CloudAwsAccountRealtimeVisibilityPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudAwsAccountRealtimeVisibilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudAwsAccountRealtimeVisibility)(nil)).Elem()
+}
+
+func (o CloudAwsAccountRealtimeVisibilityPtrOutput) ToCloudAwsAccountRealtimeVisibilityPtrOutput() CloudAwsAccountRealtimeVisibilityPtrOutput {
+	return o
+}
+
+func (o CloudAwsAccountRealtimeVisibilityPtrOutput) ToCloudAwsAccountRealtimeVisibilityPtrOutputWithContext(ctx context.Context) CloudAwsAccountRealtimeVisibilityPtrOutput {
+	return o
+}
+
+func (o CloudAwsAccountRealtimeVisibilityPtrOutput) Elem() CloudAwsAccountRealtimeVisibilityOutput {
+	return o.ApplyT(func(v *CloudAwsAccountRealtimeVisibility) CloudAwsAccountRealtimeVisibility {
+		if v != nil {
+			return *v
+		}
+		var ret CloudAwsAccountRealtimeVisibility
+		return ret
+	}).(CloudAwsAccountRealtimeVisibilityOutput)
+}
+
+// The AWS region of the CloudTrail bucket
+func (o CloudAwsAccountRealtimeVisibilityPtrOutput) CloudtrailRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudAwsAccountRealtimeVisibility) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudtrailRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable real-time visibility and detection
+func (o CloudAwsAccountRealtimeVisibilityPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudAwsAccountRealtimeVisibility) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set to true if a CloudTrail already exists
+func (o CloudAwsAccountRealtimeVisibilityPtrOutput) UseExistingCloudtrail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudAwsAccountRealtimeVisibility) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseExistingCloudtrail
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CloudAwsAccountSensorManagement struct {
+	// Enable 1-click sensor deployment
+	Enabled bool `pulumi:"enabled"`
+}
+
+// CloudAwsAccountSensorManagementInput is an input type that accepts CloudAwsAccountSensorManagementArgs and CloudAwsAccountSensorManagementOutput values.
+// You can construct a concrete instance of `CloudAwsAccountSensorManagementInput` via:
+//
+//	CloudAwsAccountSensorManagementArgs{...}
+type CloudAwsAccountSensorManagementInput interface {
+	pulumi.Input
+
+	ToCloudAwsAccountSensorManagementOutput() CloudAwsAccountSensorManagementOutput
+	ToCloudAwsAccountSensorManagementOutputWithContext(context.Context) CloudAwsAccountSensorManagementOutput
+}
+
+type CloudAwsAccountSensorManagementArgs struct {
+	// Enable 1-click sensor deployment
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (CloudAwsAccountSensorManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAwsAccountSensorManagement)(nil)).Elem()
+}
+
+func (i CloudAwsAccountSensorManagementArgs) ToCloudAwsAccountSensorManagementOutput() CloudAwsAccountSensorManagementOutput {
+	return i.ToCloudAwsAccountSensorManagementOutputWithContext(context.Background())
+}
+
+func (i CloudAwsAccountSensorManagementArgs) ToCloudAwsAccountSensorManagementOutputWithContext(ctx context.Context) CloudAwsAccountSensorManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountSensorManagementOutput)
+}
+
+func (i CloudAwsAccountSensorManagementArgs) ToCloudAwsAccountSensorManagementPtrOutput() CloudAwsAccountSensorManagementPtrOutput {
+	return i.ToCloudAwsAccountSensorManagementPtrOutputWithContext(context.Background())
+}
+
+func (i CloudAwsAccountSensorManagementArgs) ToCloudAwsAccountSensorManagementPtrOutputWithContext(ctx context.Context) CloudAwsAccountSensorManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountSensorManagementOutput).ToCloudAwsAccountSensorManagementPtrOutputWithContext(ctx)
+}
+
+// CloudAwsAccountSensorManagementPtrInput is an input type that accepts CloudAwsAccountSensorManagementArgs, CloudAwsAccountSensorManagementPtr and CloudAwsAccountSensorManagementPtrOutput values.
+// You can construct a concrete instance of `CloudAwsAccountSensorManagementPtrInput` via:
+//
+//	        CloudAwsAccountSensorManagementArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudAwsAccountSensorManagementPtrInput interface {
+	pulumi.Input
+
+	ToCloudAwsAccountSensorManagementPtrOutput() CloudAwsAccountSensorManagementPtrOutput
+	ToCloudAwsAccountSensorManagementPtrOutputWithContext(context.Context) CloudAwsAccountSensorManagementPtrOutput
+}
+
+type cloudAwsAccountSensorManagementPtrType CloudAwsAccountSensorManagementArgs
+
+func CloudAwsAccountSensorManagementPtr(v *CloudAwsAccountSensorManagementArgs) CloudAwsAccountSensorManagementPtrInput {
+	return (*cloudAwsAccountSensorManagementPtrType)(v)
+}
+
+func (*cloudAwsAccountSensorManagementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudAwsAccountSensorManagement)(nil)).Elem()
+}
+
+func (i *cloudAwsAccountSensorManagementPtrType) ToCloudAwsAccountSensorManagementPtrOutput() CloudAwsAccountSensorManagementPtrOutput {
+	return i.ToCloudAwsAccountSensorManagementPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudAwsAccountSensorManagementPtrType) ToCloudAwsAccountSensorManagementPtrOutputWithContext(ctx context.Context) CloudAwsAccountSensorManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAwsAccountSensorManagementPtrOutput)
+}
+
+type CloudAwsAccountSensorManagementOutput struct{ *pulumi.OutputState }
+
+func (CloudAwsAccountSensorManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAwsAccountSensorManagement)(nil)).Elem()
+}
+
+func (o CloudAwsAccountSensorManagementOutput) ToCloudAwsAccountSensorManagementOutput() CloudAwsAccountSensorManagementOutput {
+	return o
+}
+
+func (o CloudAwsAccountSensorManagementOutput) ToCloudAwsAccountSensorManagementOutputWithContext(ctx context.Context) CloudAwsAccountSensorManagementOutput {
+	return o
+}
+
+func (o CloudAwsAccountSensorManagementOutput) ToCloudAwsAccountSensorManagementPtrOutput() CloudAwsAccountSensorManagementPtrOutput {
+	return o.ToCloudAwsAccountSensorManagementPtrOutputWithContext(context.Background())
+}
+
+func (o CloudAwsAccountSensorManagementOutput) ToCloudAwsAccountSensorManagementPtrOutputWithContext(ctx context.Context) CloudAwsAccountSensorManagementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudAwsAccountSensorManagement) *CloudAwsAccountSensorManagement {
+		return &v
+	}).(CloudAwsAccountSensorManagementPtrOutput)
+}
+
+// Enable 1-click sensor deployment
+func (o CloudAwsAccountSensorManagementOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v CloudAwsAccountSensorManagement) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type CloudAwsAccountSensorManagementPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudAwsAccountSensorManagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudAwsAccountSensorManagement)(nil)).Elem()
+}
+
+func (o CloudAwsAccountSensorManagementPtrOutput) ToCloudAwsAccountSensorManagementPtrOutput() CloudAwsAccountSensorManagementPtrOutput {
+	return o
+}
+
+func (o CloudAwsAccountSensorManagementPtrOutput) ToCloudAwsAccountSensorManagementPtrOutputWithContext(ctx context.Context) CloudAwsAccountSensorManagementPtrOutput {
+	return o
+}
+
+func (o CloudAwsAccountSensorManagementPtrOutput) Elem() CloudAwsAccountSensorManagementOutput {
+	return o.ApplyT(func(v *CloudAwsAccountSensorManagement) CloudAwsAccountSensorManagement {
+		if v != nil {
+			return *v
+		}
+		var ret CloudAwsAccountSensorManagement
+		return ret
+	}).(CloudAwsAccountSensorManagementOutput)
+}
+
+// Enable 1-click sensor deployment
+func (o CloudAwsAccountSensorManagementPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudAwsAccountSensorManagement) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type FilevantagePolicyScheduledExclusion struct {
 	// Description of the scheduled exclusion.
 	Description *string `pulumi:"description"`
@@ -3128,6 +3908,256 @@ func (o SensorUpdatePolicyScheduleTimeBlockArrayOutput) Index(i pulumi.IntInput)
 	}).(SensorUpdatePolicyScheduleTimeBlockOutput)
 }
 
+type GetCloudAwsAccountAccount struct {
+	// The AWS Account ID
+	AccountId string `pulumi:"accountId"`
+	// The AWS account type. Value is 'commercial' for Commercial cloud accounts. For GovCloud environments, value can be either 'commercial' or 'gov' depending on the account type
+	AccountType string `pulumi:"accountType"`
+	// Whether asset inventory is enabled
+	AssetInventoryEnabled bool `pulumi:"assetInventoryEnabled"`
+	// The name of the CloudTrail S3 bucket used for real-time visibility
+	CloudtrailBucketName string `pulumi:"cloudtrailBucketName"`
+	// The AWS region of the CloudTrail bucket
+	CloudtrailRegion string `pulumi:"cloudtrailRegion"`
+	// Whether Data Security Posture Management is enabled
+	DspmEnabled bool `pulumi:"dspmEnabled"`
+	// The ARN of the IAM role to be used by CrowdStrike DSPM
+	DspmRoleArn string `pulumi:"dspmRoleArn"`
+	// The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
+	EventbusArn string `pulumi:"eventbusArn"`
+	// The name of the Amazon EventBridge used by CrowdStrike to forward messages
+	EventbusName string `pulumi:"eventbusName"`
+	// The external ID used to assume the AWS IAM role
+	ExternalId string `pulumi:"externalId"`
+	// The ARN of the AWS IAM role used to access this AWS account
+	IamRoleArn string `pulumi:"iamRoleArn"`
+	// Whether Identity Protection is enabled
+	IdpEnabled bool `pulumi:"idpEnabled"`
+	// The ARN of the intermediate role used to assume the AWS IAM role
+	IntermediateRoleArn string `pulumi:"intermediateRoleArn"`
+	// Indicates whether this is the management account (formerly known as the root account) of an AWS Organization
+	IsOrganizationManagementAccount bool `pulumi:"isOrganizationManagementAccount"`
+	// The AWS Organization ID
+	OrganizationId string `pulumi:"organizationId"`
+	// Whether real-time visibility is enabled
+	RealtimeVisibilityEnabled bool `pulumi:"realtimeVisibilityEnabled"`
+	// Whether 1-click sensor deployment is enabled
+	SensorManagementEnabled bool `pulumi:"sensorManagementEnabled"`
+	// The list of AWS Organizational Units (OUs) targeted for this account
+	TargetOuses []string `pulumi:"targetOuses"`
+}
+
+// GetCloudAwsAccountAccountInput is an input type that accepts GetCloudAwsAccountAccountArgs and GetCloudAwsAccountAccountOutput values.
+// You can construct a concrete instance of `GetCloudAwsAccountAccountInput` via:
+//
+//	GetCloudAwsAccountAccountArgs{...}
+type GetCloudAwsAccountAccountInput interface {
+	pulumi.Input
+
+	ToGetCloudAwsAccountAccountOutput() GetCloudAwsAccountAccountOutput
+	ToGetCloudAwsAccountAccountOutputWithContext(context.Context) GetCloudAwsAccountAccountOutput
+}
+
+type GetCloudAwsAccountAccountArgs struct {
+	// The AWS Account ID
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The AWS account type. Value is 'commercial' for Commercial cloud accounts. For GovCloud environments, value can be either 'commercial' or 'gov' depending on the account type
+	AccountType pulumi.StringInput `pulumi:"accountType"`
+	// Whether asset inventory is enabled
+	AssetInventoryEnabled pulumi.BoolInput `pulumi:"assetInventoryEnabled"`
+	// The name of the CloudTrail S3 bucket used for real-time visibility
+	CloudtrailBucketName pulumi.StringInput `pulumi:"cloudtrailBucketName"`
+	// The AWS region of the CloudTrail bucket
+	CloudtrailRegion pulumi.StringInput `pulumi:"cloudtrailRegion"`
+	// Whether Data Security Posture Management is enabled
+	DspmEnabled pulumi.BoolInput `pulumi:"dspmEnabled"`
+	// The ARN of the IAM role to be used by CrowdStrike DSPM
+	DspmRoleArn pulumi.StringInput `pulumi:"dspmRoleArn"`
+	// The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
+	EventbusArn pulumi.StringInput `pulumi:"eventbusArn"`
+	// The name of the Amazon EventBridge used by CrowdStrike to forward messages
+	EventbusName pulumi.StringInput `pulumi:"eventbusName"`
+	// The external ID used to assume the AWS IAM role
+	ExternalId pulumi.StringInput `pulumi:"externalId"`
+	// The ARN of the AWS IAM role used to access this AWS account
+	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
+	// Whether Identity Protection is enabled
+	IdpEnabled pulumi.BoolInput `pulumi:"idpEnabled"`
+	// The ARN of the intermediate role used to assume the AWS IAM role
+	IntermediateRoleArn pulumi.StringInput `pulumi:"intermediateRoleArn"`
+	// Indicates whether this is the management account (formerly known as the root account) of an AWS Organization
+	IsOrganizationManagementAccount pulumi.BoolInput `pulumi:"isOrganizationManagementAccount"`
+	// The AWS Organization ID
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	// Whether real-time visibility is enabled
+	RealtimeVisibilityEnabled pulumi.BoolInput `pulumi:"realtimeVisibilityEnabled"`
+	// Whether 1-click sensor deployment is enabled
+	SensorManagementEnabled pulumi.BoolInput `pulumi:"sensorManagementEnabled"`
+	// The list of AWS Organizational Units (OUs) targeted for this account
+	TargetOuses pulumi.StringArrayInput `pulumi:"targetOuses"`
+}
+
+func (GetCloudAwsAccountAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudAwsAccountAccount)(nil)).Elem()
+}
+
+func (i GetCloudAwsAccountAccountArgs) ToGetCloudAwsAccountAccountOutput() GetCloudAwsAccountAccountOutput {
+	return i.ToGetCloudAwsAccountAccountOutputWithContext(context.Background())
+}
+
+func (i GetCloudAwsAccountAccountArgs) ToGetCloudAwsAccountAccountOutputWithContext(ctx context.Context) GetCloudAwsAccountAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudAwsAccountAccountOutput)
+}
+
+// GetCloudAwsAccountAccountArrayInput is an input type that accepts GetCloudAwsAccountAccountArray and GetCloudAwsAccountAccountArrayOutput values.
+// You can construct a concrete instance of `GetCloudAwsAccountAccountArrayInput` via:
+//
+//	GetCloudAwsAccountAccountArray{ GetCloudAwsAccountAccountArgs{...} }
+type GetCloudAwsAccountAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudAwsAccountAccountArrayOutput() GetCloudAwsAccountAccountArrayOutput
+	ToGetCloudAwsAccountAccountArrayOutputWithContext(context.Context) GetCloudAwsAccountAccountArrayOutput
+}
+
+type GetCloudAwsAccountAccountArray []GetCloudAwsAccountAccountInput
+
+func (GetCloudAwsAccountAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudAwsAccountAccount)(nil)).Elem()
+}
+
+func (i GetCloudAwsAccountAccountArray) ToGetCloudAwsAccountAccountArrayOutput() GetCloudAwsAccountAccountArrayOutput {
+	return i.ToGetCloudAwsAccountAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudAwsAccountAccountArray) ToGetCloudAwsAccountAccountArrayOutputWithContext(ctx context.Context) GetCloudAwsAccountAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudAwsAccountAccountArrayOutput)
+}
+
+type GetCloudAwsAccountAccountOutput struct{ *pulumi.OutputState }
+
+func (GetCloudAwsAccountAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudAwsAccountAccount)(nil)).Elem()
+}
+
+func (o GetCloudAwsAccountAccountOutput) ToGetCloudAwsAccountAccountOutput() GetCloudAwsAccountAccountOutput {
+	return o
+}
+
+func (o GetCloudAwsAccountAccountOutput) ToGetCloudAwsAccountAccountOutputWithContext(ctx context.Context) GetCloudAwsAccountAccountOutput {
+	return o
+}
+
+// The AWS Account ID
+func (o GetCloudAwsAccountAccountOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The AWS account type. Value is 'commercial' for Commercial cloud accounts. For GovCloud environments, value can be either 'commercial' or 'gov' depending on the account type
+func (o GetCloudAwsAccountAccountOutput) AccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.AccountType }).(pulumi.StringOutput)
+}
+
+// Whether asset inventory is enabled
+func (o GetCloudAwsAccountAccountOutput) AssetInventoryEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) bool { return v.AssetInventoryEnabled }).(pulumi.BoolOutput)
+}
+
+// The name of the CloudTrail S3 bucket used for real-time visibility
+func (o GetCloudAwsAccountAccountOutput) CloudtrailBucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.CloudtrailBucketName }).(pulumi.StringOutput)
+}
+
+// The AWS region of the CloudTrail bucket
+func (o GetCloudAwsAccountAccountOutput) CloudtrailRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.CloudtrailRegion }).(pulumi.StringOutput)
+}
+
+// Whether Data Security Posture Management is enabled
+func (o GetCloudAwsAccountAccountOutput) DspmEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) bool { return v.DspmEnabled }).(pulumi.BoolOutput)
+}
+
+// The ARN of the IAM role to be used by CrowdStrike DSPM
+func (o GetCloudAwsAccountAccountOutput) DspmRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.DspmRoleArn }).(pulumi.StringOutput)
+}
+
+// The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
+func (o GetCloudAwsAccountAccountOutput) EventbusArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.EventbusArn }).(pulumi.StringOutput)
+}
+
+// The name of the Amazon EventBridge used by CrowdStrike to forward messages
+func (o GetCloudAwsAccountAccountOutput) EventbusName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.EventbusName }).(pulumi.StringOutput)
+}
+
+// The external ID used to assume the AWS IAM role
+func (o GetCloudAwsAccountAccountOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// The ARN of the AWS IAM role used to access this AWS account
+func (o GetCloudAwsAccountAccountOutput) IamRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.IamRoleArn }).(pulumi.StringOutput)
+}
+
+// Whether Identity Protection is enabled
+func (o GetCloudAwsAccountAccountOutput) IdpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) bool { return v.IdpEnabled }).(pulumi.BoolOutput)
+}
+
+// The ARN of the intermediate role used to assume the AWS IAM role
+func (o GetCloudAwsAccountAccountOutput) IntermediateRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.IntermediateRoleArn }).(pulumi.StringOutput)
+}
+
+// Indicates whether this is the management account (formerly known as the root account) of an AWS Organization
+func (o GetCloudAwsAccountAccountOutput) IsOrganizationManagementAccount() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) bool { return v.IsOrganizationManagementAccount }).(pulumi.BoolOutput)
+}
+
+// The AWS Organization ID
+func (o GetCloudAwsAccountAccountOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+// Whether real-time visibility is enabled
+func (o GetCloudAwsAccountAccountOutput) RealtimeVisibilityEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) bool { return v.RealtimeVisibilityEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether 1-click sensor deployment is enabled
+func (o GetCloudAwsAccountAccountOutput) SensorManagementEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) bool { return v.SensorManagementEnabled }).(pulumi.BoolOutput)
+}
+
+// The list of AWS Organizational Units (OUs) targeted for this account
+func (o GetCloudAwsAccountAccountOutput) TargetOuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) []string { return v.TargetOuses }).(pulumi.StringArrayOutput)
+}
+
+type GetCloudAwsAccountAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudAwsAccountAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudAwsAccountAccount)(nil)).Elem()
+}
+
+func (o GetCloudAwsAccountAccountArrayOutput) ToGetCloudAwsAccountAccountArrayOutput() GetCloudAwsAccountAccountArrayOutput {
+	return o
+}
+
+func (o GetCloudAwsAccountAccountArrayOutput) ToGetCloudAwsAccountAccountArrayOutputWithContext(ctx context.Context) GetCloudAwsAccountAccountArrayOutput {
+	return o
+}
+
+func (o GetCloudAwsAccountAccountArrayOutput) Index(i pulumi.IntInput) GetCloudAwsAccountAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudAwsAccountAccount {
+		return vs[0].([]GetCloudAwsAccountAccount)[vs[1].(int)]
+	}).(GetCloudAwsAccountAccountOutput)
+}
+
 type GetSensorUpdatePolicyBuildsLinux struct {
 	// All sensor builds for the specific platform.
 	Alls []GetSensorUpdatePolicyBuildsLinuxAll `pulumi:"alls"`
@@ -4893,6 +5923,16 @@ func (o GetSensorUpdatePolicyBuildsWindowsN2Output) Stage() pulumi.StringOutput 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountAssetInventoryInput)(nil)).Elem(), CloudAwsAccountAssetInventoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountAssetInventoryPtrInput)(nil)).Elem(), CloudAwsAccountAssetInventoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountDspmInput)(nil)).Elem(), CloudAwsAccountDspmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountDspmPtrInput)(nil)).Elem(), CloudAwsAccountDspmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountIdpInput)(nil)).Elem(), CloudAwsAccountIdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountIdpPtrInput)(nil)).Elem(), CloudAwsAccountIdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountRealtimeVisibilityInput)(nil)).Elem(), CloudAwsAccountRealtimeVisibilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountRealtimeVisibilityPtrInput)(nil)).Elem(), CloudAwsAccountRealtimeVisibilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountSensorManagementInput)(nil)).Elem(), CloudAwsAccountSensorManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountSensorManagementPtrInput)(nil)).Elem(), CloudAwsAccountSensorManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilevantagePolicyScheduledExclusionInput)(nil)).Elem(), FilevantagePolicyScheduledExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilevantagePolicyScheduledExclusionArrayInput)(nil)).Elem(), FilevantagePolicyScheduledExclusionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilevantagePolicyScheduledExclusionRepeatedInput)(nil)).Elem(), FilevantagePolicyScheduledExclusionRepeatedArgs{})
@@ -4929,6 +5969,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SensorUpdatePolicySchedulePtrInput)(nil)).Elem(), SensorUpdatePolicyScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SensorUpdatePolicyScheduleTimeBlockInput)(nil)).Elem(), SensorUpdatePolicyScheduleTimeBlockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SensorUpdatePolicyScheduleTimeBlockArrayInput)(nil)).Elem(), SensorUpdatePolicyScheduleTimeBlockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudAwsAccountAccountInput)(nil)).Elem(), GetCloudAwsAccountAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudAwsAccountAccountArrayInput)(nil)).Elem(), GetCloudAwsAccountAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSensorUpdatePolicyBuildsLinuxInput)(nil)).Elem(), GetSensorUpdatePolicyBuildsLinuxArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSensorUpdatePolicyBuildsLinuxAllInput)(nil)).Elem(), GetSensorUpdatePolicyBuildsLinuxAllArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSensorUpdatePolicyBuildsLinuxAllArrayInput)(nil)).Elem(), GetSensorUpdatePolicyBuildsLinuxAllArray{})
@@ -4953,6 +5995,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSensorUpdatePolicyBuildsWindowsLatestInput)(nil)).Elem(), GetSensorUpdatePolicyBuildsWindowsLatestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSensorUpdatePolicyBuildsWindowsN1Input)(nil)).Elem(), GetSensorUpdatePolicyBuildsWindowsN1Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSensorUpdatePolicyBuildsWindowsN2Input)(nil)).Elem(), GetSensorUpdatePolicyBuildsWindowsN2Args{})
+	pulumi.RegisterOutputType(CloudAwsAccountAssetInventoryOutput{})
+	pulumi.RegisterOutputType(CloudAwsAccountAssetInventoryPtrOutput{})
+	pulumi.RegisterOutputType(CloudAwsAccountDspmOutput{})
+	pulumi.RegisterOutputType(CloudAwsAccountDspmPtrOutput{})
+	pulumi.RegisterOutputType(CloudAwsAccountIdpOutput{})
+	pulumi.RegisterOutputType(CloudAwsAccountIdpPtrOutput{})
+	pulumi.RegisterOutputType(CloudAwsAccountRealtimeVisibilityOutput{})
+	pulumi.RegisterOutputType(CloudAwsAccountRealtimeVisibilityPtrOutput{})
+	pulumi.RegisterOutputType(CloudAwsAccountSensorManagementOutput{})
+	pulumi.RegisterOutputType(CloudAwsAccountSensorManagementPtrOutput{})
 	pulumi.RegisterOutputType(FilevantagePolicyScheduledExclusionOutput{})
 	pulumi.RegisterOutputType(FilevantagePolicyScheduledExclusionArrayOutput{})
 	pulumi.RegisterOutputType(FilevantagePolicyScheduledExclusionRepeatedOutput{})
@@ -4989,6 +6041,8 @@ func init() {
 	pulumi.RegisterOutputType(SensorUpdatePolicySchedulePtrOutput{})
 	pulumi.RegisterOutputType(SensorUpdatePolicyScheduleTimeBlockOutput{})
 	pulumi.RegisterOutputType(SensorUpdatePolicyScheduleTimeBlockArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudAwsAccountAccountOutput{})
+	pulumi.RegisterOutputType(GetCloudAwsAccountAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetSensorUpdatePolicyBuildsLinuxOutput{})
 	pulumi.RegisterOutputType(GetSensorUpdatePolicyBuildsLinuxAllOutput{})
 	pulumi.RegisterOutputType(GetSensorUpdatePolicyBuildsLinuxAllArrayOutput{})

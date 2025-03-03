@@ -21,14 +21,17 @@ class ProviderArgs:
     def __init__(__self__, *,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
-                 cloud: Optional[pulumi.Input[str]] = None):
+                 cloud: Optional[pulumi.Input[str]] = None,
+                 member_cid: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] client_id: Falcon Client Id for authenticating to the CrowdStrike APIs. Will use FALCON_CLIENT_ID environment variable when left
                blank.
         :param pulumi.Input[str] client_secret: Falcon Client Secret used for authenticating to the CrowdStrike APIs. Will use FALCON_CLIENT_SECRET environment variable
                when left blank.
-        :param pulumi.Input[str] cloud: Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+        :param pulumi.Input[str] cloud: Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+               environment variable when left blank.
+        :param pulumi.Input[str] member_cid: For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
         """
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
@@ -36,6 +39,8 @@ class ProviderArgs:
             pulumi.set(__self__, "client_secret", client_secret)
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
+        if member_cid is not None:
+            pulumi.set(__self__, "member_cid", member_cid)
 
     @property
     @pulumi.getter(name="clientId")
@@ -67,13 +72,26 @@ class ProviderArgs:
     @pulumi.getter
     def cloud(self) -> Optional[pulumi.Input[str]]:
         """
-        Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+        Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+        environment variable when left blank.
         """
         return pulumi.get(self, "cloud")
 
     @cloud.setter
     def cloud(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud", value)
+
+    @property
+    @pulumi.getter(name="memberCid")
+    def member_cid(self) -> Optional[pulumi.Input[str]]:
+        """
+        For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+        """
+        return pulumi.get(self, "member_cid")
+
+    @member_cid.setter
+    def member_cid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member_cid", value)
 
 
 class Provider(pulumi.ProviderResource):
@@ -84,6 +102,7 @@ class Provider(pulumi.ProviderResource):
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[str]] = None,
+                 member_cid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The provider type for the crowdstrike package. By default, resources use package-wide configuration
@@ -97,7 +116,9 @@ class Provider(pulumi.ProviderResource):
                blank.
         :param pulumi.Input[str] client_secret: Falcon Client Secret used for authenticating to the CrowdStrike APIs. Will use FALCON_CLIENT_SECRET environment variable
                when left blank.
-        :param pulumi.Input[str] cloud: Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+        :param pulumi.Input[str] cloud: Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+               environment variable when left blank.
+        :param pulumi.Input[str] member_cid: For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
         """
         ...
     @overload
@@ -129,6 +150,7 @@ class Provider(pulumi.ProviderResource):
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[str]] = None,
+                 member_cid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -141,6 +163,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_id"] = None if client_id is None else pulumi.Output.secret(client_id)
             __props__.__dict__["client_secret"] = None if client_secret is None else pulumi.Output.secret(client_secret)
             __props__.__dict__["cloud"] = cloud
+            __props__.__dict__["member_cid"] = member_cid
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientId", "clientSecret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
@@ -171,7 +194,16 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def cloud(self) -> pulumi.Output[Optional[str]]:
         """
-        Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+        Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+        environment variable when left blank.
         """
         return pulumi.get(self, "cloud")
+
+    @property
+    @pulumi.getter(name="memberCid")
+    def member_cid(self) -> pulumi.Output[Optional[str]]:
+        """
+        For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+        """
+        return pulumi.get(self, "member_cid")
 

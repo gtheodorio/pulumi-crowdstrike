@@ -43,6 +43,7 @@ class PreventionPolicyWindowsArgs:
                  driver_load_prevention: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  engine_full_visibility: Optional[pulumi.Input[bool]] = None,
+                 enhanced_dll_load_visibility: Optional[pulumi.Input[bool]] = None,
                  enhanced_exploitation_visibility: Optional[pulumi.Input[bool]] = None,
                  enhanced_ml_for_larger_files: Optional[pulumi.Input[bool]] = None,
                  extended_user_mode_data: Optional[pulumi.Input['PreventionPolicyWindowsExtendedUserModeDataArgs']] = None,
@@ -107,6 +108,7 @@ class PreventionPolicyWindowsArgs:
         :param pulumi.Input[bool] driver_load_prevention: Whether to enable the setting. Block the loading of kernel drivers that CrowdStrike analysts have identified as malicious. Available on Windows 10 and Windows Server 2016 and later.
         :param pulumi.Input[bool] enabled: Enable the prevention policy.
         :param pulumi.Input[bool] engine_full_visibility: Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreter_only to be enabled.
+        :param pulumi.Input[bool] enhanced_dll_load_visibility: Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
         :param pulumi.Input[bool] enhanced_exploitation_visibility: Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
         :param pulumi.Input[bool] enhanced_ml_for_larger_files: Whether to enable the setting. Expand ML file size coverage. Existing ML level settings apply.
         :param pulumi.Input['PreventionPolicyWindowsExtendedUserModeDataArgs'] extended_user_mode_data: Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
@@ -190,6 +192,8 @@ class PreventionPolicyWindowsArgs:
             pulumi.set(__self__, "enabled", enabled)
         if engine_full_visibility is not None:
             pulumi.set(__self__, "engine_full_visibility", engine_full_visibility)
+        if enhanced_dll_load_visibility is not None:
+            pulumi.set(__self__, "enhanced_dll_load_visibility", enhanced_dll_load_visibility)
         if enhanced_exploitation_visibility is not None:
             pulumi.set(__self__, "enhanced_exploitation_visibility", enhanced_exploitation_visibility)
         if enhanced_ml_for_larger_files is not None:
@@ -534,6 +538,18 @@ class PreventionPolicyWindowsArgs:
     @engine_full_visibility.setter
     def engine_full_visibility(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "engine_full_visibility", value)
+
+    @property
+    @pulumi.getter(name="enhancedDllLoadVisibility")
+    def enhanced_dll_load_visibility(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+        """
+        return pulumi.get(self, "enhanced_dll_load_visibility")
+
+    @enhanced_dll_load_visibility.setter
+    def enhanced_dll_load_visibility(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enhanced_dll_load_visibility", value)
 
     @property
     @pulumi.getter(name="enhancedExploitationVisibility")
@@ -1039,6 +1055,7 @@ class _PreventionPolicyWindowsState:
                  driver_load_prevention: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  engine_full_visibility: Optional[pulumi.Input[bool]] = None,
+                 enhanced_dll_load_visibility: Optional[pulumi.Input[bool]] = None,
                  enhanced_exploitation_visibility: Optional[pulumi.Input[bool]] = None,
                  enhanced_ml_for_larger_files: Optional[pulumi.Input[bool]] = None,
                  extended_user_mode_data: Optional[pulumi.Input['PreventionPolicyWindowsExtendedUserModeDataArgs']] = None,
@@ -1104,6 +1121,7 @@ class _PreventionPolicyWindowsState:
         :param pulumi.Input[bool] driver_load_prevention: Whether to enable the setting. Block the loading of kernel drivers that CrowdStrike analysts have identified as malicious. Available on Windows 10 and Windows Server 2016 and later.
         :param pulumi.Input[bool] enabled: Enable the prevention policy.
         :param pulumi.Input[bool] engine_full_visibility: Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreter_only to be enabled.
+        :param pulumi.Input[bool] enhanced_dll_load_visibility: Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
         :param pulumi.Input[bool] enhanced_exploitation_visibility: Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
         :param pulumi.Input[bool] enhanced_ml_for_larger_files: Whether to enable the setting. Expand ML file size coverage. Existing ML level settings apply.
         :param pulumi.Input['PreventionPolicyWindowsExtendedUserModeDataArgs'] extended_user_mode_data: Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
@@ -1187,6 +1205,8 @@ class _PreventionPolicyWindowsState:
             pulumi.set(__self__, "enabled", enabled)
         if engine_full_visibility is not None:
             pulumi.set(__self__, "engine_full_visibility", engine_full_visibility)
+        if enhanced_dll_load_visibility is not None:
+            pulumi.set(__self__, "enhanced_dll_load_visibility", enhanced_dll_load_visibility)
         if enhanced_exploitation_visibility is not None:
             pulumi.set(__self__, "enhanced_exploitation_visibility", enhanced_exploitation_visibility)
         if enhanced_ml_for_larger_files is not None:
@@ -1513,6 +1533,18 @@ class _PreventionPolicyWindowsState:
     @engine_full_visibility.setter
     def engine_full_visibility(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "engine_full_visibility", value)
+
+    @property
+    @pulumi.getter(name="enhancedDllLoadVisibility")
+    def enhanced_dll_load_visibility(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+        """
+        return pulumi.get(self, "enhanced_dll_load_visibility")
+
+    @enhanced_dll_load_visibility.setter
+    def enhanced_dll_load_visibility(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enhanced_dll_load_visibility", value)
 
     @property
     @pulumi.getter(name="enhancedExploitationVisibility")
@@ -2053,6 +2085,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
                  driver_load_prevention: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  engine_full_visibility: Optional[pulumi.Input[bool]] = None,
+                 enhanced_dll_load_visibility: Optional[pulumi.Input[bool]] = None,
                  enhanced_exploitation_visibility: Optional[pulumi.Input[bool]] = None,
                  enhanced_ml_for_larger_files: Optional[pulumi.Input[bool]] = None,
                  extended_user_mode_data: Optional[pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']]] = None,
@@ -2112,9 +2145,9 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         import crowdstrike_pulumi as crowdstrike
 
         example = crowdstrike.PreventionPolicyWindows("example",
-            enabled=False,
+            enabled=True,
             description="Made with Pulumi",
-            host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
+            host_groups=[],
             ioa_rule_groups=[],
             adware_and_pup={
                 "detection": "MODERATE",
@@ -2143,56 +2176,57 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             extended_user_mode_data={
                 "detection": "MODERATE",
             },
-            usb_insertion_triggered_scan=False,
-            application_exploitation_activity=False,
-            additional_user_mode_data=False,
-            notify_end_users=False,
-            advanced_remediation=False,
-            backup_deletion=False,
-            bios_deep_visibility=False,
-            chopper_webshell=False,
-            code_injection=False,
-            credential_dumping=False,
-            cryptowall=False,
-            custom_blocking=False,
-            detect_on_write=False,
-            drive_by_download=False,
-            driver_load_prevention=False,
-            interpreter_only=False,
-            engine_full_visibility=False,
-            enhanced_exploitation_visibility=False,
-            enhanced_ml_for_larger_files=False,
-            file_encryption=False,
-            file_system_access=False,
-            force_aslr=False,
-            force_dep=False,
-            heap_spray_preallocation=False,
-            null_page_allocation=False,
-            seh_overwrite_protection=False,
-            hardware_enhanced_exploit_detection=False,
-            http_detections=False,
-            redact_http_detection_details=False,
-            intelligence_sourced_threats=False,
-            javascript_via_rundll32=False,
-            locky=False,
-            memory_scanning=False,
-            memory_scanning_scan_with_cpu=False,
-            microsoft_office_file_suspicious_macro_removal=False,
-            on_write_script_file_visibility=False,
-            prevent_suspicious_processes=False,
-            quarantine_and_security_center_registration=False,
-            quarantine_on_removable_media=False,
-            quarantine_on_write=False,
-            script_based_execution_monitoring=False,
-            sensor_tampering_protection=False,
-            suspicious_registry_operations=False,
-            suspicious_scripts_and_commands=False,
-            upload_unknown_executables=False,
-            upload_unknown_detection_related_executables=False,
-            volume_shadow_copy_audit=False,
-            volume_shadow_copy_protect=False,
-            vulnerable_driver_protection=False,
-            windows_logon_bypass_sticky_keys=False)
+            usb_insertion_triggered_scan=True,
+            application_exploitation_activity=True,
+            additional_user_mode_data=True,
+            notify_end_users=True,
+            advanced_remediation=True,
+            backup_deletion=True,
+            bios_deep_visibility=True,
+            chopper_webshell=True,
+            code_injection=True,
+            credential_dumping=True,
+            cryptowall=True,
+            custom_blocking=True,
+            detect_on_write=True,
+            drive_by_download=True,
+            driver_load_prevention=True,
+            interpreter_only=True,
+            engine_full_visibility=True,
+            enhanced_exploitation_visibility=True,
+            enhanced_dll_load_visibility=True,
+            enhanced_ml_for_larger_files=True,
+            file_encryption=True,
+            file_system_access=True,
+            force_aslr=True,
+            force_dep=True,
+            heap_spray_preallocation=True,
+            null_page_allocation=True,
+            seh_overwrite_protection=True,
+            hardware_enhanced_exploit_detection=True,
+            http_detections=True,
+            redact_http_detection_details=True,
+            intelligence_sourced_threats=True,
+            javascript_via_rundll32=True,
+            locky=True,
+            memory_scanning=True,
+            memory_scanning_scan_with_cpu=True,
+            microsoft_office_file_suspicious_macro_removal=True,
+            on_write_script_file_visibility=True,
+            prevent_suspicious_processes=True,
+            quarantine_and_security_center_registration=True,
+            quarantine_on_removable_media=True,
+            quarantine_on_write=True,
+            script_based_execution_monitoring=True,
+            sensor_tampering_protection=True,
+            suspicious_registry_operations=True,
+            suspicious_scripts_and_commands=True,
+            upload_unknown_executables=True,
+            upload_unknown_detection_related_executables=True,
+            volume_shadow_copy_audit=True,
+            volume_shadow_copy_protect=True,
+            vulnerable_driver_protection=True,
+            windows_logon_bypass_sticky_keys=True)
         pulumi.export("preventionPolicyWindows", example)
         ```
 
@@ -2226,6 +2260,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         :param pulumi.Input[bool] driver_load_prevention: Whether to enable the setting. Block the loading of kernel drivers that CrowdStrike analysts have identified as malicious. Available on Windows 10 and Windows Server 2016 and later.
         :param pulumi.Input[bool] enabled: Enable the prevention policy.
         :param pulumi.Input[bool] engine_full_visibility: Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreter_only to be enabled.
+        :param pulumi.Input[bool] enhanced_dll_load_visibility: Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
         :param pulumi.Input[bool] enhanced_exploitation_visibility: Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
         :param pulumi.Input[bool] enhanced_ml_for_larger_files: Whether to enable the setting. Expand ML file size coverage. Existing ML level settings apply.
         :param pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']] extended_user_mode_data: Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
@@ -2291,9 +2326,9 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         import crowdstrike_pulumi as crowdstrike
 
         example = crowdstrike.PreventionPolicyWindows("example",
-            enabled=False,
+            enabled=True,
             description="Made with Pulumi",
-            host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
+            host_groups=[],
             ioa_rule_groups=[],
             adware_and_pup={
                 "detection": "MODERATE",
@@ -2322,56 +2357,57 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             extended_user_mode_data={
                 "detection": "MODERATE",
             },
-            usb_insertion_triggered_scan=False,
-            application_exploitation_activity=False,
-            additional_user_mode_data=False,
-            notify_end_users=False,
-            advanced_remediation=False,
-            backup_deletion=False,
-            bios_deep_visibility=False,
-            chopper_webshell=False,
-            code_injection=False,
-            credential_dumping=False,
-            cryptowall=False,
-            custom_blocking=False,
-            detect_on_write=False,
-            drive_by_download=False,
-            driver_load_prevention=False,
-            interpreter_only=False,
-            engine_full_visibility=False,
-            enhanced_exploitation_visibility=False,
-            enhanced_ml_for_larger_files=False,
-            file_encryption=False,
-            file_system_access=False,
-            force_aslr=False,
-            force_dep=False,
-            heap_spray_preallocation=False,
-            null_page_allocation=False,
-            seh_overwrite_protection=False,
-            hardware_enhanced_exploit_detection=False,
-            http_detections=False,
-            redact_http_detection_details=False,
-            intelligence_sourced_threats=False,
-            javascript_via_rundll32=False,
-            locky=False,
-            memory_scanning=False,
-            memory_scanning_scan_with_cpu=False,
-            microsoft_office_file_suspicious_macro_removal=False,
-            on_write_script_file_visibility=False,
-            prevent_suspicious_processes=False,
-            quarantine_and_security_center_registration=False,
-            quarantine_on_removable_media=False,
-            quarantine_on_write=False,
-            script_based_execution_monitoring=False,
-            sensor_tampering_protection=False,
-            suspicious_registry_operations=False,
-            suspicious_scripts_and_commands=False,
-            upload_unknown_executables=False,
-            upload_unknown_detection_related_executables=False,
-            volume_shadow_copy_audit=False,
-            volume_shadow_copy_protect=False,
-            vulnerable_driver_protection=False,
-            windows_logon_bypass_sticky_keys=False)
+            usb_insertion_triggered_scan=True,
+            application_exploitation_activity=True,
+            additional_user_mode_data=True,
+            notify_end_users=True,
+            advanced_remediation=True,
+            backup_deletion=True,
+            bios_deep_visibility=True,
+            chopper_webshell=True,
+            code_injection=True,
+            credential_dumping=True,
+            cryptowall=True,
+            custom_blocking=True,
+            detect_on_write=True,
+            drive_by_download=True,
+            driver_load_prevention=True,
+            interpreter_only=True,
+            engine_full_visibility=True,
+            enhanced_exploitation_visibility=True,
+            enhanced_dll_load_visibility=True,
+            enhanced_ml_for_larger_files=True,
+            file_encryption=True,
+            file_system_access=True,
+            force_aslr=True,
+            force_dep=True,
+            heap_spray_preallocation=True,
+            null_page_allocation=True,
+            seh_overwrite_protection=True,
+            hardware_enhanced_exploit_detection=True,
+            http_detections=True,
+            redact_http_detection_details=True,
+            intelligence_sourced_threats=True,
+            javascript_via_rundll32=True,
+            locky=True,
+            memory_scanning=True,
+            memory_scanning_scan_with_cpu=True,
+            microsoft_office_file_suspicious_macro_removal=True,
+            on_write_script_file_visibility=True,
+            prevent_suspicious_processes=True,
+            quarantine_and_security_center_registration=True,
+            quarantine_on_removable_media=True,
+            quarantine_on_write=True,
+            script_based_execution_monitoring=True,
+            sensor_tampering_protection=True,
+            suspicious_registry_operations=True,
+            suspicious_scripts_and_commands=True,
+            upload_unknown_executables=True,
+            upload_unknown_detection_related_executables=True,
+            volume_shadow_copy_audit=True,
+            volume_shadow_copy_protect=True,
+            vulnerable_driver_protection=True,
+            windows_logon_bypass_sticky_keys=True)
         pulumi.export("preventionPolicyWindows", example)
         ```
 
@@ -2418,6 +2454,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
                  driver_load_prevention: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  engine_full_visibility: Optional[pulumi.Input[bool]] = None,
+                 enhanced_dll_load_visibility: Optional[pulumi.Input[bool]] = None,
                  enhanced_exploitation_visibility: Optional[pulumi.Input[bool]] = None,
                  enhanced_ml_for_larger_files: Optional[pulumi.Input[bool]] = None,
                  extended_user_mode_data: Optional[pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']]] = None,
@@ -2489,6 +2526,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             __props__.__dict__["driver_load_prevention"] = driver_load_prevention
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["engine_full_visibility"] = engine_full_visibility
+            __props__.__dict__["enhanced_dll_load_visibility"] = enhanced_dll_load_visibility
             __props__.__dict__["enhanced_exploitation_visibility"] = enhanced_exploitation_visibility
             __props__.__dict__["enhanced_ml_for_larger_files"] = enhanced_ml_for_larger_files
             __props__.__dict__["extended_user_mode_data"] = extended_user_mode_data
@@ -2566,6 +2604,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             driver_load_prevention: Optional[pulumi.Input[bool]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             engine_full_visibility: Optional[pulumi.Input[bool]] = None,
+            enhanced_dll_load_visibility: Optional[pulumi.Input[bool]] = None,
             enhanced_exploitation_visibility: Optional[pulumi.Input[bool]] = None,
             enhanced_ml_for_larger_files: Optional[pulumi.Input[bool]] = None,
             extended_user_mode_data: Optional[pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']]] = None,
@@ -2636,6 +2675,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         :param pulumi.Input[bool] driver_load_prevention: Whether to enable the setting. Block the loading of kernel drivers that CrowdStrike analysts have identified as malicious. Available on Windows 10 and Windows Server 2016 and later.
         :param pulumi.Input[bool] enabled: Enable the prevention policy.
         :param pulumi.Input[bool] engine_full_visibility: Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreter_only to be enabled.
+        :param pulumi.Input[bool] enhanced_dll_load_visibility: Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
         :param pulumi.Input[bool] enhanced_exploitation_visibility: Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
         :param pulumi.Input[bool] enhanced_ml_for_larger_files: Whether to enable the setting. Expand ML file size coverage. Existing ML level settings apply.
         :param pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']] extended_user_mode_data: Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
@@ -2703,6 +2743,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         __props__.__dict__["driver_load_prevention"] = driver_load_prevention
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["engine_full_visibility"] = engine_full_visibility
+        __props__.__dict__["enhanced_dll_load_visibility"] = enhanced_dll_load_visibility
         __props__.__dict__["enhanced_exploitation_visibility"] = enhanced_exploitation_visibility
         __props__.__dict__["enhanced_ml_for_larger_files"] = enhanced_ml_for_larger_files
         __props__.__dict__["extended_user_mode_data"] = extended_user_mode_data
@@ -2907,6 +2948,14 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreter_only to be enabled.
         """
         return pulumi.get(self, "engine_full_visibility")
+
+    @property
+    @pulumi.getter(name="enhancedDllLoadVisibility")
+    def enhanced_dll_load_visibility(self) -> pulumi.Output[bool]:
+        """
+        Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+        """
+        return pulumi.get(self, "enhanced_dll_load_visibility")
 
     @property
     @pulumi.getter(name="enhancedExploitationVisibility")

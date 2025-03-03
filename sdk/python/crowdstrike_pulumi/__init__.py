@@ -5,8 +5,10 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .cloud_aws_account import *
 from .filevantage_policy import *
 from .filevantage_rule_group import *
+from .get_cloud_aws_account import *
 from .get_sensor_update_policy_builds import *
 from .host_group import *
 from .prevention_policy_linux import *
@@ -27,6 +29,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "crowdstrike",
+  "mod": "index/cloudAwsAccount",
+  "fqn": "crowdstrike_pulumi",
+  "classes": {
+   "crowdstrike:index/cloudAwsAccount:CloudAwsAccount": "CloudAwsAccount"
+  }
+ },
  {
   "pkg": "crowdstrike",
   "mod": "index/filevantagePolicy",

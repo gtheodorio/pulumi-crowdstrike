@@ -28,6 +28,12 @@ when left blank.
 
 cloud: Optional[str]
 """
-Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+environment variable when left blank.
+"""
+
+memberCid: Optional[str]
+"""
+For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
 """
 
