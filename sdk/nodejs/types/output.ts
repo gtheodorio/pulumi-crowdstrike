@@ -5,6 +5,61 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface CloudAwsAccountAssetInventory {
+    /**
+     * Enable asset inventory
+     */
+    enabled: boolean;
+    /**
+     * Custom AWS IAM role name
+     */
+    roleName?: string;
+}
+
+export interface CloudAwsAccountDspm {
+    /**
+     * Enable Data Security Posture Management
+     */
+    enabled: boolean;
+    /**
+     * Custom AWS IAM role name for Data Security Posture Management
+     */
+    roleName?: string;
+}
+
+export interface CloudAwsAccountIdp {
+    /**
+     * Enable Identity Protection
+     */
+    enabled: boolean;
+    /**
+     * Current status of the Identity Protection integration
+     */
+    status: string;
+}
+
+export interface CloudAwsAccountRealtimeVisibility {
+    /**
+     * The AWS region of the CloudTrail bucket
+     */
+    cloudtrailRegion: string;
+    /**
+     * Enable real-time visibility and detection
+     */
+    enabled: boolean;
+    /**
+     * Set to true if a CloudTrail already exists
+     */
+    useExistingCloudtrail: boolean;
+}
+
+export interface CloudAwsAccountSensorManagement {
+    /**
+     * Enable 1-click sensor deployment
+     */
+    enabled: boolean;
+}
+
 export interface FilevantagePolicyScheduledExclusion {
     /**
      * Description of the scheduled exclusion.
@@ -212,6 +267,81 @@ export interface FilevantageRuleGroupRule {
      * Monitor registry value set events.
      */
     watchKeyValueSetChanges: boolean;
+}
+
+export interface GetCloudAwsAccountAccount {
+    /**
+     * The AWS Account ID
+     */
+    accountId: string;
+    /**
+     * The AWS account type. Value is 'commercial' for Commercial cloud accounts. For GovCloud environments, value can be either 'commercial' or 'gov' depending on the account type
+     */
+    accountType: string;
+    /**
+     * Whether asset inventory is enabled
+     */
+    assetInventoryEnabled: boolean;
+    /**
+     * The name of the CloudTrail S3 bucket used for real-time visibility
+     */
+    cloudtrailBucketName: string;
+    /**
+     * The AWS region of the CloudTrail bucket
+     */
+    cloudtrailRegion: string;
+    /**
+     * Whether Data Security Posture Management is enabled
+     */
+    dspmEnabled: boolean;
+    /**
+     * The ARN of the IAM role to be used by CrowdStrike DSPM
+     */
+    dspmRoleArn: string;
+    /**
+     * The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
+     */
+    eventbusArn: string;
+    /**
+     * The name of the Amazon EventBridge used by CrowdStrike to forward messages
+     */
+    eventbusName: string;
+    /**
+     * The external ID used to assume the AWS IAM role
+     */
+    externalId: string;
+    /**
+     * The ARN of the AWS IAM role used to access this AWS account
+     */
+    iamRoleArn: string;
+    /**
+     * Whether Identity Protection is enabled
+     */
+    idpEnabled: boolean;
+    /**
+     * The ARN of the intermediate role used to assume the AWS IAM role
+     */
+    intermediateRoleArn: string;
+    /**
+     * Indicates whether this is the management account (formerly known as the root account) of an AWS Organization
+     */
+    isOrganizationManagementAccount: boolean;
+    /**
+     * The AWS Organization ID
+     */
+    organizationId: string;
+    /**
+     * Whether real-time visibility is enabled
+     */
+    realtimeVisibilityEnabled: boolean;
+    /**
+     * Whether 1-click sensor deployment is enabled
+     */
+    sensorManagementEnabled: boolean;
+    /**
+     * The list of AWS Organizational Units (OUs) targeted for this account
+     */
+    targetOuses: string[];
 }
 
 export interface GetSensorUpdatePolicyBuildsLinux {

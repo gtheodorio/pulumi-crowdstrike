@@ -33,10 +33,7 @@ namespace CrowdStrike.Crowdstrike
     ///     {
     ///         Enabled = true,
     ///         Description = "Made with Pulumi",
-    ///         HostGroups = new[]
-    ///         {
-    ///             "d6e3c1e1b3d0467da0fowc96a5e6ecb5",
-    ///         },
+    ///         HostGroups = new[] {},
     ///         IoaRuleGroups = new[] {},
     ///         CloudAntiMalware = new Crowdstrike.Inputs.PreventionPolicyLinuxCloudAntiMalwareArgs
     ///         {
@@ -61,6 +58,9 @@ namespace CrowdStrike.Crowdstrike
     ///         HttpVisibility = true,
     ///         NetworkVisibility = true,
     ///         TlsVisibility = true,
+    ///         SensorTamperingProtection = true,
+    ///         OnWriteScriptFileVisibility = true,
+    ///         MemoryVisibility = true,
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
@@ -151,6 +151,12 @@ namespace CrowdStrike.Crowdstrike
         public Output<string> LastUpdated { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+        /// </summary>
+        [Output("memoryVisibility")]
+        public Output<bool> MemoryVisibility { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the prevention policy.
         /// </summary>
         [Output("name")]
@@ -161,6 +167,12 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         [Output("networkVisibility")]
         public Output<bool> NetworkVisibility { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+        /// </summary>
+        [Output("onWriteScriptFileVisibility")]
+        public Output<bool> OnWriteScriptFileVisibility { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
@@ -185,6 +197,12 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         [Output("sensorAntiMalware")]
         public Output<Outputs.PreventionPolicyLinuxSensorAntiMalware> SensorAntiMalware { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+        /// </summary>
+        [Output("sensorTamperingProtection")]
+        public Output<bool> SensorTamperingProtection { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
@@ -330,6 +348,12 @@ namespace CrowdStrike.Crowdstrike
         }
 
         /// <summary>
+        /// Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+        /// </summary>
+        [Input("memoryVisibility")]
+        public Input<bool>? MemoryVisibility { get; set; }
+
+        /// <summary>
         /// Name of the prevention policy.
         /// </summary>
         [Input("name")]
@@ -340,6 +364,12 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         [Input("networkVisibility")]
         public Input<bool>? NetworkVisibility { get; set; }
+
+        /// <summary>
+        /// Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+        /// </summary>
+        [Input("onWriteScriptFileVisibility")]
+        public Input<bool>? OnWriteScriptFileVisibility { get; set; }
 
         /// <summary>
         /// Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
@@ -364,6 +394,12 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         [Input("sensorAntiMalware")]
         public Input<Inputs.PreventionPolicyLinuxSensorAntiMalwareArgs>? SensorAntiMalware { get; set; }
+
+        /// <summary>
+        /// Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+        /// </summary>
+        [Input("sensorTamperingProtection")]
+        public Input<bool>? SensorTamperingProtection { get; set; }
 
         /// <summary>
         /// Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
@@ -473,6 +509,12 @@ namespace CrowdStrike.Crowdstrike
         public Input<string>? LastUpdated { get; set; }
 
         /// <summary>
+        /// Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+        /// </summary>
+        [Input("memoryVisibility")]
+        public Input<bool>? MemoryVisibility { get; set; }
+
+        /// <summary>
         /// Name of the prevention policy.
         /// </summary>
         [Input("name")]
@@ -483,6 +525,12 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         [Input("networkVisibility")]
         public Input<bool>? NetworkVisibility { get; set; }
+
+        /// <summary>
+        /// Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+        /// </summary>
+        [Input("onWriteScriptFileVisibility")]
+        public Input<bool>? OnWriteScriptFileVisibility { get; set; }
 
         /// <summary>
         /// Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
@@ -507,6 +555,12 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         [Input("sensorAntiMalware")]
         public Input<Inputs.PreventionPolicyLinuxSensorAntiMalwareGetArgs>? SensorAntiMalware { get; set; }
+
+        /// <summary>
+        /// Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+        /// </summary>
+        [Input("sensorTamperingProtection")]
+        public Input<bool>? SensorTamperingProtection { get; set; }
 
         /// <summary>
         /// Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.

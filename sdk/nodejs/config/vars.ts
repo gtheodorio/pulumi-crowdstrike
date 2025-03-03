@@ -32,12 +32,24 @@ Object.defineProperty(exports, "clientSecret", {
 });
 
 /**
- * Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+ * Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+ * environment variable when left blank.
  */
 export declare const cloud: string | undefined;
 Object.defineProperty(exports, "cloud", {
     get() {
         return __config.get("cloud");
+    },
+    enumerable: true,
+});
+
+/**
+ * For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+ */
+export declare const memberCid: string | undefined;
+Object.defineProperty(exports, "memberCid", {
+    get() {
+        return __config.get("memberCid");
     },
     enumerable: true,
 });

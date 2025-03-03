@@ -35,11 +35,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := crowdstrike.NewPreventionPolicyMac(ctx, "example", &crowdstrike.PreventionPolicyMacArgs{
-//				Enabled:     pulumi.Bool(false),
-//				Description: pulumi.String("Made with Pulumi"),
-//				HostGroups: pulumi.StringArray{
-//					pulumi.String("d6e3c1e1b3d0467da0fowc96a5e6ecb5"),
-//				},
+//				Enabled:       pulumi.Bool(false),
+//				Description:   pulumi.String("Made with Pulumi"),
+//				HostGroups:    pulumi.StringArray{},
 //				IoaRuleGroups: pulumi.StringArray{},
 //				CloudAdwareAndPup: &crowdstrike.PreventionPolicyMacCloudAdwareAndPupArgs{
 //					Detection:  pulumi.String("MODERATE"),

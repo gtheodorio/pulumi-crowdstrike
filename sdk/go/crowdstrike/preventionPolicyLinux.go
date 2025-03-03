@@ -35,11 +35,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := crowdstrike.NewPreventionPolicyLinux(ctx, "example", &crowdstrike.PreventionPolicyLinuxArgs{
-//				Enabled:     pulumi.Bool(true),
-//				Description: pulumi.String("Made with Pulumi"),
-//				HostGroups: pulumi.StringArray{
-//					pulumi.String("d6e3c1e1b3d0467da0fowc96a5e6ecb5"),
-//				},
+//				Enabled:       pulumi.Bool(true),
+//				Description:   pulumi.String("Made with Pulumi"),
+//				HostGroups:    pulumi.StringArray{},
 //				IoaRuleGroups: pulumi.StringArray{},
 //				CloudAntiMalware: &crowdstrike.PreventionPolicyLinuxCloudAntiMalwareArgs{
 //					Detection:  pulumi.String("MODERATE"),
@@ -62,6 +60,9 @@ import (
 //				HttpVisibility:                           pulumi.Bool(true),
 //				NetworkVisibility:                        pulumi.Bool(true),
 //				TlsVisibility:                            pulumi.Bool(true),
+//				SensorTamperingProtection:                pulumi.Bool(true),
+//				OnWriteScriptFileVisibility:              pulumi.Bool(true),
+//				MemoryVisibility:                         pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -106,10 +107,14 @@ type PreventionPolicyLinux struct {
 	// IOA Rule Group to attach to the prevention policy.
 	IoaRuleGroups pulumi.StringArrayOutput `pulumi:"ioaRuleGroups"`
 	LastUpdated   pulumi.StringOutput      `pulumi:"lastUpdated"`
+	// Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+	MemoryVisibility pulumi.BoolOutput `pulumi:"memoryVisibility"`
 	// Name of the prevention policy.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
 	NetworkVisibility pulumi.BoolOutput `pulumi:"networkVisibility"`
+	// Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+	OnWriteScriptFileVisibility pulumi.BoolOutput `pulumi:"onWriteScriptFileVisibility"`
 	// Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
 	PreventSuspiciousProcesses pulumi.BoolOutput `pulumi:"preventSuspiciousProcesses"`
 	// Whether to enable the setting. Quarantine executable files after they’re prevented by NGAV. When this is enabled, we recommend setting anti-malware prevention levels to Moderate or higher and not using other antivirus solutions.
@@ -118,6 +123,8 @@ type PreventionPolicyLinux struct {
 	ScriptBasedExecutionMonitoring pulumi.BoolOutput `pulumi:"scriptBasedExecutionMonitoring"`
 	// For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
 	SensorAntiMalware PreventionPolicyLinuxSensorAntiMalwareOutput `pulumi:"sensorAntiMalware"`
+	// Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+	SensorTamperingProtection pulumi.BoolOutput `pulumi:"sensorTamperingProtection"`
 	// Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
 	TlsVisibility pulumi.BoolOutput `pulumi:"tlsVisibility"`
 	// Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
@@ -185,10 +192,14 @@ type preventionPolicyLinuxState struct {
 	// IOA Rule Group to attach to the prevention policy.
 	IoaRuleGroups []string `pulumi:"ioaRuleGroups"`
 	LastUpdated   *string  `pulumi:"lastUpdated"`
+	// Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+	MemoryVisibility *bool `pulumi:"memoryVisibility"`
 	// Name of the prevention policy.
 	Name *string `pulumi:"name"`
 	// Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
 	NetworkVisibility *bool `pulumi:"networkVisibility"`
+	// Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+	OnWriteScriptFileVisibility *bool `pulumi:"onWriteScriptFileVisibility"`
 	// Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
 	PreventSuspiciousProcesses *bool `pulumi:"preventSuspiciousProcesses"`
 	// Whether to enable the setting. Quarantine executable files after they’re prevented by NGAV. When this is enabled, we recommend setting anti-malware prevention levels to Moderate or higher and not using other antivirus solutions.
@@ -197,6 +208,8 @@ type preventionPolicyLinuxState struct {
 	ScriptBasedExecutionMonitoring *bool `pulumi:"scriptBasedExecutionMonitoring"`
 	// For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
 	SensorAntiMalware *PreventionPolicyLinuxSensorAntiMalware `pulumi:"sensorAntiMalware"`
+	// Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+	SensorTamperingProtection *bool `pulumi:"sensorTamperingProtection"`
 	// Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
 	TlsVisibility *bool `pulumi:"tlsVisibility"`
 	// Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
@@ -229,10 +242,14 @@ type PreventionPolicyLinuxState struct {
 	// IOA Rule Group to attach to the prevention policy.
 	IoaRuleGroups pulumi.StringArrayInput
 	LastUpdated   pulumi.StringPtrInput
+	// Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+	MemoryVisibility pulumi.BoolPtrInput
 	// Name of the prevention policy.
 	Name pulumi.StringPtrInput
 	// Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
 	NetworkVisibility pulumi.BoolPtrInput
+	// Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+	OnWriteScriptFileVisibility pulumi.BoolPtrInput
 	// Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
 	PreventSuspiciousProcesses pulumi.BoolPtrInput
 	// Whether to enable the setting. Quarantine executable files after they’re prevented by NGAV. When this is enabled, we recommend setting anti-malware prevention levels to Moderate or higher and not using other antivirus solutions.
@@ -241,6 +258,8 @@ type PreventionPolicyLinuxState struct {
 	ScriptBasedExecutionMonitoring pulumi.BoolPtrInput
 	// For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
 	SensorAntiMalware PreventionPolicyLinuxSensorAntiMalwarePtrInput
+	// Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+	SensorTamperingProtection pulumi.BoolPtrInput
 	// Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
 	TlsVisibility pulumi.BoolPtrInput
 	// Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
@@ -276,10 +295,14 @@ type preventionPolicyLinuxArgs struct {
 	HttpVisibility *bool `pulumi:"httpVisibility"`
 	// IOA Rule Group to attach to the prevention policy.
 	IoaRuleGroups []string `pulumi:"ioaRuleGroups"`
+	// Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+	MemoryVisibility *bool `pulumi:"memoryVisibility"`
 	// Name of the prevention policy.
 	Name *string `pulumi:"name"`
 	// Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
 	NetworkVisibility *bool `pulumi:"networkVisibility"`
+	// Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+	OnWriteScriptFileVisibility *bool `pulumi:"onWriteScriptFileVisibility"`
 	// Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
 	PreventSuspiciousProcesses *bool `pulumi:"preventSuspiciousProcesses"`
 	// Whether to enable the setting. Quarantine executable files after they’re prevented by NGAV. When this is enabled, we recommend setting anti-malware prevention levels to Moderate or higher and not using other antivirus solutions.
@@ -288,6 +311,8 @@ type preventionPolicyLinuxArgs struct {
 	ScriptBasedExecutionMonitoring *bool `pulumi:"scriptBasedExecutionMonitoring"`
 	// For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
 	SensorAntiMalware *PreventionPolicyLinuxSensorAntiMalware `pulumi:"sensorAntiMalware"`
+	// Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+	SensorTamperingProtection *bool `pulumi:"sensorTamperingProtection"`
 	// Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
 	TlsVisibility *bool `pulumi:"tlsVisibility"`
 	// Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
@@ -320,10 +345,14 @@ type PreventionPolicyLinuxArgs struct {
 	HttpVisibility pulumi.BoolPtrInput
 	// IOA Rule Group to attach to the prevention policy.
 	IoaRuleGroups pulumi.StringArrayInput
+	// Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+	MemoryVisibility pulumi.BoolPtrInput
 	// Name of the prevention policy.
 	Name pulumi.StringPtrInput
 	// Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
 	NetworkVisibility pulumi.BoolPtrInput
+	// Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+	OnWriteScriptFileVisibility pulumi.BoolPtrInput
 	// Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
 	PreventSuspiciousProcesses pulumi.BoolPtrInput
 	// Whether to enable the setting. Quarantine executable files after they’re prevented by NGAV. When this is enabled, we recommend setting anti-malware prevention levels to Moderate or higher and not using other antivirus solutions.
@@ -332,6 +361,8 @@ type PreventionPolicyLinuxArgs struct {
 	ScriptBasedExecutionMonitoring pulumi.BoolPtrInput
 	// For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
 	SensorAntiMalware PreventionPolicyLinuxSensorAntiMalwarePtrInput
+	// Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+	SensorTamperingProtection pulumi.BoolPtrInput
 	// Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
 	TlsVisibility pulumi.BoolPtrInput
 	// Whether to enable the setting. Upload all unknown detection-related executables for advanced analysis in the cloud.
@@ -486,6 +517,11 @@ func (o PreventionPolicyLinuxOutput) LastUpdated() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionPolicyLinux) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
 }
 
+// Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+func (o PreventionPolicyLinuxOutput) MemoryVisibility() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PreventionPolicyLinux) pulumi.BoolOutput { return v.MemoryVisibility }).(pulumi.BoolOutput)
+}
+
 // Name of the prevention policy.
 func (o PreventionPolicyLinuxOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionPolicyLinux) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -494,6 +530,11 @@ func (o PreventionPolicyLinuxOutput) Name() pulumi.StringOutput {
 // Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
 func (o PreventionPolicyLinuxOutput) NetworkVisibility() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PreventionPolicyLinux) pulumi.BoolOutput { return v.NetworkVisibility }).(pulumi.BoolOutput)
+}
+
+// Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+func (o PreventionPolicyLinuxOutput) OnWriteScriptFileVisibility() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PreventionPolicyLinux) pulumi.BoolOutput { return v.OnWriteScriptFileVisibility }).(pulumi.BoolOutput)
 }
 
 // Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
@@ -516,6 +557,11 @@ func (o PreventionPolicyLinuxOutput) SensorAntiMalware() PreventionPolicyLinuxSe
 	return o.ApplyT(func(v *PreventionPolicyLinux) PreventionPolicyLinuxSensorAntiMalwareOutput {
 		return v.SensorAntiMalware
 	}).(PreventionPolicyLinuxSensorAntiMalwareOutput)
+}
+
+// Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+func (o PreventionPolicyLinuxOutput) SensorTamperingProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PreventionPolicyLinux) pulumi.BoolOutput { return v.SensorTamperingProtection }).(pulumi.BoolOutput)
 }
 
 // Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.

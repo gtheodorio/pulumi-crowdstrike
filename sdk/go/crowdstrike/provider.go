@@ -24,8 +24,11 @@ type Provider struct {
 	// Falcon Client Secret used for authenticating to the CrowdStrike APIs. Will use FALCON_CLIENT_SECRET environment variable
 	// when left blank.
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
-	// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+	// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+	// environment variable when left blank.
 	Cloud pulumi.StringPtrOutput `pulumi:"cloud"`
+	// For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+	MemberCid pulumi.StringPtrOutput `pulumi:"memberCid"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -62,8 +65,11 @@ type providerArgs struct {
 	// Falcon Client Secret used for authenticating to the CrowdStrike APIs. Will use FALCON_CLIENT_SECRET environment variable
 	// when left blank.
 	ClientSecret *string `pulumi:"clientSecret"`
-	// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+	// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+	// environment variable when left blank.
 	Cloud *string `pulumi:"cloud"`
+	// For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+	MemberCid *string `pulumi:"memberCid"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -74,8 +80,11 @@ type ProviderArgs struct {
 	// Falcon Client Secret used for authenticating to the CrowdStrike APIs. Will use FALCON_CLIENT_SECRET environment variable
 	// when left blank.
 	ClientSecret pulumi.StringPtrInput
-	// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+	// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+	// environment variable when left blank.
 	Cloud pulumi.StringPtrInput
+	// For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+	MemberCid pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -127,9 +136,15 @@ func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+// environment variable when left blank.
 func (o ProviderOutput) Cloud() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Cloud }).(pulumi.StringPtrOutput)
+}
+
+// For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+func (o ProviderOutput) MemberCid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MemberCid }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -893,7 +893,7 @@ class PreventionPolicyMac(pulumi.CustomResource):
         example = crowdstrike.PreventionPolicyMac("example",
             enabled=False,
             description="Made with Pulumi",
-            host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
+            host_groups=[],
             ioa_rule_groups=[],
             cloud_adware_and_pup={
                 "detection": "MODERATE",
@@ -990,7 +990,7 @@ class PreventionPolicyMac(pulumi.CustomResource):
         example = crowdstrike.PreventionPolicyMac("example",
             enabled=False,
             description="Made with Pulumi",
-            host_groups=["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
+            host_groups=[],
             ioa_rule_groups=[],
             cloud_adware_and_pup={
                 "detection": "MODERATE",

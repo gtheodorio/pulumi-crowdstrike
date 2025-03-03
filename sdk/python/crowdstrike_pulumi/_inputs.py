@@ -15,6 +15,16 @@ else:
 from . import _utilities
 
 __all__ = [
+    'CloudAwsAccountAssetInventoryArgs',
+    'CloudAwsAccountAssetInventoryArgsDict',
+    'CloudAwsAccountDspmArgs',
+    'CloudAwsAccountDspmArgsDict',
+    'CloudAwsAccountIdpArgs',
+    'CloudAwsAccountIdpArgsDict',
+    'CloudAwsAccountRealtimeVisibilityArgs',
+    'CloudAwsAccountRealtimeVisibilityArgsDict',
+    'CloudAwsAccountSensorManagementArgs',
+    'CloudAwsAccountSensorManagementArgsDict',
     'FilevantagePolicyScheduledExclusionArgs',
     'FilevantagePolicyScheduledExclusionArgsDict',
     'FilevantagePolicyScheduledExclusionRepeatedArgs',
@@ -54,6 +64,260 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class CloudAwsAccountAssetInventoryArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable asset inventory
+        """
+        role_name: NotRequired[pulumi.Input[str]]
+        """
+        Custom AWS IAM role name
+        """
+elif False:
+    CloudAwsAccountAssetInventoryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudAwsAccountAssetInventoryArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 role_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable asset inventory
+        :param pulumi.Input[str] role_name: Custom AWS IAM role name
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if role_name is not None:
+            pulumi.set(__self__, "role_name", role_name)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable asset inventory
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom AWS IAM role name
+        """
+        return pulumi.get(self, "role_name")
+
+    @role_name.setter
+    def role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_name", value)
+
+
+if not MYPY:
+    class CloudAwsAccountDspmArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable Data Security Posture Management
+        """
+        role_name: NotRequired[pulumi.Input[str]]
+        """
+        Custom AWS IAM role name for Data Security Posture Management
+        """
+elif False:
+    CloudAwsAccountDspmArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudAwsAccountDspmArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 role_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable Data Security Posture Management
+        :param pulumi.Input[str] role_name: Custom AWS IAM role name for Data Security Posture Management
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if role_name is not None:
+            pulumi.set(__self__, "role_name", role_name)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable Data Security Posture Management
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom AWS IAM role name for Data Security Posture Management
+        """
+        return pulumi.get(self, "role_name")
+
+    @role_name.setter
+    def role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_name", value)
+
+
+if not MYPY:
+    class CloudAwsAccountIdpArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable Identity Protection
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Current status of the Identity Protection integration
+        """
+elif False:
+    CloudAwsAccountIdpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudAwsAccountIdpArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable Identity Protection
+        :param pulumi.Input[str] status: Current status of the Identity Protection integration
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable Identity Protection
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Current status of the Identity Protection integration
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class CloudAwsAccountRealtimeVisibilityArgsDict(TypedDict):
+        cloudtrail_region: pulumi.Input[str]
+        """
+        The AWS region of the CloudTrail bucket
+        """
+        enabled: pulumi.Input[bool]
+        """
+        Enable real-time visibility and detection
+        """
+        use_existing_cloudtrail: NotRequired[pulumi.Input[bool]]
+        """
+        Set to true if a CloudTrail already exists
+        """
+elif False:
+    CloudAwsAccountRealtimeVisibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudAwsAccountRealtimeVisibilityArgs:
+    def __init__(__self__, *,
+                 cloudtrail_region: pulumi.Input[str],
+                 enabled: pulumi.Input[bool],
+                 use_existing_cloudtrail: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] cloudtrail_region: The AWS region of the CloudTrail bucket
+        :param pulumi.Input[bool] enabled: Enable real-time visibility and detection
+        :param pulumi.Input[bool] use_existing_cloudtrail: Set to true if a CloudTrail already exists
+        """
+        pulumi.set(__self__, "cloudtrail_region", cloudtrail_region)
+        pulumi.set(__self__, "enabled", enabled)
+        if use_existing_cloudtrail is not None:
+            pulumi.set(__self__, "use_existing_cloudtrail", use_existing_cloudtrail)
+
+    @property
+    @pulumi.getter(name="cloudtrailRegion")
+    def cloudtrail_region(self) -> pulumi.Input[str]:
+        """
+        The AWS region of the CloudTrail bucket
+        """
+        return pulumi.get(self, "cloudtrail_region")
+
+    @cloudtrail_region.setter
+    def cloudtrail_region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cloudtrail_region", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable real-time visibility and detection
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="useExistingCloudtrail")
+    def use_existing_cloudtrail(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true if a CloudTrail already exists
+        """
+        return pulumi.get(self, "use_existing_cloudtrail")
+
+    @use_existing_cloudtrail.setter
+    def use_existing_cloudtrail(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_existing_cloudtrail", value)
+
+
+if not MYPY:
+    class CloudAwsAccountSensorManagementArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable 1-click sensor deployment
+        """
+elif False:
+    CloudAwsAccountSensorManagementArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudAwsAccountSensorManagementArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable 1-click sensor deployment
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable 1-click sensor deployment
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
 
 if not MYPY:
     class FilevantagePolicyScheduledExclusionArgsDict(TypedDict):

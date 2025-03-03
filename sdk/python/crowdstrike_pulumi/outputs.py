@@ -16,6 +16,11 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'CloudAwsAccountAssetInventory',
+    'CloudAwsAccountDspm',
+    'CloudAwsAccountIdp',
+    'CloudAwsAccountRealtimeVisibility',
+    'CloudAwsAccountSensorManagement',
     'FilevantagePolicyScheduledExclusion',
     'FilevantagePolicyScheduledExclusionRepeated',
     'FilevantageRuleGroupRule',
@@ -34,6 +39,7 @@ __all__ = [
     'PreventionPolicyWindowsSensorAntiMalwareUserInitiated',
     'SensorUpdatePolicySchedule',
     'SensorUpdatePolicyScheduleTimeBlock',
+    'GetCloudAwsAccountAccountResult',
     'GetSensorUpdatePolicyBuildsLinuxResult',
     'GetSensorUpdatePolicyBuildsLinuxAllResult',
     'GetSensorUpdatePolicyBuildsLinuxArm64Result',
@@ -55,6 +61,208 @@ __all__ = [
     'GetSensorUpdatePolicyBuildsWindowsN1Result',
     'GetSensorUpdatePolicyBuildsWindowsN2Result',
 ]
+
+@pulumi.output_type
+class CloudAwsAccountAssetInventory(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "roleName":
+            suggest = "role_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudAwsAccountAssetInventory. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudAwsAccountAssetInventory.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudAwsAccountAssetInventory.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 role_name: Optional[str] = None):
+        """
+        :param bool enabled: Enable asset inventory
+        :param str role_name: Custom AWS IAM role name
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if role_name is not None:
+            pulumi.set(__self__, "role_name", role_name)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable asset inventory
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> Optional[str]:
+        """
+        Custom AWS IAM role name
+        """
+        return pulumi.get(self, "role_name")
+
+
+@pulumi.output_type
+class CloudAwsAccountDspm(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "roleName":
+            suggest = "role_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudAwsAccountDspm. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudAwsAccountDspm.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudAwsAccountDspm.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 role_name: Optional[str] = None):
+        """
+        :param bool enabled: Enable Data Security Posture Management
+        :param str role_name: Custom AWS IAM role name for Data Security Posture Management
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if role_name is not None:
+            pulumi.set(__self__, "role_name", role_name)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable Data Security Posture Management
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> Optional[str]:
+        """
+        Custom AWS IAM role name for Data Security Posture Management
+        """
+        return pulumi.get(self, "role_name")
+
+
+@pulumi.output_type
+class CloudAwsAccountIdp(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 status: Optional[str] = None):
+        """
+        :param bool enabled: Enable Identity Protection
+        :param str status: Current status of the Identity Protection integration
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable Identity Protection
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Current status of the Identity Protection integration
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class CloudAwsAccountRealtimeVisibility(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudtrailRegion":
+            suggest = "cloudtrail_region"
+        elif key == "useExistingCloudtrail":
+            suggest = "use_existing_cloudtrail"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudAwsAccountRealtimeVisibility. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudAwsAccountRealtimeVisibility.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudAwsAccountRealtimeVisibility.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloudtrail_region: str,
+                 enabled: bool,
+                 use_existing_cloudtrail: Optional[bool] = None):
+        """
+        :param str cloudtrail_region: The AWS region of the CloudTrail bucket
+        :param bool enabled: Enable real-time visibility and detection
+        :param bool use_existing_cloudtrail: Set to true if a CloudTrail already exists
+        """
+        pulumi.set(__self__, "cloudtrail_region", cloudtrail_region)
+        pulumi.set(__self__, "enabled", enabled)
+        if use_existing_cloudtrail is not None:
+            pulumi.set(__self__, "use_existing_cloudtrail", use_existing_cloudtrail)
+
+    @property
+    @pulumi.getter(name="cloudtrailRegion")
+    def cloudtrail_region(self) -> str:
+        """
+        The AWS region of the CloudTrail bucket
+        """
+        return pulumi.get(self, "cloudtrail_region")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable real-time visibility and detection
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="useExistingCloudtrail")
+    def use_existing_cloudtrail(self) -> Optional[bool]:
+        """
+        Set to true if a CloudTrail already exists
+        """
+        return pulumi.get(self, "use_existing_cloudtrail")
+
+
+@pulumi.output_type
+class CloudAwsAccountSensorManagement(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable 1-click sensor deployment
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable 1-click sensor deployment
+        """
+        return pulumi.get(self, "enabled")
+
 
 @pulumi.output_type
 class FilevantagePolicyScheduledExclusion(dict):
@@ -1263,6 +1471,211 @@ class SensorUpdatePolicyScheduleTimeBlock(dict):
         The start time for the time block in 24HR format. Must be atleast 1 hour before end_time.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetCloudAwsAccountAccountResult(dict):
+    def __init__(__self__, *,
+                 account_id: str,
+                 account_type: str,
+                 asset_inventory_enabled: bool,
+                 cloudtrail_bucket_name: str,
+                 cloudtrail_region: str,
+                 dspm_enabled: bool,
+                 dspm_role_arn: str,
+                 eventbus_arn: str,
+                 eventbus_name: str,
+                 external_id: str,
+                 iam_role_arn: str,
+                 idp_enabled: bool,
+                 intermediate_role_arn: str,
+                 is_organization_management_account: bool,
+                 organization_id: str,
+                 realtime_visibility_enabled: bool,
+                 sensor_management_enabled: bool,
+                 target_ouses: Sequence[str]):
+        """
+        :param str account_id: The AWS Account ID
+        :param str account_type: The AWS account type. Value is 'commercial' for Commercial cloud accounts. For GovCloud environments, value can be either 'commercial' or 'gov' depending on the account type
+        :param bool asset_inventory_enabled: Whether asset inventory is enabled
+        :param str cloudtrail_bucket_name: The name of the CloudTrail S3 bucket used for real-time visibility
+        :param str cloudtrail_region: The AWS region of the CloudTrail bucket
+        :param bool dspm_enabled: Whether Data Security Posture Management is enabled
+        :param str dspm_role_arn: The ARN of the IAM role to be used by CrowdStrike DSPM
+        :param str eventbus_arn: The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
+        :param str eventbus_name: The name of the Amazon EventBridge used by CrowdStrike to forward messages
+        :param str external_id: The external ID used to assume the AWS IAM role
+        :param str iam_role_arn: The ARN of the AWS IAM role used to access this AWS account
+        :param bool idp_enabled: Whether Identity Protection is enabled
+        :param str intermediate_role_arn: The ARN of the intermediate role used to assume the AWS IAM role
+        :param bool is_organization_management_account: Indicates whether this is the management account (formerly known as the root account) of an AWS Organization
+        :param str organization_id: The AWS Organization ID
+        :param bool realtime_visibility_enabled: Whether real-time visibility is enabled
+        :param bool sensor_management_enabled: Whether 1-click sensor deployment is enabled
+        :param Sequence[str] target_ouses: The list of AWS Organizational Units (OUs) targeted for this account
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_type", account_type)
+        pulumi.set(__self__, "asset_inventory_enabled", asset_inventory_enabled)
+        pulumi.set(__self__, "cloudtrail_bucket_name", cloudtrail_bucket_name)
+        pulumi.set(__self__, "cloudtrail_region", cloudtrail_region)
+        pulumi.set(__self__, "dspm_enabled", dspm_enabled)
+        pulumi.set(__self__, "dspm_role_arn", dspm_role_arn)
+        pulumi.set(__self__, "eventbus_arn", eventbus_arn)
+        pulumi.set(__self__, "eventbus_name", eventbus_name)
+        pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+        pulumi.set(__self__, "idp_enabled", idp_enabled)
+        pulumi.set(__self__, "intermediate_role_arn", intermediate_role_arn)
+        pulumi.set(__self__, "is_organization_management_account", is_organization_management_account)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "realtime_visibility_enabled", realtime_visibility_enabled)
+        pulumi.set(__self__, "sensor_management_enabled", sensor_management_enabled)
+        pulumi.set(__self__, "target_ouses", target_ouses)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        The AWS Account ID
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> str:
+        """
+        The AWS account type. Value is 'commercial' for Commercial cloud accounts. For GovCloud environments, value can be either 'commercial' or 'gov' depending on the account type
+        """
+        return pulumi.get(self, "account_type")
+
+    @property
+    @pulumi.getter(name="assetInventoryEnabled")
+    def asset_inventory_enabled(self) -> bool:
+        """
+        Whether asset inventory is enabled
+        """
+        return pulumi.get(self, "asset_inventory_enabled")
+
+    @property
+    @pulumi.getter(name="cloudtrailBucketName")
+    def cloudtrail_bucket_name(self) -> str:
+        """
+        The name of the CloudTrail S3 bucket used for real-time visibility
+        """
+        return pulumi.get(self, "cloudtrail_bucket_name")
+
+    @property
+    @pulumi.getter(name="cloudtrailRegion")
+    def cloudtrail_region(self) -> str:
+        """
+        The AWS region of the CloudTrail bucket
+        """
+        return pulumi.get(self, "cloudtrail_region")
+
+    @property
+    @pulumi.getter(name="dspmEnabled")
+    def dspm_enabled(self) -> bool:
+        """
+        Whether Data Security Posture Management is enabled
+        """
+        return pulumi.get(self, "dspm_enabled")
+
+    @property
+    @pulumi.getter(name="dspmRoleArn")
+    def dspm_role_arn(self) -> str:
+        """
+        The ARN of the IAM role to be used by CrowdStrike DSPM
+        """
+        return pulumi.get(self, "dspm_role_arn")
+
+    @property
+    @pulumi.getter(name="eventbusArn")
+    def eventbus_arn(self) -> str:
+        """
+        The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
+        """
+        return pulumi.get(self, "eventbus_arn")
+
+    @property
+    @pulumi.getter(name="eventbusName")
+    def eventbus_name(self) -> str:
+        """
+        The name of the Amazon EventBridge used by CrowdStrike to forward messages
+        """
+        return pulumi.get(self, "eventbus_name")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> str:
+        """
+        The external ID used to assume the AWS IAM role
+        """
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter(name="iamRoleArn")
+    def iam_role_arn(self) -> str:
+        """
+        The ARN of the AWS IAM role used to access this AWS account
+        """
+        return pulumi.get(self, "iam_role_arn")
+
+    @property
+    @pulumi.getter(name="idpEnabled")
+    def idp_enabled(self) -> bool:
+        """
+        Whether Identity Protection is enabled
+        """
+        return pulumi.get(self, "idp_enabled")
+
+    @property
+    @pulumi.getter(name="intermediateRoleArn")
+    def intermediate_role_arn(self) -> str:
+        """
+        The ARN of the intermediate role used to assume the AWS IAM role
+        """
+        return pulumi.get(self, "intermediate_role_arn")
+
+    @property
+    @pulumi.getter(name="isOrganizationManagementAccount")
+    def is_organization_management_account(self) -> bool:
+        """
+        Indicates whether this is the management account (formerly known as the root account) of an AWS Organization
+        """
+        return pulumi.get(self, "is_organization_management_account")
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> str:
+        """
+        The AWS Organization ID
+        """
+        return pulumi.get(self, "organization_id")
+
+    @property
+    @pulumi.getter(name="realtimeVisibilityEnabled")
+    def realtime_visibility_enabled(self) -> bool:
+        """
+        Whether real-time visibility is enabled
+        """
+        return pulumi.get(self, "realtime_visibility_enabled")
+
+    @property
+    @pulumi.getter(name="sensorManagementEnabled")
+    def sensor_management_enabled(self) -> bool:
+        """
+        Whether 1-click sensor deployment is enabled
+        """
+        return pulumi.get(self, "sensor_management_enabled")
+
+    @property
+    @pulumi.getter(name="targetOuses")
+    def target_ouses(self) -> Sequence[str]:
+        """
+        The list of AWS Organizational Units (OUs) targeted for this account
+        """
+        return pulumi.get(self, "target_ouses")
 
 
 @pulumi.output_type

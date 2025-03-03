@@ -39,7 +39,15 @@ class _ExportableConfig(types.ModuleType):
     @property
     def cloud(self) -> Optional[str]:
         """
-        Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+        Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+        environment variable when left blank.
         """
         return __config__.get('cloud')
+
+    @property
+    def member_cid(self) -> Optional[str]:
+        """
+        For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+        """
+        return __config__.get('memberCid')
 

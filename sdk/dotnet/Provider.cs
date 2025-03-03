@@ -34,10 +34,17 @@ namespace CrowdStrike.Crowdstrike
         public Output<string?> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+        /// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+        /// environment variable when left blank.
         /// </summary>
         [Output("cloud")]
         public Output<string?> Cloud { get; private set; } = null!;
+
+        /// <summary>
+        /// For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+        /// </summary>
+        [Output("memberCid")]
+        public Output<string?> MemberCid { get; private set; } = null!;
 
 
         /// <summary>
@@ -108,10 +115,17 @@ namespace CrowdStrike.Crowdstrike
         }
 
         /// <summary>
-        /// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+        /// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+        /// environment variable when left blank.
         /// </summary>
         [Input("cloud")]
         public Input<string>? Cloud { get; set; }
+
+        /// <summary>
+        /// For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+        /// </summary>
+        [Input("memberCid")]
+        public Input<string>? MemberCid { get; set; }
 
         public ProviderArgs()
         {

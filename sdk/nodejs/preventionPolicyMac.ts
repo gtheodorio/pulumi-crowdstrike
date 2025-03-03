@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * const example = new crowdstrike.PreventionPolicyMac("example", {
  *     enabled: false,
  *     description: "Made with Pulumi",
- *     hostGroups: ["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
+ *     hostGroups: [],
  *     ioaRuleGroups: [],
  *     cloudAdwareAndPup: {
  *         detection: "MODERATE",

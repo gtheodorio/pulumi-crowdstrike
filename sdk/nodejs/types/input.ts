@@ -5,6 +5,61 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface CloudAwsAccountAssetInventory {
+    /**
+     * Enable asset inventory
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Custom AWS IAM role name
+     */
+    roleName?: pulumi.Input<string>;
+}
+
+export interface CloudAwsAccountDspm {
+    /**
+     * Enable Data Security Posture Management
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Custom AWS IAM role name for Data Security Posture Management
+     */
+    roleName?: pulumi.Input<string>;
+}
+
+export interface CloudAwsAccountIdp {
+    /**
+     * Enable Identity Protection
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Current status of the Identity Protection integration
+     */
+    status?: pulumi.Input<string>;
+}
+
+export interface CloudAwsAccountRealtimeVisibility {
+    /**
+     * The AWS region of the CloudTrail bucket
+     */
+    cloudtrailRegion: pulumi.Input<string>;
+    /**
+     * Enable real-time visibility and detection
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Set to true if a CloudTrail already exists
+     */
+    useExistingCloudtrail?: pulumi.Input<boolean>;
+}
+
+export interface CloudAwsAccountSensorManagement {
+    /**
+     * Enable 1-click sensor deployment
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
 export interface FilevantagePolicyScheduledExclusion {
     /**
      * Description of the scheduled exclusion.

@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * const example = new crowdstrike.PreventionPolicyLinux("example", {
  *     enabled: true,
  *     description: "Made with Pulumi",
- *     hostGroups: ["d6e3c1e1b3d0467da0fowc96a5e6ecb5"],
+ *     hostGroups: [],
  *     ioaRuleGroups: [],
  *     cloudAntiMalware: {
  *         detection: "MODERATE",
@@ -47,6 +47,9 @@ import * as utilities from "./utilities";
  *     httpVisibility: true,
  *     networkVisibility: true,
  *     tlsVisibility: true,
+ *     sensorTamperingProtection: true,
+ *     onWriteScriptFileVisibility: true,
+ *     memoryVisibility: true,
  * });
  * export const preventionPolicyLinux = example;
  * ```
@@ -133,6 +136,10 @@ export class PreventionPolicyLinux extends pulumi.CustomResource {
     public readonly ioaRuleGroups!: pulumi.Output<string[]>;
     public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     /**
+     * Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+     */
+    public readonly memoryVisibility!: pulumi.Output<boolean>;
+    /**
      * Name of the prevention policy.
      */
     public readonly name!: pulumi.Output<string>;
@@ -140,6 +147,10 @@ export class PreventionPolicyLinux extends pulumi.CustomResource {
      * Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
      */
     public readonly networkVisibility!: pulumi.Output<boolean>;
+    /**
+     * Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+     */
+    public readonly onWriteScriptFileVisibility!: pulumi.Output<boolean>;
     /**
      * Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
      */
@@ -156,6 +167,10 @@ export class PreventionPolicyLinux extends pulumi.CustomResource {
      * For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
      */
     public readonly sensorAntiMalware!: pulumi.Output<outputs.PreventionPolicyLinuxSensorAntiMalware>;
+    /**
+     * Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+     */
+    public readonly sensorTamperingProtection!: pulumi.Output<boolean>;
     /**
      * Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
      */
@@ -194,12 +209,15 @@ export class PreventionPolicyLinux extends pulumi.CustomResource {
             resourceInputs["httpVisibility"] = state ? state.httpVisibility : undefined;
             resourceInputs["ioaRuleGroups"] = state ? state.ioaRuleGroups : undefined;
             resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
+            resourceInputs["memoryVisibility"] = state ? state.memoryVisibility : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkVisibility"] = state ? state.networkVisibility : undefined;
+            resourceInputs["onWriteScriptFileVisibility"] = state ? state.onWriteScriptFileVisibility : undefined;
             resourceInputs["preventSuspiciousProcesses"] = state ? state.preventSuspiciousProcesses : undefined;
             resourceInputs["quarantine"] = state ? state.quarantine : undefined;
             resourceInputs["scriptBasedExecutionMonitoring"] = state ? state.scriptBasedExecutionMonitoring : undefined;
             resourceInputs["sensorAntiMalware"] = state ? state.sensorAntiMalware : undefined;
+            resourceInputs["sensorTamperingProtection"] = state ? state.sensorTamperingProtection : undefined;
             resourceInputs["tlsVisibility"] = state ? state.tlsVisibility : undefined;
             resourceInputs["uploadUnknownDetectionRelatedExecutables"] = state ? state.uploadUnknownDetectionRelatedExecutables : undefined;
             resourceInputs["uploadUnknownExecutables"] = state ? state.uploadUnknownExecutables : undefined;
@@ -222,12 +240,15 @@ export class PreventionPolicyLinux extends pulumi.CustomResource {
             resourceInputs["hostGroups"] = args ? args.hostGroups : undefined;
             resourceInputs["httpVisibility"] = args ? args.httpVisibility : undefined;
             resourceInputs["ioaRuleGroups"] = args ? args.ioaRuleGroups : undefined;
+            resourceInputs["memoryVisibility"] = args ? args.memoryVisibility : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkVisibility"] = args ? args.networkVisibility : undefined;
+            resourceInputs["onWriteScriptFileVisibility"] = args ? args.onWriteScriptFileVisibility : undefined;
             resourceInputs["preventSuspiciousProcesses"] = args ? args.preventSuspiciousProcesses : undefined;
             resourceInputs["quarantine"] = args ? args.quarantine : undefined;
             resourceInputs["scriptBasedExecutionMonitoring"] = args ? args.scriptBasedExecutionMonitoring : undefined;
             resourceInputs["sensorAntiMalware"] = args ? args.sensorAntiMalware : undefined;
+            resourceInputs["sensorTamperingProtection"] = args ? args.sensorTamperingProtection : undefined;
             resourceInputs["tlsVisibility"] = args ? args.tlsVisibility : undefined;
             resourceInputs["uploadUnknownDetectionRelatedExecutables"] = args ? args.uploadUnknownDetectionRelatedExecutables : undefined;
             resourceInputs["uploadUnknownExecutables"] = args ? args.uploadUnknownExecutables : undefined;
@@ -288,6 +309,10 @@ export interface PreventionPolicyLinuxState {
     ioaRuleGroups?: pulumi.Input<pulumi.Input<string>[]>;
     lastUpdated?: pulumi.Input<string>;
     /**
+     * Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+     */
+    memoryVisibility?: pulumi.Input<boolean>;
+    /**
      * Name of the prevention policy.
      */
     name?: pulumi.Input<string>;
@@ -295,6 +320,10 @@ export interface PreventionPolicyLinuxState {
      * Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
      */
     networkVisibility?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+     */
+    onWriteScriptFileVisibility?: pulumi.Input<boolean>;
     /**
      * Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
      */
@@ -311,6 +340,10 @@ export interface PreventionPolicyLinuxState {
      * For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
      */
     sensorAntiMalware?: pulumi.Input<inputs.PreventionPolicyLinuxSensorAntiMalware>;
+    /**
+     * Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+     */
+    sensorTamperingProtection?: pulumi.Input<boolean>;
     /**
      * Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
      */
@@ -374,6 +407,10 @@ export interface PreventionPolicyLinuxArgs {
      */
     ioaRuleGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Whether to enable the setting. When enabled, the sensor will inspect memory-related operations: mmap, mprotect, ptrace and reading/writing remote process memory and produce events.
+     */
+    memoryVisibility?: pulumi.Input<boolean>;
+    /**
      * Name of the prevention policy.
      */
     name?: pulumi.Input<string>;
@@ -381,6 +418,10 @@ export interface PreventionPolicyLinuxArgs {
      * Whether to enable the setting. Allows the sensor to monitor network activity for additional telemetry and improved detections.
      */
     networkVisibility?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable the setting. Provides improved visibility into various script files being written to disk in addition to clouding a portion of their content.
+     */
+    onWriteScriptFileVisibility?: pulumi.Input<boolean>;
     /**
      * Whether to enable the setting. Block processes that CrowdStrike analysts classify as suspicious. These are focused on dynamic IOAs, such as malware, exploits and other threats.
      */
@@ -397,6 +438,10 @@ export interface PreventionPolicyLinuxArgs {
      * For offline and online hosts, use sensor-based machine learning to identify and analyze unknown executables as they run to detect and prevent malware.
      */
     sensorAntiMalware?: pulumi.Input<inputs.PreventionPolicyLinuxSensorAntiMalware>;
+    /**
+     * Whether to enable the setting. Block attempts to tamper with the sensor by protecting critical components and resources. If disabled, the sensor still creates detections for tampering attempts but will not prevent the activity from occurring. Disabling is not recommended.
+     */
+    sensorTamperingProtection?: pulumi.Input<boolean>;
     /**
      * Whether to enable the setting. Allows the sensor to monitor TLS traffic for malicious patterns and improved detections.
      */

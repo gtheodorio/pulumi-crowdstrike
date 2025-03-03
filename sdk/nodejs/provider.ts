@@ -36,9 +36,14 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly clientSecret!: pulumi.Output<string | undefined>;
     /**
-     * Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+     * Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+     * environment variable when left blank.
      */
     public readonly cloud!: pulumi.Output<string | undefined>;
+    /**
+     * For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+     */
+    public readonly memberCid!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -54,6 +59,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientId"] = args?.clientId ? pulumi.secret(args.clientId) : undefined;
             resourceInputs["clientSecret"] = args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined;
             resourceInputs["cloud"] = args ? args.cloud : undefined;
+            resourceInputs["memberCid"] = args ? args.memberCid : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["clientId", "clientSecret"] };
@@ -77,7 +83,12 @@ export interface ProviderArgs {
      */
     clientSecret?: pulumi.Input<string>;
     /**
-     * Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+     * Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+     * environment variable when left blank.
      */
     cloud?: pulumi.Input<string>;
+    /**
+     * For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+     */
+    memberCid?: pulumi.Input<string>;
 }

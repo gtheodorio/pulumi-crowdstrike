@@ -23,7 +23,13 @@ func GetClientSecret(ctx *pulumi.Context) string {
 	return config.Get(ctx, "crowdstrike:clientSecret")
 }
 
-// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1
+// Falcon Cloud to authenticate to. Valid values are autodiscover, us-1, us-2, eu-1, us-gov-1. Will use FALCON_CLOUD
+// environment variable when left blank.
 func GetCloud(ctx *pulumi.Context) string {
 	return config.Get(ctx, "crowdstrike:cloud")
+}
+
+// For MSSP Master CIDs, optionally lock the token to act on behalf of this member CID
+func GetMemberCid(ctx *pulumi.Context) string {
+	return config.Get(ctx, "crowdstrike:memberCid")
 }

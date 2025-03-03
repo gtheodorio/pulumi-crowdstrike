@@ -35,11 +35,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := crowdstrike.NewPreventionPolicyWindows(ctx, "example", &crowdstrike.PreventionPolicyWindowsArgs{
-//				Enabled:     pulumi.Bool(false),
-//				Description: pulumi.String("Made with Pulumi"),
-//				HostGroups: pulumi.StringArray{
-//					pulumi.String("d6e3c1e1b3d0467da0fowc96a5e6ecb5"),
-//				},
+//				Enabled:       pulumi.Bool(true),
+//				Description:   pulumi.String("Made with Pulumi"),
+//				HostGroups:    pulumi.StringArray{},
 //				IoaRuleGroups: pulumi.StringArray{},
 //				AdwareAndPup: &crowdstrike.PreventionPolicyWindowsAdwareAndPupArgs{
 //					Detection:  pulumi.String("MODERATE"),
@@ -68,56 +66,57 @@ import (
 //				ExtendedUserModeData: &crowdstrike.PreventionPolicyWindowsExtendedUserModeDataArgs{
 //					Detection: pulumi.String("MODERATE"),
 //				},
-//				UsbInsertionTriggeredScan:                 pulumi.Bool(false),
-//				ApplicationExploitationActivity:           pulumi.Bool(false),
-//				AdditionalUserModeData:                    pulumi.Bool(false),
-//				NotifyEndUsers:                            pulumi.Bool(false),
-//				AdvancedRemediation:                       pulumi.Bool(false),
-//				BackupDeletion:                            pulumi.Bool(false),
-//				BiosDeepVisibility:                        pulumi.Bool(false),
-//				ChopperWebshell:                           pulumi.Bool(false),
-//				CodeInjection:                             pulumi.Bool(false),
-//				CredentialDumping:                         pulumi.Bool(false),
-//				Cryptowall:                                pulumi.Bool(false),
-//				CustomBlocking:                            pulumi.Bool(false),
-//				DetectOnWrite:                             pulumi.Bool(false),
-//				DriveByDownload:                           pulumi.Bool(false),
-//				DriverLoadPrevention:                      pulumi.Bool(false),
-//				InterpreterOnly:                           pulumi.Bool(false),
-//				EngineFullVisibility:                      pulumi.Bool(false),
-//				EnhancedExploitationVisibility:            pulumi.Bool(false),
-//				EnhancedMlForLargerFiles:                  pulumi.Bool(false),
-//				FileEncryption:                            pulumi.Bool(false),
-//				FileSystemAccess:                          pulumi.Bool(false),
-//				ForceAslr:                                 pulumi.Bool(false),
-//				ForceDep:                                  pulumi.Bool(false),
-//				HeapSprayPreallocation:                    pulumi.Bool(false),
-//				NullPageAllocation:                        pulumi.Bool(false),
-//				SehOverwriteProtection:                    pulumi.Bool(false),
-//				HardwareEnhancedExploitDetection:          pulumi.Bool(false),
-//				HttpDetections:                            pulumi.Bool(false),
-//				RedactHttpDetectionDetails:                pulumi.Bool(false),
-//				IntelligenceSourcedThreats:                pulumi.Bool(false),
-//				JavascriptViaRundll32:                     pulumi.Bool(false),
-//				Locky:                                     pulumi.Bool(false),
-//				MemoryScanning:                            pulumi.Bool(false),
-//				MemoryScanningScanWithCpu:                 pulumi.Bool(false),
-//				MicrosoftOfficeFileSuspiciousMacroRemoval: pulumi.Bool(false),
-//				OnWriteScriptFileVisibility:               pulumi.Bool(false),
-//				PreventSuspiciousProcesses:                pulumi.Bool(false),
-//				QuarantineAndSecurityCenterRegistration:   pulumi.Bool(false),
-//				QuarantineOnRemovableMedia:                pulumi.Bool(false),
-//				QuarantineOnWrite:                         pulumi.Bool(false),
-//				ScriptBasedExecutionMonitoring:            pulumi.Bool(false),
-//				SensorTamperingProtection:                 pulumi.Bool(false),
-//				SuspiciousRegistryOperations:              pulumi.Bool(false),
-//				SuspiciousScriptsAndCommands:              pulumi.Bool(false),
-//				UploadUnknownExecutables:                  pulumi.Bool(false),
-//				UploadUnknownDetectionRelatedExecutables:  pulumi.Bool(false),
-//				VolumeShadowCopyAudit:                     pulumi.Bool(false),
-//				VolumeShadowCopyProtect:                   pulumi.Bool(false),
-//				VulnerableDriverProtection:                pulumi.Bool(false),
-//				WindowsLogonBypassStickyKeys:              pulumi.Bool(false),
+//				UsbInsertionTriggeredScan:                 pulumi.Bool(true),
+//				ApplicationExploitationActivity:           pulumi.Bool(true),
+//				AdditionalUserModeData:                    pulumi.Bool(true),
+//				NotifyEndUsers:                            pulumi.Bool(true),
+//				AdvancedRemediation:                       pulumi.Bool(true),
+//				BackupDeletion:                            pulumi.Bool(true),
+//				BiosDeepVisibility:                        pulumi.Bool(true),
+//				ChopperWebshell:                           pulumi.Bool(true),
+//				CodeInjection:                             pulumi.Bool(true),
+//				CredentialDumping:                         pulumi.Bool(true),
+//				Cryptowall:                                pulumi.Bool(true),
+//				CustomBlocking:                            pulumi.Bool(true),
+//				DetectOnWrite:                             pulumi.Bool(true),
+//				DriveByDownload:                           pulumi.Bool(true),
+//				DriverLoadPrevention:                      pulumi.Bool(true),
+//				InterpreterOnly:                           pulumi.Bool(true),
+//				EngineFullVisibility:                      pulumi.Bool(true),
+//				EnhancedExploitationVisibility:            pulumi.Bool(true),
+//				EnhancedDllLoadVisibility:                 pulumi.Bool(true),
+//				EnhancedMlForLargerFiles:                  pulumi.Bool(true),
+//				FileEncryption:                            pulumi.Bool(true),
+//				FileSystemAccess:                          pulumi.Bool(true),
+//				ForceAslr:                                 pulumi.Bool(true),
+//				ForceDep:                                  pulumi.Bool(true),
+//				HeapSprayPreallocation:                    pulumi.Bool(true),
+//				NullPageAllocation:                        pulumi.Bool(true),
+//				SehOverwriteProtection:                    pulumi.Bool(true),
+//				HardwareEnhancedExploitDetection:          pulumi.Bool(true),
+//				HttpDetections:                            pulumi.Bool(true),
+//				RedactHttpDetectionDetails:                pulumi.Bool(true),
+//				IntelligenceSourcedThreats:                pulumi.Bool(true),
+//				JavascriptViaRundll32:                     pulumi.Bool(true),
+//				Locky:                                     pulumi.Bool(true),
+//				MemoryScanning:                            pulumi.Bool(true),
+//				MemoryScanningScanWithCpu:                 pulumi.Bool(true),
+//				MicrosoftOfficeFileSuspiciousMacroRemoval: pulumi.Bool(true),
+//				OnWriteScriptFileVisibility:               pulumi.Bool(true),
+//				PreventSuspiciousProcesses:                pulumi.Bool(true),
+//				QuarantineAndSecurityCenterRegistration:   pulumi.Bool(true),
+//				QuarantineOnRemovableMedia:                pulumi.Bool(true),
+//				QuarantineOnWrite:                         pulumi.Bool(true),
+//				ScriptBasedExecutionMonitoring:            pulumi.Bool(true),
+//				SensorTamperingProtection:                 pulumi.Bool(true),
+//				SuspiciousRegistryOperations:              pulumi.Bool(true),
+//				SuspiciousScriptsAndCommands:              pulumi.Bool(true),
+//				UploadUnknownExecutables:                  pulumi.Bool(true),
+//				UploadUnknownDetectionRelatedExecutables:  pulumi.Bool(true),
+//				VolumeShadowCopyAudit:                     pulumi.Bool(true),
+//				VolumeShadowCopyProtect:                   pulumi.Bool(true),
+//				VulnerableDriverProtection:                pulumi.Bool(true),
+//				WindowsLogonBypassStickyKeys:              pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -179,6 +178,8 @@ type PreventionPolicyWindows struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreterOnly to be enabled.
 	EngineFullVisibility pulumi.BoolOutput `pulumi:"engineFullVisibility"`
+	// Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+	EnhancedDllLoadVisibility pulumi.BoolOutput `pulumi:"enhancedDllLoadVisibility"`
 	// Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
 	EnhancedExploitationVisibility pulumi.BoolOutput `pulumi:"enhancedExploitationVisibility"`
 	// Whether to enable the setting. Expand ML file size coverage. Existing ML level settings apply.
@@ -342,6 +343,8 @@ type preventionPolicyWindowsState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreterOnly to be enabled.
 	EngineFullVisibility *bool `pulumi:"engineFullVisibility"`
+	// Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+	EnhancedDllLoadVisibility *bool `pulumi:"enhancedDllLoadVisibility"`
 	// Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
 	EnhancedExploitationVisibility *bool `pulumi:"enhancedExploitationVisibility"`
 	// Whether to enable the setting. Expand ML file size coverage. Existing ML level settings apply.
@@ -470,6 +473,8 @@ type PreventionPolicyWindowsState struct {
 	Enabled pulumi.BoolPtrInput
 	// Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreterOnly to be enabled.
 	EngineFullVisibility pulumi.BoolPtrInput
+	// Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+	EnhancedDllLoadVisibility pulumi.BoolPtrInput
 	// Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
 	EnhancedExploitationVisibility pulumi.BoolPtrInput
 	// Whether to enable the setting. Expand ML file size coverage. Existing ML level settings apply.
@@ -602,6 +607,8 @@ type preventionPolicyWindowsArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreterOnly to be enabled.
 	EngineFullVisibility *bool `pulumi:"engineFullVisibility"`
+	// Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+	EnhancedDllLoadVisibility *bool `pulumi:"enhancedDllLoadVisibility"`
 	// Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
 	EnhancedExploitationVisibility *bool `pulumi:"enhancedExploitationVisibility"`
 	// Whether to enable the setting. Expand ML file size coverage. Existing ML level settings apply.
@@ -730,6 +737,8 @@ type PreventionPolicyWindowsArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreterOnly to be enabled.
 	EngineFullVisibility pulumi.BoolPtrInput
+	// Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+	EnhancedDllLoadVisibility pulumi.BoolPtrInput
 	// Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
 	EnhancedExploitationVisibility pulumi.BoolPtrInput
 	// Whether to enable the setting. Expand ML file size coverage. Existing ML level settings apply.
@@ -1007,6 +1016,11 @@ func (o PreventionPolicyWindowsOutput) Enabled() pulumi.BoolOutput {
 // Whether to enable the setting. Provides visibility into malicious System Management Automation engine usage by any application. Requires interpreterOnly to be enabled.
 func (o PreventionPolicyWindowsOutput) EngineFullVisibility() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PreventionPolicyWindows) pulumi.BoolOutput { return v.EngineFullVisibility }).(pulumi.BoolOutput)
+}
+
+// Whether to enable the setting. For hosts running Windows Server, increases sensor visibility of loaded DLLs. Improves detection coverage and telemetry, but may cause a small performance impact. Recommend testing with critical applications before full deployment.
+func (o PreventionPolicyWindowsOutput) EnhancedDllLoadVisibility() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PreventionPolicyWindows) pulumi.BoolOutput { return v.EnhancedDllLoadVisibility }).(pulumi.BoolOutput)
 }
 
 // Whether to enable the setting. For hosts running Windows 10 1809 and Server 2019 and later, provides additional visibility into common exploitation techniques used to weaken or circumvent application security.
