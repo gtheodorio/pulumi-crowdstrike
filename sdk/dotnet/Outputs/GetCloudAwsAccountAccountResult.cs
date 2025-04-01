@@ -43,6 +43,10 @@ namespace CrowdStrike.Crowdstrike.Outputs
         /// </summary>
         public readonly string DspmRoleArn;
         /// <summary>
+        /// The name of the IAM role to be used by CrowdStrike DSPM
+        /// </summary>
+        public readonly string DspmRoleName;
+        /// <summary>
         /// The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
         /// </summary>
         public readonly string EventbusArn;
@@ -58,6 +62,10 @@ namespace CrowdStrike.Crowdstrike.Outputs
         /// The ARN of the AWS IAM role used to access this AWS account
         /// </summary>
         public readonly string IamRoleArn;
+        /// <summary>
+        /// The name of the AWS IAM role used to access this AWS account
+        /// </summary>
+        public readonly string IamRoleName;
         /// <summary>
         /// Whether Identity Protection is enabled
         /// </summary>
@@ -103,6 +111,8 @@ namespace CrowdStrike.Crowdstrike.Outputs
 
             string dspmRoleArn,
 
+            string dspmRoleName,
+
             string eventbusArn,
 
             string eventbusName,
@@ -110,6 +120,8 @@ namespace CrowdStrike.Crowdstrike.Outputs
             string externalId,
 
             string iamRoleArn,
+
+            string iamRoleName,
 
             bool idpEnabled,
 
@@ -132,10 +144,12 @@ namespace CrowdStrike.Crowdstrike.Outputs
             CloudtrailRegion = cloudtrailRegion;
             DspmEnabled = dspmEnabled;
             DspmRoleArn = dspmRoleArn;
+            DspmRoleName = dspmRoleName;
             EventbusArn = eventbusArn;
             EventbusName = eventbusName;
             ExternalId = externalId;
             IamRoleArn = iamRoleArn;
+            IamRoleName = iamRoleName;
             IdpEnabled = idpEnabled;
             IntermediateRoleArn = intermediateRoleArn;
             IsOrganizationManagementAccount = isOrganizationManagementAccount;

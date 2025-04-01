@@ -10,10 +10,10 @@ github.com/blang/semver/v4 v4.0.0 h1:1PFHFE6yCCTv8C1TeyNNarDzntLi7wMI5i/pzqYIsAM
 github.com/blang/semver/v4 v4.0.0/go.mod h1:IbckMUScFkM3pff0VJDNKRiT6TG/YpiHIM2yvyW5YoQ=
 github.com/cloudflare/circl v1.3.7 h1:qlCDlTPz2n9fu58M0Nh1J/JzcFpfgkFHHX3O35r5vcU=
 github.com/cloudflare/circl v1.3.7/go.mod h1:sRTcRWXGLrKw6yIGJ+l7amYJFfAXbZG0kBSc8r4zxgA=
-github.com/crowdstrike/gofalcon v0.11.1 h1:JLZ341GMSrReZiqJylNdRDTkU455Oh6sQ7sMM7unGgI=
-github.com/crowdstrike/gofalcon v0.11.1/go.mod h1:bczghNwcnYX8kGstPZQC2XsijbvFF2ng5YA9Uv8ZmLE=
-github.com/crowdstrike/terraform-provider-crowdstrike v0.0.15 h1:kpbNxjS6BnIazfcZ+uk2cG6MxbeE8qCjrOf7XAY1wBI=
-github.com/crowdstrike/terraform-provider-crowdstrike v0.0.15/go.mod h1:47i1E++U6FOR/hcsvlfhLyw0BVS6GWnRcmIDI/rNIRc=
+github.com/crowdstrike/gofalcon v0.13.1 h1:BjHI06kXjKp2/c758Cp1n0e4Vz/4OAYq8WDZLlFikAE=
+github.com/crowdstrike/gofalcon v0.13.1/go.mod h1:zKtGtkiNyxlY1mVdGY0/fRWb1AlCdGi8Z50AjfGAtvg=
+github.com/crowdstrike/terraform-provider-crowdstrike v0.0.21 h1:0LSN26ii9DAhm1pBtde1plUIKI019wxvRRmr4qpVw+w=
+github.com/crowdstrike/terraform-provider-crowdstrike v0.0.21/go.mod h1:9cIJQWSvb4OnSyETTMMne+BTZS+KrrqAnWN7kfZfYqg=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
