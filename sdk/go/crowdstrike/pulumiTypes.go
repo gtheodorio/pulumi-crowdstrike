@@ -793,6 +793,298 @@ func (o CloudAwsAccountSensorManagementPtrOutput) Enabled() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+type DefaultSensorUpdatePolicySchedule struct {
+	// Enable the scheduler for sensor update policy.
+	Enabled bool `pulumi:"enabled"`
+	// The time block to prevent sensor updates. Only set when enabled is true.
+	TimeBlocks []DefaultSensorUpdatePolicyScheduleTimeBlock `pulumi:"timeBlocks"`
+	// The time zones that will be used for the time blocks. Only set when enabled is true.
+	Timezone *string `pulumi:"timezone"`
+}
+
+// DefaultSensorUpdatePolicyScheduleInput is an input type that accepts DefaultSensorUpdatePolicyScheduleArgs and DefaultSensorUpdatePolicyScheduleOutput values.
+// You can construct a concrete instance of `DefaultSensorUpdatePolicyScheduleInput` via:
+//
+//	DefaultSensorUpdatePolicyScheduleArgs{...}
+type DefaultSensorUpdatePolicyScheduleInput interface {
+	pulumi.Input
+
+	ToDefaultSensorUpdatePolicyScheduleOutput() DefaultSensorUpdatePolicyScheduleOutput
+	ToDefaultSensorUpdatePolicyScheduleOutputWithContext(context.Context) DefaultSensorUpdatePolicyScheduleOutput
+}
+
+type DefaultSensorUpdatePolicyScheduleArgs struct {
+	// Enable the scheduler for sensor update policy.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The time block to prevent sensor updates. Only set when enabled is true.
+	TimeBlocks DefaultSensorUpdatePolicyScheduleTimeBlockArrayInput `pulumi:"timeBlocks"`
+	// The time zones that will be used for the time blocks. Only set when enabled is true.
+	Timezone pulumi.StringPtrInput `pulumi:"timezone"`
+}
+
+func (DefaultSensorUpdatePolicyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultSensorUpdatePolicySchedule)(nil)).Elem()
+}
+
+func (i DefaultSensorUpdatePolicyScheduleArgs) ToDefaultSensorUpdatePolicyScheduleOutput() DefaultSensorUpdatePolicyScheduleOutput {
+	return i.ToDefaultSensorUpdatePolicyScheduleOutputWithContext(context.Background())
+}
+
+func (i DefaultSensorUpdatePolicyScheduleArgs) ToDefaultSensorUpdatePolicyScheduleOutputWithContext(ctx context.Context) DefaultSensorUpdatePolicyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultSensorUpdatePolicyScheduleOutput)
+}
+
+func (i DefaultSensorUpdatePolicyScheduleArgs) ToDefaultSensorUpdatePolicySchedulePtrOutput() DefaultSensorUpdatePolicySchedulePtrOutput {
+	return i.ToDefaultSensorUpdatePolicySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i DefaultSensorUpdatePolicyScheduleArgs) ToDefaultSensorUpdatePolicySchedulePtrOutputWithContext(ctx context.Context) DefaultSensorUpdatePolicySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultSensorUpdatePolicyScheduleOutput).ToDefaultSensorUpdatePolicySchedulePtrOutputWithContext(ctx)
+}
+
+// DefaultSensorUpdatePolicySchedulePtrInput is an input type that accepts DefaultSensorUpdatePolicyScheduleArgs, DefaultSensorUpdatePolicySchedulePtr and DefaultSensorUpdatePolicySchedulePtrOutput values.
+// You can construct a concrete instance of `DefaultSensorUpdatePolicySchedulePtrInput` via:
+//
+//	        DefaultSensorUpdatePolicyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultSensorUpdatePolicySchedulePtrInput interface {
+	pulumi.Input
+
+	ToDefaultSensorUpdatePolicySchedulePtrOutput() DefaultSensorUpdatePolicySchedulePtrOutput
+	ToDefaultSensorUpdatePolicySchedulePtrOutputWithContext(context.Context) DefaultSensorUpdatePolicySchedulePtrOutput
+}
+
+type defaultSensorUpdatePolicySchedulePtrType DefaultSensorUpdatePolicyScheduleArgs
+
+func DefaultSensorUpdatePolicySchedulePtr(v *DefaultSensorUpdatePolicyScheduleArgs) DefaultSensorUpdatePolicySchedulePtrInput {
+	return (*defaultSensorUpdatePolicySchedulePtrType)(v)
+}
+
+func (*defaultSensorUpdatePolicySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultSensorUpdatePolicySchedule)(nil)).Elem()
+}
+
+func (i *defaultSensorUpdatePolicySchedulePtrType) ToDefaultSensorUpdatePolicySchedulePtrOutput() DefaultSensorUpdatePolicySchedulePtrOutput {
+	return i.ToDefaultSensorUpdatePolicySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *defaultSensorUpdatePolicySchedulePtrType) ToDefaultSensorUpdatePolicySchedulePtrOutputWithContext(ctx context.Context) DefaultSensorUpdatePolicySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultSensorUpdatePolicySchedulePtrOutput)
+}
+
+type DefaultSensorUpdatePolicyScheduleOutput struct{ *pulumi.OutputState }
+
+func (DefaultSensorUpdatePolicyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultSensorUpdatePolicySchedule)(nil)).Elem()
+}
+
+func (o DefaultSensorUpdatePolicyScheduleOutput) ToDefaultSensorUpdatePolicyScheduleOutput() DefaultSensorUpdatePolicyScheduleOutput {
+	return o
+}
+
+func (o DefaultSensorUpdatePolicyScheduleOutput) ToDefaultSensorUpdatePolicyScheduleOutputWithContext(ctx context.Context) DefaultSensorUpdatePolicyScheduleOutput {
+	return o
+}
+
+func (o DefaultSensorUpdatePolicyScheduleOutput) ToDefaultSensorUpdatePolicySchedulePtrOutput() DefaultSensorUpdatePolicySchedulePtrOutput {
+	return o.ToDefaultSensorUpdatePolicySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o DefaultSensorUpdatePolicyScheduleOutput) ToDefaultSensorUpdatePolicySchedulePtrOutputWithContext(ctx context.Context) DefaultSensorUpdatePolicySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultSensorUpdatePolicySchedule) *DefaultSensorUpdatePolicySchedule {
+		return &v
+	}).(DefaultSensorUpdatePolicySchedulePtrOutput)
+}
+
+// Enable the scheduler for sensor update policy.
+func (o DefaultSensorUpdatePolicyScheduleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v DefaultSensorUpdatePolicySchedule) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The time block to prevent sensor updates. Only set when enabled is true.
+func (o DefaultSensorUpdatePolicyScheduleOutput) TimeBlocks() DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput {
+	return o.ApplyT(func(v DefaultSensorUpdatePolicySchedule) []DefaultSensorUpdatePolicyScheduleTimeBlock {
+		return v.TimeBlocks
+	}).(DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput)
+}
+
+// The time zones that will be used for the time blocks. Only set when enabled is true.
+func (o DefaultSensorUpdatePolicyScheduleOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefaultSensorUpdatePolicySchedule) *string { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+type DefaultSensorUpdatePolicySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultSensorUpdatePolicySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultSensorUpdatePolicySchedule)(nil)).Elem()
+}
+
+func (o DefaultSensorUpdatePolicySchedulePtrOutput) ToDefaultSensorUpdatePolicySchedulePtrOutput() DefaultSensorUpdatePolicySchedulePtrOutput {
+	return o
+}
+
+func (o DefaultSensorUpdatePolicySchedulePtrOutput) ToDefaultSensorUpdatePolicySchedulePtrOutputWithContext(ctx context.Context) DefaultSensorUpdatePolicySchedulePtrOutput {
+	return o
+}
+
+func (o DefaultSensorUpdatePolicySchedulePtrOutput) Elem() DefaultSensorUpdatePolicyScheduleOutput {
+	return o.ApplyT(func(v *DefaultSensorUpdatePolicySchedule) DefaultSensorUpdatePolicySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultSensorUpdatePolicySchedule
+		return ret
+	}).(DefaultSensorUpdatePolicyScheduleOutput)
+}
+
+// Enable the scheduler for sensor update policy.
+func (o DefaultSensorUpdatePolicySchedulePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefaultSensorUpdatePolicySchedule) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The time block to prevent sensor updates. Only set when enabled is true.
+func (o DefaultSensorUpdatePolicySchedulePtrOutput) TimeBlocks() DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput {
+	return o.ApplyT(func(v *DefaultSensorUpdatePolicySchedule) []DefaultSensorUpdatePolicyScheduleTimeBlock {
+		if v == nil {
+			return nil
+		}
+		return v.TimeBlocks
+	}).(DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput)
+}
+
+// The time zones that will be used for the time blocks. Only set when enabled is true.
+func (o DefaultSensorUpdatePolicySchedulePtrOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultSensorUpdatePolicySchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timezone
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultSensorUpdatePolicyScheduleTimeBlock struct {
+	// The days of the week the time block should be active.
+	Days []string `pulumi:"days"`
+	// The end time for the time block in 24HR format. Must be atleast 1 hour more than start_time.
+	EndTime string `pulumi:"endTime"`
+	// The start time for the time block in 24HR format. Must be atleast 1 hour before end_time.
+	StartTime string `pulumi:"startTime"`
+}
+
+// DefaultSensorUpdatePolicyScheduleTimeBlockInput is an input type that accepts DefaultSensorUpdatePolicyScheduleTimeBlockArgs and DefaultSensorUpdatePolicyScheduleTimeBlockOutput values.
+// You can construct a concrete instance of `DefaultSensorUpdatePolicyScheduleTimeBlockInput` via:
+//
+//	DefaultSensorUpdatePolicyScheduleTimeBlockArgs{...}
+type DefaultSensorUpdatePolicyScheduleTimeBlockInput interface {
+	pulumi.Input
+
+	ToDefaultSensorUpdatePolicyScheduleTimeBlockOutput() DefaultSensorUpdatePolicyScheduleTimeBlockOutput
+	ToDefaultSensorUpdatePolicyScheduleTimeBlockOutputWithContext(context.Context) DefaultSensorUpdatePolicyScheduleTimeBlockOutput
+}
+
+type DefaultSensorUpdatePolicyScheduleTimeBlockArgs struct {
+	// The days of the week the time block should be active.
+	Days pulumi.StringArrayInput `pulumi:"days"`
+	// The end time for the time block in 24HR format. Must be atleast 1 hour more than start_time.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The start time for the time block in 24HR format. Must be atleast 1 hour before end_time.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (DefaultSensorUpdatePolicyScheduleTimeBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultSensorUpdatePolicyScheduleTimeBlock)(nil)).Elem()
+}
+
+func (i DefaultSensorUpdatePolicyScheduleTimeBlockArgs) ToDefaultSensorUpdatePolicyScheduleTimeBlockOutput() DefaultSensorUpdatePolicyScheduleTimeBlockOutput {
+	return i.ToDefaultSensorUpdatePolicyScheduleTimeBlockOutputWithContext(context.Background())
+}
+
+func (i DefaultSensorUpdatePolicyScheduleTimeBlockArgs) ToDefaultSensorUpdatePolicyScheduleTimeBlockOutputWithContext(ctx context.Context) DefaultSensorUpdatePolicyScheduleTimeBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultSensorUpdatePolicyScheduleTimeBlockOutput)
+}
+
+// DefaultSensorUpdatePolicyScheduleTimeBlockArrayInput is an input type that accepts DefaultSensorUpdatePolicyScheduleTimeBlockArray and DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput values.
+// You can construct a concrete instance of `DefaultSensorUpdatePolicyScheduleTimeBlockArrayInput` via:
+//
+//	DefaultSensorUpdatePolicyScheduleTimeBlockArray{ DefaultSensorUpdatePolicyScheduleTimeBlockArgs{...} }
+type DefaultSensorUpdatePolicyScheduleTimeBlockArrayInput interface {
+	pulumi.Input
+
+	ToDefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput() DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput
+	ToDefaultSensorUpdatePolicyScheduleTimeBlockArrayOutputWithContext(context.Context) DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput
+}
+
+type DefaultSensorUpdatePolicyScheduleTimeBlockArray []DefaultSensorUpdatePolicyScheduleTimeBlockInput
+
+func (DefaultSensorUpdatePolicyScheduleTimeBlockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefaultSensorUpdatePolicyScheduleTimeBlock)(nil)).Elem()
+}
+
+func (i DefaultSensorUpdatePolicyScheduleTimeBlockArray) ToDefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput() DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput {
+	return i.ToDefaultSensorUpdatePolicyScheduleTimeBlockArrayOutputWithContext(context.Background())
+}
+
+func (i DefaultSensorUpdatePolicyScheduleTimeBlockArray) ToDefaultSensorUpdatePolicyScheduleTimeBlockArrayOutputWithContext(ctx context.Context) DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput)
+}
+
+type DefaultSensorUpdatePolicyScheduleTimeBlockOutput struct{ *pulumi.OutputState }
+
+func (DefaultSensorUpdatePolicyScheduleTimeBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultSensorUpdatePolicyScheduleTimeBlock)(nil)).Elem()
+}
+
+func (o DefaultSensorUpdatePolicyScheduleTimeBlockOutput) ToDefaultSensorUpdatePolicyScheduleTimeBlockOutput() DefaultSensorUpdatePolicyScheduleTimeBlockOutput {
+	return o
+}
+
+func (o DefaultSensorUpdatePolicyScheduleTimeBlockOutput) ToDefaultSensorUpdatePolicyScheduleTimeBlockOutputWithContext(ctx context.Context) DefaultSensorUpdatePolicyScheduleTimeBlockOutput {
+	return o
+}
+
+// The days of the week the time block should be active.
+func (o DefaultSensorUpdatePolicyScheduleTimeBlockOutput) Days() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DefaultSensorUpdatePolicyScheduleTimeBlock) []string { return v.Days }).(pulumi.StringArrayOutput)
+}
+
+// The end time for the time block in 24HR format. Must be atleast 1 hour more than start_time.
+func (o DefaultSensorUpdatePolicyScheduleTimeBlockOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultSensorUpdatePolicyScheduleTimeBlock) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The start time for the time block in 24HR format. Must be atleast 1 hour before end_time.
+func (o DefaultSensorUpdatePolicyScheduleTimeBlockOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultSensorUpdatePolicyScheduleTimeBlock) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput struct{ *pulumi.OutputState }
+
+func (DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefaultSensorUpdatePolicyScheduleTimeBlock)(nil)).Elem()
+}
+
+func (o DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput) ToDefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput() DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput {
+	return o
+}
+
+func (o DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput) ToDefaultSensorUpdatePolicyScheduleTimeBlockArrayOutputWithContext(ctx context.Context) DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput {
+	return o
+}
+
+func (o DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput) Index(i pulumi.IntInput) DefaultSensorUpdatePolicyScheduleTimeBlockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefaultSensorUpdatePolicyScheduleTimeBlock {
+		return vs[0].([]DefaultSensorUpdatePolicyScheduleTimeBlock)[vs[1].(int)]
+	}).(DefaultSensorUpdatePolicyScheduleTimeBlockOutput)
+}
+
 type FilevantagePolicyScheduledExclusion struct {
 	// Description of the scheduled exclusion.
 	Description *string `pulumi:"description"`
@@ -3923,6 +4215,8 @@ type GetCloudAwsAccountAccount struct {
 	DspmEnabled bool `pulumi:"dspmEnabled"`
 	// The ARN of the IAM role to be used by CrowdStrike DSPM
 	DspmRoleArn string `pulumi:"dspmRoleArn"`
+	// The name of the IAM role to be used by CrowdStrike DSPM
+	DspmRoleName string `pulumi:"dspmRoleName"`
 	// The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
 	EventbusArn string `pulumi:"eventbusArn"`
 	// The name of the Amazon EventBridge used by CrowdStrike to forward messages
@@ -3931,6 +4225,8 @@ type GetCloudAwsAccountAccount struct {
 	ExternalId string `pulumi:"externalId"`
 	// The ARN of the AWS IAM role used to access this AWS account
 	IamRoleArn string `pulumi:"iamRoleArn"`
+	// The name of the AWS IAM role used to access this AWS account
+	IamRoleName string `pulumi:"iamRoleName"`
 	// Whether Identity Protection is enabled
 	IdpEnabled bool `pulumi:"idpEnabled"`
 	// The ARN of the intermediate role used to assume the AWS IAM role
@@ -3973,6 +4269,8 @@ type GetCloudAwsAccountAccountArgs struct {
 	DspmEnabled pulumi.BoolInput `pulumi:"dspmEnabled"`
 	// The ARN of the IAM role to be used by CrowdStrike DSPM
 	DspmRoleArn pulumi.StringInput `pulumi:"dspmRoleArn"`
+	// The name of the IAM role to be used by CrowdStrike DSPM
+	DspmRoleName pulumi.StringInput `pulumi:"dspmRoleName"`
 	// The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
 	EventbusArn pulumi.StringInput `pulumi:"eventbusArn"`
 	// The name of the Amazon EventBridge used by CrowdStrike to forward messages
@@ -3981,6 +4279,8 @@ type GetCloudAwsAccountAccountArgs struct {
 	ExternalId pulumi.StringInput `pulumi:"externalId"`
 	// The ARN of the AWS IAM role used to access this AWS account
 	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
+	// The name of the AWS IAM role used to access this AWS account
+	IamRoleName pulumi.StringInput `pulumi:"iamRoleName"`
 	// Whether Identity Protection is enabled
 	IdpEnabled pulumi.BoolInput `pulumi:"idpEnabled"`
 	// The ARN of the intermediate role used to assume the AWS IAM role
@@ -4083,6 +4383,11 @@ func (o GetCloudAwsAccountAccountOutput) DspmRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.DspmRoleArn }).(pulumi.StringOutput)
 }
 
+// The name of the IAM role to be used by CrowdStrike DSPM
+func (o GetCloudAwsAccountAccountOutput) DspmRoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.DspmRoleName }).(pulumi.StringOutput)
+}
+
 // The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
 func (o GetCloudAwsAccountAccountOutput) EventbusArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.EventbusArn }).(pulumi.StringOutput)
@@ -4101,6 +4406,11 @@ func (o GetCloudAwsAccountAccountOutput) ExternalId() pulumi.StringOutput {
 // The ARN of the AWS IAM role used to access this AWS account
 func (o GetCloudAwsAccountAccountOutput) IamRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.IamRoleArn }).(pulumi.StringOutput)
+}
+
+// The name of the AWS IAM role used to access this AWS account
+func (o GetCloudAwsAccountAccountOutput) IamRoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudAwsAccountAccount) string { return v.IamRoleName }).(pulumi.StringOutput)
 }
 
 // Whether Identity Protection is enabled
@@ -5933,6 +6243,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountRealtimeVisibilityPtrInput)(nil)).Elem(), CloudAwsAccountRealtimeVisibilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountSensorManagementInput)(nil)).Elem(), CloudAwsAccountSensorManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountSensorManagementPtrInput)(nil)).Elem(), CloudAwsAccountSensorManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSensorUpdatePolicyScheduleInput)(nil)).Elem(), DefaultSensorUpdatePolicyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSensorUpdatePolicySchedulePtrInput)(nil)).Elem(), DefaultSensorUpdatePolicyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSensorUpdatePolicyScheduleTimeBlockInput)(nil)).Elem(), DefaultSensorUpdatePolicyScheduleTimeBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSensorUpdatePolicyScheduleTimeBlockArrayInput)(nil)).Elem(), DefaultSensorUpdatePolicyScheduleTimeBlockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilevantagePolicyScheduledExclusionInput)(nil)).Elem(), FilevantagePolicyScheduledExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilevantagePolicyScheduledExclusionArrayInput)(nil)).Elem(), FilevantagePolicyScheduledExclusionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilevantagePolicyScheduledExclusionRepeatedInput)(nil)).Elem(), FilevantagePolicyScheduledExclusionRepeatedArgs{})
@@ -6005,6 +6319,10 @@ func init() {
 	pulumi.RegisterOutputType(CloudAwsAccountRealtimeVisibilityPtrOutput{})
 	pulumi.RegisterOutputType(CloudAwsAccountSensorManagementOutput{})
 	pulumi.RegisterOutputType(CloudAwsAccountSensorManagementPtrOutput{})
+	pulumi.RegisterOutputType(DefaultSensorUpdatePolicyScheduleOutput{})
+	pulumi.RegisterOutputType(DefaultSensorUpdatePolicySchedulePtrOutput{})
+	pulumi.RegisterOutputType(DefaultSensorUpdatePolicyScheduleTimeBlockOutput{})
+	pulumi.RegisterOutputType(DefaultSensorUpdatePolicyScheduleTimeBlockArrayOutput{})
 	pulumi.RegisterOutputType(FilevantagePolicyScheduledExclusionOutput{})
 	pulumi.RegisterOutputType(FilevantagePolicyScheduledExclusionArrayOutput{})
 	pulumi.RegisterOutputType(FilevantagePolicyScheduledExclusionRepeatedOutput{})

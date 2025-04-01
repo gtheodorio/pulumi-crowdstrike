@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * prevention policy can be imported by specifying the policy id.
+ * sensor update policies can be imported by specifying the policy id.
  *
  * ```sh
  * $ pulumi import crowdstrike:index/sensorUpdatePolicy:SensorUpdatePolicy example 7fb858a949034a0cbca175f660f1e769

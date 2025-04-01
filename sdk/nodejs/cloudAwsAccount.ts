@@ -15,6 +15,14 @@ import * as utilities from "./utilities";
  *
  * - Cloud security AWS registration | Read & Write
  * - CSPM registration | Read & Write
+ *
+ * ## Import
+ *
+ * A previously registered cloud aws account can be imported by account id.
+ *
+ * ```sh
+ * $ pulumi import crowdstrike:index/cloudAwsAccount:CloudAwsAccount account 12345678910
+ * ```
  */
 export class CloudAwsAccount extends pulumi.CustomResource {
     /**
@@ -64,6 +72,10 @@ export class CloudAwsAccount extends pulumi.CustomResource {
      */
     public /*out*/ readonly dspmRoleArn!: pulumi.Output<string>;
     /**
+     * The name of the IAM role to be used by CrowdStrike Data Security Posture Management
+     */
+    public /*out*/ readonly dspmRoleName!: pulumi.Output<string>;
+    /**
      * The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
      */
     public /*out*/ readonly eventbusArn!: pulumi.Output<string>;
@@ -79,6 +91,10 @@ export class CloudAwsAccount extends pulumi.CustomResource {
      * The ARN of the AWS IAM role used to access this AWS account
      */
     public /*out*/ readonly iamRoleArn!: pulumi.Output<string>;
+    /**
+     * The name of the AWS IAM role used to access this AWS account
+     */
+    public /*out*/ readonly iamRoleName!: pulumi.Output<string>;
     public readonly idp!: pulumi.Output<outputs.CloudAwsAccountIdp>;
     /**
      * The ARN of the intermediate role used to assume the AWS IAM role
@@ -87,9 +103,9 @@ export class CloudAwsAccount extends pulumi.CustomResource {
     /**
      * Indicates whether this is the management account (formerly known as the root account) of an AWS Organization
      */
-    public readonly isOrganizationManagementAccount!: pulumi.Output<boolean>;
+    public /*out*/ readonly isOrganizationManagementAccount!: pulumi.Output<boolean>;
     /**
-     * The AWS Organization ID
+     * The AWS Organization ID (starts with `o-`). When specified, accounts within the organization will be registered. If `targetOus` is empty, all accounts in the organization will be registered. The `accountId` must be the organization's management account ID.
      */
     public readonly organizationId!: pulumi.Output<string>;
     public readonly realtimeVisibility!: pulumi.Output<outputs.CloudAwsAccountRealtimeVisibility>;
@@ -119,10 +135,12 @@ export class CloudAwsAccount extends pulumi.CustomResource {
             resourceInputs["deploymentMethod"] = state ? state.deploymentMethod : undefined;
             resourceInputs["dspm"] = state ? state.dspm : undefined;
             resourceInputs["dspmRoleArn"] = state ? state.dspmRoleArn : undefined;
+            resourceInputs["dspmRoleName"] = state ? state.dspmRoleName : undefined;
             resourceInputs["eventbusArn"] = state ? state.eventbusArn : undefined;
             resourceInputs["eventbusName"] = state ? state.eventbusName : undefined;
             resourceInputs["externalId"] = state ? state.externalId : undefined;
             resourceInputs["iamRoleArn"] = state ? state.iamRoleArn : undefined;
+            resourceInputs["iamRoleName"] = state ? state.iamRoleName : undefined;
             resourceInputs["idp"] = state ? state.idp : undefined;
             resourceInputs["intermediateRoleArn"] = state ? state.intermediateRoleArn : undefined;
             resourceInputs["isOrganizationManagementAccount"] = state ? state.isOrganizationManagementAccount : undefined;
@@ -141,18 +159,20 @@ export class CloudAwsAccount extends pulumi.CustomResource {
             resourceInputs["deploymentMethod"] = args ? args.deploymentMethod : undefined;
             resourceInputs["dspm"] = args ? args.dspm : undefined;
             resourceInputs["idp"] = args ? args.idp : undefined;
-            resourceInputs["isOrganizationManagementAccount"] = args ? args.isOrganizationManagementAccount : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["realtimeVisibility"] = args ? args.realtimeVisibility : undefined;
             resourceInputs["sensorManagement"] = args ? args.sensorManagement : undefined;
             resourceInputs["targetOuses"] = args ? args.targetOuses : undefined;
             resourceInputs["cloudtrailBucketName"] = undefined /*out*/;
             resourceInputs["dspmRoleArn"] = undefined /*out*/;
+            resourceInputs["dspmRoleName"] = undefined /*out*/;
             resourceInputs["eventbusArn"] = undefined /*out*/;
             resourceInputs["eventbusName"] = undefined /*out*/;
             resourceInputs["externalId"] = undefined /*out*/;
             resourceInputs["iamRoleArn"] = undefined /*out*/;
+            resourceInputs["iamRoleName"] = undefined /*out*/;
             resourceInputs["intermediateRoleArn"] = undefined /*out*/;
+            resourceInputs["isOrganizationManagementAccount"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CloudAwsAccount.__pulumiType, name, resourceInputs, opts);
@@ -183,6 +203,10 @@ export interface CloudAwsAccountState {
      */
     dspmRoleArn?: pulumi.Input<string>;
     /**
+     * The name of the IAM role to be used by CrowdStrike Data Security Posture Management
+     */
+    dspmRoleName?: pulumi.Input<string>;
+    /**
      * The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
      */
     eventbusArn?: pulumi.Input<string>;
@@ -198,6 +222,10 @@ export interface CloudAwsAccountState {
      * The ARN of the AWS IAM role used to access this AWS account
      */
     iamRoleArn?: pulumi.Input<string>;
+    /**
+     * The name of the AWS IAM role used to access this AWS account
+     */
+    iamRoleName?: pulumi.Input<string>;
     idp?: pulumi.Input<inputs.CloudAwsAccountIdp>;
     /**
      * The ARN of the intermediate role used to assume the AWS IAM role
@@ -208,7 +236,7 @@ export interface CloudAwsAccountState {
      */
     isOrganizationManagementAccount?: pulumi.Input<boolean>;
     /**
-     * The AWS Organization ID
+     * The AWS Organization ID (starts with `o-`). When specified, accounts within the organization will be registered. If `targetOus` is empty, all accounts in the organization will be registered. The `accountId` must be the organization's management account ID.
      */
     organizationId?: pulumi.Input<string>;
     realtimeVisibility?: pulumi.Input<inputs.CloudAwsAccountRealtimeVisibility>;
@@ -236,11 +264,7 @@ export interface CloudAwsAccountArgs {
     dspm?: pulumi.Input<inputs.CloudAwsAccountDspm>;
     idp?: pulumi.Input<inputs.CloudAwsAccountIdp>;
     /**
-     * Indicates whether this is the management account (formerly known as the root account) of an AWS Organization
-     */
-    isOrganizationManagementAccount?: pulumi.Input<boolean>;
-    /**
-     * The AWS Organization ID
+     * The AWS Organization ID (starts with `o-`). When specified, accounts within the organization will be registered. If `targetOus` is empty, all accounts in the organization will be registered. The `accountId` must be the organization's management account ID.
      */
     organizationId?: pulumi.Input<string>;
     realtimeVisibility?: pulumi.Input<inputs.CloudAwsAccountRealtimeVisibility>;
