@@ -27,7 +27,6 @@ class CloudAwsAccountArgs:
                  deployment_method: Optional[pulumi.Input[str]] = None,
                  dspm: Optional[pulumi.Input['CloudAwsAccountDspmArgs']] = None,
                  idp: Optional[pulumi.Input['CloudAwsAccountIdpArgs']] = None,
-                 is_organization_management_account: Optional[pulumi.Input[bool]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  realtime_visibility: Optional[pulumi.Input['CloudAwsAccountRealtimeVisibilityArgs']] = None,
                  sensor_management: Optional[pulumi.Input['CloudAwsAccountSensorManagementArgs']] = None,
@@ -36,8 +35,7 @@ class CloudAwsAccountArgs:
         The set of arguments for constructing a CloudAwsAccount resource.
         :param pulumi.Input[str] account_id: The AWS Account ID
         :param pulumi.Input[str] account_type: The AWS account type. Value is 'commercial' for Commercial cloud accounts. For GovCloud environments, value can be either 'commercial' or 'gov' depending on the account type
-        :param pulumi.Input[bool] is_organization_management_account: Indicates whether this is the management account (formerly known as the root account) of an AWS Organization
-        :param pulumi.Input[str] organization_id: The AWS Organization ID
+        :param pulumi.Input[str] organization_id: The AWS Organization ID (starts with `o-`). When specified, accounts within the organization will be registered. If `target_ous` is empty, all accounts in the organization will be registered. The `account_id` must be the organization's management account ID.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_ouses: The list of target Organizational Units
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -51,8 +49,6 @@ class CloudAwsAccountArgs:
             pulumi.set(__self__, "dspm", dspm)
         if idp is not None:
             pulumi.set(__self__, "idp", idp)
-        if is_organization_management_account is not None:
-            pulumi.set(__self__, "is_organization_management_account", is_organization_management_account)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
         if realtime_visibility is not None:
@@ -123,22 +119,10 @@ class CloudAwsAccountArgs:
         pulumi.set(self, "idp", value)
 
     @property
-    @pulumi.getter(name="isOrganizationManagementAccount")
-    def is_organization_management_account(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether this is the management account (formerly known as the root account) of an AWS Organization
-        """
-        return pulumi.get(self, "is_organization_management_account")
-
-    @is_organization_management_account.setter
-    def is_organization_management_account(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_organization_management_account", value)
-
-    @property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The AWS Organization ID
+        The AWS Organization ID (starts with `o-`). When specified, accounts within the organization will be registered. If `target_ous` is empty, all accounts in the organization will be registered. The `account_id` must be the organization's management account ID.
         """
         return pulumi.get(self, "organization_id")
 
@@ -187,10 +171,12 @@ class _CloudAwsAccountState:
                  deployment_method: Optional[pulumi.Input[str]] = None,
                  dspm: Optional[pulumi.Input['CloudAwsAccountDspmArgs']] = None,
                  dspm_role_arn: Optional[pulumi.Input[str]] = None,
+                 dspm_role_name: Optional[pulumi.Input[str]] = None,
                  eventbus_arn: Optional[pulumi.Input[str]] = None,
                  eventbus_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  iam_role_arn: Optional[pulumi.Input[str]] = None,
+                 iam_role_name: Optional[pulumi.Input[str]] = None,
                  idp: Optional[pulumi.Input['CloudAwsAccountIdpArgs']] = None,
                  intermediate_role_arn: Optional[pulumi.Input[str]] = None,
                  is_organization_management_account: Optional[pulumi.Input[bool]] = None,
@@ -204,13 +190,15 @@ class _CloudAwsAccountState:
         :param pulumi.Input[str] account_type: The AWS account type. Value is 'commercial' for Commercial cloud accounts. For GovCloud environments, value can be either 'commercial' or 'gov' depending on the account type
         :param pulumi.Input[str] cloudtrail_bucket_name: The name of the CloudTrail S3 bucket used for real-time visibility
         :param pulumi.Input[str] dspm_role_arn: The ARN of the IAM role to be used by CrowdStrike Data Security Posture Management
+        :param pulumi.Input[str] dspm_role_name: The name of the IAM role to be used by CrowdStrike Data Security Posture Management
         :param pulumi.Input[str] eventbus_arn: The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
         :param pulumi.Input[str] eventbus_name: The name of the Amazon EventBridge used by CrowdStrike to forward messages
         :param pulumi.Input[str] external_id: The external ID used to assume the AWS IAM role
         :param pulumi.Input[str] iam_role_arn: The ARN of the AWS IAM role used to access this AWS account
+        :param pulumi.Input[str] iam_role_name: The name of the AWS IAM role used to access this AWS account
         :param pulumi.Input[str] intermediate_role_arn: The ARN of the intermediate role used to assume the AWS IAM role
         :param pulumi.Input[bool] is_organization_management_account: Indicates whether this is the management account (formerly known as the root account) of an AWS Organization
-        :param pulumi.Input[str] organization_id: The AWS Organization ID
+        :param pulumi.Input[str] organization_id: The AWS Organization ID (starts with `o-`). When specified, accounts within the organization will be registered. If `target_ous` is empty, all accounts in the organization will be registered. The `account_id` must be the organization's management account ID.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_ouses: The list of target Organizational Units
         """
         if account_id is not None:
@@ -227,6 +215,8 @@ class _CloudAwsAccountState:
             pulumi.set(__self__, "dspm", dspm)
         if dspm_role_arn is not None:
             pulumi.set(__self__, "dspm_role_arn", dspm_role_arn)
+        if dspm_role_name is not None:
+            pulumi.set(__self__, "dspm_role_name", dspm_role_name)
         if eventbus_arn is not None:
             pulumi.set(__self__, "eventbus_arn", eventbus_arn)
         if eventbus_name is not None:
@@ -235,6 +225,8 @@ class _CloudAwsAccountState:
             pulumi.set(__self__, "external_id", external_id)
         if iam_role_arn is not None:
             pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+        if iam_role_name is not None:
+            pulumi.set(__self__, "iam_role_name", iam_role_name)
         if idp is not None:
             pulumi.set(__self__, "idp", idp)
         if intermediate_role_arn is not None:
@@ -326,6 +318,18 @@ class _CloudAwsAccountState:
         pulumi.set(self, "dspm_role_arn", value)
 
     @property
+    @pulumi.getter(name="dspmRoleName")
+    def dspm_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the IAM role to be used by CrowdStrike Data Security Posture Management
+        """
+        return pulumi.get(self, "dspm_role_name")
+
+    @dspm_role_name.setter
+    def dspm_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dspm_role_name", value)
+
+    @property
     @pulumi.getter(name="eventbusArn")
     def eventbus_arn(self) -> Optional[pulumi.Input[str]]:
         """
@@ -374,6 +378,18 @@ class _CloudAwsAccountState:
         pulumi.set(self, "iam_role_arn", value)
 
     @property
+    @pulumi.getter(name="iamRoleName")
+    def iam_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the AWS IAM role used to access this AWS account
+        """
+        return pulumi.get(self, "iam_role_name")
+
+    @iam_role_name.setter
+    def iam_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam_role_name", value)
+
+    @property
     @pulumi.getter
     def idp(self) -> Optional[pulumi.Input['CloudAwsAccountIdpArgs']]:
         return pulumi.get(self, "idp")
@@ -410,7 +426,7 @@ class _CloudAwsAccountState:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The AWS Organization ID
+        The AWS Organization ID (starts with `o-`). When specified, accounts within the organization will be registered. If `target_ous` is empty, all accounts in the organization will be registered. The `account_id` must be the organization's management account ID.
         """
         return pulumi.get(self, "organization_id")
 
@@ -460,7 +476,6 @@ class CloudAwsAccount(pulumi.CustomResource):
                  deployment_method: Optional[pulumi.Input[str]] = None,
                  dspm: Optional[pulumi.Input[Union['CloudAwsAccountDspmArgs', 'CloudAwsAccountDspmArgsDict']]] = None,
                  idp: Optional[pulumi.Input[Union['CloudAwsAccountIdpArgs', 'CloudAwsAccountIdpArgsDict']]] = None,
-                 is_organization_management_account: Optional[pulumi.Input[bool]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  realtime_visibility: Optional[pulumi.Input[Union['CloudAwsAccountRealtimeVisibilityArgs', 'CloudAwsAccountRealtimeVisibilityArgsDict']]] = None,
                  sensor_management: Optional[pulumi.Input[Union['CloudAwsAccountSensorManagementArgs', 'CloudAwsAccountSensorManagementArgsDict']]] = None,
@@ -476,12 +491,19 @@ class CloudAwsAccount(pulumi.CustomResource):
         - Cloud security AWS registration | Read & Write
         - CSPM registration | Read & Write
 
+        ## Import
+
+        A previously registered cloud aws account can be imported by account id.
+
+        ```sh
+        $ pulumi import crowdstrike:index/cloudAwsAccount:CloudAwsAccount account 12345678910
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The AWS Account ID
         :param pulumi.Input[str] account_type: The AWS account type. Value is 'commercial' for Commercial cloud accounts. For GovCloud environments, value can be either 'commercial' or 'gov' depending on the account type
-        :param pulumi.Input[bool] is_organization_management_account: Indicates whether this is the management account (formerly known as the root account) of an AWS Organization
-        :param pulumi.Input[str] organization_id: The AWS Organization ID
+        :param pulumi.Input[str] organization_id: The AWS Organization ID (starts with `o-`). When specified, accounts within the organization will be registered. If `target_ous` is empty, all accounts in the organization will be registered. The `account_id` must be the organization's management account ID.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_ouses: The list of target Organizational Units
         """
         ...
@@ -499,6 +521,14 @@ class CloudAwsAccount(pulumi.CustomResource):
 
         - Cloud security AWS registration | Read & Write
         - CSPM registration | Read & Write
+
+        ## Import
+
+        A previously registered cloud aws account can be imported by account id.
+
+        ```sh
+        $ pulumi import crowdstrike:index/cloudAwsAccount:CloudAwsAccount account 12345678910
+        ```
 
         :param str resource_name: The name of the resource.
         :param CloudAwsAccountArgs args: The arguments to use to populate this resource's properties.
@@ -521,7 +551,6 @@ class CloudAwsAccount(pulumi.CustomResource):
                  deployment_method: Optional[pulumi.Input[str]] = None,
                  dspm: Optional[pulumi.Input[Union['CloudAwsAccountDspmArgs', 'CloudAwsAccountDspmArgsDict']]] = None,
                  idp: Optional[pulumi.Input[Union['CloudAwsAccountIdpArgs', 'CloudAwsAccountIdpArgsDict']]] = None,
-                 is_organization_management_account: Optional[pulumi.Input[bool]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  realtime_visibility: Optional[pulumi.Input[Union['CloudAwsAccountRealtimeVisibilityArgs', 'CloudAwsAccountRealtimeVisibilityArgsDict']]] = None,
                  sensor_management: Optional[pulumi.Input[Union['CloudAwsAccountSensorManagementArgs', 'CloudAwsAccountSensorManagementArgsDict']]] = None,
@@ -543,18 +572,20 @@ class CloudAwsAccount(pulumi.CustomResource):
             __props__.__dict__["deployment_method"] = deployment_method
             __props__.__dict__["dspm"] = dspm
             __props__.__dict__["idp"] = idp
-            __props__.__dict__["is_organization_management_account"] = is_organization_management_account
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["realtime_visibility"] = realtime_visibility
             __props__.__dict__["sensor_management"] = sensor_management
             __props__.__dict__["target_ouses"] = target_ouses
             __props__.__dict__["cloudtrail_bucket_name"] = None
             __props__.__dict__["dspm_role_arn"] = None
+            __props__.__dict__["dspm_role_name"] = None
             __props__.__dict__["eventbus_arn"] = None
             __props__.__dict__["eventbus_name"] = None
             __props__.__dict__["external_id"] = None
             __props__.__dict__["iam_role_arn"] = None
+            __props__.__dict__["iam_role_name"] = None
             __props__.__dict__["intermediate_role_arn"] = None
+            __props__.__dict__["is_organization_management_account"] = None
         super(CloudAwsAccount, __self__).__init__(
             'crowdstrike:index/cloudAwsAccount:CloudAwsAccount',
             resource_name,
@@ -572,10 +603,12 @@ class CloudAwsAccount(pulumi.CustomResource):
             deployment_method: Optional[pulumi.Input[str]] = None,
             dspm: Optional[pulumi.Input[Union['CloudAwsAccountDspmArgs', 'CloudAwsAccountDspmArgsDict']]] = None,
             dspm_role_arn: Optional[pulumi.Input[str]] = None,
+            dspm_role_name: Optional[pulumi.Input[str]] = None,
             eventbus_arn: Optional[pulumi.Input[str]] = None,
             eventbus_name: Optional[pulumi.Input[str]] = None,
             external_id: Optional[pulumi.Input[str]] = None,
             iam_role_arn: Optional[pulumi.Input[str]] = None,
+            iam_role_name: Optional[pulumi.Input[str]] = None,
             idp: Optional[pulumi.Input[Union['CloudAwsAccountIdpArgs', 'CloudAwsAccountIdpArgsDict']]] = None,
             intermediate_role_arn: Optional[pulumi.Input[str]] = None,
             is_organization_management_account: Optional[pulumi.Input[bool]] = None,
@@ -594,13 +627,15 @@ class CloudAwsAccount(pulumi.CustomResource):
         :param pulumi.Input[str] account_type: The AWS account type. Value is 'commercial' for Commercial cloud accounts. For GovCloud environments, value can be either 'commercial' or 'gov' depending on the account type
         :param pulumi.Input[str] cloudtrail_bucket_name: The name of the CloudTrail S3 bucket used for real-time visibility
         :param pulumi.Input[str] dspm_role_arn: The ARN of the IAM role to be used by CrowdStrike Data Security Posture Management
+        :param pulumi.Input[str] dspm_role_name: The name of the IAM role to be used by CrowdStrike Data Security Posture Management
         :param pulumi.Input[str] eventbus_arn: The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
         :param pulumi.Input[str] eventbus_name: The name of the Amazon EventBridge used by CrowdStrike to forward messages
         :param pulumi.Input[str] external_id: The external ID used to assume the AWS IAM role
         :param pulumi.Input[str] iam_role_arn: The ARN of the AWS IAM role used to access this AWS account
+        :param pulumi.Input[str] iam_role_name: The name of the AWS IAM role used to access this AWS account
         :param pulumi.Input[str] intermediate_role_arn: The ARN of the intermediate role used to assume the AWS IAM role
         :param pulumi.Input[bool] is_organization_management_account: Indicates whether this is the management account (formerly known as the root account) of an AWS Organization
-        :param pulumi.Input[str] organization_id: The AWS Organization ID
+        :param pulumi.Input[str] organization_id: The AWS Organization ID (starts with `o-`). When specified, accounts within the organization will be registered. If `target_ous` is empty, all accounts in the organization will be registered. The `account_id` must be the organization's management account ID.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_ouses: The list of target Organizational Units
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -614,10 +649,12 @@ class CloudAwsAccount(pulumi.CustomResource):
         __props__.__dict__["deployment_method"] = deployment_method
         __props__.__dict__["dspm"] = dspm
         __props__.__dict__["dspm_role_arn"] = dspm_role_arn
+        __props__.__dict__["dspm_role_name"] = dspm_role_name
         __props__.__dict__["eventbus_arn"] = eventbus_arn
         __props__.__dict__["eventbus_name"] = eventbus_name
         __props__.__dict__["external_id"] = external_id
         __props__.__dict__["iam_role_arn"] = iam_role_arn
+        __props__.__dict__["iam_role_name"] = iam_role_name
         __props__.__dict__["idp"] = idp
         __props__.__dict__["intermediate_role_arn"] = intermediate_role_arn
         __props__.__dict__["is_organization_management_account"] = is_organization_management_account
@@ -675,6 +712,14 @@ class CloudAwsAccount(pulumi.CustomResource):
         return pulumi.get(self, "dspm_role_arn")
 
     @property
+    @pulumi.getter(name="dspmRoleName")
+    def dspm_role_name(self) -> pulumi.Output[str]:
+        """
+        The name of the IAM role to be used by CrowdStrike Data Security Posture Management
+        """
+        return pulumi.get(self, "dspm_role_name")
+
+    @property
     @pulumi.getter(name="eventbusArn")
     def eventbus_arn(self) -> pulumi.Output[str]:
         """
@@ -707,6 +752,14 @@ class CloudAwsAccount(pulumi.CustomResource):
         return pulumi.get(self, "iam_role_arn")
 
     @property
+    @pulumi.getter(name="iamRoleName")
+    def iam_role_name(self) -> pulumi.Output[str]:
+        """
+        The name of the AWS IAM role used to access this AWS account
+        """
+        return pulumi.get(self, "iam_role_name")
+
+    @property
     @pulumi.getter
     def idp(self) -> pulumi.Output['outputs.CloudAwsAccountIdp']:
         return pulumi.get(self, "idp")
@@ -731,7 +784,7 @@ class CloudAwsAccount(pulumi.CustomResource):
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[str]:
         """
-        The AWS Organization ID
+        The AWS Organization ID (starts with `o-`). When specified, accounts within the organization will be registered. If `target_ous` is empty, all accounts in the organization will be registered. The `account_id` must be the organization's management account ID.
         """
         return pulumi.get(self, "organization_id")
 
