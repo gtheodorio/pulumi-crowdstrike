@@ -60,6 +60,36 @@ export interface CloudAwsAccountSensorManagement {
     enabled: boolean;
 }
 
+export interface DefaultSensorUpdatePolicySchedule {
+    /**
+     * Enable the scheduler for sensor update policy.
+     */
+    enabled: boolean;
+    /**
+     * The time block to prevent sensor updates. Only set when enabled is true.
+     */
+    timeBlocks?: outputs.DefaultSensorUpdatePolicyScheduleTimeBlock[];
+    /**
+     * The time zones that will be used for the time blocks. Only set when enabled is true.
+     */
+    timezone?: string;
+}
+
+export interface DefaultSensorUpdatePolicyScheduleTimeBlock {
+    /**
+     * The days of the week the time block should be active.
+     */
+    days: string[];
+    /**
+     * The end time for the time block in 24HR format. Must be atleast 1 hour more than start_time.
+     */
+    endTime: string;
+    /**
+     * The start time for the time block in 24HR format. Must be atleast 1 hour before end_time.
+     */
+    startTime: string;
+}
+
 export interface FilevantagePolicyScheduledExclusion {
     /**
      * Description of the scheduled exclusion.
@@ -299,6 +329,10 @@ export interface GetCloudAwsAccountAccount {
      */
     dspmRoleArn: string;
     /**
+     * The name of the IAM role to be used by CrowdStrike DSPM
+     */
+    dspmRoleName: string;
+    /**
      * The ARN of the Amazon EventBridge used by CrowdStrike to forward messages
      */
     eventbusArn: string;
@@ -314,6 +348,10 @@ export interface GetCloudAwsAccountAccount {
      * The ARN of the AWS IAM role used to access this AWS account
      */
     iamRoleArn: string;
+    /**
+     * The name of the AWS IAM role used to access this AWS account
+     */
+    iamRoleName: string;
     /**
      * Whether Identity Protection is enabled
      */

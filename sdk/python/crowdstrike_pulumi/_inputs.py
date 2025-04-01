@@ -25,6 +25,10 @@ __all__ = [
     'CloudAwsAccountRealtimeVisibilityArgsDict',
     'CloudAwsAccountSensorManagementArgs',
     'CloudAwsAccountSensorManagementArgsDict',
+    'DefaultSensorUpdatePolicyScheduleArgs',
+    'DefaultSensorUpdatePolicyScheduleArgsDict',
+    'DefaultSensorUpdatePolicyScheduleTimeBlockArgs',
+    'DefaultSensorUpdatePolicyScheduleTimeBlockArgsDict',
     'FilevantagePolicyScheduledExclusionArgs',
     'FilevantagePolicyScheduledExclusionArgsDict',
     'FilevantagePolicyScheduledExclusionRepeatedArgs',
@@ -317,6 +321,146 @@ class CloudAwsAccountSensorManagementArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class DefaultSensorUpdatePolicyScheduleArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable the scheduler for sensor update policy.
+        """
+        time_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DefaultSensorUpdatePolicyScheduleTimeBlockArgsDict']]]]
+        """
+        The time block to prevent sensor updates. Only set when enabled is true.
+        """
+        timezone: NotRequired[pulumi.Input[str]]
+        """
+        The time zones that will be used for the time blocks. Only set when enabled is true.
+        """
+elif False:
+    DefaultSensorUpdatePolicyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultSensorUpdatePolicyScheduleArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 time_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultSensorUpdatePolicyScheduleTimeBlockArgs']]]] = None,
+                 timezone: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable the scheduler for sensor update policy.
+        :param pulumi.Input[Sequence[pulumi.Input['DefaultSensorUpdatePolicyScheduleTimeBlockArgs']]] time_blocks: The time block to prevent sensor updates. Only set when enabled is true.
+        :param pulumi.Input[str] timezone: The time zones that will be used for the time blocks. Only set when enabled is true.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if time_blocks is not None:
+            pulumi.set(__self__, "time_blocks", time_blocks)
+        if timezone is not None:
+            pulumi.set(__self__, "timezone", timezone)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable the scheduler for sensor update policy.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="timeBlocks")
+    def time_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DefaultSensorUpdatePolicyScheduleTimeBlockArgs']]]]:
+        """
+        The time block to prevent sensor updates. Only set when enabled is true.
+        """
+        return pulumi.get(self, "time_blocks")
+
+    @time_blocks.setter
+    def time_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultSensorUpdatePolicyScheduleTimeBlockArgs']]]]):
+        pulumi.set(self, "time_blocks", value)
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time zones that will be used for the time blocks. Only set when enabled is true.
+        """
+        return pulumi.get(self, "timezone")
+
+    @timezone.setter
+    def timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timezone", value)
+
+
+if not MYPY:
+    class DefaultSensorUpdatePolicyScheduleTimeBlockArgsDict(TypedDict):
+        days: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The days of the week the time block should be active.
+        """
+        end_time: pulumi.Input[str]
+        """
+        The end time for the time block in 24HR format. Must be atleast 1 hour more than start_time.
+        """
+        start_time: pulumi.Input[str]
+        """
+        The start time for the time block in 24HR format. Must be atleast 1 hour before end_time.
+        """
+elif False:
+    DefaultSensorUpdatePolicyScheduleTimeBlockArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultSensorUpdatePolicyScheduleTimeBlockArgs:
+    def __init__(__self__, *,
+                 days: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 end_time: pulumi.Input[str],
+                 start_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] days: The days of the week the time block should be active.
+        :param pulumi.Input[str] end_time: The end time for the time block in 24HR format. Must be atleast 1 hour more than start_time.
+        :param pulumi.Input[str] start_time: The start time for the time block in 24HR format. Must be atleast 1 hour before end_time.
+        """
+        pulumi.set(__self__, "days", days)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def days(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The days of the week the time block should be active.
+        """
+        return pulumi.get(self, "days")
+
+    @days.setter
+    def days(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "days", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[str]:
+        """
+        The end time for the time block in 24HR format. Must be atleast 1 hour more than start_time.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[str]:
+        """
+        The start time for the time block in 24HR format. Must be atleast 1 hour before end_time.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "start_time", value)
 
 
 if not MYPY:

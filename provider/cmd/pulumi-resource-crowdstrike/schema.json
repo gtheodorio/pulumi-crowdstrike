@@ -181,6 +181,54 @@
                 "enabled"
             ]
         },
+        "crowdstrike:index/DefaultSensorUpdatePolicySchedule:DefaultSensorUpdatePolicySchedule": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable the scheduler for sensor update policy.\n"
+                },
+                "timeBlocks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/crowdstrike:index/DefaultSensorUpdatePolicyScheduleTimeBlock:DefaultSensorUpdatePolicyScheduleTimeBlock"
+                    },
+                    "description": "The time block to prevent sensor updates. Only set when enabled is true.\n"
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "The time zones that will be used for the time blocks. Only set when enabled is true.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
+        "crowdstrike:index/DefaultSensorUpdatePolicyScheduleTimeBlock:DefaultSensorUpdatePolicyScheduleTimeBlock": {
+            "properties": {
+                "days": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The days of the week the time block should be active.\n"
+                },
+                "endTime": {
+                    "type": "string",
+                    "description": "The end time for the time block in 24HR format. Must be atleast 1 hour more than start_time.\n"
+                },
+                "startTime": {
+                    "type": "string",
+                    "description": "The start time for the time block in 24HR format. Must be atleast 1 hour before end_time.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "days",
+                "endTime",
+                "startTime"
+            ]
+        },
         "crowdstrike:index/FilevantagePolicyScheduledExclusion:FilevantagePolicyScheduledExclusion": {
             "properties": {
                 "description": {
@@ -784,6 +832,10 @@
                     "type": "string",
                     "description": "The ARN of the IAM role to be used by CrowdStrike DSPM\n"
                 },
+                "dspmRoleName": {
+                    "type": "string",
+                    "description": "The name of the IAM role to be used by CrowdStrike DSPM\n"
+                },
                 "eventbusArn": {
                     "type": "string",
                     "description": "The ARN of the Amazon EventBridge used by CrowdStrike to forward messages\n"
@@ -799,6 +851,10 @@
                 "iamRoleArn": {
                     "type": "string",
                     "description": "The ARN of the AWS IAM role used to access this AWS account\n"
+                },
+                "iamRoleName": {
+                    "type": "string",
+                    "description": "The name of the AWS IAM role used to access this AWS account\n"
                 },
                 "idpEnabled": {
                     "type": "boolean",
@@ -841,10 +897,12 @@
                 "cloudtrailRegion",
                 "dspmEnabled",
                 "dspmRoleArn",
+                "dspmRoleName",
                 "eventbusArn",
                 "eventbusName",
                 "externalId",
                 "iamRoleArn",
+                "iamRoleName",
                 "idpEnabled",
                 "intermediateRoleArn",
                 "isOrganizationManagementAccount",
@@ -1557,7 +1615,7 @@
     },
     "resources": {
         "crowdstrike:index/cloudAwsAccount:CloudAwsAccount": {
-            "description": "This resource allows management of an AWS account in Falcon.\n\n## API Scopes\n\nThe following API scopes are required:\n\n- Cloud security AWS registration | Read \u0026 Write\n- CSPM registration | Read \u0026 Write\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.crowdstrike.CloudAwsAccount;\nimport com.pulumi.crowdstrike.CloudAwsAccountArgs;\nimport com.pulumi.crowdstrike.inputs.CloudAwsAccountDspmArgs;\nimport com.pulumi.crowdstrike.inputs.CloudAwsAccountIdpArgs;\nimport com.pulumi.crowdstrike.inputs.CloudAwsAccountRealtimeVisibilityArgs;\nimport com.pulumi.crowdstrike.inputs.CloudAwsAccountSensorManagementArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var org = new CloudAwsAccount(\"org\", CloudAwsAccountArgs.builder()\n            .accountId(\"123456789012\")\n            .dspm(CloudAwsAccountDspmArgs.builder()\n                .enabled(true)\n                .build())\n            .idp(CloudAwsAccountIdpArgs.builder()\n                .enabled(true)\n                .build())\n            .isOrganizationManagementAccount(true)\n            .organizationId(\"o-1234567890\")\n            .realtimeVisibility(CloudAwsAccountRealtimeVisibilityArgs.builder()\n                .cloudtrail_region(\"us-east-1\")\n                .enabled(true)\n                .build())\n            .sensorManagement(CloudAwsAccountSensorManagementArgs.builder()\n                .enabled(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  org:\n    type: crowdstrike:CloudAwsAccount\n    properties:\n      accountId: '123456789012'\n      dspm:\n        enabled: true\n      idp:\n        enabled: true\n      isOrganizationManagementAccount: true\n      organizationId: o-1234567890\n      realtimeVisibility:\n        cloudtrail_region: us-east-1\n        enabled: true\n      sensorManagement:\n        enabled: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This resource allows management of an AWS account in Falcon.\n\n## API Scopes\n\nThe following API scopes are required:\n\n- Cloud security AWS registration | Read \u0026 Write\n- CSPM registration | Read \u0026 Write\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.crowdstrike.CloudAwsAccount;\nimport com.pulumi.crowdstrike.CloudAwsAccountArgs;\nimport com.pulumi.crowdstrike.inputs.CloudAwsAccountDspmArgs;\nimport com.pulumi.crowdstrike.inputs.CloudAwsAccountIdpArgs;\nimport com.pulumi.crowdstrike.inputs.CloudAwsAccountRealtimeVisibilityArgs;\nimport com.pulumi.crowdstrike.inputs.CloudAwsAccountSensorManagementArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var org = new CloudAwsAccount(\"org\", CloudAwsAccountArgs.builder()\n            .accountId(\"123456789012\")\n            .dspm(CloudAwsAccountDspmArgs.builder()\n                .enabled(true)\n                .build())\n            .idp(CloudAwsAccountIdpArgs.builder()\n                .enabled(true)\n                .build())\n            .organizationId(\"o-1234567890\")\n            .realtimeVisibility(CloudAwsAccountRealtimeVisibilityArgs.builder()\n                .cloudtrail_region(\"us-east-1\")\n                .enabled(true)\n                .build())\n            .sensorManagement(CloudAwsAccountSensorManagementArgs.builder()\n                .enabled(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  org:\n    type: crowdstrike:CloudAwsAccount\n    properties:\n      accountId: '123456789012'\n      dspm:\n        enabled: true\n      idp:\n        enabled: true\n      organizationId: o-1234567890\n      realtimeVisibility:\n        cloudtrail_region: us-east-1\n        enabled: true\n      sensorManagement:\n        enabled: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA previously registered cloud aws account can be imported by account id.\n\n```sh\n$ pulumi import crowdstrike:index/cloudAwsAccount:CloudAwsAccount account 12345678910\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -1584,6 +1642,10 @@
                     "type": "string",
                     "description": "The ARN of the IAM role to be used by CrowdStrike Data Security Posture Management\n"
                 },
+                "dspmRoleName": {
+                    "type": "string",
+                    "description": "The name of the IAM role to be used by CrowdStrike Data Security Posture Management\n"
+                },
                 "eventbusArn": {
                     "type": "string",
                     "description": "The ARN of the Amazon EventBridge used by CrowdStrike to forward messages\n"
@@ -1600,6 +1662,10 @@
                     "type": "string",
                     "description": "The ARN of the AWS IAM role used to access this AWS account\n"
                 },
+                "iamRoleName": {
+                    "type": "string",
+                    "description": "The name of the AWS IAM role used to access this AWS account\n"
+                },
                 "idp": {
                     "$ref": "#/types/crowdstrike:index/CloudAwsAccountIdp:CloudAwsAccountIdp"
                 },
@@ -1613,7 +1679,7 @@
                 },
                 "organizationId": {
                     "type": "string",
-                    "description": "The AWS Organization ID\n"
+                    "description": "The AWS Organization ID (starts with `o-`). When specified, accounts within the organization will be registered. If `target_ous` is empty, all accounts in the organization will be registered. The `account_id` must be the organization's management account ID.\n"
                 },
                 "realtimeVisibility": {
                     "$ref": "#/types/crowdstrike:index/CloudAwsAccountRealtimeVisibility:CloudAwsAccountRealtimeVisibility"
@@ -1637,10 +1703,12 @@
                 "deploymentMethod",
                 "dspm",
                 "dspmRoleArn",
+                "dspmRoleName",
                 "eventbusArn",
                 "eventbusName",
                 "externalId",
                 "iamRoleArn",
+                "iamRoleName",
                 "idp",
                 "intermediateRoleArn",
                 "isOrganizationManagementAccount",
@@ -1670,13 +1738,9 @@
                 "idp": {
                     "$ref": "#/types/crowdstrike:index/CloudAwsAccountIdp:CloudAwsAccountIdp"
                 },
-                "isOrganizationManagementAccount": {
-                    "type": "boolean",
-                    "description": "Indicates whether this is the management account (formerly known as the root account) of an AWS Organization\n"
-                },
                 "organizationId": {
                     "type": "string",
-                    "description": "The AWS Organization ID\n"
+                    "description": "The AWS Organization ID (starts with `o-`). When specified, accounts within the organization will be registered. If `target_ous` is empty, all accounts in the organization will be registered. The `account_id` must be the organization's management account ID.\n"
                 },
                 "realtimeVisibility": {
                     "$ref": "#/types/crowdstrike:index/CloudAwsAccountRealtimeVisibility:CloudAwsAccountRealtimeVisibility"
@@ -1723,6 +1787,10 @@
                         "type": "string",
                         "description": "The ARN of the IAM role to be used by CrowdStrike Data Security Posture Management\n"
                     },
+                    "dspmRoleName": {
+                        "type": "string",
+                        "description": "The name of the IAM role to be used by CrowdStrike Data Security Posture Management\n"
+                    },
                     "eventbusArn": {
                         "type": "string",
                         "description": "The ARN of the Amazon EventBridge used by CrowdStrike to forward messages\n"
@@ -1739,6 +1807,10 @@
                         "type": "string",
                         "description": "The ARN of the AWS IAM role used to access this AWS account\n"
                     },
+                    "iamRoleName": {
+                        "type": "string",
+                        "description": "The name of the AWS IAM role used to access this AWS account\n"
+                    },
                     "idp": {
                         "$ref": "#/types/crowdstrike:index/CloudAwsAccountIdp:CloudAwsAccountIdp"
                     },
@@ -1752,7 +1824,7 @@
                     },
                     "organizationId": {
                         "type": "string",
-                        "description": "The AWS Organization ID\n"
+                        "description": "The AWS Organization ID (starts with `o-`). When specified, accounts within the organization will be registered. If `target_ous` is empty, all accounts in the organization will be registered. The `account_id` must be the organization's management account ID.\n"
                     },
                     "realtimeVisibility": {
                         "$ref": "#/types/crowdstrike:index/CloudAwsAccountRealtimeVisibility:CloudAwsAccountRealtimeVisibility"
@@ -1766,6 +1838,97 @@
                             "type": "string"
                         },
                         "description": "The list of target Organizational Units\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "crowdstrike:index/defaultSensorUpdatePolicy:DefaultSensorUpdatePolicy": {
+            "description": "This resource allows management of the default sensor update policy in the CrowdStrike Falcon platform.\n\n## API Scopes\n\nThe following API scopes are required:\n\n- Sensor update policies | Read \u0026 Write\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.crowdstrike.CrowdstrikeFunctions;\nimport com.pulumi.crowdstrike.DefaultSensorUpdatePolicy;\nimport com.pulumi.crowdstrike.DefaultSensorUpdatePolicyArgs;\nimport com.pulumi.crowdstrike.inputs.DefaultSensorUpdatePolicyScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = CrowdstrikeFunctions.getSensorUpdatePolicyBuilds();\n\n        var default_ = new DefaultSensorUpdatePolicy(\"default\", DefaultSensorUpdatePolicyArgs.builder()\n            .platformName(\"windows\")\n            .build(all.applyValue(getSensorUpdatePolicyBuildsResult -\u003e getSensorUpdatePolicyBuildsResult.windows().n1().build()))\n            .uninstallProtection(true)\n            .schedule(DefaultSensorUpdatePolicyScheduleArgs.builder()\n                .enabled(true)\n                .timezone(\"Etc/UTC\")\n                .time_blocks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .build())\n            .build());\n\n        ctx.export(\"sensorPolicy\", default_);\n    }\n}\n```\n```yaml\nresources:\n  default:\n    type: crowdstrike:DefaultSensorUpdatePolicy\n    properties:\n      platformName: windows\n      build: ${all.windows.n1.build}\n      uninstallProtection: true\n      schedule:\n        enabled: true\n        timezone: Etc/UTC\n        time_blocks:\n          - days:\n              - sunday\n              - wednesday\n            startTime: 12:40\n            endTime: 16:40\nvariables:\n  all:\n    fn::invoke:\n      function: crowdstrike:getSensorUpdatePolicyBuilds\n      arguments: {}\noutputs:\n  sensorPolicy: ${default}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA default sensor update policy can be imported by specifying the policy id.\n\n```sh\n$ pulumi import crowdstrike:index/defaultSensorUpdatePolicy:DefaultSensorUpdatePolicy default 7fb858a949034a0cbca175f660f1e769\n```\n\n",
+            "properties": {
+                "build": {
+                    "type": "string",
+                    "description": "Sensor build to use for the default sensor update policy.\n"
+                },
+                "buildArm64": {
+                    "type": "string",
+                    "description": "Sensor arm64 build to use for the default sensor update policy (Linux only). Required if platform_name is Linux.\n"
+                },
+                "lastUpdated": {
+                    "type": "string"
+                },
+                "platformName": {
+                    "type": "string",
+                    "description": "Chooses which default sensor update policy to manage. (Windows, Mac, Linux)\n"
+                },
+                "schedule": {
+                    "$ref": "#/types/crowdstrike:index/DefaultSensorUpdatePolicySchedule:DefaultSensorUpdatePolicySchedule",
+                    "description": "Prohibit sensor updates during a set of time blocks.\n"
+                },
+                "uninstallProtection": {
+                    "type": "boolean",
+                    "description": "Enable uninstall protection. Windows and Mac only.\n"
+                }
+            },
+            "required": [
+                "build",
+                "lastUpdated",
+                "platformName",
+                "schedule",
+                "uninstallProtection"
+            ],
+            "inputProperties": {
+                "build": {
+                    "type": "string",
+                    "description": "Sensor build to use for the default sensor update policy.\n"
+                },
+                "buildArm64": {
+                    "type": "string",
+                    "description": "Sensor arm64 build to use for the default sensor update policy (Linux only). Required if platform_name is Linux.\n"
+                },
+                "platformName": {
+                    "type": "string",
+                    "description": "Chooses which default sensor update policy to manage. (Windows, Mac, Linux)\n"
+                },
+                "schedule": {
+                    "$ref": "#/types/crowdstrike:index/DefaultSensorUpdatePolicySchedule:DefaultSensorUpdatePolicySchedule",
+                    "description": "Prohibit sensor updates during a set of time blocks.\n"
+                },
+                "uninstallProtection": {
+                    "type": "boolean",
+                    "description": "Enable uninstall protection. Windows and Mac only.\n"
+                }
+            },
+            "requiredInputs": [
+                "build",
+                "platformName",
+                "schedule"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DefaultSensorUpdatePolicy resources.\n",
+                "properties": {
+                    "build": {
+                        "type": "string",
+                        "description": "Sensor build to use for the default sensor update policy.\n"
+                    },
+                    "buildArm64": {
+                        "type": "string",
+                        "description": "Sensor arm64 build to use for the default sensor update policy (Linux only). Required if platform_name is Linux.\n"
+                    },
+                    "lastUpdated": {
+                        "type": "string"
+                    },
+                    "platformName": {
+                        "type": "string",
+                        "description": "Chooses which default sensor update policy to manage. (Windows, Mac, Linux)\n"
+                    },
+                    "schedule": {
+                        "$ref": "#/types/crowdstrike:index/DefaultSensorUpdatePolicySchedule:DefaultSensorUpdatePolicySchedule",
+                        "description": "Prohibit sensor updates during a set of time blocks.\n"
+                    },
+                    "uninstallProtection": {
+                        "type": "boolean",
+                        "description": "Enable uninstall protection. Windows and Mac only.\n"
                     }
                 },
                 "type": "object"
@@ -3682,7 +3845,7 @@
             }
         },
         "crowdstrike:index/sensorUpdatePolicy:SensorUpdatePolicy": {
-            "description": "This resource allows management of sensor update policies in the CrowdStrike Falcon platform. Sensor update policies allow you to control the update process across a set of hosts.\n\n## API Scopes\n\nThe following API scopes are required:\n\n- Sensor update policies | Read \u0026 Write\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.crowdstrike.SensorUpdatePolicy;\nimport com.pulumi.crowdstrike.SensorUpdatePolicyArgs;\nimport com.pulumi.crowdstrike.inputs.SensorUpdatePolicyScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new SensorUpdatePolicy(\"example\", SensorUpdatePolicyArgs.builder()\n            .enabled(false)\n            .description(\"Made with Pulumi\")\n            .platformName(\"Windows\")\n            .build(\"18110\")\n            .uninstallProtection(false)\n            .hostGroups(\"host_group_id\")\n            .schedule(SensorUpdatePolicyScheduleArgs.builder()\n                .enabled(true)\n                .timezone(\"Etc/UTC\")\n                .time_blocks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .build())\n            .build());\n\n        ctx.export(\"sensorPolicy\", example);\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: crowdstrike:SensorUpdatePolicy\n    properties:\n      enabled: false\n      description: Made with Pulumi\n      platformName: Windows\n      build: '18110'\n      uninstallProtection: false\n      hostGroups:\n        - host_group_id\n      schedule:\n        enabled: true\n        timezone: Etc/UTC\n        time_blocks:\n          - days:\n              - sunday\n              - wednesday\n            startTime: 12:40\n            endTime: 16:40\noutputs:\n  sensorPolicy: ${example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nprevention policy can be imported by specifying the policy id.\n\n```sh\n$ pulumi import crowdstrike:index/sensorUpdatePolicy:SensorUpdatePolicy example 7fb858a949034a0cbca175f660f1e769\n```\n\n",
+            "description": "This resource allows management of sensor update policies in the CrowdStrike Falcon platform. Sensor update policies allow you to control the update process across a set of hosts.\n\n## API Scopes\n\nThe following API scopes are required:\n\n- Sensor update policies | Read \u0026 Write\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.crowdstrike.CrowdstrikeFunctions;\nimport com.pulumi.crowdstrike.SensorUpdatePolicy;\nimport com.pulumi.crowdstrike.SensorUpdatePolicyArgs;\nimport com.pulumi.crowdstrike.inputs.SensorUpdatePolicyScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = CrowdstrikeFunctions.getSensorUpdatePolicyBuilds();\n\n        var example = new SensorUpdatePolicy(\"example\", SensorUpdatePolicyArgs.builder()\n            .enabled(false)\n            .description(\"Made with Pulumi\")\n            .platformName(\"Windows\")\n            .build(all.applyValue(getSensorUpdatePolicyBuildsResult -\u003e getSensorUpdatePolicyBuildsResult.windows().n1().build()))\n            .uninstallProtection(false)\n            .hostGroups(\"host_group_id\")\n            .schedule(SensorUpdatePolicyScheduleArgs.builder()\n                .enabled(true)\n                .timezone(\"Etc/UTC\")\n                .time_blocks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .build())\n            .build());\n\n        ctx.export(\"sensorPolicy\", example);\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: crowdstrike:SensorUpdatePolicy\n    properties:\n      enabled: false\n      description: Made with Pulumi\n      platformName: Windows\n      build: ${all.windows.n1.build}\n      uninstallProtection: false\n      hostGroups:\n        - host_group_id\n      schedule:\n        enabled: true\n        timezone: Etc/UTC\n        time_blocks:\n          - days:\n              - sunday\n              - wednesday\n            startTime: 12:40\n            endTime: 16:40\nvariables:\n  all:\n    fn::invoke:\n      function: crowdstrike:getSensorUpdatePolicyBuilds\n      arguments: {}\noutputs:\n  sensorPolicy: ${example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nsensor update policies can be imported by specifying the policy id.\n\n```sh\n$ pulumi import crowdstrike:index/sensorUpdatePolicy:SensorUpdatePolicy example 7fb858a949034a0cbca175f660f1e769\n```\n\n",
             "properties": {
                 "build": {
                     "type": "string",
