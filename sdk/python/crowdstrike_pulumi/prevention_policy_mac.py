@@ -876,7 +876,7 @@ class PreventionPolicyMac(pulumi.CustomResource):
                  xpcom_shell: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        This resource allows you to manage CrowdStrike Falcon prevention policies for Mac hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+        This resource allows you to manage prevention policies for Mac hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
 
         ## API Scopes
 
@@ -973,7 +973,7 @@ class PreventionPolicyMac(pulumi.CustomResource):
                  args: PreventionPolicyMacArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to manage CrowdStrike Falcon prevention policies for Mac hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+        This resource allows you to manage prevention policies for Mac hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
 
         ## API Scopes
 

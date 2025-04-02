@@ -21,6 +21,19 @@ __all__ = [
     'CloudAwsAccountIdp',
     'CloudAwsAccountRealtimeVisibility',
     'CloudAwsAccountSensorManagement',
+    'DefaultPreventionPolicyLinuxCloudAntiMalware',
+    'DefaultPreventionPolicyLinuxSensorAntiMalware',
+    'DefaultPreventionPolicyMacCloudAdwareAndPup',
+    'DefaultPreventionPolicyMacCloudAntiMalware',
+    'DefaultPreventionPolicyMacSensorAdwareAndPup',
+    'DefaultPreventionPolicyMacSensorAntiMalware',
+    'DefaultPreventionPolicyWindowsAdwareAndPup',
+    'DefaultPreventionPolicyWindowsCloudAntiMalware',
+    'DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles',
+    'DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated',
+    'DefaultPreventionPolicyWindowsExtendedUserModeData',
+    'DefaultPreventionPolicyWindowsSensorAntiMalware',
+    'DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated',
     'DefaultSensorUpdatePolicySchedule',
     'DefaultSensorUpdatePolicyScheduleTimeBlock',
     'FilevantagePolicyScheduledExclusion',
@@ -264,6 +277,372 @@ class CloudAwsAccountSensorManagement(dict):
         Enable 1-click sensor deployment
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class DefaultPreventionPolicyLinuxCloudAntiMalware(dict):
+    def __init__(__self__, *,
+                 detection: str,
+                 prevention: str):
+        """
+        :param str detection: Machine learning level for detection.
+        :param str prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> str:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> str:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+
+@pulumi.output_type
+class DefaultPreventionPolicyLinuxSensorAntiMalware(dict):
+    def __init__(__self__, *,
+                 detection: str,
+                 prevention: str):
+        """
+        :param str detection: Machine learning level for detection.
+        :param str prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> str:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> str:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+
+@pulumi.output_type
+class DefaultPreventionPolicyMacCloudAdwareAndPup(dict):
+    def __init__(__self__, *,
+                 detection: str,
+                 prevention: str):
+        """
+        :param str detection: Machine learning level for detection.
+        :param str prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> str:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> str:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+
+@pulumi.output_type
+class DefaultPreventionPolicyMacCloudAntiMalware(dict):
+    def __init__(__self__, *,
+                 detection: str,
+                 prevention: str):
+        """
+        :param str detection: Machine learning level for detection.
+        :param str prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> str:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> str:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+
+@pulumi.output_type
+class DefaultPreventionPolicyMacSensorAdwareAndPup(dict):
+    def __init__(__self__, *,
+                 detection: str,
+                 prevention: str):
+        """
+        :param str detection: Machine learning level for detection.
+        :param str prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> str:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> str:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+
+@pulumi.output_type
+class DefaultPreventionPolicyMacSensorAntiMalware(dict):
+    def __init__(__self__, *,
+                 detection: str,
+                 prevention: str):
+        """
+        :param str detection: Machine learning level for detection.
+        :param str prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> str:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> str:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+
+@pulumi.output_type
+class DefaultPreventionPolicyWindowsAdwareAndPup(dict):
+    def __init__(__self__, *,
+                 detection: str,
+                 prevention: str):
+        """
+        :param str detection: Machine learning level for detection.
+        :param str prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> str:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> str:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+
+@pulumi.output_type
+class DefaultPreventionPolicyWindowsCloudAntiMalware(dict):
+    def __init__(__self__, *,
+                 detection: str,
+                 prevention: str):
+        """
+        :param str detection: Machine learning level for detection.
+        :param str prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> str:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> str:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+
+@pulumi.output_type
+class DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles(dict):
+    def __init__(__self__, *,
+                 detection: str,
+                 prevention: str):
+        """
+        :param str detection: Machine learning level for detection.
+        :param str prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> str:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> str:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+
+@pulumi.output_type
+class DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated(dict):
+    def __init__(__self__, *,
+                 detection: str,
+                 prevention: str):
+        """
+        :param str detection: Machine learning level for detection.
+        :param str prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> str:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> str:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+
+@pulumi.output_type
+class DefaultPreventionPolicyWindowsExtendedUserModeData(dict):
+    def __init__(__self__, *,
+                 detection: str):
+        """
+        :param str detection: Machine learning level for detection.
+        """
+        pulumi.set(__self__, "detection", detection)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> str:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+
+@pulumi.output_type
+class DefaultPreventionPolicyWindowsSensorAntiMalware(dict):
+    def __init__(__self__, *,
+                 detection: str,
+                 prevention: str):
+        """
+        :param str detection: Machine learning level for detection.
+        :param str prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> str:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> str:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+
+@pulumi.output_type
+class DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated(dict):
+    def __init__(__self__, *,
+                 detection: str,
+                 prevention: str):
+        """
+        :param str detection: Machine learning level for detection.
+        :param str prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> str:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> str:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
 
 
 @pulumi.output_type

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to manage CrowdStrike Falcon prevention policies for Windows hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+ * This resource allows you to manage prevention policies for Windows hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
  *
  * ## API Scopes
  *
@@ -104,6 +104,7 @@ import * as utilities from "./utilities";
  *     volumeShadowCopyProtect: true,
  *     vulnerableDriverProtection: true,
  *     windowsLogonBypassStickyKeys: true,
+ *     fileSystemContainment: true,
  * });
  * export const preventionPolicyWindows = example;
  * ```
@@ -248,6 +249,10 @@ export class PreventionPolicyWindows extends pulumi.CustomResource {
      * Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
      */
     public readonly fileSystemAccess!: pulumi.Output<boolean>;
+    /**
+     * Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+     */
+    public readonly fileSystemContainment!: pulumi.Output<boolean>;
     /**
      * Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
      */
@@ -437,6 +442,7 @@ export class PreventionPolicyWindows extends pulumi.CustomResource {
             resourceInputs["extendedUserModeData"] = state ? state.extendedUserModeData : undefined;
             resourceInputs["fileEncryption"] = state ? state.fileEncryption : undefined;
             resourceInputs["fileSystemAccess"] = state ? state.fileSystemAccess : undefined;
+            resourceInputs["fileSystemContainment"] = state ? state.fileSystemContainment : undefined;
             resourceInputs["forceAslr"] = state ? state.forceAslr : undefined;
             resourceInputs["forceDep"] = state ? state.forceDep : undefined;
             resourceInputs["hardwareEnhancedExploitDetection"] = state ? state.hardwareEnhancedExploitDetection : undefined;
@@ -509,6 +515,7 @@ export class PreventionPolicyWindows extends pulumi.CustomResource {
             resourceInputs["extendedUserModeData"] = args ? args.extendedUserModeData : undefined;
             resourceInputs["fileEncryption"] = args ? args.fileEncryption : undefined;
             resourceInputs["fileSystemAccess"] = args ? args.fileSystemAccess : undefined;
+            resourceInputs["fileSystemContainment"] = args ? args.fileSystemContainment : undefined;
             resourceInputs["forceAslr"] = args ? args.forceAslr : undefined;
             resourceInputs["forceDep"] = args ? args.forceDep : undefined;
             resourceInputs["hardwareEnhancedExploitDetection"] = args ? args.hardwareEnhancedExploitDetection : undefined;
@@ -661,6 +668,10 @@ export interface PreventionPolicyWindowsState {
      * Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
      */
     fileSystemAccess?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+     */
+    fileSystemContainment?: pulumi.Input<boolean>;
     /**
      * Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
      */
@@ -920,6 +931,10 @@ export interface PreventionPolicyWindowsArgs {
      * Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
      */
     fileSystemAccess?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+     */
+    fileSystemContainment?: pulumi.Input<boolean>;
     /**
      * Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
      */

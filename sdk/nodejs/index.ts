@@ -10,6 +10,21 @@ export type CloudAwsAccount = import("./cloudAwsAccount").CloudAwsAccount;
 export const CloudAwsAccount: typeof import("./cloudAwsAccount").CloudAwsAccount = null as any;
 utilities.lazyLoad(exports, ["CloudAwsAccount"], () => require("./cloudAwsAccount"));
 
+export { DefaultPreventionPolicyLinuxArgs, DefaultPreventionPolicyLinuxState } from "./defaultPreventionPolicyLinux";
+export type DefaultPreventionPolicyLinux = import("./defaultPreventionPolicyLinux").DefaultPreventionPolicyLinux;
+export const DefaultPreventionPolicyLinux: typeof import("./defaultPreventionPolicyLinux").DefaultPreventionPolicyLinux = null as any;
+utilities.lazyLoad(exports, ["DefaultPreventionPolicyLinux"], () => require("./defaultPreventionPolicyLinux"));
+
+export { DefaultPreventionPolicyMacArgs, DefaultPreventionPolicyMacState } from "./defaultPreventionPolicyMac";
+export type DefaultPreventionPolicyMac = import("./defaultPreventionPolicyMac").DefaultPreventionPolicyMac;
+export const DefaultPreventionPolicyMac: typeof import("./defaultPreventionPolicyMac").DefaultPreventionPolicyMac = null as any;
+utilities.lazyLoad(exports, ["DefaultPreventionPolicyMac"], () => require("./defaultPreventionPolicyMac"));
+
+export { DefaultPreventionPolicyWindowsArgs, DefaultPreventionPolicyWindowsState } from "./defaultPreventionPolicyWindows";
+export type DefaultPreventionPolicyWindows = import("./defaultPreventionPolicyWindows").DefaultPreventionPolicyWindows;
+export const DefaultPreventionPolicyWindows: typeof import("./defaultPreventionPolicyWindows").DefaultPreventionPolicyWindows = null as any;
+utilities.lazyLoad(exports, ["DefaultPreventionPolicyWindows"], () => require("./defaultPreventionPolicyWindows"));
+
 export { DefaultSensorUpdatePolicyArgs, DefaultSensorUpdatePolicyState } from "./defaultSensorUpdatePolicy";
 export type DefaultSensorUpdatePolicy = import("./defaultSensorUpdatePolicy").DefaultSensorUpdatePolicy;
 export const DefaultSensorUpdatePolicy: typeof import("./defaultSensorUpdatePolicy").DefaultSensorUpdatePolicy = null as any;
@@ -81,6 +96,12 @@ const _module = {
         switch (type) {
             case "crowdstrike:index/cloudAwsAccount:CloudAwsAccount":
                 return new CloudAwsAccount(name, <any>undefined, { urn })
+            case "crowdstrike:index/defaultPreventionPolicyLinux:DefaultPreventionPolicyLinux":
+                return new DefaultPreventionPolicyLinux(name, <any>undefined, { urn })
+            case "crowdstrike:index/defaultPreventionPolicyMac:DefaultPreventionPolicyMac":
+                return new DefaultPreventionPolicyMac(name, <any>undefined, { urn })
+            case "crowdstrike:index/defaultPreventionPolicyWindows:DefaultPreventionPolicyWindows":
+                return new DefaultPreventionPolicyWindows(name, <any>undefined, { urn })
             case "crowdstrike:index/defaultSensorUpdatePolicy:DefaultSensorUpdatePolicy":
                 return new DefaultSensorUpdatePolicy(name, <any>undefined, { urn })
             case "crowdstrike:index/filevantagePolicy:FilevantagePolicy":
@@ -103,6 +124,9 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("crowdstrike", "index/cloudAwsAccount", _module)
+pulumi.runtime.registerResourceModule("crowdstrike", "index/defaultPreventionPolicyLinux", _module)
+pulumi.runtime.registerResourceModule("crowdstrike", "index/defaultPreventionPolicyMac", _module)
+pulumi.runtime.registerResourceModule("crowdstrike", "index/defaultPreventionPolicyWindows", _module)
 pulumi.runtime.registerResourceModule("crowdstrike", "index/defaultSensorUpdatePolicy", _module)
 pulumi.runtime.registerResourceModule("crowdstrike", "index/filevantagePolicy", _module)
 pulumi.runtime.registerResourceModule("crowdstrike", "index/filevantageRuleGroup", _module)

@@ -29,6 +29,7 @@ class PreventionPolicyLinuxArgs:
                  drift_prevention: Optional[pulumi.Input[bool]] = None,
                  email_protocol_visibility: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 extended_command_line_visibility: Optional[pulumi.Input[bool]] = None,
                  filesystem_visibility: Optional[pulumi.Input[bool]] = None,
                  ftp_visibility: Optional[pulumi.Input[bool]] = None,
                  http_visibility: Optional[pulumi.Input[bool]] = None,
@@ -54,6 +55,7 @@ class PreventionPolicyLinuxArgs:
         :param pulumi.Input[bool] drift_prevention: Whether to enable the setting. Block new processes originating from files written in a container. This prevents a container from drifting from its immutable runtime state.
         :param pulumi.Input[bool] email_protocol_visibility: Whether to enable the setting. Allows the sensor to monitor SMTP, IMAP, and POP3 traffic for malicious patterns and improved detections.
         :param pulumi.Input[bool] enabled: Enable the prevention policy.
+        :param pulumi.Input[bool] extended_command_line_visibility: Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
         :param pulumi.Input[bool] filesystem_visibility: Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
         :param pulumi.Input[bool] ftp_visibility: Whether to enable the setting. Allows the sensor to monitor unencrypted FTP traffic for malicious patterns and improved detections.
         :param pulumi.Input[bool] http_visibility: Whether to enable the setting. Allows the sensor to monitor unencrypted HTTP traffic for malicious patterns and improved detections.
@@ -84,6 +86,8 @@ class PreventionPolicyLinuxArgs:
             pulumi.set(__self__, "email_protocol_visibility", email_protocol_visibility)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if extended_command_line_visibility is not None:
+            pulumi.set(__self__, "extended_command_line_visibility", extended_command_line_visibility)
         if filesystem_visibility is not None:
             pulumi.set(__self__, "filesystem_visibility", filesystem_visibility)
         if ftp_visibility is not None:
@@ -210,6 +214,18 @@ class PreventionPolicyLinuxArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="extendedCommandLineVisibility")
+    def extended_command_line_visibility(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+        """
+        return pulumi.get(self, "extended_command_line_visibility")
+
+    @extended_command_line_visibility.setter
+    def extended_command_line_visibility(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "extended_command_line_visibility", value)
 
     @property
     @pulumi.getter(name="filesystemVisibility")
@@ -401,6 +417,7 @@ class _PreventionPolicyLinuxState:
                  drift_prevention: Optional[pulumi.Input[bool]] = None,
                  email_protocol_visibility: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 extended_command_line_visibility: Optional[pulumi.Input[bool]] = None,
                  filesystem_visibility: Optional[pulumi.Input[bool]] = None,
                  ftp_visibility: Optional[pulumi.Input[bool]] = None,
                  host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -427,6 +444,7 @@ class _PreventionPolicyLinuxState:
         :param pulumi.Input[bool] drift_prevention: Whether to enable the setting. Block new processes originating from files written in a container. This prevents a container from drifting from its immutable runtime state.
         :param pulumi.Input[bool] email_protocol_visibility: Whether to enable the setting. Allows the sensor to monitor SMTP, IMAP, and POP3 traffic for malicious patterns and improved detections.
         :param pulumi.Input[bool] enabled: Enable the prevention policy.
+        :param pulumi.Input[bool] extended_command_line_visibility: Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
         :param pulumi.Input[bool] filesystem_visibility: Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
         :param pulumi.Input[bool] ftp_visibility: Whether to enable the setting. Allows the sensor to monitor unencrypted FTP traffic for malicious patterns and improved detections.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the prevention policy.
@@ -457,6 +475,8 @@ class _PreventionPolicyLinuxState:
             pulumi.set(__self__, "email_protocol_visibility", email_protocol_visibility)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if extended_command_line_visibility is not None:
+            pulumi.set(__self__, "extended_command_line_visibility", extended_command_line_visibility)
         if filesystem_visibility is not None:
             pulumi.set(__self__, "filesystem_visibility", filesystem_visibility)
         if ftp_visibility is not None:
@@ -565,6 +585,18 @@ class _PreventionPolicyLinuxState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="extendedCommandLineVisibility")
+    def extended_command_line_visibility(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+        """
+        return pulumi.get(self, "extended_command_line_visibility")
+
+    @extended_command_line_visibility.setter
+    def extended_command_line_visibility(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "extended_command_line_visibility", value)
 
     @property
     @pulumi.getter(name="filesystemVisibility")
@@ -791,6 +823,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
                  drift_prevention: Optional[pulumi.Input[bool]] = None,
                  email_protocol_visibility: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 extended_command_line_visibility: Optional[pulumi.Input[bool]] = None,
                  filesystem_visibility: Optional[pulumi.Input[bool]] = None,
                  ftp_visibility: Optional[pulumi.Input[bool]] = None,
                  host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -810,7 +843,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
                  upload_unknown_executables: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        This resource allows you to manage CrowdStrike Falcon prevention policies for Linux hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+        This resource allows you to manage prevention policies for Linux hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
 
         ## API Scopes
 
@@ -852,7 +885,8 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             tls_visibility=True,
             sensor_tampering_protection=True,
             on_write_script_file_visibility=True,
-            memory_visibility=True)
+            memory_visibility=True,
+            extended_command_line_visibility=True)
         pulumi.export("preventionPolicyLinux", example)
         ```
 
@@ -872,6 +906,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         :param pulumi.Input[bool] drift_prevention: Whether to enable the setting. Block new processes originating from files written in a container. This prevents a container from drifting from its immutable runtime state.
         :param pulumi.Input[bool] email_protocol_visibility: Whether to enable the setting. Allows the sensor to monitor SMTP, IMAP, and POP3 traffic for malicious patterns and improved detections.
         :param pulumi.Input[bool] enabled: Enable the prevention policy.
+        :param pulumi.Input[bool] extended_command_line_visibility: Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
         :param pulumi.Input[bool] filesystem_visibility: Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
         :param pulumi.Input[bool] ftp_visibility: Whether to enable the setting. Allows the sensor to monitor unencrypted FTP traffic for malicious patterns and improved detections.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the prevention policy.
@@ -897,7 +932,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
                  args: PreventionPolicyLinuxArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to manage CrowdStrike Falcon prevention policies for Linux hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+        This resource allows you to manage prevention policies for Linux hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
 
         ## API Scopes
 
@@ -939,7 +974,8 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             tls_visibility=True,
             sensor_tampering_protection=True,
             on_write_script_file_visibility=True,
-            memory_visibility=True)
+            memory_visibility=True,
+            extended_command_line_visibility=True)
         pulumi.export("preventionPolicyLinux", example)
         ```
 
@@ -972,6 +1008,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
                  drift_prevention: Optional[pulumi.Input[bool]] = None,
                  email_protocol_visibility: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 extended_command_line_visibility: Optional[pulumi.Input[bool]] = None,
                  filesystem_visibility: Optional[pulumi.Input[bool]] = None,
                  ftp_visibility: Optional[pulumi.Input[bool]] = None,
                  host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1004,6 +1041,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             __props__.__dict__["drift_prevention"] = drift_prevention
             __props__.__dict__["email_protocol_visibility"] = email_protocol_visibility
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["extended_command_line_visibility"] = extended_command_line_visibility
             __props__.__dict__["filesystem_visibility"] = filesystem_visibility
             __props__.__dict__["ftp_visibility"] = ftp_visibility
             if host_groups is None and not opts.urn:
@@ -1042,6 +1080,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
             drift_prevention: Optional[pulumi.Input[bool]] = None,
             email_protocol_visibility: Optional[pulumi.Input[bool]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            extended_command_line_visibility: Optional[pulumi.Input[bool]] = None,
             filesystem_visibility: Optional[pulumi.Input[bool]] = None,
             ftp_visibility: Optional[pulumi.Input[bool]] = None,
             host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1073,6 +1112,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         :param pulumi.Input[bool] drift_prevention: Whether to enable the setting. Block new processes originating from files written in a container. This prevents a container from drifting from its immutable runtime state.
         :param pulumi.Input[bool] email_protocol_visibility: Whether to enable the setting. Allows the sensor to monitor SMTP, IMAP, and POP3 traffic for malicious patterns and improved detections.
         :param pulumi.Input[bool] enabled: Enable the prevention policy.
+        :param pulumi.Input[bool] extended_command_line_visibility: Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
         :param pulumi.Input[bool] filesystem_visibility: Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
         :param pulumi.Input[bool] ftp_visibility: Whether to enable the setting. Allows the sensor to monitor unencrypted FTP traffic for malicious patterns and improved detections.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_groups: Host Group ids to attach to the prevention policy.
@@ -1101,6 +1141,7 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         __props__.__dict__["drift_prevention"] = drift_prevention
         __props__.__dict__["email_protocol_visibility"] = email_protocol_visibility
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["extended_command_line_visibility"] = extended_command_line_visibility
         __props__.__dict__["filesystem_visibility"] = filesystem_visibility
         __props__.__dict__["ftp_visibility"] = ftp_visibility
         __props__.__dict__["host_groups"] = host_groups
@@ -1168,6 +1209,14 @@ class PreventionPolicyLinux(pulumi.CustomResource):
         Enable the prevention policy.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="extendedCommandLineVisibility")
+    def extended_command_line_visibility(self) -> pulumi.Output[bool]:
+        """
+        Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+        """
+        return pulumi.get(self, "extended_command_line_visibility")
 
     @property
     @pulumi.getter(name="filesystemVisibility")

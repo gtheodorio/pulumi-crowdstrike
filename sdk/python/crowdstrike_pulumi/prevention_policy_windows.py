@@ -49,6 +49,7 @@ class PreventionPolicyWindowsArgs:
                  extended_user_mode_data: Optional[pulumi.Input['PreventionPolicyWindowsExtendedUserModeDataArgs']] = None,
                  file_encryption: Optional[pulumi.Input[bool]] = None,
                  file_system_access: Optional[pulumi.Input[bool]] = None,
+                 file_system_containment: Optional[pulumi.Input[bool]] = None,
                  force_aslr: Optional[pulumi.Input[bool]] = None,
                  force_dep: Optional[pulumi.Input[bool]] = None,
                  hardware_enhanced_exploit_detection: Optional[pulumi.Input[bool]] = None,
@@ -114,6 +115,7 @@ class PreventionPolicyWindowsArgs:
         :param pulumi.Input['PreventionPolicyWindowsExtendedUserModeDataArgs'] extended_user_mode_data: Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
         :param pulumi.Input[bool] file_encryption: Whether to enable the setting. A process that created a file with a known ransomware extension was terminated.
         :param pulumi.Input[bool] file_system_access: Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
+        :param pulumi.Input[bool] file_system_containment: Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
         :param pulumi.Input[bool] force_aslr: Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
         :param pulumi.Input[bool] force_dep: Whether to enable the setting. A process that had Force Data Execution Prevention (Force DEP) applied tried to execute non-executable memory and was blocked. Requires additional*user*mode_data to be enabled.
         :param pulumi.Input[bool] hardware_enhanced_exploit_detection: Whether to enable the setting. Provides additional visibility into application exploits by using CPU hardware features that detect suspicious control flows. Available only for hosts running Windows 10 (RS4) or Windows Server 2016 Version 1803 or later and Skylake or later CPU.
@@ -204,6 +206,8 @@ class PreventionPolicyWindowsArgs:
             pulumi.set(__self__, "file_encryption", file_encryption)
         if file_system_access is not None:
             pulumi.set(__self__, "file_system_access", file_system_access)
+        if file_system_containment is not None:
+            pulumi.set(__self__, "file_system_containment", file_system_containment)
         if force_aslr is not None:
             pulumi.set(__self__, "force_aslr", force_aslr)
         if force_dep is not None:
@@ -610,6 +614,18 @@ class PreventionPolicyWindowsArgs:
     @file_system_access.setter
     def file_system_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "file_system_access", value)
+
+    @property
+    @pulumi.getter(name="fileSystemContainment")
+    def file_system_containment(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+        """
+        return pulumi.get(self, "file_system_containment")
+
+    @file_system_containment.setter
+    def file_system_containment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "file_system_containment", value)
 
     @property
     @pulumi.getter(name="forceAslr")
@@ -1061,6 +1077,7 @@ class _PreventionPolicyWindowsState:
                  extended_user_mode_data: Optional[pulumi.Input['PreventionPolicyWindowsExtendedUserModeDataArgs']] = None,
                  file_encryption: Optional[pulumi.Input[bool]] = None,
                  file_system_access: Optional[pulumi.Input[bool]] = None,
+                 file_system_containment: Optional[pulumi.Input[bool]] = None,
                  force_aslr: Optional[pulumi.Input[bool]] = None,
                  force_dep: Optional[pulumi.Input[bool]] = None,
                  hardware_enhanced_exploit_detection: Optional[pulumi.Input[bool]] = None,
@@ -1127,6 +1144,7 @@ class _PreventionPolicyWindowsState:
         :param pulumi.Input['PreventionPolicyWindowsExtendedUserModeDataArgs'] extended_user_mode_data: Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
         :param pulumi.Input[bool] file_encryption: Whether to enable the setting. A process that created a file with a known ransomware extension was terminated.
         :param pulumi.Input[bool] file_system_access: Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
+        :param pulumi.Input[bool] file_system_containment: Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
         :param pulumi.Input[bool] force_aslr: Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
         :param pulumi.Input[bool] force_dep: Whether to enable the setting. A process that had Force Data Execution Prevention (Force DEP) applied tried to execute non-executable memory and was blocked. Requires additional*user*mode_data to be enabled.
         :param pulumi.Input[bool] hardware_enhanced_exploit_detection: Whether to enable the setting. Provides additional visibility into application exploits by using CPU hardware features that detect suspicious control flows. Available only for hosts running Windows 10 (RS4) or Windows Server 2016 Version 1803 or later and Skylake or later CPU.
@@ -1217,6 +1235,8 @@ class _PreventionPolicyWindowsState:
             pulumi.set(__self__, "file_encryption", file_encryption)
         if file_system_access is not None:
             pulumi.set(__self__, "file_system_access", file_system_access)
+        if file_system_containment is not None:
+            pulumi.set(__self__, "file_system_containment", file_system_containment)
         if force_aslr is not None:
             pulumi.set(__self__, "force_aslr", force_aslr)
         if force_dep is not None:
@@ -1605,6 +1625,18 @@ class _PreventionPolicyWindowsState:
     @file_system_access.setter
     def file_system_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "file_system_access", value)
+
+    @property
+    @pulumi.getter(name="fileSystemContainment")
+    def file_system_containment(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+        """
+        return pulumi.get(self, "file_system_containment")
+
+    @file_system_containment.setter
+    def file_system_containment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "file_system_containment", value)
 
     @property
     @pulumi.getter(name="forceAslr")
@@ -2091,6 +2123,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
                  extended_user_mode_data: Optional[pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']]] = None,
                  file_encryption: Optional[pulumi.Input[bool]] = None,
                  file_system_access: Optional[pulumi.Input[bool]] = None,
+                 file_system_containment: Optional[pulumi.Input[bool]] = None,
                  force_aslr: Optional[pulumi.Input[bool]] = None,
                  force_dep: Optional[pulumi.Input[bool]] = None,
                  hardware_enhanced_exploit_detection: Optional[pulumi.Input[bool]] = None,
@@ -2130,7 +2163,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
                  windows_logon_bypass_sticky_keys: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        This resource allows you to manage CrowdStrike Falcon prevention policies for Windows hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+        This resource allows you to manage prevention policies for Windows hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
 
         ## API Scopes
 
@@ -2226,7 +2259,8 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             volume_shadow_copy_audit=True,
             volume_shadow_copy_protect=True,
             vulnerable_driver_protection=True,
-            windows_logon_bypass_sticky_keys=True)
+            windows_logon_bypass_sticky_keys=True,
+            file_system_containment=True)
         pulumi.export("preventionPolicyWindows", example)
         ```
 
@@ -2266,6 +2300,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         :param pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']] extended_user_mode_data: Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
         :param pulumi.Input[bool] file_encryption: Whether to enable the setting. A process that created a file with a known ransomware extension was terminated.
         :param pulumi.Input[bool] file_system_access: Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
+        :param pulumi.Input[bool] file_system_containment: Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
         :param pulumi.Input[bool] force_aslr: Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
         :param pulumi.Input[bool] force_dep: Whether to enable the setting. A process that had Force Data Execution Prevention (Force DEP) applied tried to execute non-executable memory and was blocked. Requires additional*user*mode_data to be enabled.
         :param pulumi.Input[bool] hardware_enhanced_exploit_detection: Whether to enable the setting. Provides additional visibility into application exploits by using CPU hardware features that detect suspicious control flows. Available only for hosts running Windows 10 (RS4) or Windows Server 2016 Version 1803 or later and Skylake or later CPU.
@@ -2311,7 +2346,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
                  args: PreventionPolicyWindowsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to manage CrowdStrike Falcon prevention policies for Windows hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+        This resource allows you to manage prevention policies for Windows hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
 
         ## API Scopes
 
@@ -2407,7 +2442,8 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             volume_shadow_copy_audit=True,
             volume_shadow_copy_protect=True,
             vulnerable_driver_protection=True,
-            windows_logon_bypass_sticky_keys=True)
+            windows_logon_bypass_sticky_keys=True,
+            file_system_containment=True)
         pulumi.export("preventionPolicyWindows", example)
         ```
 
@@ -2460,6 +2496,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
                  extended_user_mode_data: Optional[pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']]] = None,
                  file_encryption: Optional[pulumi.Input[bool]] = None,
                  file_system_access: Optional[pulumi.Input[bool]] = None,
+                 file_system_containment: Optional[pulumi.Input[bool]] = None,
                  force_aslr: Optional[pulumi.Input[bool]] = None,
                  force_dep: Optional[pulumi.Input[bool]] = None,
                  hardware_enhanced_exploit_detection: Optional[pulumi.Input[bool]] = None,
@@ -2532,6 +2569,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             __props__.__dict__["extended_user_mode_data"] = extended_user_mode_data
             __props__.__dict__["file_encryption"] = file_encryption
             __props__.__dict__["file_system_access"] = file_system_access
+            __props__.__dict__["file_system_containment"] = file_system_containment
             __props__.__dict__["force_aslr"] = force_aslr
             __props__.__dict__["force_dep"] = force_dep
             __props__.__dict__["hardware_enhanced_exploit_detection"] = hardware_enhanced_exploit_detection
@@ -2610,6 +2648,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
             extended_user_mode_data: Optional[pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']]] = None,
             file_encryption: Optional[pulumi.Input[bool]] = None,
             file_system_access: Optional[pulumi.Input[bool]] = None,
+            file_system_containment: Optional[pulumi.Input[bool]] = None,
             force_aslr: Optional[pulumi.Input[bool]] = None,
             force_dep: Optional[pulumi.Input[bool]] = None,
             hardware_enhanced_exploit_detection: Optional[pulumi.Input[bool]] = None,
@@ -2681,6 +2720,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         :param pulumi.Input[Union['PreventionPolicyWindowsExtendedUserModeDataArgs', 'PreventionPolicyWindowsExtendedUserModeDataArgsDict']] extended_user_mode_data: Allows the sensor to get more data from a user-mode component it loads into all eligible processes, which augments online machine learning and turns on additional detections. Recommend testing with critical applications before full deployment.
         :param pulumi.Input[bool] file_encryption: Whether to enable the setting. A process that created a file with a known ransomware extension was terminated.
         :param pulumi.Input[bool] file_system_access: Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
+        :param pulumi.Input[bool] file_system_containment: Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
         :param pulumi.Input[bool] force_aslr: Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
         :param pulumi.Input[bool] force_dep: Whether to enable the setting. A process that had Force Data Execution Prevention (Force DEP) applied tried to execute non-executable memory and was blocked. Requires additional*user*mode_data to be enabled.
         :param pulumi.Input[bool] hardware_enhanced_exploit_detection: Whether to enable the setting. Provides additional visibility into application exploits by using CPU hardware features that detect suspicious control flows. Available only for hosts running Windows 10 (RS4) or Windows Server 2016 Version 1803 or later and Skylake or later CPU.
@@ -2749,6 +2789,7 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         __props__.__dict__["extended_user_mode_data"] = extended_user_mode_data
         __props__.__dict__["file_encryption"] = file_encryption
         __props__.__dict__["file_system_access"] = file_system_access
+        __props__.__dict__["file_system_containment"] = file_system_containment
         __props__.__dict__["force_aslr"] = force_aslr
         __props__.__dict__["force_dep"] = force_dep
         __props__.__dict__["hardware_enhanced_exploit_detection"] = hardware_enhanced_exploit_detection
@@ -2996,6 +3037,14 @@ class PreventionPolicyWindows(pulumi.CustomResource):
         Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
         """
         return pulumi.get(self, "file_system_access")
+
+    @property
+    @pulumi.getter(name="fileSystemContainment")
+    def file_system_containment(self) -> pulumi.Output[bool]:
+        """
+        Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+        """
+        return pulumi.get(self, "file_system_containment")
 
     @property
     @pulumi.getter(name="forceAslr")

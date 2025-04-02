@@ -60,6 +60,145 @@ export interface CloudAwsAccountSensorManagement {
     enabled: boolean;
 }
 
+export interface DefaultPreventionPolicyLinuxCloudAntiMalware {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: string;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: string;
+}
+
+export interface DefaultPreventionPolicyLinuxSensorAntiMalware {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: string;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: string;
+}
+
+export interface DefaultPreventionPolicyMacCloudAdwareAndPup {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: string;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: string;
+}
+
+export interface DefaultPreventionPolicyMacCloudAntiMalware {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: string;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: string;
+}
+
+export interface DefaultPreventionPolicyMacSensorAdwareAndPup {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: string;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: string;
+}
+
+export interface DefaultPreventionPolicyMacSensorAntiMalware {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: string;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: string;
+}
+
+export interface DefaultPreventionPolicyWindowsAdwareAndPup {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: string;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: string;
+}
+
+export interface DefaultPreventionPolicyWindowsCloudAntiMalware {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: string;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: string;
+}
+
+export interface DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: string;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: string;
+}
+
+export interface DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: string;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: string;
+}
+
+export interface DefaultPreventionPolicyWindowsExtendedUserModeData {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: string;
+}
+
+export interface DefaultPreventionPolicyWindowsSensorAntiMalware {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: string;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: string;
+}
+
+export interface DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: string;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: string;
+}
+
 export interface DefaultSensorUpdatePolicySchedule {
     /**
      * Enable the scheduler for sensor update policy.

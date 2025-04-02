@@ -11,7 +11,7 @@ using Pulumi;
 namespace CrowdStrike.Crowdstrike
 {
     /// <summary>
-    /// This resource allows you to manage CrowdStrike Falcon prevention policies for Windows hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+    /// This resource allows you to manage prevention policies for Windows hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
     /// 
     /// ## API Scopes
     /// 
@@ -120,6 +120,7 @@ namespace CrowdStrike.Crowdstrike
     ///         VolumeShadowCopyProtect = true,
     ///         VulnerableDriverProtection = true,
     ///         WindowsLogonBypassStickyKeys = true,
+    ///         FileSystemContainment = true,
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
@@ -295,6 +296,12 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         [Output("fileSystemAccess")]
         public Output<bool> FileSystemAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+        /// </summary>
+        [Output("fileSystemContainment")]
+        public Output<bool> FileSystemContainment { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
@@ -725,6 +732,12 @@ namespace CrowdStrike.Crowdstrike
         public Input<bool>? FileSystemAccess { get; set; }
 
         /// <summary>
+        /// Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+        /// </summary>
+        [Input("fileSystemContainment")]
+        public Input<bool>? FileSystemContainment { get; set; }
+
+        /// <summary>
         /// Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
         /// </summary>
         [Input("forceAslr")]
@@ -1121,6 +1134,12 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         [Input("fileSystemAccess")]
         public Input<bool>? FileSystemAccess { get; set; }
+
+        /// <summary>
+        /// Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+        /// </summary>
+        [Input("fileSystemContainment")]
+        public Input<bool>? FileSystemContainment { get; set; }
 
         /// <summary>
         /// Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.

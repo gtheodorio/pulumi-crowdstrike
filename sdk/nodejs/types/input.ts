@@ -60,6 +60,145 @@ export interface CloudAwsAccountSensorManagement {
     enabled: pulumi.Input<boolean>;
 }
 
+export interface DefaultPreventionPolicyLinuxCloudAntiMalware {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: pulumi.Input<string>;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: pulumi.Input<string>;
+}
+
+export interface DefaultPreventionPolicyLinuxSensorAntiMalware {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: pulumi.Input<string>;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: pulumi.Input<string>;
+}
+
+export interface DefaultPreventionPolicyMacCloudAdwareAndPup {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: pulumi.Input<string>;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: pulumi.Input<string>;
+}
+
+export interface DefaultPreventionPolicyMacCloudAntiMalware {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: pulumi.Input<string>;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: pulumi.Input<string>;
+}
+
+export interface DefaultPreventionPolicyMacSensorAdwareAndPup {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: pulumi.Input<string>;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: pulumi.Input<string>;
+}
+
+export interface DefaultPreventionPolicyMacSensorAntiMalware {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: pulumi.Input<string>;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: pulumi.Input<string>;
+}
+
+export interface DefaultPreventionPolicyWindowsAdwareAndPup {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: pulumi.Input<string>;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: pulumi.Input<string>;
+}
+
+export interface DefaultPreventionPolicyWindowsCloudAntiMalware {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: pulumi.Input<string>;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: pulumi.Input<string>;
+}
+
+export interface DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: pulumi.Input<string>;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: pulumi.Input<string>;
+}
+
+export interface DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: pulumi.Input<string>;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: pulumi.Input<string>;
+}
+
+export interface DefaultPreventionPolicyWindowsExtendedUserModeData {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: pulumi.Input<string>;
+}
+
+export interface DefaultPreventionPolicyWindowsSensorAntiMalware {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: pulumi.Input<string>;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: pulumi.Input<string>;
+}
+
+export interface DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated {
+    /**
+     * Machine learning level for detection.
+     */
+    detection: pulumi.Input<string>;
+    /**
+     * Machine learning level for prevention.
+     */
+    prevention: pulumi.Input<string>;
+}
+
 export interface DefaultSensorUpdatePolicySchedule {
     /**
      * Enable the scheduler for sensor update policy.

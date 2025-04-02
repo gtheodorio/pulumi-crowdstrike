@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to manage CrowdStrike Falcon prevention policies for Linux hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+// This resource allows you to manage prevention policies for Linux hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
 //
 // ## API Scopes
 //
@@ -63,6 +63,7 @@ import (
 //				SensorTamperingProtection:                pulumi.Bool(true),
 //				OnWriteScriptFileVisibility:              pulumi.Bool(true),
 //				MemoryVisibility:                         pulumi.Bool(true),
+//				ExtendedCommandLineVisibility:            pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -96,6 +97,8 @@ type PreventionPolicyLinux struct {
 	EmailProtocolVisibility pulumi.BoolOutput `pulumi:"emailProtocolVisibility"`
 	// Enable the prevention policy.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+	ExtendedCommandLineVisibility pulumi.BoolOutput `pulumi:"extendedCommandLineVisibility"`
 	// Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
 	FilesystemVisibility pulumi.BoolOutput `pulumi:"filesystemVisibility"`
 	// Whether to enable the setting. Allows the sensor to monitor unencrypted FTP traffic for malicious patterns and improved detections.
@@ -181,6 +184,8 @@ type preventionPolicyLinuxState struct {
 	EmailProtocolVisibility *bool `pulumi:"emailProtocolVisibility"`
 	// Enable the prevention policy.
 	Enabled *bool `pulumi:"enabled"`
+	// Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+	ExtendedCommandLineVisibility *bool `pulumi:"extendedCommandLineVisibility"`
 	// Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
 	FilesystemVisibility *bool `pulumi:"filesystemVisibility"`
 	// Whether to enable the setting. Allows the sensor to monitor unencrypted FTP traffic for malicious patterns and improved detections.
@@ -231,6 +236,8 @@ type PreventionPolicyLinuxState struct {
 	EmailProtocolVisibility pulumi.BoolPtrInput
 	// Enable the prevention policy.
 	Enabled pulumi.BoolPtrInput
+	// Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+	ExtendedCommandLineVisibility pulumi.BoolPtrInput
 	// Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
 	FilesystemVisibility pulumi.BoolPtrInput
 	// Whether to enable the setting. Allows the sensor to monitor unencrypted FTP traffic for malicious patterns and improved detections.
@@ -285,6 +292,8 @@ type preventionPolicyLinuxArgs struct {
 	EmailProtocolVisibility *bool `pulumi:"emailProtocolVisibility"`
 	// Enable the prevention policy.
 	Enabled *bool `pulumi:"enabled"`
+	// Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+	ExtendedCommandLineVisibility *bool `pulumi:"extendedCommandLineVisibility"`
 	// Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
 	FilesystemVisibility *bool `pulumi:"filesystemVisibility"`
 	// Whether to enable the setting. Allows the sensor to monitor unencrypted FTP traffic for malicious patterns and improved detections.
@@ -335,6 +344,8 @@ type PreventionPolicyLinuxArgs struct {
 	EmailProtocolVisibility pulumi.BoolPtrInput
 	// Enable the prevention policy.
 	Enabled pulumi.BoolPtrInput
+	// Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+	ExtendedCommandLineVisibility pulumi.BoolPtrInput
 	// Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
 	FilesystemVisibility pulumi.BoolPtrInput
 	// Whether to enable the setting. Allows the sensor to monitor unencrypted FTP traffic for malicious patterns and improved detections.
@@ -486,6 +497,11 @@ func (o PreventionPolicyLinuxOutput) EmailProtocolVisibility() pulumi.BoolOutput
 // Enable the prevention policy.
 func (o PreventionPolicyLinuxOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PreventionPolicyLinux) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+func (o PreventionPolicyLinuxOutput) ExtendedCommandLineVisibility() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PreventionPolicyLinux) pulumi.BoolOutput { return v.ExtendedCommandLineVisibility }).(pulumi.BoolOutput)
 }
 
 // Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.

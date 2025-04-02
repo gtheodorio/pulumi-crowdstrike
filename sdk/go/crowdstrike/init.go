@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "crowdstrike:index/cloudAwsAccount:CloudAwsAccount":
 		r = &CloudAwsAccount{}
+	case "crowdstrike:index/defaultPreventionPolicyLinux:DefaultPreventionPolicyLinux":
+		r = &DefaultPreventionPolicyLinux{}
+	case "crowdstrike:index/defaultPreventionPolicyMac:DefaultPreventionPolicyMac":
+		r = &DefaultPreventionPolicyMac{}
+	case "crowdstrike:index/defaultPreventionPolicyWindows:DefaultPreventionPolicyWindows":
+		r = &DefaultPreventionPolicyWindows{}
 	case "crowdstrike:index/defaultSensorUpdatePolicy:DefaultSensorUpdatePolicy":
 		r = &DefaultSensorUpdatePolicy{}
 	case "crowdstrike:index/filevantagePolicy:FilevantagePolicy":
@@ -73,6 +79,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"crowdstrike",
 		"index/cloudAwsAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"crowdstrike",
+		"index/defaultPreventionPolicyLinux",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"crowdstrike",
+		"index/defaultPreventionPolicyMac",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"crowdstrike",
+		"index/defaultPreventionPolicyWindows",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
