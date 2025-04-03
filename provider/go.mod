@@ -2,7 +2,7 @@ module github.com/crowdstrike/pulumi-crowdstrike/provider
 
 go 1.22.3
 
-toolchain go1.22.7
+toolchain go1.24.1
 
 replace github.com/crowdstrike/terraform-provider-crowdstrike/shim => ./shim
 
@@ -71,7 +71,7 @@ require (
 	github.com/go-openapi/swag v0.23.0 // indirect
 	github.com/go-openapi/validate v0.24.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
-	github.com/golang/glog v1.2.3 // indirect
+	github.com/golang/glog v1.2.4 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
