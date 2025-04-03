@@ -1,6 +1,6 @@
 module github.com/crowdstrike/pulumi-crowdstrike/examples
 
-go 1.22.5
+go 1.22.12
 require github.com/pulumi/pulumi/pkg/v3 v3.156.0
 
 require (
