@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to manage CrowdStrike Falcon prevention policies for Linux hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+ * This resource allows you to manage prevention policies for Linux hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
  *
  * ## API Scopes
  *
@@ -50,6 +50,7 @@ import * as utilities from "./utilities";
  *     sensorTamperingProtection: true,
  *     onWriteScriptFileVisibility: true,
  *     memoryVisibility: true,
+ *     extendedCommandLineVisibility: true,
  * });
  * export const preventionPolicyLinux = example;
  * ```
@@ -114,6 +115,10 @@ export class PreventionPolicyLinux extends pulumi.CustomResource {
      * Enable the prevention policy.
      */
     public readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+     */
+    public readonly extendedCommandLineVisibility!: pulumi.Output<boolean>;
     /**
      * Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
      */
@@ -203,6 +208,7 @@ export class PreventionPolicyLinux extends pulumi.CustomResource {
             resourceInputs["driftPrevention"] = state ? state.driftPrevention : undefined;
             resourceInputs["emailProtocolVisibility"] = state ? state.emailProtocolVisibility : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["extendedCommandLineVisibility"] = state ? state.extendedCommandLineVisibility : undefined;
             resourceInputs["filesystemVisibility"] = state ? state.filesystemVisibility : undefined;
             resourceInputs["ftpVisibility"] = state ? state.ftpVisibility : undefined;
             resourceInputs["hostGroups"] = state ? state.hostGroups : undefined;
@@ -235,6 +241,7 @@ export class PreventionPolicyLinux extends pulumi.CustomResource {
             resourceInputs["driftPrevention"] = args ? args.driftPrevention : undefined;
             resourceInputs["emailProtocolVisibility"] = args ? args.emailProtocolVisibility : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["extendedCommandLineVisibility"] = args ? args.extendedCommandLineVisibility : undefined;
             resourceInputs["filesystemVisibility"] = args ? args.filesystemVisibility : undefined;
             resourceInputs["ftpVisibility"] = args ? args.ftpVisibility : undefined;
             resourceInputs["hostGroups"] = args ? args.hostGroups : undefined;
@@ -287,6 +294,10 @@ export interface PreventionPolicyLinuxState {
      * Enable the prevention policy.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+     */
+    extendedCommandLineVisibility?: pulumi.Input<boolean>;
     /**
      * Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
      */
@@ -386,6 +397,10 @@ export interface PreventionPolicyLinuxArgs {
      * Enable the prevention policy.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+     */
+    extendedCommandLineVisibility?: pulumi.Input<boolean>;
     /**
      * Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
      */

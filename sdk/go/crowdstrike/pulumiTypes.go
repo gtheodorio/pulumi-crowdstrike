@@ -793,6 +793,2015 @@ func (o CloudAwsAccountSensorManagementPtrOutput) Enabled() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+type DefaultPreventionPolicyLinuxCloudAntiMalware struct {
+	// Machine learning level for detection.
+	Detection string `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention string `pulumi:"prevention"`
+}
+
+// DefaultPreventionPolicyLinuxCloudAntiMalwareInput is an input type that accepts DefaultPreventionPolicyLinuxCloudAntiMalwareArgs and DefaultPreventionPolicyLinuxCloudAntiMalwareOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyLinuxCloudAntiMalwareInput` via:
+//
+//	DefaultPreventionPolicyLinuxCloudAntiMalwareArgs{...}
+type DefaultPreventionPolicyLinuxCloudAntiMalwareInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyLinuxCloudAntiMalwareOutput() DefaultPreventionPolicyLinuxCloudAntiMalwareOutput
+	ToDefaultPreventionPolicyLinuxCloudAntiMalwareOutputWithContext(context.Context) DefaultPreventionPolicyLinuxCloudAntiMalwareOutput
+}
+
+type DefaultPreventionPolicyLinuxCloudAntiMalwareArgs struct {
+	// Machine learning level for detection.
+	Detection pulumi.StringInput `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention pulumi.StringInput `pulumi:"prevention"`
+}
+
+func (DefaultPreventionPolicyLinuxCloudAntiMalwareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyLinuxCloudAntiMalware)(nil)).Elem()
+}
+
+func (i DefaultPreventionPolicyLinuxCloudAntiMalwareArgs) ToDefaultPreventionPolicyLinuxCloudAntiMalwareOutput() DefaultPreventionPolicyLinuxCloudAntiMalwareOutput {
+	return i.ToDefaultPreventionPolicyLinuxCloudAntiMalwareOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyLinuxCloudAntiMalwareArgs) ToDefaultPreventionPolicyLinuxCloudAntiMalwareOutputWithContext(ctx context.Context) DefaultPreventionPolicyLinuxCloudAntiMalwareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyLinuxCloudAntiMalwareOutput)
+}
+
+func (i DefaultPreventionPolicyLinuxCloudAntiMalwareArgs) ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput() DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput {
+	return i.ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyLinuxCloudAntiMalwareArgs) ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyLinuxCloudAntiMalwareOutput).ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutputWithContext(ctx)
+}
+
+// DefaultPreventionPolicyLinuxCloudAntiMalwarePtrInput is an input type that accepts DefaultPreventionPolicyLinuxCloudAntiMalwareArgs, DefaultPreventionPolicyLinuxCloudAntiMalwarePtr and DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyLinuxCloudAntiMalwarePtrInput` via:
+//
+//	        DefaultPreventionPolicyLinuxCloudAntiMalwareArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultPreventionPolicyLinuxCloudAntiMalwarePtrInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput() DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput
+	ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutputWithContext(context.Context) DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput
+}
+
+type defaultPreventionPolicyLinuxCloudAntiMalwarePtrType DefaultPreventionPolicyLinuxCloudAntiMalwareArgs
+
+func DefaultPreventionPolicyLinuxCloudAntiMalwarePtr(v *DefaultPreventionPolicyLinuxCloudAntiMalwareArgs) DefaultPreventionPolicyLinuxCloudAntiMalwarePtrInput {
+	return (*defaultPreventionPolicyLinuxCloudAntiMalwarePtrType)(v)
+}
+
+func (*defaultPreventionPolicyLinuxCloudAntiMalwarePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyLinuxCloudAntiMalware)(nil)).Elem()
+}
+
+func (i *defaultPreventionPolicyLinuxCloudAntiMalwarePtrType) ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput() DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput {
+	return i.ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPreventionPolicyLinuxCloudAntiMalwarePtrType) ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput)
+}
+
+type DefaultPreventionPolicyLinuxCloudAntiMalwareOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyLinuxCloudAntiMalwareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyLinuxCloudAntiMalware)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyLinuxCloudAntiMalwareOutput) ToDefaultPreventionPolicyLinuxCloudAntiMalwareOutput() DefaultPreventionPolicyLinuxCloudAntiMalwareOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyLinuxCloudAntiMalwareOutput) ToDefaultPreventionPolicyLinuxCloudAntiMalwareOutputWithContext(ctx context.Context) DefaultPreventionPolicyLinuxCloudAntiMalwareOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyLinuxCloudAntiMalwareOutput) ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput() DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput {
+	return o.ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPreventionPolicyLinuxCloudAntiMalwareOutput) ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPreventionPolicyLinuxCloudAntiMalware) *DefaultPreventionPolicyLinuxCloudAntiMalware {
+		return &v
+	}).(DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyLinuxCloudAntiMalwareOutput) Detection() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyLinuxCloudAntiMalware) string { return v.Detection }).(pulumi.StringOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyLinuxCloudAntiMalwareOutput) Prevention() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyLinuxCloudAntiMalware) string { return v.Prevention }).(pulumi.StringOutput)
+}
+
+type DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyLinuxCloudAntiMalware)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput) ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput() DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput) ToDefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput) Elem() DefaultPreventionPolicyLinuxCloudAntiMalwareOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyLinuxCloudAntiMalware) DefaultPreventionPolicyLinuxCloudAntiMalware {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPreventionPolicyLinuxCloudAntiMalware
+		return ret
+	}).(DefaultPreventionPolicyLinuxCloudAntiMalwareOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput) Detection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyLinuxCloudAntiMalware) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput) Prevention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyLinuxCloudAntiMalware) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prevention
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultPreventionPolicyLinuxSensorAntiMalware struct {
+	// Machine learning level for detection.
+	Detection string `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention string `pulumi:"prevention"`
+}
+
+// DefaultPreventionPolicyLinuxSensorAntiMalwareInput is an input type that accepts DefaultPreventionPolicyLinuxSensorAntiMalwareArgs and DefaultPreventionPolicyLinuxSensorAntiMalwareOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyLinuxSensorAntiMalwareInput` via:
+//
+//	DefaultPreventionPolicyLinuxSensorAntiMalwareArgs{...}
+type DefaultPreventionPolicyLinuxSensorAntiMalwareInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyLinuxSensorAntiMalwareOutput() DefaultPreventionPolicyLinuxSensorAntiMalwareOutput
+	ToDefaultPreventionPolicyLinuxSensorAntiMalwareOutputWithContext(context.Context) DefaultPreventionPolicyLinuxSensorAntiMalwareOutput
+}
+
+type DefaultPreventionPolicyLinuxSensorAntiMalwareArgs struct {
+	// Machine learning level for detection.
+	Detection pulumi.StringInput `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention pulumi.StringInput `pulumi:"prevention"`
+}
+
+func (DefaultPreventionPolicyLinuxSensorAntiMalwareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyLinuxSensorAntiMalware)(nil)).Elem()
+}
+
+func (i DefaultPreventionPolicyLinuxSensorAntiMalwareArgs) ToDefaultPreventionPolicyLinuxSensorAntiMalwareOutput() DefaultPreventionPolicyLinuxSensorAntiMalwareOutput {
+	return i.ToDefaultPreventionPolicyLinuxSensorAntiMalwareOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyLinuxSensorAntiMalwareArgs) ToDefaultPreventionPolicyLinuxSensorAntiMalwareOutputWithContext(ctx context.Context) DefaultPreventionPolicyLinuxSensorAntiMalwareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyLinuxSensorAntiMalwareOutput)
+}
+
+func (i DefaultPreventionPolicyLinuxSensorAntiMalwareArgs) ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput() DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput {
+	return i.ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyLinuxSensorAntiMalwareArgs) ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyLinuxSensorAntiMalwareOutput).ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutputWithContext(ctx)
+}
+
+// DefaultPreventionPolicyLinuxSensorAntiMalwarePtrInput is an input type that accepts DefaultPreventionPolicyLinuxSensorAntiMalwareArgs, DefaultPreventionPolicyLinuxSensorAntiMalwarePtr and DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyLinuxSensorAntiMalwarePtrInput` via:
+//
+//	        DefaultPreventionPolicyLinuxSensorAntiMalwareArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultPreventionPolicyLinuxSensorAntiMalwarePtrInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput() DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput
+	ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutputWithContext(context.Context) DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput
+}
+
+type defaultPreventionPolicyLinuxSensorAntiMalwarePtrType DefaultPreventionPolicyLinuxSensorAntiMalwareArgs
+
+func DefaultPreventionPolicyLinuxSensorAntiMalwarePtr(v *DefaultPreventionPolicyLinuxSensorAntiMalwareArgs) DefaultPreventionPolicyLinuxSensorAntiMalwarePtrInput {
+	return (*defaultPreventionPolicyLinuxSensorAntiMalwarePtrType)(v)
+}
+
+func (*defaultPreventionPolicyLinuxSensorAntiMalwarePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyLinuxSensorAntiMalware)(nil)).Elem()
+}
+
+func (i *defaultPreventionPolicyLinuxSensorAntiMalwarePtrType) ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput() DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput {
+	return i.ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPreventionPolicyLinuxSensorAntiMalwarePtrType) ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput)
+}
+
+type DefaultPreventionPolicyLinuxSensorAntiMalwareOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyLinuxSensorAntiMalwareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyLinuxSensorAntiMalware)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyLinuxSensorAntiMalwareOutput) ToDefaultPreventionPolicyLinuxSensorAntiMalwareOutput() DefaultPreventionPolicyLinuxSensorAntiMalwareOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyLinuxSensorAntiMalwareOutput) ToDefaultPreventionPolicyLinuxSensorAntiMalwareOutputWithContext(ctx context.Context) DefaultPreventionPolicyLinuxSensorAntiMalwareOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyLinuxSensorAntiMalwareOutput) ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput() DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput {
+	return o.ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPreventionPolicyLinuxSensorAntiMalwareOutput) ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPreventionPolicyLinuxSensorAntiMalware) *DefaultPreventionPolicyLinuxSensorAntiMalware {
+		return &v
+	}).(DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyLinuxSensorAntiMalwareOutput) Detection() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyLinuxSensorAntiMalware) string { return v.Detection }).(pulumi.StringOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyLinuxSensorAntiMalwareOutput) Prevention() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyLinuxSensorAntiMalware) string { return v.Prevention }).(pulumi.StringOutput)
+}
+
+type DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyLinuxSensorAntiMalware)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput) ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput() DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput) ToDefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput) Elem() DefaultPreventionPolicyLinuxSensorAntiMalwareOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyLinuxSensorAntiMalware) DefaultPreventionPolicyLinuxSensorAntiMalware {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPreventionPolicyLinuxSensorAntiMalware
+		return ret
+	}).(DefaultPreventionPolicyLinuxSensorAntiMalwareOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput) Detection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyLinuxSensorAntiMalware) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput) Prevention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyLinuxSensorAntiMalware) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prevention
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultPreventionPolicyMacCloudAdwareAndPup struct {
+	// Machine learning level for detection.
+	Detection string `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention string `pulumi:"prevention"`
+}
+
+// DefaultPreventionPolicyMacCloudAdwareAndPupInput is an input type that accepts DefaultPreventionPolicyMacCloudAdwareAndPupArgs and DefaultPreventionPolicyMacCloudAdwareAndPupOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyMacCloudAdwareAndPupInput` via:
+//
+//	DefaultPreventionPolicyMacCloudAdwareAndPupArgs{...}
+type DefaultPreventionPolicyMacCloudAdwareAndPupInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyMacCloudAdwareAndPupOutput() DefaultPreventionPolicyMacCloudAdwareAndPupOutput
+	ToDefaultPreventionPolicyMacCloudAdwareAndPupOutputWithContext(context.Context) DefaultPreventionPolicyMacCloudAdwareAndPupOutput
+}
+
+type DefaultPreventionPolicyMacCloudAdwareAndPupArgs struct {
+	// Machine learning level for detection.
+	Detection pulumi.StringInput `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention pulumi.StringInput `pulumi:"prevention"`
+}
+
+func (DefaultPreventionPolicyMacCloudAdwareAndPupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyMacCloudAdwareAndPup)(nil)).Elem()
+}
+
+func (i DefaultPreventionPolicyMacCloudAdwareAndPupArgs) ToDefaultPreventionPolicyMacCloudAdwareAndPupOutput() DefaultPreventionPolicyMacCloudAdwareAndPupOutput {
+	return i.ToDefaultPreventionPolicyMacCloudAdwareAndPupOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyMacCloudAdwareAndPupArgs) ToDefaultPreventionPolicyMacCloudAdwareAndPupOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacCloudAdwareAndPupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyMacCloudAdwareAndPupOutput)
+}
+
+func (i DefaultPreventionPolicyMacCloudAdwareAndPupArgs) ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput() DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput {
+	return i.ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyMacCloudAdwareAndPupArgs) ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyMacCloudAdwareAndPupOutput).ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutputWithContext(ctx)
+}
+
+// DefaultPreventionPolicyMacCloudAdwareAndPupPtrInput is an input type that accepts DefaultPreventionPolicyMacCloudAdwareAndPupArgs, DefaultPreventionPolicyMacCloudAdwareAndPupPtr and DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyMacCloudAdwareAndPupPtrInput` via:
+//
+//	        DefaultPreventionPolicyMacCloudAdwareAndPupArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultPreventionPolicyMacCloudAdwareAndPupPtrInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput() DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput
+	ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutputWithContext(context.Context) DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput
+}
+
+type defaultPreventionPolicyMacCloudAdwareAndPupPtrType DefaultPreventionPolicyMacCloudAdwareAndPupArgs
+
+func DefaultPreventionPolicyMacCloudAdwareAndPupPtr(v *DefaultPreventionPolicyMacCloudAdwareAndPupArgs) DefaultPreventionPolicyMacCloudAdwareAndPupPtrInput {
+	return (*defaultPreventionPolicyMacCloudAdwareAndPupPtrType)(v)
+}
+
+func (*defaultPreventionPolicyMacCloudAdwareAndPupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyMacCloudAdwareAndPup)(nil)).Elem()
+}
+
+func (i *defaultPreventionPolicyMacCloudAdwareAndPupPtrType) ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput() DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput {
+	return i.ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPreventionPolicyMacCloudAdwareAndPupPtrType) ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput)
+}
+
+type DefaultPreventionPolicyMacCloudAdwareAndPupOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyMacCloudAdwareAndPupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyMacCloudAdwareAndPup)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyMacCloudAdwareAndPupOutput) ToDefaultPreventionPolicyMacCloudAdwareAndPupOutput() DefaultPreventionPolicyMacCloudAdwareAndPupOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacCloudAdwareAndPupOutput) ToDefaultPreventionPolicyMacCloudAdwareAndPupOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacCloudAdwareAndPupOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacCloudAdwareAndPupOutput) ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput() DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput {
+	return o.ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPreventionPolicyMacCloudAdwareAndPupOutput) ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPreventionPolicyMacCloudAdwareAndPup) *DefaultPreventionPolicyMacCloudAdwareAndPup {
+		return &v
+	}).(DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyMacCloudAdwareAndPupOutput) Detection() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyMacCloudAdwareAndPup) string { return v.Detection }).(pulumi.StringOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyMacCloudAdwareAndPupOutput) Prevention() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyMacCloudAdwareAndPup) string { return v.Prevention }).(pulumi.StringOutput)
+}
+
+type DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyMacCloudAdwareAndPup)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput) ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput() DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput) ToDefaultPreventionPolicyMacCloudAdwareAndPupPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput) Elem() DefaultPreventionPolicyMacCloudAdwareAndPupOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyMacCloudAdwareAndPup) DefaultPreventionPolicyMacCloudAdwareAndPup {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPreventionPolicyMacCloudAdwareAndPup
+		return ret
+	}).(DefaultPreventionPolicyMacCloudAdwareAndPupOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput) Detection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyMacCloudAdwareAndPup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput) Prevention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyMacCloudAdwareAndPup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prevention
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultPreventionPolicyMacCloudAntiMalware struct {
+	// Machine learning level for detection.
+	Detection string `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention string `pulumi:"prevention"`
+}
+
+// DefaultPreventionPolicyMacCloudAntiMalwareInput is an input type that accepts DefaultPreventionPolicyMacCloudAntiMalwareArgs and DefaultPreventionPolicyMacCloudAntiMalwareOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyMacCloudAntiMalwareInput` via:
+//
+//	DefaultPreventionPolicyMacCloudAntiMalwareArgs{...}
+type DefaultPreventionPolicyMacCloudAntiMalwareInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyMacCloudAntiMalwareOutput() DefaultPreventionPolicyMacCloudAntiMalwareOutput
+	ToDefaultPreventionPolicyMacCloudAntiMalwareOutputWithContext(context.Context) DefaultPreventionPolicyMacCloudAntiMalwareOutput
+}
+
+type DefaultPreventionPolicyMacCloudAntiMalwareArgs struct {
+	// Machine learning level for detection.
+	Detection pulumi.StringInput `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention pulumi.StringInput `pulumi:"prevention"`
+}
+
+func (DefaultPreventionPolicyMacCloudAntiMalwareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyMacCloudAntiMalware)(nil)).Elem()
+}
+
+func (i DefaultPreventionPolicyMacCloudAntiMalwareArgs) ToDefaultPreventionPolicyMacCloudAntiMalwareOutput() DefaultPreventionPolicyMacCloudAntiMalwareOutput {
+	return i.ToDefaultPreventionPolicyMacCloudAntiMalwareOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyMacCloudAntiMalwareArgs) ToDefaultPreventionPolicyMacCloudAntiMalwareOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacCloudAntiMalwareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyMacCloudAntiMalwareOutput)
+}
+
+func (i DefaultPreventionPolicyMacCloudAntiMalwareArgs) ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutput() DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput {
+	return i.ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyMacCloudAntiMalwareArgs) ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyMacCloudAntiMalwareOutput).ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutputWithContext(ctx)
+}
+
+// DefaultPreventionPolicyMacCloudAntiMalwarePtrInput is an input type that accepts DefaultPreventionPolicyMacCloudAntiMalwareArgs, DefaultPreventionPolicyMacCloudAntiMalwarePtr and DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyMacCloudAntiMalwarePtrInput` via:
+//
+//	        DefaultPreventionPolicyMacCloudAntiMalwareArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultPreventionPolicyMacCloudAntiMalwarePtrInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutput() DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput
+	ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutputWithContext(context.Context) DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput
+}
+
+type defaultPreventionPolicyMacCloudAntiMalwarePtrType DefaultPreventionPolicyMacCloudAntiMalwareArgs
+
+func DefaultPreventionPolicyMacCloudAntiMalwarePtr(v *DefaultPreventionPolicyMacCloudAntiMalwareArgs) DefaultPreventionPolicyMacCloudAntiMalwarePtrInput {
+	return (*defaultPreventionPolicyMacCloudAntiMalwarePtrType)(v)
+}
+
+func (*defaultPreventionPolicyMacCloudAntiMalwarePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyMacCloudAntiMalware)(nil)).Elem()
+}
+
+func (i *defaultPreventionPolicyMacCloudAntiMalwarePtrType) ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutput() DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput {
+	return i.ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPreventionPolicyMacCloudAntiMalwarePtrType) ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput)
+}
+
+type DefaultPreventionPolicyMacCloudAntiMalwareOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyMacCloudAntiMalwareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyMacCloudAntiMalware)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyMacCloudAntiMalwareOutput) ToDefaultPreventionPolicyMacCloudAntiMalwareOutput() DefaultPreventionPolicyMacCloudAntiMalwareOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacCloudAntiMalwareOutput) ToDefaultPreventionPolicyMacCloudAntiMalwareOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacCloudAntiMalwareOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacCloudAntiMalwareOutput) ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutput() DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput {
+	return o.ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPreventionPolicyMacCloudAntiMalwareOutput) ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPreventionPolicyMacCloudAntiMalware) *DefaultPreventionPolicyMacCloudAntiMalware {
+		return &v
+	}).(DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyMacCloudAntiMalwareOutput) Detection() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyMacCloudAntiMalware) string { return v.Detection }).(pulumi.StringOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyMacCloudAntiMalwareOutput) Prevention() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyMacCloudAntiMalware) string { return v.Prevention }).(pulumi.StringOutput)
+}
+
+type DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyMacCloudAntiMalware)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput) ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutput() DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput) ToDefaultPreventionPolicyMacCloudAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput) Elem() DefaultPreventionPolicyMacCloudAntiMalwareOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyMacCloudAntiMalware) DefaultPreventionPolicyMacCloudAntiMalware {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPreventionPolicyMacCloudAntiMalware
+		return ret
+	}).(DefaultPreventionPolicyMacCloudAntiMalwareOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput) Detection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyMacCloudAntiMalware) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput) Prevention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyMacCloudAntiMalware) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prevention
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultPreventionPolicyMacSensorAdwareAndPup struct {
+	// Machine learning level for detection.
+	Detection string `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention string `pulumi:"prevention"`
+}
+
+// DefaultPreventionPolicyMacSensorAdwareAndPupInput is an input type that accepts DefaultPreventionPolicyMacSensorAdwareAndPupArgs and DefaultPreventionPolicyMacSensorAdwareAndPupOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyMacSensorAdwareAndPupInput` via:
+//
+//	DefaultPreventionPolicyMacSensorAdwareAndPupArgs{...}
+type DefaultPreventionPolicyMacSensorAdwareAndPupInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyMacSensorAdwareAndPupOutput() DefaultPreventionPolicyMacSensorAdwareAndPupOutput
+	ToDefaultPreventionPolicyMacSensorAdwareAndPupOutputWithContext(context.Context) DefaultPreventionPolicyMacSensorAdwareAndPupOutput
+}
+
+type DefaultPreventionPolicyMacSensorAdwareAndPupArgs struct {
+	// Machine learning level for detection.
+	Detection pulumi.StringInput `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention pulumi.StringInput `pulumi:"prevention"`
+}
+
+func (DefaultPreventionPolicyMacSensorAdwareAndPupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyMacSensorAdwareAndPup)(nil)).Elem()
+}
+
+func (i DefaultPreventionPolicyMacSensorAdwareAndPupArgs) ToDefaultPreventionPolicyMacSensorAdwareAndPupOutput() DefaultPreventionPolicyMacSensorAdwareAndPupOutput {
+	return i.ToDefaultPreventionPolicyMacSensorAdwareAndPupOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyMacSensorAdwareAndPupArgs) ToDefaultPreventionPolicyMacSensorAdwareAndPupOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacSensorAdwareAndPupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyMacSensorAdwareAndPupOutput)
+}
+
+func (i DefaultPreventionPolicyMacSensorAdwareAndPupArgs) ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput() DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput {
+	return i.ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyMacSensorAdwareAndPupArgs) ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyMacSensorAdwareAndPupOutput).ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutputWithContext(ctx)
+}
+
+// DefaultPreventionPolicyMacSensorAdwareAndPupPtrInput is an input type that accepts DefaultPreventionPolicyMacSensorAdwareAndPupArgs, DefaultPreventionPolicyMacSensorAdwareAndPupPtr and DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyMacSensorAdwareAndPupPtrInput` via:
+//
+//	        DefaultPreventionPolicyMacSensorAdwareAndPupArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultPreventionPolicyMacSensorAdwareAndPupPtrInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput() DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput
+	ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutputWithContext(context.Context) DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput
+}
+
+type defaultPreventionPolicyMacSensorAdwareAndPupPtrType DefaultPreventionPolicyMacSensorAdwareAndPupArgs
+
+func DefaultPreventionPolicyMacSensorAdwareAndPupPtr(v *DefaultPreventionPolicyMacSensorAdwareAndPupArgs) DefaultPreventionPolicyMacSensorAdwareAndPupPtrInput {
+	return (*defaultPreventionPolicyMacSensorAdwareAndPupPtrType)(v)
+}
+
+func (*defaultPreventionPolicyMacSensorAdwareAndPupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyMacSensorAdwareAndPup)(nil)).Elem()
+}
+
+func (i *defaultPreventionPolicyMacSensorAdwareAndPupPtrType) ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput() DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput {
+	return i.ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPreventionPolicyMacSensorAdwareAndPupPtrType) ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput)
+}
+
+type DefaultPreventionPolicyMacSensorAdwareAndPupOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyMacSensorAdwareAndPupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyMacSensorAdwareAndPup)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyMacSensorAdwareAndPupOutput) ToDefaultPreventionPolicyMacSensorAdwareAndPupOutput() DefaultPreventionPolicyMacSensorAdwareAndPupOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacSensorAdwareAndPupOutput) ToDefaultPreventionPolicyMacSensorAdwareAndPupOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacSensorAdwareAndPupOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacSensorAdwareAndPupOutput) ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput() DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput {
+	return o.ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPreventionPolicyMacSensorAdwareAndPupOutput) ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPreventionPolicyMacSensorAdwareAndPup) *DefaultPreventionPolicyMacSensorAdwareAndPup {
+		return &v
+	}).(DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyMacSensorAdwareAndPupOutput) Detection() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyMacSensorAdwareAndPup) string { return v.Detection }).(pulumi.StringOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyMacSensorAdwareAndPupOutput) Prevention() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyMacSensorAdwareAndPup) string { return v.Prevention }).(pulumi.StringOutput)
+}
+
+type DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyMacSensorAdwareAndPup)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput) ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput() DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput) ToDefaultPreventionPolicyMacSensorAdwareAndPupPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput) Elem() DefaultPreventionPolicyMacSensorAdwareAndPupOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyMacSensorAdwareAndPup) DefaultPreventionPolicyMacSensorAdwareAndPup {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPreventionPolicyMacSensorAdwareAndPup
+		return ret
+	}).(DefaultPreventionPolicyMacSensorAdwareAndPupOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput) Detection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyMacSensorAdwareAndPup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput) Prevention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyMacSensorAdwareAndPup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prevention
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultPreventionPolicyMacSensorAntiMalware struct {
+	// Machine learning level for detection.
+	Detection string `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention string `pulumi:"prevention"`
+}
+
+// DefaultPreventionPolicyMacSensorAntiMalwareInput is an input type that accepts DefaultPreventionPolicyMacSensorAntiMalwareArgs and DefaultPreventionPolicyMacSensorAntiMalwareOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyMacSensorAntiMalwareInput` via:
+//
+//	DefaultPreventionPolicyMacSensorAntiMalwareArgs{...}
+type DefaultPreventionPolicyMacSensorAntiMalwareInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyMacSensorAntiMalwareOutput() DefaultPreventionPolicyMacSensorAntiMalwareOutput
+	ToDefaultPreventionPolicyMacSensorAntiMalwareOutputWithContext(context.Context) DefaultPreventionPolicyMacSensorAntiMalwareOutput
+}
+
+type DefaultPreventionPolicyMacSensorAntiMalwareArgs struct {
+	// Machine learning level for detection.
+	Detection pulumi.StringInput `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention pulumi.StringInput `pulumi:"prevention"`
+}
+
+func (DefaultPreventionPolicyMacSensorAntiMalwareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyMacSensorAntiMalware)(nil)).Elem()
+}
+
+func (i DefaultPreventionPolicyMacSensorAntiMalwareArgs) ToDefaultPreventionPolicyMacSensorAntiMalwareOutput() DefaultPreventionPolicyMacSensorAntiMalwareOutput {
+	return i.ToDefaultPreventionPolicyMacSensorAntiMalwareOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyMacSensorAntiMalwareArgs) ToDefaultPreventionPolicyMacSensorAntiMalwareOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacSensorAntiMalwareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyMacSensorAntiMalwareOutput)
+}
+
+func (i DefaultPreventionPolicyMacSensorAntiMalwareArgs) ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutput() DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput {
+	return i.ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyMacSensorAntiMalwareArgs) ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyMacSensorAntiMalwareOutput).ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutputWithContext(ctx)
+}
+
+// DefaultPreventionPolicyMacSensorAntiMalwarePtrInput is an input type that accepts DefaultPreventionPolicyMacSensorAntiMalwareArgs, DefaultPreventionPolicyMacSensorAntiMalwarePtr and DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyMacSensorAntiMalwarePtrInput` via:
+//
+//	        DefaultPreventionPolicyMacSensorAntiMalwareArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultPreventionPolicyMacSensorAntiMalwarePtrInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutput() DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput
+	ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutputWithContext(context.Context) DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput
+}
+
+type defaultPreventionPolicyMacSensorAntiMalwarePtrType DefaultPreventionPolicyMacSensorAntiMalwareArgs
+
+func DefaultPreventionPolicyMacSensorAntiMalwarePtr(v *DefaultPreventionPolicyMacSensorAntiMalwareArgs) DefaultPreventionPolicyMacSensorAntiMalwarePtrInput {
+	return (*defaultPreventionPolicyMacSensorAntiMalwarePtrType)(v)
+}
+
+func (*defaultPreventionPolicyMacSensorAntiMalwarePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyMacSensorAntiMalware)(nil)).Elem()
+}
+
+func (i *defaultPreventionPolicyMacSensorAntiMalwarePtrType) ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutput() DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput {
+	return i.ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPreventionPolicyMacSensorAntiMalwarePtrType) ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput)
+}
+
+type DefaultPreventionPolicyMacSensorAntiMalwareOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyMacSensorAntiMalwareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyMacSensorAntiMalware)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyMacSensorAntiMalwareOutput) ToDefaultPreventionPolicyMacSensorAntiMalwareOutput() DefaultPreventionPolicyMacSensorAntiMalwareOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacSensorAntiMalwareOutput) ToDefaultPreventionPolicyMacSensorAntiMalwareOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacSensorAntiMalwareOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacSensorAntiMalwareOutput) ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutput() DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput {
+	return o.ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPreventionPolicyMacSensorAntiMalwareOutput) ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPreventionPolicyMacSensorAntiMalware) *DefaultPreventionPolicyMacSensorAntiMalware {
+		return &v
+	}).(DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyMacSensorAntiMalwareOutput) Detection() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyMacSensorAntiMalware) string { return v.Detection }).(pulumi.StringOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyMacSensorAntiMalwareOutput) Prevention() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyMacSensorAntiMalware) string { return v.Prevention }).(pulumi.StringOutput)
+}
+
+type DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyMacSensorAntiMalware)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput) ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutput() DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput) ToDefaultPreventionPolicyMacSensorAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput) Elem() DefaultPreventionPolicyMacSensorAntiMalwareOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyMacSensorAntiMalware) DefaultPreventionPolicyMacSensorAntiMalware {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPreventionPolicyMacSensorAntiMalware
+		return ret
+	}).(DefaultPreventionPolicyMacSensorAntiMalwareOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput) Detection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyMacSensorAntiMalware) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput) Prevention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyMacSensorAntiMalware) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prevention
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsAdwareAndPup struct {
+	// Machine learning level for detection.
+	Detection string `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention string `pulumi:"prevention"`
+}
+
+// DefaultPreventionPolicyWindowsAdwareAndPupInput is an input type that accepts DefaultPreventionPolicyWindowsAdwareAndPupArgs and DefaultPreventionPolicyWindowsAdwareAndPupOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsAdwareAndPupInput` via:
+//
+//	DefaultPreventionPolicyWindowsAdwareAndPupArgs{...}
+type DefaultPreventionPolicyWindowsAdwareAndPupInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsAdwareAndPupOutput() DefaultPreventionPolicyWindowsAdwareAndPupOutput
+	ToDefaultPreventionPolicyWindowsAdwareAndPupOutputWithContext(context.Context) DefaultPreventionPolicyWindowsAdwareAndPupOutput
+}
+
+type DefaultPreventionPolicyWindowsAdwareAndPupArgs struct {
+	// Machine learning level for detection.
+	Detection pulumi.StringInput `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention pulumi.StringInput `pulumi:"prevention"`
+}
+
+func (DefaultPreventionPolicyWindowsAdwareAndPupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsAdwareAndPup)(nil)).Elem()
+}
+
+func (i DefaultPreventionPolicyWindowsAdwareAndPupArgs) ToDefaultPreventionPolicyWindowsAdwareAndPupOutput() DefaultPreventionPolicyWindowsAdwareAndPupOutput {
+	return i.ToDefaultPreventionPolicyWindowsAdwareAndPupOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsAdwareAndPupArgs) ToDefaultPreventionPolicyWindowsAdwareAndPupOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsAdwareAndPupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsAdwareAndPupOutput)
+}
+
+func (i DefaultPreventionPolicyWindowsAdwareAndPupArgs) ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutput() DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsAdwareAndPupArgs) ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsAdwareAndPupOutput).ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutputWithContext(ctx)
+}
+
+// DefaultPreventionPolicyWindowsAdwareAndPupPtrInput is an input type that accepts DefaultPreventionPolicyWindowsAdwareAndPupArgs, DefaultPreventionPolicyWindowsAdwareAndPupPtr and DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsAdwareAndPupPtrInput` via:
+//
+//	        DefaultPreventionPolicyWindowsAdwareAndPupArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultPreventionPolicyWindowsAdwareAndPupPtrInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutput() DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput
+	ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutputWithContext(context.Context) DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput
+}
+
+type defaultPreventionPolicyWindowsAdwareAndPupPtrType DefaultPreventionPolicyWindowsAdwareAndPupArgs
+
+func DefaultPreventionPolicyWindowsAdwareAndPupPtr(v *DefaultPreventionPolicyWindowsAdwareAndPupArgs) DefaultPreventionPolicyWindowsAdwareAndPupPtrInput {
+	return (*defaultPreventionPolicyWindowsAdwareAndPupPtrType)(v)
+}
+
+func (*defaultPreventionPolicyWindowsAdwareAndPupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsAdwareAndPup)(nil)).Elem()
+}
+
+func (i *defaultPreventionPolicyWindowsAdwareAndPupPtrType) ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutput() DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPreventionPolicyWindowsAdwareAndPupPtrType) ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsAdwareAndPupOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsAdwareAndPupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsAdwareAndPup)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsAdwareAndPupOutput) ToDefaultPreventionPolicyWindowsAdwareAndPupOutput() DefaultPreventionPolicyWindowsAdwareAndPupOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsAdwareAndPupOutput) ToDefaultPreventionPolicyWindowsAdwareAndPupOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsAdwareAndPupOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsAdwareAndPupOutput) ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutput() DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput {
+	return o.ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPreventionPolicyWindowsAdwareAndPupOutput) ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPreventionPolicyWindowsAdwareAndPup) *DefaultPreventionPolicyWindowsAdwareAndPup {
+		return &v
+	}).(DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsAdwareAndPupOutput) Detection() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyWindowsAdwareAndPup) string { return v.Detection }).(pulumi.StringOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyWindowsAdwareAndPupOutput) Prevention() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyWindowsAdwareAndPup) string { return v.Prevention }).(pulumi.StringOutput)
+}
+
+type DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsAdwareAndPup)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput) ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutput() DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput) ToDefaultPreventionPolicyWindowsAdwareAndPupPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput) Elem() DefaultPreventionPolicyWindowsAdwareAndPupOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsAdwareAndPup) DefaultPreventionPolicyWindowsAdwareAndPup {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPreventionPolicyWindowsAdwareAndPup
+		return ret
+	}).(DefaultPreventionPolicyWindowsAdwareAndPupOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput) Detection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsAdwareAndPup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput) Prevention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsAdwareAndPup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prevention
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsCloudAntiMalware struct {
+	// Machine learning level for detection.
+	Detection string `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention string `pulumi:"prevention"`
+}
+
+// DefaultPreventionPolicyWindowsCloudAntiMalwareInput is an input type that accepts DefaultPreventionPolicyWindowsCloudAntiMalwareArgs and DefaultPreventionPolicyWindowsCloudAntiMalwareOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsCloudAntiMalwareInput` via:
+//
+//	DefaultPreventionPolicyWindowsCloudAntiMalwareArgs{...}
+type DefaultPreventionPolicyWindowsCloudAntiMalwareInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsCloudAntiMalwareOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareOutput
+	ToDefaultPreventionPolicyWindowsCloudAntiMalwareOutputWithContext(context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareOutput
+}
+
+type DefaultPreventionPolicyWindowsCloudAntiMalwareArgs struct {
+	// Machine learning level for detection.
+	Detection pulumi.StringInput `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention pulumi.StringInput `pulumi:"prevention"`
+}
+
+func (DefaultPreventionPolicyWindowsCloudAntiMalwareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsCloudAntiMalware)(nil)).Elem()
+}
+
+func (i DefaultPreventionPolicyWindowsCloudAntiMalwareArgs) ToDefaultPreventionPolicyWindowsCloudAntiMalwareOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareOutput {
+	return i.ToDefaultPreventionPolicyWindowsCloudAntiMalwareOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsCloudAntiMalwareArgs) ToDefaultPreventionPolicyWindowsCloudAntiMalwareOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsCloudAntiMalwareOutput)
+}
+
+func (i DefaultPreventionPolicyWindowsCloudAntiMalwareArgs) ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsCloudAntiMalwareArgs) ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsCloudAntiMalwareOutput).ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutputWithContext(ctx)
+}
+
+// DefaultPreventionPolicyWindowsCloudAntiMalwarePtrInput is an input type that accepts DefaultPreventionPolicyWindowsCloudAntiMalwareArgs, DefaultPreventionPolicyWindowsCloudAntiMalwarePtr and DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsCloudAntiMalwarePtrInput` via:
+//
+//	        DefaultPreventionPolicyWindowsCloudAntiMalwareArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultPreventionPolicyWindowsCloudAntiMalwarePtrInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput
+	ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutputWithContext(context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput
+}
+
+type defaultPreventionPolicyWindowsCloudAntiMalwarePtrType DefaultPreventionPolicyWindowsCloudAntiMalwareArgs
+
+func DefaultPreventionPolicyWindowsCloudAntiMalwarePtr(v *DefaultPreventionPolicyWindowsCloudAntiMalwareArgs) DefaultPreventionPolicyWindowsCloudAntiMalwarePtrInput {
+	return (*defaultPreventionPolicyWindowsCloudAntiMalwarePtrType)(v)
+}
+
+func (*defaultPreventionPolicyWindowsCloudAntiMalwarePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsCloudAntiMalware)(nil)).Elem()
+}
+
+func (i *defaultPreventionPolicyWindowsCloudAntiMalwarePtrType) ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPreventionPolicyWindowsCloudAntiMalwarePtrType) ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsCloudAntiMalwareOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsCloudAntiMalwareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsCloudAntiMalware)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput {
+	return o.ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPreventionPolicyWindowsCloudAntiMalware) *DefaultPreventionPolicyWindowsCloudAntiMalware {
+		return &v
+	}).(DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareOutput) Detection() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyWindowsCloudAntiMalware) string { return v.Detection }).(pulumi.StringOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareOutput) Prevention() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyWindowsCloudAntiMalware) string { return v.Prevention }).(pulumi.StringOutput)
+}
+
+type DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsCloudAntiMalware)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput) Elem() DefaultPreventionPolicyWindowsCloudAntiMalwareOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsCloudAntiMalware) DefaultPreventionPolicyWindowsCloudAntiMalware {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPreventionPolicyWindowsCloudAntiMalware
+		return ret
+	}).(DefaultPreventionPolicyWindowsCloudAntiMalwareOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput) Detection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsCloudAntiMalware) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput) Prevention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsCloudAntiMalware) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prevention
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles struct {
+	// Machine learning level for detection.
+	Detection string `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention string `pulumi:"prevention"`
+}
+
+// DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesInput is an input type that accepts DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs and DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesInput` via:
+//
+//	DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs{...}
+type DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput
+	ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutputWithContext(context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput
+}
+
+type DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs struct {
+	// Machine learning level for detection.
+	Detection pulumi.StringInput `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention pulumi.StringInput `pulumi:"prevention"`
+}
+
+func (DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles)(nil)).Elem()
+}
+
+func (i DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs) ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput {
+	return i.ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs) ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput)
+}
+
+func (i DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs) ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs) ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput).ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutputWithContext(ctx)
+}
+
+// DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrInput is an input type that accepts DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs, DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtr and DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrInput` via:
+//
+//	        DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput
+	ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutputWithContext(context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput
+}
+
+type defaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrType DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs
+
+func DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtr(v *DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs) DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrInput {
+	return (*defaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrType)(v)
+}
+
+func (*defaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles)(nil)).Elem()
+}
+
+func (i *defaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrType) ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrType) ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput {
+	return o.ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles) *DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles {
+		return &v
+	}).(DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput) Detection() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles) string { return v.Detection }).(pulumi.StringOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput) Prevention() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles) string { return v.Prevention }).(pulumi.StringOutput)
+}
+
+type DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput) Elem() DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles) DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles
+		return ret
+	}).(DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput) Detection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput) Prevention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFiles) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prevention
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated struct {
+	// Machine learning level for detection.
+	Detection string `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention string `pulumi:"prevention"`
+}
+
+// DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedInput is an input type that accepts DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs and DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedInput` via:
+//
+//	DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs{...}
+type DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput
+	ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutputWithContext(context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput
+}
+
+type DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs struct {
+	// Machine learning level for detection.
+	Detection pulumi.StringInput `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention pulumi.StringInput `pulumi:"prevention"`
+}
+
+func (DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated)(nil)).Elem()
+}
+
+func (i DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs) ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput {
+	return i.ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs) ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput)
+}
+
+func (i DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs) ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs) ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput).ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutputWithContext(ctx)
+}
+
+// DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrInput is an input type that accepts DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs, DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtr and DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrInput` via:
+//
+//	        DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput
+	ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutputWithContext(context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput
+}
+
+type defaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrType DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs
+
+func DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtr(v *DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs) DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrInput {
+	return (*defaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrType)(v)
+}
+
+func (*defaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated)(nil)).Elem()
+}
+
+func (i *defaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrType) ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrType) ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput {
+	return o.ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated) *DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated {
+		return &v
+	}).(DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput) Detection() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated) string { return v.Detection }).(pulumi.StringOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput) Prevention() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated) string { return v.Prevention }).(pulumi.StringOutput)
+}
+
+type DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput() DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput) ToDefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput) Elem() DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated) DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated
+		return ret
+	}).(DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput) Detection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput) Prevention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiated) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prevention
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsExtendedUserModeData struct {
+	// Machine learning level for detection.
+	Detection string `pulumi:"detection"`
+}
+
+// DefaultPreventionPolicyWindowsExtendedUserModeDataInput is an input type that accepts DefaultPreventionPolicyWindowsExtendedUserModeDataArgs and DefaultPreventionPolicyWindowsExtendedUserModeDataOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsExtendedUserModeDataInput` via:
+//
+//	DefaultPreventionPolicyWindowsExtendedUserModeDataArgs{...}
+type DefaultPreventionPolicyWindowsExtendedUserModeDataInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsExtendedUserModeDataOutput() DefaultPreventionPolicyWindowsExtendedUserModeDataOutput
+	ToDefaultPreventionPolicyWindowsExtendedUserModeDataOutputWithContext(context.Context) DefaultPreventionPolicyWindowsExtendedUserModeDataOutput
+}
+
+type DefaultPreventionPolicyWindowsExtendedUserModeDataArgs struct {
+	// Machine learning level for detection.
+	Detection pulumi.StringInput `pulumi:"detection"`
+}
+
+func (DefaultPreventionPolicyWindowsExtendedUserModeDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsExtendedUserModeData)(nil)).Elem()
+}
+
+func (i DefaultPreventionPolicyWindowsExtendedUserModeDataArgs) ToDefaultPreventionPolicyWindowsExtendedUserModeDataOutput() DefaultPreventionPolicyWindowsExtendedUserModeDataOutput {
+	return i.ToDefaultPreventionPolicyWindowsExtendedUserModeDataOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsExtendedUserModeDataArgs) ToDefaultPreventionPolicyWindowsExtendedUserModeDataOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsExtendedUserModeDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsExtendedUserModeDataOutput)
+}
+
+func (i DefaultPreventionPolicyWindowsExtendedUserModeDataArgs) ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput() DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsExtendedUserModeDataArgs) ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsExtendedUserModeDataOutput).ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutputWithContext(ctx)
+}
+
+// DefaultPreventionPolicyWindowsExtendedUserModeDataPtrInput is an input type that accepts DefaultPreventionPolicyWindowsExtendedUserModeDataArgs, DefaultPreventionPolicyWindowsExtendedUserModeDataPtr and DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsExtendedUserModeDataPtrInput` via:
+//
+//	        DefaultPreventionPolicyWindowsExtendedUserModeDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultPreventionPolicyWindowsExtendedUserModeDataPtrInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput() DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput
+	ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutputWithContext(context.Context) DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput
+}
+
+type defaultPreventionPolicyWindowsExtendedUserModeDataPtrType DefaultPreventionPolicyWindowsExtendedUserModeDataArgs
+
+func DefaultPreventionPolicyWindowsExtendedUserModeDataPtr(v *DefaultPreventionPolicyWindowsExtendedUserModeDataArgs) DefaultPreventionPolicyWindowsExtendedUserModeDataPtrInput {
+	return (*defaultPreventionPolicyWindowsExtendedUserModeDataPtrType)(v)
+}
+
+func (*defaultPreventionPolicyWindowsExtendedUserModeDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsExtendedUserModeData)(nil)).Elem()
+}
+
+func (i *defaultPreventionPolicyWindowsExtendedUserModeDataPtrType) ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput() DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPreventionPolicyWindowsExtendedUserModeDataPtrType) ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsExtendedUserModeDataOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsExtendedUserModeDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsExtendedUserModeData)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsExtendedUserModeDataOutput) ToDefaultPreventionPolicyWindowsExtendedUserModeDataOutput() DefaultPreventionPolicyWindowsExtendedUserModeDataOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsExtendedUserModeDataOutput) ToDefaultPreventionPolicyWindowsExtendedUserModeDataOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsExtendedUserModeDataOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsExtendedUserModeDataOutput) ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput() DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput {
+	return o.ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPreventionPolicyWindowsExtendedUserModeDataOutput) ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPreventionPolicyWindowsExtendedUserModeData) *DefaultPreventionPolicyWindowsExtendedUserModeData {
+		return &v
+	}).(DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsExtendedUserModeDataOutput) Detection() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyWindowsExtendedUserModeData) string { return v.Detection }).(pulumi.StringOutput)
+}
+
+type DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsExtendedUserModeData)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput) ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput() DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput) ToDefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput) Elem() DefaultPreventionPolicyWindowsExtendedUserModeDataOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsExtendedUserModeData) DefaultPreventionPolicyWindowsExtendedUserModeData {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPreventionPolicyWindowsExtendedUserModeData
+		return ret
+	}).(DefaultPreventionPolicyWindowsExtendedUserModeDataOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput) Detection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsExtendedUserModeData) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detection
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsSensorAntiMalware struct {
+	// Machine learning level for detection.
+	Detection string `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention string `pulumi:"prevention"`
+}
+
+// DefaultPreventionPolicyWindowsSensorAntiMalwareInput is an input type that accepts DefaultPreventionPolicyWindowsSensorAntiMalwareArgs and DefaultPreventionPolicyWindowsSensorAntiMalwareOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsSensorAntiMalwareInput` via:
+//
+//	DefaultPreventionPolicyWindowsSensorAntiMalwareArgs{...}
+type DefaultPreventionPolicyWindowsSensorAntiMalwareInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsSensorAntiMalwareOutput() DefaultPreventionPolicyWindowsSensorAntiMalwareOutput
+	ToDefaultPreventionPolicyWindowsSensorAntiMalwareOutputWithContext(context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwareOutput
+}
+
+type DefaultPreventionPolicyWindowsSensorAntiMalwareArgs struct {
+	// Machine learning level for detection.
+	Detection pulumi.StringInput `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention pulumi.StringInput `pulumi:"prevention"`
+}
+
+func (DefaultPreventionPolicyWindowsSensorAntiMalwareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsSensorAntiMalware)(nil)).Elem()
+}
+
+func (i DefaultPreventionPolicyWindowsSensorAntiMalwareArgs) ToDefaultPreventionPolicyWindowsSensorAntiMalwareOutput() DefaultPreventionPolicyWindowsSensorAntiMalwareOutput {
+	return i.ToDefaultPreventionPolicyWindowsSensorAntiMalwareOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsSensorAntiMalwareArgs) ToDefaultPreventionPolicyWindowsSensorAntiMalwareOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsSensorAntiMalwareOutput)
+}
+
+func (i DefaultPreventionPolicyWindowsSensorAntiMalwareArgs) ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput() DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsSensorAntiMalwareArgs) ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsSensorAntiMalwareOutput).ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutputWithContext(ctx)
+}
+
+// DefaultPreventionPolicyWindowsSensorAntiMalwarePtrInput is an input type that accepts DefaultPreventionPolicyWindowsSensorAntiMalwareArgs, DefaultPreventionPolicyWindowsSensorAntiMalwarePtr and DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsSensorAntiMalwarePtrInput` via:
+//
+//	        DefaultPreventionPolicyWindowsSensorAntiMalwareArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultPreventionPolicyWindowsSensorAntiMalwarePtrInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput() DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput
+	ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutputWithContext(context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput
+}
+
+type defaultPreventionPolicyWindowsSensorAntiMalwarePtrType DefaultPreventionPolicyWindowsSensorAntiMalwareArgs
+
+func DefaultPreventionPolicyWindowsSensorAntiMalwarePtr(v *DefaultPreventionPolicyWindowsSensorAntiMalwareArgs) DefaultPreventionPolicyWindowsSensorAntiMalwarePtrInput {
+	return (*defaultPreventionPolicyWindowsSensorAntiMalwarePtrType)(v)
+}
+
+func (*defaultPreventionPolicyWindowsSensorAntiMalwarePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsSensorAntiMalware)(nil)).Elem()
+}
+
+func (i *defaultPreventionPolicyWindowsSensorAntiMalwarePtrType) ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput() DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPreventionPolicyWindowsSensorAntiMalwarePtrType) ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsSensorAntiMalwareOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsSensorAntiMalwareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsSensorAntiMalware)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareOutput) ToDefaultPreventionPolicyWindowsSensorAntiMalwareOutput() DefaultPreventionPolicyWindowsSensorAntiMalwareOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareOutput) ToDefaultPreventionPolicyWindowsSensorAntiMalwareOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwareOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareOutput) ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput() DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput {
+	return o.ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareOutput) ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPreventionPolicyWindowsSensorAntiMalware) *DefaultPreventionPolicyWindowsSensorAntiMalware {
+		return &v
+	}).(DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareOutput) Detection() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyWindowsSensorAntiMalware) string { return v.Detection }).(pulumi.StringOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareOutput) Prevention() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyWindowsSensorAntiMalware) string { return v.Prevention }).(pulumi.StringOutput)
+}
+
+type DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsSensorAntiMalware)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput) ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput() DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput) ToDefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput) Elem() DefaultPreventionPolicyWindowsSensorAntiMalwareOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsSensorAntiMalware) DefaultPreventionPolicyWindowsSensorAntiMalware {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPreventionPolicyWindowsSensorAntiMalware
+		return ret
+	}).(DefaultPreventionPolicyWindowsSensorAntiMalwareOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput) Detection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsSensorAntiMalware) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput) Prevention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsSensorAntiMalware) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prevention
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated struct {
+	// Machine learning level for detection.
+	Detection string `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention string `pulumi:"prevention"`
+}
+
+// DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedInput is an input type that accepts DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs and DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedInput` via:
+//
+//	DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs{...}
+type DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput() DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput
+	ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutputWithContext(context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput
+}
+
+type DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs struct {
+	// Machine learning level for detection.
+	Detection pulumi.StringInput `pulumi:"detection"`
+	// Machine learning level for prevention.
+	Prevention pulumi.StringInput `pulumi:"prevention"`
+}
+
+func (DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated)(nil)).Elem()
+}
+
+func (i DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs) ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput() DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput {
+	return i.ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs) ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput)
+}
+
+func (i DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs) ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput() DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs) ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput).ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutputWithContext(ctx)
+}
+
+// DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrInput is an input type that accepts DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs, DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtr and DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput values.
+// You can construct a concrete instance of `DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrInput` via:
+//
+//	        DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrInput interface {
+	pulumi.Input
+
+	ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput() DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput
+	ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutputWithContext(context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput
+}
+
+type defaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrType DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs
+
+func DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtr(v *DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs) DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrInput {
+	return (*defaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrType)(v)
+}
+
+func (*defaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated)(nil)).Elem()
+}
+
+func (i *defaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrType) ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput() DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput {
+	return i.ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrType) ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput)
+}
+
+type DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput) ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput() DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput) ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput) ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput() DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput {
+	return o.ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput) ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated) *DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated {
+		return &v
+	}).(DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput) Detection() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated) string { return v.Detection }).(pulumi.StringOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput) Prevention() pulumi.StringOutput {
+	return o.ApplyT(func(v DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated) string { return v.Prevention }).(pulumi.StringOutput)
+}
+
+type DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated)(nil)).Elem()
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput) ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput() DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput) ToDefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutputWithContext(ctx context.Context) DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput {
+	return o
+}
+
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput) Elem() DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated) DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated
+		return ret
+	}).(DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput)
+}
+
+// Machine learning level for detection.
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput) Detection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Detection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine learning level for prevention.
+func (o DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput) Prevention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiated) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prevention
+	}).(pulumi.StringPtrOutput)
+}
+
 type DefaultSensorUpdatePolicySchedule struct {
 	// Enable the scheduler for sensor update policy.
 	Enabled bool `pulumi:"enabled"`
@@ -6243,6 +8252,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountRealtimeVisibilityPtrInput)(nil)).Elem(), CloudAwsAccountRealtimeVisibilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountSensorManagementInput)(nil)).Elem(), CloudAwsAccountSensorManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudAwsAccountSensorManagementPtrInput)(nil)).Elem(), CloudAwsAccountSensorManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyLinuxCloudAntiMalwareInput)(nil)).Elem(), DefaultPreventionPolicyLinuxCloudAntiMalwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyLinuxCloudAntiMalwarePtrInput)(nil)).Elem(), DefaultPreventionPolicyLinuxCloudAntiMalwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyLinuxSensorAntiMalwareInput)(nil)).Elem(), DefaultPreventionPolicyLinuxSensorAntiMalwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyLinuxSensorAntiMalwarePtrInput)(nil)).Elem(), DefaultPreventionPolicyLinuxSensorAntiMalwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyMacCloudAdwareAndPupInput)(nil)).Elem(), DefaultPreventionPolicyMacCloudAdwareAndPupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyMacCloudAdwareAndPupPtrInput)(nil)).Elem(), DefaultPreventionPolicyMacCloudAdwareAndPupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyMacCloudAntiMalwareInput)(nil)).Elem(), DefaultPreventionPolicyMacCloudAntiMalwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyMacCloudAntiMalwarePtrInput)(nil)).Elem(), DefaultPreventionPolicyMacCloudAntiMalwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyMacSensorAdwareAndPupInput)(nil)).Elem(), DefaultPreventionPolicyMacSensorAdwareAndPupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyMacSensorAdwareAndPupPtrInput)(nil)).Elem(), DefaultPreventionPolicyMacSensorAdwareAndPupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyMacSensorAntiMalwareInput)(nil)).Elem(), DefaultPreventionPolicyMacSensorAntiMalwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyMacSensorAntiMalwarePtrInput)(nil)).Elem(), DefaultPreventionPolicyMacSensorAntiMalwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsAdwareAndPupInput)(nil)).Elem(), DefaultPreventionPolicyWindowsAdwareAndPupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsAdwareAndPupPtrInput)(nil)).Elem(), DefaultPreventionPolicyWindowsAdwareAndPupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsCloudAntiMalwareInput)(nil)).Elem(), DefaultPreventionPolicyWindowsCloudAntiMalwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsCloudAntiMalwarePtrInput)(nil)).Elem(), DefaultPreventionPolicyWindowsCloudAntiMalwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesInput)(nil)).Elem(), DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrInput)(nil)).Elem(), DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedInput)(nil)).Elem(), DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrInput)(nil)).Elem(), DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsExtendedUserModeDataInput)(nil)).Elem(), DefaultPreventionPolicyWindowsExtendedUserModeDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsExtendedUserModeDataPtrInput)(nil)).Elem(), DefaultPreventionPolicyWindowsExtendedUserModeDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsSensorAntiMalwareInput)(nil)).Elem(), DefaultPreventionPolicyWindowsSensorAntiMalwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsSensorAntiMalwarePtrInput)(nil)).Elem(), DefaultPreventionPolicyWindowsSensorAntiMalwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedInput)(nil)).Elem(), DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrInput)(nil)).Elem(), DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSensorUpdatePolicyScheduleInput)(nil)).Elem(), DefaultSensorUpdatePolicyScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSensorUpdatePolicySchedulePtrInput)(nil)).Elem(), DefaultSensorUpdatePolicyScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultSensorUpdatePolicyScheduleTimeBlockInput)(nil)).Elem(), DefaultSensorUpdatePolicyScheduleTimeBlockArgs{})
@@ -6319,6 +8354,32 @@ func init() {
 	pulumi.RegisterOutputType(CloudAwsAccountRealtimeVisibilityPtrOutput{})
 	pulumi.RegisterOutputType(CloudAwsAccountSensorManagementOutput{})
 	pulumi.RegisterOutputType(CloudAwsAccountSensorManagementPtrOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyLinuxCloudAntiMalwareOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyLinuxCloudAntiMalwarePtrOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyLinuxSensorAntiMalwareOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyLinuxSensorAntiMalwarePtrOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyMacCloudAdwareAndPupOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyMacCloudAdwareAndPupPtrOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyMacCloudAntiMalwareOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyMacCloudAntiMalwarePtrOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyMacSensorAdwareAndPupOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyMacSensorAdwareAndPupPtrOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyMacSensorAntiMalwareOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyMacSensorAntiMalwarePtrOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsAdwareAndPupOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsAdwareAndPupPtrOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsCloudAntiMalwareOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsCloudAntiMalwarePtrOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesPtrOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedPtrOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsExtendedUserModeDataOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsExtendedUserModeDataPtrOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsSensorAntiMalwareOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsSensorAntiMalwarePtrOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedOutput{})
+	pulumi.RegisterOutputType(DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedPtrOutput{})
 	pulumi.RegisterOutputType(DefaultSensorUpdatePolicyScheduleOutput{})
 	pulumi.RegisterOutputType(DefaultSensorUpdatePolicySchedulePtrOutput{})
 	pulumi.RegisterOutputType(DefaultSensorUpdatePolicyScheduleTimeBlockOutput{})

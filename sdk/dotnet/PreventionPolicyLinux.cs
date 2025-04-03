@@ -11,7 +11,7 @@ using Pulumi;
 namespace CrowdStrike.Crowdstrike
 {
     /// <summary>
-    /// This resource allows you to manage CrowdStrike Falcon prevention policies for Linux hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+    /// This resource allows you to manage prevention policies for Linux hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
     /// 
     /// ## API Scopes
     /// 
@@ -61,6 +61,7 @@ namespace CrowdStrike.Crowdstrike
     ///         SensorTamperingProtection = true,
     ///         OnWriteScriptFileVisibility = true,
     ///         MemoryVisibility = true,
+    ///         ExtendedCommandLineVisibility = true,
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
@@ -116,6 +117,12 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+        /// </summary>
+        [Output("extendedCommandLineVisibility")]
+        public Output<bool> ExtendedCommandLineVisibility { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
@@ -306,6 +313,12 @@ namespace CrowdStrike.Crowdstrike
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+        /// </summary>
+        [Input("extendedCommandLineVisibility")]
+        public Input<bool>? ExtendedCommandLineVisibility { get; set; }
+
+        /// <summary>
         /// Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.
         /// </summary>
         [Input("filesystemVisibility")]
@@ -462,6 +475,12 @@ namespace CrowdStrike.Crowdstrike
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Whether to enable the setting. Allows the sensor to monitor full CLI commands that include pipes and redirects. This is applicable only for User mode.
+        /// </summary>
+        [Input("extendedCommandLineVisibility")]
+        public Input<bool>? ExtendedCommandLineVisibility { get; set; }
 
         /// <summary>
         /// Whether to enable the setting. Allows the sensor to monitor filesystem activity for additional telemetry and improved detections.

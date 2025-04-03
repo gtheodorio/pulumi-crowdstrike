@@ -5,14 +5,14 @@ go 1.22.0
 toolchain go1.24.0
 
 require (
-	github.com/crowdstrike/terraform-provider-crowdstrike v0.0.21
+	github.com/crowdstrike/terraform-provider-crowdstrike v0.0.22
 	github.com/hashicorp/terraform-plugin-framework v1.13.0
 )
 
 require (
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
 	github.com/blang/semver/v4 v4.0.0 // indirect
-	github.com/crowdstrike/gofalcon v0.13.1 // indirect
+	github.com/crowdstrike/gofalcon v0.13.2 // indirect
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect

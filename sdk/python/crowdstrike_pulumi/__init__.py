@@ -6,6 +6,9 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .cloud_aws_account import *
+from .default_prevention_policy_linux import *
+from .default_prevention_policy_mac import *
+from .default_prevention_policy_windows import *
 from .default_sensor_update_policy import *
 from .filevantage_policy import *
 from .filevantage_rule_group import *
@@ -36,6 +39,30 @@ _utilities.register(
   "fqn": "crowdstrike_pulumi",
   "classes": {
    "crowdstrike:index/cloudAwsAccount:CloudAwsAccount": "CloudAwsAccount"
+  }
+ },
+ {
+  "pkg": "crowdstrike",
+  "mod": "index/defaultPreventionPolicyLinux",
+  "fqn": "crowdstrike_pulumi",
+  "classes": {
+   "crowdstrike:index/defaultPreventionPolicyLinux:DefaultPreventionPolicyLinux": "DefaultPreventionPolicyLinux"
+  }
+ },
+ {
+  "pkg": "crowdstrike",
+  "mod": "index/defaultPreventionPolicyMac",
+  "fqn": "crowdstrike_pulumi",
+  "classes": {
+   "crowdstrike:index/defaultPreventionPolicyMac:DefaultPreventionPolicyMac": "DefaultPreventionPolicyMac"
+  }
+ },
+ {
+  "pkg": "crowdstrike",
+  "mod": "index/defaultPreventionPolicyWindows",
+  "fqn": "crowdstrike_pulumi",
+  "classes": {
+   "crowdstrike:index/defaultPreventionPolicyWindows:DefaultPreventionPolicyWindows": "DefaultPreventionPolicyWindows"
   }
  },
  {

@@ -25,6 +25,32 @@ __all__ = [
     'CloudAwsAccountRealtimeVisibilityArgsDict',
     'CloudAwsAccountSensorManagementArgs',
     'CloudAwsAccountSensorManagementArgsDict',
+    'DefaultPreventionPolicyLinuxCloudAntiMalwareArgs',
+    'DefaultPreventionPolicyLinuxCloudAntiMalwareArgsDict',
+    'DefaultPreventionPolicyLinuxSensorAntiMalwareArgs',
+    'DefaultPreventionPolicyLinuxSensorAntiMalwareArgsDict',
+    'DefaultPreventionPolicyMacCloudAdwareAndPupArgs',
+    'DefaultPreventionPolicyMacCloudAdwareAndPupArgsDict',
+    'DefaultPreventionPolicyMacCloudAntiMalwareArgs',
+    'DefaultPreventionPolicyMacCloudAntiMalwareArgsDict',
+    'DefaultPreventionPolicyMacSensorAdwareAndPupArgs',
+    'DefaultPreventionPolicyMacSensorAdwareAndPupArgsDict',
+    'DefaultPreventionPolicyMacSensorAntiMalwareArgs',
+    'DefaultPreventionPolicyMacSensorAntiMalwareArgsDict',
+    'DefaultPreventionPolicyWindowsAdwareAndPupArgs',
+    'DefaultPreventionPolicyWindowsAdwareAndPupArgsDict',
+    'DefaultPreventionPolicyWindowsCloudAntiMalwareArgs',
+    'DefaultPreventionPolicyWindowsCloudAntiMalwareArgsDict',
+    'DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs',
+    'DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgsDict',
+    'DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs',
+    'DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgsDict',
+    'DefaultPreventionPolicyWindowsExtendedUserModeDataArgs',
+    'DefaultPreventionPolicyWindowsExtendedUserModeDataArgsDict',
+    'DefaultPreventionPolicyWindowsSensorAntiMalwareArgs',
+    'DefaultPreventionPolicyWindowsSensorAntiMalwareArgsDict',
+    'DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs',
+    'DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgsDict',
     'DefaultSensorUpdatePolicyScheduleArgs',
     'DefaultSensorUpdatePolicyScheduleArgsDict',
     'DefaultSensorUpdatePolicyScheduleTimeBlockArgs',
@@ -321,6 +347,637 @@ class CloudAwsAccountSensorManagementArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class DefaultPreventionPolicyLinuxCloudAntiMalwareArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    DefaultPreventionPolicyLinuxCloudAntiMalwareArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultPreventionPolicyLinuxCloudAntiMalwareArgs:
+    def __init__(__self__, *,
+                 detection: pulumi.Input[str],
+                 prevention: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] detection: Machine learning level for detection.
+        :param pulumi.Input[str] prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @detection.setter
+    def detection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "detection", value)
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+    @prevention.setter
+    def prevention(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prevention", value)
+
+
+if not MYPY:
+    class DefaultPreventionPolicyLinuxSensorAntiMalwareArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    DefaultPreventionPolicyLinuxSensorAntiMalwareArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultPreventionPolicyLinuxSensorAntiMalwareArgs:
+    def __init__(__self__, *,
+                 detection: pulumi.Input[str],
+                 prevention: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] detection: Machine learning level for detection.
+        :param pulumi.Input[str] prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @detection.setter
+    def detection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "detection", value)
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+    @prevention.setter
+    def prevention(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prevention", value)
+
+
+if not MYPY:
+    class DefaultPreventionPolicyMacCloudAdwareAndPupArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    DefaultPreventionPolicyMacCloudAdwareAndPupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultPreventionPolicyMacCloudAdwareAndPupArgs:
+    def __init__(__self__, *,
+                 detection: pulumi.Input[str],
+                 prevention: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] detection: Machine learning level for detection.
+        :param pulumi.Input[str] prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @detection.setter
+    def detection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "detection", value)
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+    @prevention.setter
+    def prevention(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prevention", value)
+
+
+if not MYPY:
+    class DefaultPreventionPolicyMacCloudAntiMalwareArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    DefaultPreventionPolicyMacCloudAntiMalwareArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultPreventionPolicyMacCloudAntiMalwareArgs:
+    def __init__(__self__, *,
+                 detection: pulumi.Input[str],
+                 prevention: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] detection: Machine learning level for detection.
+        :param pulumi.Input[str] prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @detection.setter
+    def detection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "detection", value)
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+    @prevention.setter
+    def prevention(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prevention", value)
+
+
+if not MYPY:
+    class DefaultPreventionPolicyMacSensorAdwareAndPupArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    DefaultPreventionPolicyMacSensorAdwareAndPupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultPreventionPolicyMacSensorAdwareAndPupArgs:
+    def __init__(__self__, *,
+                 detection: pulumi.Input[str],
+                 prevention: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] detection: Machine learning level for detection.
+        :param pulumi.Input[str] prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @detection.setter
+    def detection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "detection", value)
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+    @prevention.setter
+    def prevention(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prevention", value)
+
+
+if not MYPY:
+    class DefaultPreventionPolicyMacSensorAntiMalwareArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    DefaultPreventionPolicyMacSensorAntiMalwareArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultPreventionPolicyMacSensorAntiMalwareArgs:
+    def __init__(__self__, *,
+                 detection: pulumi.Input[str],
+                 prevention: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] detection: Machine learning level for detection.
+        :param pulumi.Input[str] prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @detection.setter
+    def detection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "detection", value)
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+    @prevention.setter
+    def prevention(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prevention", value)
+
+
+if not MYPY:
+    class DefaultPreventionPolicyWindowsAdwareAndPupArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    DefaultPreventionPolicyWindowsAdwareAndPupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultPreventionPolicyWindowsAdwareAndPupArgs:
+    def __init__(__self__, *,
+                 detection: pulumi.Input[str],
+                 prevention: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] detection: Machine learning level for detection.
+        :param pulumi.Input[str] prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @detection.setter
+    def detection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "detection", value)
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+    @prevention.setter
+    def prevention(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prevention", value)
+
+
+if not MYPY:
+    class DefaultPreventionPolicyWindowsCloudAntiMalwareArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    DefaultPreventionPolicyWindowsCloudAntiMalwareArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultPreventionPolicyWindowsCloudAntiMalwareArgs:
+    def __init__(__self__, *,
+                 detection: pulumi.Input[str],
+                 prevention: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] detection: Machine learning level for detection.
+        :param pulumi.Input[str] prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @detection.setter
+    def detection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "detection", value)
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+    @prevention.setter
+    def prevention(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prevention", value)
+
+
+if not MYPY:
+    class DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultPreventionPolicyWindowsCloudAntiMalwareMicrosoftOfficeFilesArgs:
+    def __init__(__self__, *,
+                 detection: pulumi.Input[str],
+                 prevention: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] detection: Machine learning level for detection.
+        :param pulumi.Input[str] prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @detection.setter
+    def detection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "detection", value)
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+    @prevention.setter
+    def prevention(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prevention", value)
+
+
+if not MYPY:
+    class DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultPreventionPolicyWindowsCloudAntiMalwareUserInitiatedArgs:
+    def __init__(__self__, *,
+                 detection: pulumi.Input[str],
+                 prevention: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] detection: Machine learning level for detection.
+        :param pulumi.Input[str] prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @detection.setter
+    def detection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "detection", value)
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+    @prevention.setter
+    def prevention(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prevention", value)
+
+
+if not MYPY:
+    class DefaultPreventionPolicyWindowsExtendedUserModeDataArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+elif False:
+    DefaultPreventionPolicyWindowsExtendedUserModeDataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultPreventionPolicyWindowsExtendedUserModeDataArgs:
+    def __init__(__self__, *,
+                 detection: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] detection: Machine learning level for detection.
+        """
+        pulumi.set(__self__, "detection", detection)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @detection.setter
+    def detection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "detection", value)
+
+
+if not MYPY:
+    class DefaultPreventionPolicyWindowsSensorAntiMalwareArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    DefaultPreventionPolicyWindowsSensorAntiMalwareArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultPreventionPolicyWindowsSensorAntiMalwareArgs:
+    def __init__(__self__, *,
+                 detection: pulumi.Input[str],
+                 prevention: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] detection: Machine learning level for detection.
+        :param pulumi.Input[str] prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @detection.setter
+    def detection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "detection", value)
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+    @prevention.setter
+    def prevention(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prevention", value)
+
+
+if not MYPY:
+    class DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgsDict(TypedDict):
+        detection: pulumi.Input[str]
+        """
+        Machine learning level for detection.
+        """
+        prevention: pulumi.Input[str]
+        """
+        Machine learning level for prevention.
+        """
+elif False:
+    DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefaultPreventionPolicyWindowsSensorAntiMalwareUserInitiatedArgs:
+    def __init__(__self__, *,
+                 detection: pulumi.Input[str],
+                 prevention: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] detection: Machine learning level for detection.
+        :param pulumi.Input[str] prevention: Machine learning level for prevention.
+        """
+        pulumi.set(__self__, "detection", detection)
+        pulumi.set(__self__, "prevention", prevention)
+
+    @property
+    @pulumi.getter
+    def detection(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for detection.
+        """
+        return pulumi.get(self, "detection")
+
+    @detection.setter
+    def detection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "detection", value)
+
+    @property
+    @pulumi.getter
+    def prevention(self) -> pulumi.Input[str]:
+        """
+        Machine learning level for prevention.
+        """
+        return pulumi.get(self, "prevention")
+
+    @prevention.setter
+    def prevention(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prevention", value)
 
 
 if not MYPY:

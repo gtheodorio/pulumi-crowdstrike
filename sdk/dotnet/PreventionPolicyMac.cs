@@ -11,7 +11,7 @@ using Pulumi;
 namespace CrowdStrike.Crowdstrike
 {
     /// <summary>
-    /// This resource allows you to manage CrowdStrike Falcon prevention policies for Mac hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+    /// This resource allows you to manage prevention policies for Mac hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
     /// 
     /// ## API Scopes
     /// 

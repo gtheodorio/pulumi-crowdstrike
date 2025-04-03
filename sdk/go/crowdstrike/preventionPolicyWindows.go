@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to manage CrowdStrike Falcon prevention policies for Windows hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+// This resource allows you to manage prevention policies for Windows hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
 //
 // ## API Scopes
 //
@@ -117,6 +117,7 @@ import (
 //				VolumeShadowCopyProtect:                   pulumi.Bool(true),
 //				VulnerableDriverProtection:                pulumi.Bool(true),
 //				WindowsLogonBypassStickyKeys:              pulumi.Bool(true),
+//				FileSystemContainment:                     pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -190,6 +191,8 @@ type PreventionPolicyWindows struct {
 	FileEncryption pulumi.BoolOutput `pulumi:"fileEncryption"`
 	// Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
 	FileSystemAccess pulumi.BoolOutput `pulumi:"fileSystemAccess"`
+	// Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+	FileSystemContainment pulumi.BoolOutput `pulumi:"fileSystemContainment"`
 	// Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
 	ForceAslr pulumi.BoolOutput `pulumi:"forceAslr"`
 	// Whether to enable the setting. A process that had Force Data Execution Prevention (Force DEP) applied tried to execute non-executable memory and was blocked. Requires additional*user*mode_data to be enabled.
@@ -355,6 +358,8 @@ type preventionPolicyWindowsState struct {
 	FileEncryption *bool `pulumi:"fileEncryption"`
 	// Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
 	FileSystemAccess *bool `pulumi:"fileSystemAccess"`
+	// Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+	FileSystemContainment *bool `pulumi:"fileSystemContainment"`
 	// Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
 	ForceAslr *bool `pulumi:"forceAslr"`
 	// Whether to enable the setting. A process that had Force Data Execution Prevention (Force DEP) applied tried to execute non-executable memory and was blocked. Requires additional*user*mode_data to be enabled.
@@ -485,6 +490,8 @@ type PreventionPolicyWindowsState struct {
 	FileEncryption pulumi.BoolPtrInput
 	// Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
 	FileSystemAccess pulumi.BoolPtrInput
+	// Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+	FileSystemContainment pulumi.BoolPtrInput
 	// Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
 	ForceAslr pulumi.BoolPtrInput
 	// Whether to enable the setting. A process that had Force Data Execution Prevention (Force DEP) applied tried to execute non-executable memory and was blocked. Requires additional*user*mode_data to be enabled.
@@ -619,6 +626,8 @@ type preventionPolicyWindowsArgs struct {
 	FileEncryption *bool `pulumi:"fileEncryption"`
 	// Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
 	FileSystemAccess *bool `pulumi:"fileSystemAccess"`
+	// Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+	FileSystemContainment *bool `pulumi:"fileSystemContainment"`
 	// Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
 	ForceAslr *bool `pulumi:"forceAslr"`
 	// Whether to enable the setting. A process that had Force Data Execution Prevention (Force DEP) applied tried to execute non-executable memory and was blocked. Requires additional*user*mode_data to be enabled.
@@ -749,6 +758,8 @@ type PreventionPolicyWindowsArgs struct {
 	FileEncryption pulumi.BoolPtrInput
 	// Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
 	FileSystemAccess pulumi.BoolPtrInput
+	// Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+	FileSystemContainment pulumi.BoolPtrInput
 	// Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
 	ForceAslr pulumi.BoolPtrInput
 	// Whether to enable the setting. A process that had Force Data Execution Prevention (Force DEP) applied tried to execute non-executable memory and was blocked. Requires additional*user*mode_data to be enabled.
@@ -1048,6 +1059,11 @@ func (o PreventionPolicyWindowsOutput) FileEncryption() pulumi.BoolOutput {
 // Whether to enable the setting. A process associated with a high volume of file system operations typical of ransomware behavior was terminated.
 func (o PreventionPolicyWindowsOutput) FileSystemAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PreventionPolicyWindows) pulumi.BoolOutput { return v.FileSystemAccess }).(pulumi.BoolOutput)
+}
+
+// Whether to enable the setting. File System Containment will be enabled, this will allow prevention capabilities to automatically contain file system activity.  When disabled each user under active containment will be released and the File System Containment will enter a disabled mode
+func (o PreventionPolicyWindowsOutput) FileSystemContainment() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PreventionPolicyWindows) pulumi.BoolOutput { return v.FileSystemContainment }).(pulumi.BoolOutput)
 }
 
 // Whether to enable the setting. An Address Space Layout Randomization (ASLR) bypass attempt was detected and blocked. This may have been part of an attempted exploit. Requires additional*user*mode_data to be enabled.
