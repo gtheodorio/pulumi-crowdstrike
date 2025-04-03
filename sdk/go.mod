@@ -1,6 +1,6 @@
 module github.com/crowdstrike/pulumi-crowdstrike/sdk
 
-go 1.22
+go 1.22.12
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
