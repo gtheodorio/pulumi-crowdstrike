@@ -154,7 +154,8 @@ func Provider() tfbridge.ProviderInfo {
 			// "aws_iam_role": {
 			//   Tok: makeResource(mainMod, "aws_iam_role"),
 			// },
-			"crowdstrike_cloud_aws_account": {ComputeID: tfbridge.DelegateIDField("id", "aws_account_id", "https://github.com/crowdstrike/crowdstrike-pulumi")},
+			"crowdstrike_cloud_aws_account":                          {ComputeID: tfbridge.DelegateIDField("account_id", "crowdstrike", "https://github.com/crowdstrike/pulumi-crowdstrike")},
+			"crowdstrike_sensor_update_policy_host_group_attachment": {ComputeID: tfbridge.DelegateIDField("id", "crowdstrike", "https://github.com/crowdstrike/pulumi-crowdstrike")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each data source in the Terraform provider to a Pulumi function.
