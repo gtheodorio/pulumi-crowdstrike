@@ -26,6 +26,7 @@ import (
 	"github.com/ettle/strcase"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -154,7 +155,16 @@ func Provider() tfbridge.ProviderInfo {
 			// "aws_iam_role": {
 			//   Tok: makeResource(mainMod, "aws_iam_role"),
 			// },
-			"crowdstrike_cloud_aws_account": {ComputeID: tfbridge.DelegateIDField("id", "aws_account_id", "https://github.com/crowdstrike/crowdstrike-pulumi")},
+			"crowdstrike_cloud_aws_account": {ComputeID: tfbridge.DelegateIDField("accountId", "crowdstrike", "https://github.com/crowdstrike/pulumi-crowdstrike")},
+			"crowdstrike_sensor_update_policy_host_group_attachment": {
+				Fields: map[string]*info.Schema{
+					"id": {
+						Name: "idProperty",
+					},
+				},
+				ComputeID: tfbridge.DelegateIDField(resource.PropertyKey("idProperty"),
+					"crowdstrike", "https://github.com/crowdstrike/pulumi-crowdstrike"),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each data source in the Terraform provider to a Pulumi function.
