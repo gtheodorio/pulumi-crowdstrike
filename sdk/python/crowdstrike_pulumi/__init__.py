@@ -15,11 +15,13 @@ from .filevantage_rule_group import *
 from .get_cloud_aws_account import *
 from .get_sensor_update_policy_builds import *
 from .host_group import *
+from .prevention_policy_attachment import *
 from .prevention_policy_linux import *
 from .prevention_policy_mac import *
 from .prevention_policy_windows import *
 from .provider import *
 from .sensor_update_policy import *
+from .sensor_update_policy_host_group_attachment import *
 from ._inputs import *
 from . import outputs
 
@@ -99,6 +101,14 @@ _utilities.register(
  },
  {
   "pkg": "crowdstrike",
+  "mod": "index/preventionPolicyAttachment",
+  "fqn": "crowdstrike_pulumi",
+  "classes": {
+   "crowdstrike:index/preventionPolicyAttachment:PreventionPolicyAttachment": "PreventionPolicyAttachment"
+  }
+ },
+ {
+  "pkg": "crowdstrike",
   "mod": "index/preventionPolicyLinux",
   "fqn": "crowdstrike_pulumi",
   "classes": {
@@ -127,6 +137,14 @@ _utilities.register(
   "fqn": "crowdstrike_pulumi",
   "classes": {
    "crowdstrike:index/sensorUpdatePolicy:SensorUpdatePolicy": "SensorUpdatePolicy"
+  }
+ },
+ {
+  "pkg": "crowdstrike",
+  "mod": "index/sensorUpdatePolicyHostGroupAttachment",
+  "fqn": "crowdstrike_pulumi",
+  "classes": {
+   "crowdstrike:index/sensorUpdatePolicyHostGroupAttachment:SensorUpdatePolicyHostGroupAttachment": "SensorUpdatePolicyHostGroupAttachment"
   }
  }
 ]

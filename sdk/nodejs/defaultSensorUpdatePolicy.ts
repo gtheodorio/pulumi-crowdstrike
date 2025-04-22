@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows management of the default sensor update policy in the CrowdStrike Falcon platform.
+ * This resource allows management of the default sensor update policy in the CrowdStrike Falcon platform. Destruction of this resource *will not* delete the default sensor update policy or remove any configured settings.
  *
  * ## API Scopes
  *

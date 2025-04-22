@@ -215,7 +215,7 @@ class DefaultSensorUpdatePolicy(pulumi.CustomResource):
                  uninstall_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        This resource allows management of the default sensor update policy in the CrowdStrike Falcon platform.
+        This resource allows management of the default sensor update policy in the CrowdStrike Falcon platform. Destruction of this resource *will not* delete the default sensor update policy or remove any configured settings.
 
         ## API Scopes
 
@@ -246,7 +246,7 @@ class DefaultSensorUpdatePolicy(pulumi.CustomResource):
                  args: DefaultSensorUpdatePolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows management of the default sensor update policy in the CrowdStrike Falcon platform.
+        This resource allows management of the default sensor update policy in the CrowdStrike Falcon platform. Destruction of this resource *will not* delete the default sensor update policy or remove any configured settings.
 
         ## API Scopes
 
