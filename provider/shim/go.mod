@@ -5,7 +5,7 @@ go 1.22.0
 toolchain go1.24.0
 
 require (
-	github.com/crowdstrike/terraform-provider-crowdstrike v0.0.24
+	github.com/crowdstrike/terraform-provider-crowdstrike v0.0.25
 	github.com/hashicorp/terraform-plugin-framework v1.13.0
 )
 
