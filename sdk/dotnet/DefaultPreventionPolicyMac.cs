@@ -11,7 +11,7 @@ using Pulumi;
 namespace CrowdStrike.Crowdstrike
 {
     /// <summary>
-    /// This resource allows you to manage the default prevention policy for Mac hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts.
+    /// This resource allows you to manage the default prevention policy for Mac hosts. Prevention policies allow you to manage what activity will trigger detections and preventions on your hosts. Destruction of this resource *will not* delete the default prevention policy or remove any configured settings.
     /// 
     /// ## API Scopes
     /// 

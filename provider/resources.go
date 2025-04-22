@@ -165,6 +165,15 @@ func Provider() tfbridge.ProviderInfo {
 				ComputeID: tfbridge.DelegateIDField(resource.PropertyKey("idProperty"),
 					"crowdstrike", "https://github.com/crowdstrike/pulumi-crowdstrike"),
 			},
+			"crowdstrike_prevention_policy_attachment": {
+				Fields: map[string]*info.Schema{
+					"id": {
+						Name: "idProperty",
+					},
+				},
+				ComputeID: tfbridge.DelegateIDField(resource.PropertyKey("idProperty"),
+					"crowdstrike", "https://github.com/crowdstrike/pulumi-crowdstrike"),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each data source in the Terraform provider to a Pulumi function.

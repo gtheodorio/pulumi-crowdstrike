@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows management of the default sensor update policy in the CrowdStrike Falcon platform.
+// This resource allows management of the default sensor update policy in the CrowdStrike Falcon platform. Destruction of this resource *will not* delete the default sensor update policy or remove any configured settings.
 //
 // ## API Scopes
 //

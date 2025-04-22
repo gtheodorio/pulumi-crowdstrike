@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FilevantageRuleGroup{}
 	case "crowdstrike:index/hostGroup:HostGroup":
 		r = &HostGroup{}
+	case "crowdstrike:index/preventionPolicyAttachment:PreventionPolicyAttachment":
+		r = &PreventionPolicyAttachment{}
 	case "crowdstrike:index/preventionPolicyLinux:PreventionPolicyLinux":
 		r = &PreventionPolicyLinux{}
 	case "crowdstrike:index/preventionPolicyMac:PreventionPolicyMac":
@@ -45,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PreventionPolicyWindows{}
 	case "crowdstrike:index/sensorUpdatePolicy:SensorUpdatePolicy":
 		r = &SensorUpdatePolicy{}
+	case "crowdstrike:index/sensorUpdatePolicyHostGroupAttachment:SensorUpdatePolicyHostGroupAttachment":
+		r = &SensorUpdatePolicyHostGroupAttachment{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -118,6 +122,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"crowdstrike",
+		"index/preventionPolicyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"crowdstrike",
 		"index/preventionPolicyLinux",
 		&module{version},
 	)
@@ -134,6 +143,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"crowdstrike",
 		"index/sensorUpdatePolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"crowdstrike",
+		"index/sensorUpdatePolicyHostGroupAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(
