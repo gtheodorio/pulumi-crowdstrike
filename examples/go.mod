@@ -1,6 +1,7 @@
 module github.com/crowdstrike/pulumi-crowdstrike/examples
 
 go 1.22.12
+toolchain go1.24.1
 
 require github.com/pulumi/pulumi/pkg/v3 v3.160.0
 
@@ -153,7 +154,7 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	gocloud.dev v0.37.0 // indirect
 	gocloud.dev/secrets/hashivault v0.37.0 // indirect
-	golang.org/x/crypto v0.33.0 // indirect
+	golang.org/x/crypto v0.35.0 // indirect
 	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
 	golang.org/x/mod v0.19.0 // indirect
 	golang.org/x/net v0.35.0 // indirect
